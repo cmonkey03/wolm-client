@@ -18,7 +18,7 @@ class App extends Component {
     this.state = {
       usernameInput: '',
       passwordInput: '',
-      loggedInUser: {}
+      loggedInUser: null
     }
   }
 
@@ -46,13 +46,21 @@ class App extends Component {
 
   handleLoginSubmit = (event) => {
     event.preventDefault()
-    console.log(event)
+    const foundUser = this.props.users.find((user) => {
+      return this.state.usernameInput === user.username && this.state.passwordInput === user.password
+    })
+    this.setState({
+      loggedInUser: foundUser,
+      usernameInput: '',
+      passwordInput: ''
+    })
   }
 
   render() {
     return (
       <div className="App">
         <h1>Welcome to WOLM</h1>
+        {this.state.loggedInUser ? `Logout ${this.state.loggedInUser.username}` : "Log in"}
         <React.Fragment>
           <NavBar/>
           <Route
