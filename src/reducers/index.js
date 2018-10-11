@@ -1,7 +1,7 @@
-import { combineReducers } from 'react';
+import { combineReducers } from 'redux';
 import users from './usersReducers';
 import tours from './toursReducers';
-import users from './reservationsReducers';
+import reservations from './reservationsReducers';
 
 export default combineReducers({
   users,
