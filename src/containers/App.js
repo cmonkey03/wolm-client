@@ -15,6 +15,11 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.ApiAdapter = new ApiAdapter()
+    this.state = {
+      usernameInput: '',
+      passwordInput: '',
+      loggedInUser: {}
+    }
   }
 
   componentDidMount() {
@@ -31,6 +36,19 @@ class App extends Component {
     })
   }
 
+  handleUsernameInput = (event) => {
+    this.setState({usernameInput:event.target.value})
+  }
+
+  handlePasswordInput = (event) => {
+    this.setState({passwordInput:event.target.value})
+  }
+
+  handleLoginSubmit = (event) => {
+    event.preventDefault()
+    console.log(event)
+  }
+
   render() {
     return (
       <div className="App">
@@ -42,7 +60,12 @@ class App extends Component {
             path="/login"
             render={ (renderProps) => {
               return (
-                <Login />
+                <Login  handleUsernameInput={this.handleUsernameInput}
+                        handlePasswordInput={this.handlePasswordInput}
+                        handleLoginSubmit={this.handleLoginSubmit}
+                        usernameInput={this.state.usernameInput}
+                        passwordInput={this.state.passwordInput}
+                  />
               )
             }}
             />
@@ -99,9 +122,10 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    users: state
+    users: state.users,
+    tours: state.tours,
+    reservations: state.reservations
   }
 }
-
 
 export default withRouter(connect(mapStateToProps)(App));
