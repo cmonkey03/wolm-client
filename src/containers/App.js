@@ -15,6 +15,11 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.ApiAdapter = new ApiAdapter()
+    this.state = {
+      usernameInput: '',
+      passwordInput: '',
+      loggedInUser: null
+    }
   }
 
   componentDidMount() {
@@ -31,10 +36,31 @@ class App extends Component {
     })
   }
 
+  handleUsernameInput = (event) => {
+    this.setState({usernameInput:event.target.value})
+  }
+
+  handlePasswordInput = (event) => {
+    this.setState({passwordInput:event.target.value})
+  }
+
+  handleLoginSubmit = (event) => {
+    event.preventDefault()
+    const foundUser = this.props.users.find((user) => {
+      return this.state.usernameInput === user.username && this.state.passwordInput === user.password
+    })
+    this.setState({
+      loggedInUser: foundUser,
+      usernameInput: '',
+      passwordInput: ''
+    })
+  }
+
   render() {
     return (
       <div className="App">
         <h1>Welcome to WOLM</h1>
+        {this.state.loggedInUser ? `Logout ${this.state.loggedInUser.username}` : "Log in"}
         <React.Fragment>
           <NavBar/>
           <Route
@@ -42,7 +68,12 @@ class App extends Component {
             path="/login"
             render={ (renderProps) => {
               return (
-                <Login />
+                <Login  handleUsernameInput={this.handleUsernameInput}
+                        handlePasswordInput={this.handlePasswordInput}
+                        handleLoginSubmit={this.handleLoginSubmit}
+                        usernameInput={this.state.usernameInput}
+                        passwordInput={this.state.passwordInput}
+                  />
               )
             }}
             />
@@ -99,9 +130,10 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    users: state
+    users: state.users,
+    tours: state.tours,
+    reservations: state.reservations
   }
 }
-
 
 export default withRouter(connect(mapStateToProps)(App));
