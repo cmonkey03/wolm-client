@@ -4,6 +4,7 @@ import store from '../store';
 import ApiAdapter from '../adapter';
 import { connect } from 'react-redux';
 import { LOAD_API_DATA } from '../actions';
+import { Route } from 'react-router-dom';
 
 class App extends Component {
 
@@ -29,7 +30,61 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        WOLM
+        <h1>Welcome to WOLM</h1>
+        <Route
+          exact
+          path='/login'
+          render={ (renderProps) => {
+            return (
+              <h1>Login</h1>
+            )
+          }}
+          />
+          <Route
+            exact
+            path='/signup'
+            render={ (renderProps) => {
+              return (
+                <h1>Signup</h1>
+              )
+            }}
+            />
+          <Route
+            exact
+            path='/edit-profile'
+            render={ (renderProps) => {
+              return (
+                <h1>Edit your profile</h1>
+              )
+            }}
+            />
+          <Route
+            exact
+            path='/reservations'
+            render={ (renderProps) => {
+              return (
+                <h1>Reservations</h1>
+              )
+            }}
+            />
+          <Route
+            exact
+            path='/admin'
+            render={ (renderProps) => {
+              return (
+                <h1>Administrator Panel</h1>
+              )
+            }}
+            />
+          <Route
+            exact
+            path='/new-tour'
+            render={ (renderProps) => {
+              return (
+                <h1>Administrator Panel</h1>
+              )
+            }}
+            />
       </div>
     );
   }
