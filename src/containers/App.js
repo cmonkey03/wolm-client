@@ -27,7 +27,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <div className="App">
         WOLM
@@ -38,7 +37,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    users: state.users
+    users: state
   }
 }
 
