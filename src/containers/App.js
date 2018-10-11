@@ -5,6 +5,10 @@ import ApiAdapter from '../adapter';
 import { connect } from 'react-redux';
 import { LOAD_API_DATA } from '../actions';
 import { Route } from 'react-router-dom';
+import { withRouter } from 'react-router';
+import NavBar from '../components/NavBar';
+import Login from '../components/Login';
+import Signup from '../components/Signup';
 
 class App extends Component {
 
@@ -31,60 +35,63 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Welcome to WOLM</h1>
-        <Route
-          exact
-          path='/login'
-          render={ (renderProps) => {
-            return (
-              <h1>Login</h1>
-            )
-          }}
-          />
+        <React.Fragment>
+          <NavBar/>
           <Route
             exact
-            path='/signup'
+            path="/login"
             render={ (renderProps) => {
               return (
-                <h1>Signup</h1>
+                <Login />
               )
             }}
             />
-          <Route
-            exact
-            path='/edit-profile'
-            render={ (renderProps) => {
-              return (
-                <h1>Edit your profile</h1>
-              )
-            }}
-            />
-          <Route
-            exact
-            path='/reservations'
-            render={ (renderProps) => {
-              return (
-                <h1>Reservations</h1>
-              )
-            }}
-            />
-          <Route
-            exact
-            path='/admin'
-            render={ (renderProps) => {
-              return (
-                <h1>Administrator Panel</h1>
-              )
-            }}
-            />
-          <Route
-            exact
-            path='/new-tour'
-            render={ (renderProps) => {
-              return (
-                <h1>Administrator Panel</h1>
-              )
-            }}
-            />
+            <Route
+              exact
+              path="/signup"
+              render={ (renderProps) => {
+                return (
+                  <Signup />
+                )
+              }}
+              />
+            <Route
+              exact
+              path="/edit-profile"
+              render={ (renderProps) => {
+                return (
+                  <h1>Edit your profile</h1>
+                )
+              }}
+              />
+            <Route
+              exact
+              path="/reservations"
+              render={ (renderProps) => {
+                return (
+                  <h1>Reservations</h1>
+                )
+              }}
+              />
+            <Route
+              exact
+              path="/admin"
+              render={ (renderProps) => {
+                return (
+                  <h1>Administrator Panel</h1>
+                )
+              }}
+              />
+            <Route
+              exact
+              path="/new-tour"
+              render={ (renderProps) => {
+                return (
+                  <h1>Create a Tour</h1>
+                )
+              }}
+              />
+          </React.Fragment>
       </div>
     );
   }
@@ -97,4 +104,4 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps)(App);
+export default withRouter(connect(mapStateToProps)(App));
