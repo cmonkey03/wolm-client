@@ -9,15 +9,17 @@ import { withRouter } from 'react-router';
 import NavBar from '../components/NavBar';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
+import EditProfile from '../components/EditProfile';
 
 class App extends Component {
-
   constructor(props) {
     super(props)
     this.ApiAdapter = new ApiAdapter()
     this.state = {
       usernameInput: '',
       passwordInput: '',
+      zipcodeInput: '',
+      bioInput: '',
       loggedInUser: null
     }
   }
@@ -36,16 +38,13 @@ class App extends Component {
     })
   }
 
-  handleUsernameInput = (event) => {
-    this.setState({usernameInput:event.target.value})
-  }
+  handleUsernameInput = e => this.setState({usernameInput:e.target.value})
+  handlePasswordInput = e => this.setState({passwordInput:e.target.value})
+  handleZipcodeInput = e => this.setState({zipcodeInput:e.target.value})
+  handleBioInput = e => this.setState({bioInput:e.target.value})
 
-  handlePasswordInput = (event) => {
-    this.setState({passwordInput:event.target.value})
-  }
-
-  handleLoginSubmit = (event) => {
-    event.preventDefault()
+  handleLoginSubmit = (e) => {
+    e.preventDefault()
     const foundUser = this.props.users.find((user) => {
       return this.state.usernameInput === user.username && this.state.passwordInput === user.password
     })
@@ -54,6 +53,10 @@ class App extends Component {
       usernameInput: '',
       passwordInput: ''
     })
+  }
+
+  handleSignupSubmit = (e) => {
+    console.log(e)
   }
 
   render() {
@@ -68,12 +71,13 @@ class App extends Component {
             path="/login"
             render={ (renderProps) => {
               return (
-                <Login  handleUsernameInput={this.handleUsernameInput}
-                        handlePasswordInput={this.handlePasswordInput}
-                        handleLoginSubmit={this.handleLoginSubmit}
-                        usernameInput={this.state.usernameInput}
-                        passwordInput={this.state.passwordInput}
-                  />
+                <Login
+                  usernameInput={this.state.usernameInput}
+                  passwordInput={this.state.passwordInput}
+                  handleUsernameInput={this.handleUsernameInput}
+                  handlePasswordInput={this.handlePasswordInput}
+                  handleLoginSubmit={this.handleLoginSubmit}
+                />
               )
             }}
             />
@@ -82,7 +86,17 @@ class App extends Component {
               path="/signup"
               render={ (renderProps) => {
                 return (
-                  <Signup />
+                  <Signup
+                    usernameInput={this.state.usernameInput}
+                    passwordInput={this.state.passwordInput}
+                    zipcodeInput={this.state.zipcodeInput}
+                    bioInput={this.state.bioInput}
+                    handleUsernameInput={this.handleUsernameInput}
+                    handlePasswordInput={this.handlePasswordInput}
+                    handleZipcodeInput={this.handleZipcodeInput}
+                    handleBioInput={this.handleBioInput}
+                    handleSignupSubmit={this.handleSignupSubmit}
+                    />
                 )
               }}
               />
@@ -91,7 +105,7 @@ class App extends Component {
               path="/edit-profile"
               render={ (renderProps) => {
                 return (
-                  <h1>Edit your profile</h1>
+                    <EditProfile />
                 )
               }}
               />
