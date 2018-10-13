@@ -3,7 +3,7 @@ import { Button, Checkbox, Form, Input, TextArea } from 'semantic-ui-react';
 
 const Signup = (props) => {
   return (
-    <Form onSubmit={props.handleLoginSubmit}>
+    <Form onSubmit={props.handleSignupSubmit}>
       <Form.Field
         control={Input}
         label='Username'

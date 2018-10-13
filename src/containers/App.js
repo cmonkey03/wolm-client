@@ -57,6 +57,22 @@ class App extends Component {
 
   handleSignupSubmit = (e) => {
     console.log(e)
+    const userObj = {
+      username: this.state.usernameInput,
+      password: this.state.passwordInput,
+      zip_postcode: this.state.zipcodeInput,
+      bio: this.state.bioInput
+    }
+
+    this.ApiAdapter.postUser(userObj).then(r=>console.log(r),
+      this.setState({
+        usernameInput: '',
+        passwordInput: '',
+        zipcodeInput: '',
+        bioInput: '',
+        loggedInUser: null
+      })
+    )
   }
 
   render() {

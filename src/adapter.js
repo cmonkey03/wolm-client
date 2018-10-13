@@ -21,4 +21,14 @@ export default class Adapter {
     this.getReservations()
   ]))
 
+  postUser = (endPoint, userObj) => this.fetch(`${BASE_URL}/${endPoint}`, {
+    method: 'post',
+    headers: {
+      Content: 'application/json',
+      Accept: 'application/json'
+    },
+    body: JSON.stringify(userObj)
+  })
+  .then(this.parseHeaders)
+
 }
