@@ -20,6 +20,7 @@ class App extends Component {
       passwordInput: '',
       zipcodeInput: '',
       bioInput: '',
+      errors: null,
       loggedInUser: null
     }
   }
@@ -56,7 +57,6 @@ class App extends Component {
   }
 
   handleSignupSubmit = (e) => {
-    console.log(e)
     const userObj = {
       username: this.state.usernameInput,
       password: this.state.passwordInput,
@@ -64,15 +64,20 @@ class App extends Component {
       bio: this.state.bioInput
     }
 
-    this.ApiAdapter.postUser(userObj).then(r=>console.log(r),
-      this.setState({
-        usernameInput: '',
-        passwordInput: '',
-        zipcodeInput: '',
-        bioInput: '',
-        loggedInUser: null
-      })
-    )
+    this.ApiAdapter.postUser(userObj).then(r=>{
+      if (r.errors) {
+        this.setState({errors: r.errors}, () => console.log(this.state))
+      } else {
+        this.setState({
+          usernameInput: '',
+          passwordInput: '',
+          zipcodeInput: '',
+          bioInput: '',
+          errors: null,
+          loggedInUser: null
+        })
+      }
+    })
   }
 
   render() {
@@ -112,6 +117,7 @@ class App extends Component {
                     handleZipcodeInput={this.handleZipcodeInput}
                     handleBioInput={this.handleBioInput}
                     handleSignupSubmit={this.handleSignupSubmit}
+                    errors={this.state.errors}
                     />
                 )
               }}

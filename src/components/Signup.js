@@ -1,9 +1,10 @@
 import React from 'react';
-import { Button, Checkbox, Form, Input, TextArea } from 'semantic-ui-react';
+import { Button, Checkbox, Form, Input, Message, TextArea } from 'semantic-ui-react';
 
 const Signup = (props) => {
+  console.log(props)
   return (
-    <Form onSubmit={props.handleSignupSubmit}>
+    <Form onSubmit={props.handleSignupSubmit} error>
       <Form.Field
         control={Input}
         label='Username'
@@ -43,6 +44,12 @@ const Signup = (props) => {
       <Form.Field>
         <Checkbox label='I agree to the Terms and Conditions' />
       </Form.Field>
+      { props.errors && <Message
+          error
+          header='Action Forbidden'
+          content={props.errors.join("; ")}
+          />
+      }
       <Button type='submit'>Signup</Button>
     </Form>
   )
