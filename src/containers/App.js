@@ -10,6 +10,7 @@ import NavBar from '../components/NavBar';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
 import EditProfile from '../components/EditProfile';
+import AdminPanel from '../components/AdminPanel';
 
 class App extends Component {
   constructor(props) {
@@ -127,7 +128,7 @@ class App extends Component {
               path="/edit-profile"
               render={ (renderProps) => {
                 return (
-                    <EditProfile />
+                  <EditProfile />
                 )
               }}
               />
@@ -145,7 +146,7 @@ class App extends Component {
               path="/admin"
               render={ (renderProps) => {
                 return (
-                  <h1>Administrator Panel</h1>
+                  <AdminPanel />
                 )
               }}
               />
