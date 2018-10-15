@@ -10,6 +10,7 @@ import NavBar from '../components/NavBar';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
 import EditProfile from '../components/EditProfile';
+import Reservations from '../components/Reservations';
 import AdminPanel from '../components/AdminPanel';
 import CreateTour from '../components/CreateTour';
 import { Header } from 'semantic-ui-react';
@@ -93,7 +94,7 @@ class App extends Component {
         <Header size='huge'>WOLM</Header>
         <Header size='medium'>Welcome to the Website of Lower Manhattan</Header>
         {this.state.loggedInUser ? `Logout ${this.state.loggedInUser.username}` : "Log in"}
-        <React.Fragment>
+        <div className="body">
           <NavBar/>
           <Route
             exact
@@ -146,7 +147,9 @@ class App extends Component {
               path="/reservations"
               render={ (renderProps) => {
                 return (
-                  <h1>Reservations</h1>
+                  <React.Fragment>
+                    { this.state.loggedInUser && <Reservations loggedInUser={this.state.loggedInUser}/>}
+                  </React.Fragment>
                 )
               }}
               />
@@ -168,7 +171,7 @@ class App extends Component {
                 )
               }}
               />
-          </React.Fragment>
+          </div>
       </div>
     );
   }
