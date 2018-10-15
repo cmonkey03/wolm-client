@@ -12,6 +12,8 @@ import Signup from '../components/Signup';
 import EditProfile from '../components/EditProfile';
 import AdminPanel from '../components/AdminPanel';
 import CreateTour from '../components/CreateTour';
+import { Header } from 'semantic-ui-react';
+
 
 class App extends Component {
   constructor(props) {
@@ -51,11 +53,14 @@ class App extends Component {
     const foundUser = this.props.users.find((user) => {
       return this.state.usernameInput === user.username && this.state.passwordInput === user.password
     })
-    this.setState({
-      loggedInUser: foundUser,
-      usernameInput: '',
-      passwordInput: ''
-    })
+
+    if (foundUser) {
+      this.setState({
+        loggedInUser: foundUser,
+        usernameInput: '',
+        passwordInput: ''
+      }, ()=> console.log(this.state))
+    }
   }
 
   handleSignupSubmit = (e) => {
@@ -85,7 +90,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Welcome to WOLM</h1>
+        <Header size='huge'>WOLM</Header>
+        <Header size='medium'>Welcome to the Website of Lower Manhattan</Header>
         {this.state.loggedInUser ? `Logout ${this.state.loggedInUser.username}` : "Log in"}
         <React.Fragment>
           <NavBar/>
@@ -129,7 +135,9 @@ class App extends Component {
               path="/edit-profile"
               render={ (renderProps) => {
                 return (
-                  <EditProfile />
+                  <React.Fragment>
+                    { this.state.loggedInUser && <EditProfile loggedInUser={this.state.loggedInUser}/>}
+                  </React.Fragment>
                 )
               }}
               />
