@@ -11,7 +11,7 @@ const AllUsers = (props) => {
           <Table.Cell>{user.username}</Table.Cell>
           <Table.Cell>{user.zip_postcode}</Table.Cell>
           <Table.Cell>{user.bio}</Table.Cell>
-          <Table.Cell>Reservations</Table.Cell>
+          <Table.Cell>{user.reservations.length}</Table.Cell>
         </Table.Row>)))
   }
 
