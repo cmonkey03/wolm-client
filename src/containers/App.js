@@ -9,15 +9,20 @@ import { withRouter } from 'react-router';
 import NavBar from '../components/NavBar';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
+import EditProfile from '../components/EditProfile';
+import AdminPanel from '../components/AdminPanel';
+import CreateTour from '../components/CreateTour';
 
 class App extends Component {
-
   constructor(props) {
     super(props)
     this.ApiAdapter = new ApiAdapter()
     this.state = {
       usernameInput: '',
       passwordInput: '',
+      zipcodeInput: '',
+      bioInput: '',
+      errors: null,
       loggedInUser: null
     }
   }
@@ -36,16 +41,13 @@ class App extends Component {
     })
   }
 
-  handleUsernameInput = (event) => {
-    this.setState({usernameInput:event.target.value})
-  }
+  handleUsernameInput = e => this.setState({usernameInput:e.target.value})
+  handlePasswordInput = e => this.setState({passwordInput:e.target.value})
+  handleZipcodeInput = e => this.setState({zipcodeInput:e.target.value})
+  handleBioInput = e => this.setState({bioInput:e.target.value})
 
-  handlePasswordInput = (event) => {
-    this.setState({passwordInput:event.target.value})
-  }
-
-  handleLoginSubmit = (event) => {
-    event.preventDefault()
+  handleLoginSubmit = (e) => {
+    e.preventDefault()
     const foundUser = this.props.users.find((user) => {
       return this.state.usernameInput === user.username && this.state.passwordInput === user.password
     })
@@ -53,6 +55,30 @@ class App extends Component {
       loggedInUser: foundUser,
       usernameInput: '',
       passwordInput: ''
+    })
+  }
+
+  handleSignupSubmit = (e) => {
+    const userObj = {
+      username: this.state.usernameInput,
+      password: this.state.passwordInput,
+      zip_postcode: this.state.zipcodeInput,
+      bio: this.state.bioInput
+    }
+
+    this.ApiAdapter.postUser(userObj).then(r=>{
+      if (r.errors) {
+        this.setState({errors: r.errors}, () => console.log(this.state))
+      } else {
+        this.setState({
+          usernameInput: '',
+          passwordInput: '',
+          zipcodeInput: '',
+          bioInput: '',
+          errors: null,
+          loggedInUser: null
+        })
+      }
     })
   }
 
@@ -68,12 +94,13 @@ class App extends Component {
             path="/login"
             render={ (renderProps) => {
               return (
-                <Login  handleUsernameInput={this.handleUsernameInput}
-                        handlePasswordInput={this.handlePasswordInput}
-                        handleLoginSubmit={this.handleLoginSubmit}
-                        usernameInput={this.state.usernameInput}
-                        passwordInput={this.state.passwordInput}
-                  />
+                <Login
+                  usernameInput={this.state.usernameInput}
+                  passwordInput={this.state.passwordInput}
+                  handleUsernameInput={this.handleUsernameInput}
+                  handlePasswordInput={this.handlePasswordInput}
+                  handleLoginSubmit={this.handleLoginSubmit}
+                />
               )
             }}
             />
@@ -82,7 +109,18 @@ class App extends Component {
               path="/signup"
               render={ (renderProps) => {
                 return (
-                  <Signup />
+                  <Signup
+                    usernameInput={this.state.usernameInput}
+                    passwordInput={this.state.passwordInput}
+                    zipcodeInput={this.state.zipcodeInput}
+                    bioInput={this.state.bioInput}
+                    handleUsernameInput={this.handleUsernameInput}
+                    handlePasswordInput={this.handlePasswordInput}
+                    handleZipcodeInput={this.handleZipcodeInput}
+                    handleBioInput={this.handleBioInput}
+                    handleSignupSubmit={this.handleSignupSubmit}
+                    errors={this.state.errors}
+                    />
                 )
               }}
               />
@@ -91,7 +129,7 @@ class App extends Component {
               path="/edit-profile"
               render={ (renderProps) => {
                 return (
-                  <h1>Edit your profile</h1>
+                  <EditProfile />
                 )
               }}
               />
@@ -109,7 +147,7 @@ class App extends Component {
               path="/admin"
               render={ (renderProps) => {
                 return (
-                  <h1>Administrator Panel</h1>
+                  <AdminPanel />
                 )
               }}
               />
@@ -118,7 +156,7 @@ class App extends Component {
               path="/new-tour"
               render={ (renderProps) => {
                 return (
-                  <h1>Create a Tour</h1>
+                  <CreateTour />
                 )
               }}
               />

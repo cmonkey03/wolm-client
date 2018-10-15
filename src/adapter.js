@@ -21,4 +21,26 @@ export default class Adapter {
     this.getReservations()
   ]))
 
+  postUser = (userObj) => (fetch(`${BASE_URL}/${Users}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(userObj)
+    })
+    .then(this.parseHeaders)
+  )
+
+  postTour = (tourObj) => (fetch(`${BASE_URL}/${Tours}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(tourObj)
+    })
+    .then(this.parseHeaders)
+  )
+
 }
