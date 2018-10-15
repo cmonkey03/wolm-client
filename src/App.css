@@ -30,3 +30,9 @@
     transform: rotate(360deg);
   }
 }
+
+/* The timeSelect field in CreateTour comes with default
+padding that pushes times out of field view. */
+.react-datepicker__time-list {
+  padding: 0;
+}
