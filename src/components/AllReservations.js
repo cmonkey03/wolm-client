@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Icon, Menu, Table } from 'semantic-ui-react';
+import { Header, Icon, Menu, Table } from 'semantic-ui-react';
 
 const AllReservations = (props) => {
   const reservationRow = (reservations) => {
@@ -14,8 +14,8 @@ const AllReservations = (props) => {
 
   return(
     <React.Fragment>
-      <h3>Reservations</h3>
-      <Table celled>
+      <Header as='h3' attached='top' inverted color='green'>Reservations</Header>
+      <Table celled attached>
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell>ID</Table.HeaderCell>

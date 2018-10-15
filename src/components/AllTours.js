@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Icon, Menu, Table } from 'semantic-ui-react';
+import { Header, Icon, Menu, Table } from 'semantic-ui-react';
 import moment from 'moment';
 
 const AllTours = (props) => {
@@ -19,8 +19,8 @@ const AllTours = (props) => {
 
   return(
     <React.Fragment>
-      <h3>Tours</h3>
-      <Table celled>
+      <Header as='h3' attached='top' inverted color='teal'>Tours</Header>
+      <Table celled attached>
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell>ID</Table.HeaderCell>
