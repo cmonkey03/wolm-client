@@ -2,7 +2,7 @@ import React from 'react';
 import ApiAdapter from '../adapter';
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
-import { Button, Form, Input, Label } from 'semantic-ui-react';
+import { Button, Form, Input, Label, Message } from 'semantic-ui-react';
 import 'react-datepicker/dist/react-datepicker.css';
 
 export default class CreateTour extends React.Component {
@@ -81,6 +81,12 @@ export default class CreateTour extends React.Component {
               <Label>.00</Label>
             </Input>
           </Form.Field>
+          { this.state.errors && <Message
+              error
+              header='Action Forbidden'
+              content={this.state.errors.join("; ")}
+              />
+          }
           <Button type='submit'>Create Tour</Button>
         </Form>
       </React.Fragment>
