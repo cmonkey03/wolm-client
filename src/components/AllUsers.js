@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Icon, Menu, Table } from 'semantic-ui-react';
+import { Header, Icon, Menu, Table } from 'semantic-ui-react';
 
 const AllUsers = (props) => {
-
   const userRow = (users) => {
     return (users.map((user) => (
         <Table.Row key={user.id}>
@@ -11,14 +10,14 @@ const AllUsers = (props) => {
           <Table.Cell>{user.username}</Table.Cell>
           <Table.Cell>{user.zip_postcode}</Table.Cell>
           <Table.Cell>{user.bio}</Table.Cell>
-          <Table.Cell>Reservations</Table.Cell>
+          <Table.Cell>{user.reservations.length}</Table.Cell>
         </Table.Row>)))
   }
 
   return(
     <React.Fragment>
-      <h3>Users</h3>
-      <Table celled>
+      <Header as='h3' attached='top' inverted color='red'>Users</Header>
+      <Table celled attached>
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell>ID</Table.HeaderCell>

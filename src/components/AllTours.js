@@ -1,29 +1,32 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Icon, Menu, Table } from 'semantic-ui-react';
+import { Header, Icon, Menu, Table } from 'semantic-ui-react';
+import moment from 'moment';
 
 const AllTours = (props) => {
+
   const tourRow = (tours) => {
-    return (tours.map((tour) => (
-        <Table.Row key={tour.id}>
-          <Table.Cell>{tour.id}</Table.Cell>
-          <Table.Cell>{tour.start_time}</Table.Cell>
-          <Table.Cell>{tour.end_time}</Table.Cell>
-          <Table.Cell>{tour.price}</Table.Cell>
-          <Table.Cell>Tour Reservations</Table.Cell>
-        </Table.Row>)))
+    return (tours.map((tour) => {
+      return (<Table.Row key={tour.id}>
+            <Table.Cell>{tour.id}</Table.Cell>
+            <Table.Cell>{moment(tour.start_time).format("MM-DD-YYYY HH:mm")}</Table.Cell>
+            <Table.Cell>{moment(tour.end_time).format("MM-DD-YYYY HH:mm")}</Table.Cell>
+            <Table.Cell>{tour.price}</Table.Cell>
+            <Table.Cell>{tour.reservations.length}</Table.Cell>
+          </Table.Row>)
+    }))
   }
 
   return(
     <React.Fragment>
-      <h3>Tours</h3>
-      <Table celled>
+      <Header as='h3' attached='top' inverted color='teal'>Tours</Header>
+      <Table celled attached>
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell>ID</Table.HeaderCell>
           <Table.HeaderCell>Start Time</Table.HeaderCell>
-          <Table.HeaderCell>Zipcode</Table.HeaderCell>
-          <Table.HeaderCell>Bio</Table.HeaderCell>
+          <Table.HeaderCell>End Time</Table.HeaderCell>
+          <Table.HeaderCell>Price</Table.HeaderCell>
           <Table.HeaderCell>Reservations</Table.HeaderCell>
         </Table.Row>
       </Table.Header>

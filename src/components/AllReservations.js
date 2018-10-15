@@ -1,26 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Icon, Menu, Table } from 'semantic-ui-react';
+import { Header, Icon, Menu, Table } from 'semantic-ui-react';
 
 const AllReservations = (props) => {
   const reservationRow = (reservations) => {
     return (reservations.map((reservation) => (
         <Table.Row key={reservation.id}>
           <Table.Cell>{reservation.id}</Table.Cell>
-          <Table.Cell>{reservation.paid.toString()}</Table.Cell>
-          <Table.Cell>{reservation.user_id}</Table.Cell>
-          <Table.Cell>{reservation.tour_id}</Table.Cell>
+          <Table.Cell>{reservation.user.id}</Table.Cell>
+          <Table.Cell>{reservation.tour.id}</Table.Cell>
         </Table.Row>)))
   }
 
   return(
     <React.Fragment>
-      <h3>Reservations</h3>
-      <Table celled>
+      <Header as='h3' attached='top' inverted color='green'>Reservations</Header>
+      <Table celled attached>
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell>ID</Table.HeaderCell>
-          <Table.HeaderCell>Paid</Table.HeaderCell>
           <Table.HeaderCell>User ID</Table.HeaderCell>
           <Table.HeaderCell>Tour ID</Table.HeaderCell>
         </Table.Row>
@@ -30,7 +28,7 @@ const AllReservations = (props) => {
       </Table.Body>
       <Table.Footer>
         <Table.Row>
-          <Table.HeaderCell colSpan='4'>
+          <Table.HeaderCell colSpan='3'>
             <Menu floated='right' pagination>
               <Menu.Item as='a' icon>
                 <Icon name='chevron left'/>
