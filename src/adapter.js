@@ -32,6 +32,17 @@ export default class Adapter {
     .then(this.parseHeaders)
   )
 
+  updateUser = (userObj) => (fetch(`${BASE_URL}/${Users}/${userObj.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(userObj)
+    })
+    .then(this.parseHeaders)
+  )
+
   postTour = (tourObj) => (fetch(`${BASE_URL}/${Tours}`, {
       method: 'POST',
       headers: {
