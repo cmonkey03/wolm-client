@@ -93,7 +93,7 @@ class App extends Component {
         <Header size='huge'>WOLM</Header>
         <Header size='medium'>Welcome to the Website of Lower Manhattan</Header>
         {this.state.loggedInUser ? `Logout ${this.state.loggedInUser.username}` : "Log in"}
-        <React.Fragment>
+        <div className="body">
           <NavBar/>
           <Route
             exact
@@ -168,7 +168,7 @@ class App extends Component {
                 )
               }}
               />
-          </React.Fragment>
+          </div>
       </div>
     );
   }
