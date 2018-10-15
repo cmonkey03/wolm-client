@@ -6,7 +6,8 @@ const AllUsers = (props) => {
 
   const userRow = (users) => {
     return (users.map((user) => (
-        <Table.Row>
+        <Table.Row key={user.id}>
+          <Table.Cell>{user.id}</Table.Cell>
           <Table.Cell>{user.username}</Table.Cell>
           <Table.Cell>{user.zip_postcode}</Table.Cell>
           <Table.Cell>{user.bio}</Table.Cell>
@@ -16,23 +17,23 @@ const AllUsers = (props) => {
 
   return(
     <React.Fragment>
-      <h3>Display all users</h3>
+      <h3>Users</h3>
       <Table celled>
       <Table.Header>
         <Table.Row>
+          <Table.HeaderCell>ID</Table.HeaderCell>
           <Table.HeaderCell>Username</Table.HeaderCell>
           <Table.HeaderCell>Zipcode</Table.HeaderCell>
           <Table.HeaderCell>Bio</Table.HeaderCell>
           <Table.HeaderCell>Reservations</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
-        { props.users && userRow(props.users)}
       <Table.Body>
+        { props.users && userRow(props.users) }
       </Table.Body>
-
       <Table.Footer>
         <Table.Row>
-          <Table.HeaderCell colSpan='4'>
+          <Table.HeaderCell colSpan='5'>
             <Menu floated='right' pagination>
               <Menu.Item as='a' icon>
                 <Icon name='chevron left'/>

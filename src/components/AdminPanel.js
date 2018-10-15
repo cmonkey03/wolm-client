@@ -6,7 +6,7 @@ import AllReservations from './AllReservations.js';
 const AdminPanel = (props) => {
   return(
     <React.Fragment>
-      <h1>Hello from the admin page</h1>
+      <h1>Administrator Panel</h1>
       <AllUsers />
       <AllTours />
       <AllReservations />

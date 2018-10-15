@@ -32,4 +32,15 @@ export default class Adapter {
     .then(this.parseHeaders)
   )
 
+  postTour = (tourObj) => (fetch(`${BASE_URL}/${Tours}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(tourObj)
+    })
+    .then(this.parseHeaders)
+  )
+
 }

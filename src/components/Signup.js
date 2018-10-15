@@ -2,7 +2,6 @@ import React from 'react';
 import { Button, Checkbox, Form, Input, Message, TextArea } from 'semantic-ui-react';
 
 const Signup = (props) => {
-  console.log(props)
   return (
     <Form onSubmit={props.handleSignupSubmit} error>
       <Form.Field

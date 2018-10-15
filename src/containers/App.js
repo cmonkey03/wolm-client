@@ -11,6 +11,7 @@ import Login from '../components/Login';
 import Signup from '../components/Signup';
 import EditProfile from '../components/EditProfile';
 import AdminPanel from '../components/AdminPanel';
+import CreateTour from '../components/CreateTour';
 
 class App extends Component {
   constructor(props) {
@@ -155,7 +156,7 @@ class App extends Component {
               path="/new-tour"
               render={ (renderProps) => {
                 return (
-                  <h1>Create a Tour</h1>
+                  <CreateTour />
                 )
               }}
               />
