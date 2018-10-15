@@ -10,6 +10,7 @@ import NavBar from '../components/NavBar';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
 import EditProfile from '../components/EditProfile';
+import Reservations from '../components/Reservations';
 import AdminPanel from '../components/AdminPanel';
 import CreateTour from '../components/CreateTour';
 import { Header } from 'semantic-ui-react';
@@ -146,7 +147,9 @@ class App extends Component {
               path="/reservations"
               render={ (renderProps) => {
                 return (
-                  <h1>Reservations</h1>
+                  <React.Fragment>
+                    { this.state.loggedInUser && <Reservations loggedInUser={this.state.loggedInUser}/>}
+                  </React.Fragment>
                 )
               }}
               />
