@@ -41,6 +41,13 @@ const Signup = (props) => {
         onChange={props.handleBioInput}
       />
       <Form.Field>
+        { props.adminInput ?
+          <Checkbox toggle checked label='Administrator' onChange={props.handleAdminChange}/>
+          :
+          <Checkbox toggle label='Administrator' onChange={props.handleAdminChange}/>
+        }
+      </Form.Field>
+      <Form.Field>
         <Checkbox label='I agree to the Terms and Conditions' />
       </Form.Field>
       { props.errors && <Message

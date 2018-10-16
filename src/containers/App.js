@@ -25,6 +25,7 @@ class App extends Component {
       passwordInput: '',
       zipcodeInput: '',
       bioInput: '',
+      adminInput: false,
       errors: null,
       loggedInUser: null
     }
@@ -60,27 +61,33 @@ class App extends Component {
         loggedInUser: foundUser,
         usernameInput: '',
         passwordInput: ''
-      }, ()=> console.log(this.state))
+      })
     }
   }
+
+  handleLogout = (e) => this.setState({loggedInUser: null})
+
+  handleAdminChange = (e) => this.setState({adminInput: !this.state.adminInput})
 
   handleSignupSubmit = (e) => {
     const userObj = {
       username: this.state.usernameInput,
       password: this.state.passwordInput,
       zip_postcode: this.state.zipcodeInput,
-      bio: this.state.bioInput
+      bio: this.state.bioInput,
+      administrator: this.state.adminInput
     }
-
+    console.log(userObj)
     this.ApiAdapter.postUser(userObj).then(r=>{
       if (r.errors) {
-        this.setState({errors: r.errors}, () => console.log(this.state))
+        this.setState({errors: r.errors})
       } else {
         this.setState({
           usernameInput: '',
           passwordInput: '',
           zipcodeInput: '',
           bioInput: '',
+          adminInput: false,
           errors: null,
           loggedInUser: null
         })
@@ -93,9 +100,10 @@ class App extends Component {
       <div className="App">
         <Header size='huge'>WOLM</Header>
         <Header size='medium'>Welcome to the Website of Lower Manhattan</Header>
-        {this.state.loggedInUser ? `Logout ${this.state.loggedInUser.username}` : "Log in"}
         <div className="body">
-          <NavBar/>
+          <NavBar loggedInUser={this.state.loggedInUser}
+                  handleLogout={this.handleLogout}
+                  />
           <Route
             exact
             path="/login"
@@ -121,11 +129,13 @@ class App extends Component {
                     passwordInput={this.state.passwordInput}
                     zipcodeInput={this.state.zipcodeInput}
                     bioInput={this.state.bioInput}
+                    adminInput={this.state.adminInput}
                     handleUsernameInput={this.handleUsernameInput}
                     handlePasswordInput={this.handlePasswordInput}
                     handleZipcodeInput={this.handleZipcodeInput}
                     handleBioInput={this.handleBioInput}
                     handleSignupSubmit={this.handleSignupSubmit}
+                    handleAdminChange={this.handleAdminChange}
                     errors={this.state.errors}
                     />
                 )
