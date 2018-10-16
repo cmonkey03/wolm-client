@@ -19,7 +19,7 @@ export default class NavBar extends Component {
         <div>
           <Menu inverted>
             { this.props.loggedInUser && <Menu.Item as={NavLink} color={colors[2]} to="/edit-profile" name="Edit Profile" onClick={this.handleClick}/>}
-            <Menu.Item as={NavLink} color={colors[3]} to="/reservations" name="Reservations" onClick={this.handleClick}/>
+            { this.props.loggedInUser && <Menu.Item as={NavLink} color={colors[3]} to="/reservations" name="Reservations" onClick={this.handleClick}/>}
             {this.props.loggedInUser && this.props.loggedInUser.administrator && <Menu.Item as={NavLink} color={colors[4]} to="/admin" name="Administrator" onClick={this.handleClick}/>}
             {this.props.loggedInUser && this.props.loggedInUser.administrator && <Menu.Item as={NavLink} color={colors[5]} to="/new-tour" name="Create Tour" onClick={this.handleClick}/>}
             {!this.props.loggedInUser ?
