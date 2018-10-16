@@ -17,7 +17,7 @@ export default class CreateTour extends React.Component {
     }
   }
 
-  handleStartTimeChange = (date) => this.setState({startTime: date})
+  handleStartTimeChange = (date) => this.setState({startTime: date, endTime: date})
   handleEndTimeChange = (date) => this.setState({endTime: date})
   handlePriceChange = (event) => this.setState({price: event.target.value})
 
