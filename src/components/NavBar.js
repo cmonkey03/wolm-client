@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
 
-const colors = ['red', 'orange', 'yellow', 'olive', 'green', 'teal']
+const colors = ['red', 'orange', 'yellow', 'olive', 'green', 'teal', 'brown']
 
 export default class NavBar extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      active: colors[0]
+      active: "Login"
     }
   }
 
@@ -18,16 +18,63 @@ export default class NavBar extends Component {
     return(
         <div>
           <Menu inverted>
-            {this.props.loggedInUser && <Menu.Item as={NavLink} color={colors[2]} to="/edit-profile" name="Edit Profile" onClick={this.handleClick}/>}
-            {this.props.loggedInUser && <Menu.Item as={NavLink} color={colors[3]} to="/reservations" name="Reservations" onClick={this.handleClick}/>}
-            {this.props.loggedInUser && this.props.loggedInUser.administrator && <Menu.Item as={NavLink} color={colors[4]} to="/admin" name="Administrator" onClick={this.handleClick}/>}
-            {this.props.loggedInUser && this.props.loggedInUser.administrator && <Menu.Item as={NavLink} color={colors[5]} to="/new-tour" name="Create Tour" onClick={this.handleClick}/>}
-            {!this.props.loggedInUser ?
-              <Menu.Item as={NavLink} color={colors[0]} to="/login" name="Login" onClick={this.handleClick}/>
-              :
-              <Menu.Item name={`Logout ${this.props.loggedInUser.username}`} onClick={this.props.handleLogout}/>
+            {!this.props.loggedInUser &&
+              <Menu.Item
+                as={NavLink}
+                to="/login"
+                onClick={this.handleClick}
+                name="Login"
+                color={colors[0]}
+                />
             }
-            {!this.props.loggedInUser && <Menu.Item as={NavLink} color={colors[1]} to="/signup" name="Signup" onClick={this.handleClick}/>}
+            {!this.props.loggedInUser &&
+              <Menu.Item
+                as={NavLink}
+                to="/signup"
+                onClick={this.handleClick}
+                name="Signup"
+                color={colors[1]}
+              />}
+            {this.props.loggedInUser &&
+              <Menu.Item
+                as={NavLink}
+                to="/reservations"
+                onClick={this.handleClick}
+                name="Reservations"
+                color={colors[3]}
+              />}
+            {this.props.loggedInUser && this.props.loggedInUser.administrator &&
+              <Menu.Item
+                as={NavLink}
+                to="/admin"
+                onClick={this.handleClick}
+                name="Administrator"
+                color={colors[4]}
+              />}
+            {this.props.loggedInUser && this.props.loggedInUser.administrator &&
+              <Menu.Item
+                as={NavLink}
+                to="/new-tour"
+                onClick={this.handleClick}
+                name="Create Tour"
+                color={colors[5]}
+              />}
+            {this.props.loggedInUser &&
+              <Menu.Item
+                as={NavLink}
+                to="/edit-profile"
+                onClick={this.handleClick}
+                name="Edit Profile"
+                color={colors[2]}
+              />}
+              { this.props.loggedInUser &&
+                <Menu.Item
+                  as={NavLink}
+                  to="/login"
+                  onClick={this.props.handleLogout}
+                  name={`Logout ${this.props.loggedInUser.username}`}
+                  />
+              }
           </Menu>
         </div>
       )

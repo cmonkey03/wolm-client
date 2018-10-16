@@ -30,12 +30,7 @@ class App extends Component {
       successResponse: null,
       selectedTourId: null,
       selectedReservationId: null,
-      loggedInUser: {"id": 65,
-        "username": "russellbrown",
-        "password": "russellbrown",
-        "zip_postcode": 10014,
-        "bio": "I am a posthuman wizard in training. Coding.",
-        "administrator": true}
+      loggedInUser: null
     }
   }
 
@@ -66,13 +61,13 @@ class App extends Component {
     const foundUser = this.props.users.find((user) => {
       return this.state.usernameInput === user.username && this.state.passwordInput === user.password
     })
-
     if (foundUser) {
       this.setState({
         loggedInUser: foundUser,
         usernameInput: '',
         passwordInput: ''
       })
+      this.props.history.push('/reservations')
     }
   }
 
