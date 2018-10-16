@@ -30,7 +30,12 @@ class App extends Component {
       successResponse: null,
       selectedTourId: null,
       selectedReservationId: null,
-      loggedInUser: null
+      loggedInUser: {"id": 65,
+    "username": "russellbrown",
+    "password": "russellbrown",
+    "zip_postcode": 10014,
+    "bio": "I am a posthuman wizard in training. Coding.",
+    "administrator": true}
     }
   }
 
