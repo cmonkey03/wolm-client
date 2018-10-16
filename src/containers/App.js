@@ -13,8 +13,8 @@ import EditProfile from '../components/EditProfile';
 import Reservations from '../components/Reservations';
 import AdminPanel from '../components/AdminPanel';
 import CreateTour from '../components/CreateTour';
+import MakeReservation from '../components/MakeReservation';
 import { Header } from 'semantic-ui-react';
-
 
 class App extends Component {
   constructor(props) {
@@ -27,6 +27,9 @@ class App extends Component {
       bioInput: '',
       adminInput: false,
       errors: null,
+      successResponse: null,
+      selectedTourId: null,
+      selectedReservationId: null,
       loggedInUser: null
     }
   }
@@ -49,25 +52,26 @@ class App extends Component {
   handlePasswordInput = e => this.setState({passwordInput:e.target.value})
   handleZipcodeInput = e => this.setState({zipcodeInput:e.target.value})
   handleBioInput = e => this.setState({bioInput:e.target.value})
+  handlReservationSelect = (e) => this.setState({selectedReservationId: parseInt(e.target.name)})
+  handleAdminChange = (e) => this.setState({adminInput: !this.state.adminInput})
+  handleTourSelect = (e) => this.setState({selectedTourId: parseInt(e.target.name)})
 
   handleLoginSubmit = (e) => {
     e.preventDefault()
     const foundUser = this.props.users.find((user) => {
       return this.state.usernameInput === user.username && this.state.passwordInput === user.password
     })
-
     if (foundUser) {
       this.setState({
         loggedInUser: foundUser,
         usernameInput: '',
         passwordInput: ''
       })
+      this.props.history.push('/reservations')
     }
   }
 
   handleLogout = (e) => this.setState({loggedInUser: null})
-
-  handleAdminChange = (e) => this.setState({adminInput: !this.state.adminInput})
 
   handleSignupSubmit = (e) => {
     const userObj = {
@@ -77,7 +81,7 @@ class App extends Component {
       bio: this.state.bioInput,
       administrator: this.state.adminInput
     }
-    console.log(userObj)
+
     this.ApiAdapter.postUser(userObj).then(r=>{
       if (r.errors) {
         this.setState({errors: r.errors})
@@ -95,18 +99,70 @@ class App extends Component {
     })
   }
 
+  handleSubmitReservation = (e) => {
+    const reservationObj = {
+      user_id: this.state.loggedInUser.id,
+      tour_id: this.state.selectedTourId
+    }
+
+    this.ApiAdapter.postReservation(reservationObj).then(r=>{
+      if (r.errors) {
+        this.setState({errors: r.errors})
+      } else {
+        this.setState({
+          selectedTourId: null,
+          successResponse: r
+        })
+      }
+    })
+  }
+
+  handleCancelReservation = (e) => {
+    const reservationObj = {
+      id: this.state.selectedReservationId
+    }
+    this.ApiAdapter.deleteReservation(reservationObj).then(r=>{
+      if (r.errors) {
+        this.setState({errors: r.errors})
+      } else {
+        this.setState({
+          selectedReservationId: null,
+          successResponse: r
+        })
+      }
+    })
+  }
+
   render() {
     return (
       <div className="App">
         <Header size='huge'>WOLM</Header>
-        <Header size='medium'>Welcome to the Website of Lower Manhattan</Header>
+        <Header size='medium'>Website of Lower Manhattan</Header>
         <div className="body">
           <NavBar loggedInUser={this.state.loggedInUser}
                   handleLogout={this.handleLogout}
                   />
-          <Route
-            exact
-            path="/login"
+          <Route  exact path="/signup"
+                  render={ (renderProps) => {
+                    return (
+                      <Signup
+                        usernameInput={this.state.usernameInput}
+                        passwordInput={this.state.passwordInput}
+                        zipcodeInput={this.state.zipcodeInput}
+                        bioInput={this.state.bioInput}
+                        adminInput={this.state.adminInput}
+                        handleUsernameInput={this.handleUsernameInput}
+                        handlePasswordInput={this.handlePasswordInput}
+                        handleZipcodeInput={this.handleZipcodeInput}
+                        handleBioInput={this.handleBioInput}
+                        handleSignupSubmit={this.handleSignupSubmit}
+                        handleAdminChange={this.handleAdminChange}
+                        errors={this.state.errors}
+                        />
+              )
+            }}
+            />
+          <Route  exact path="/login"
             render={ (renderProps) => {
               return (
                 <Login
@@ -115,73 +171,52 @@ class App extends Component {
                   handleUsernameInput={this.handleUsernameInput}
                   handlePasswordInput={this.handlePasswordInput}
                   handleLoginSubmit={this.handleLoginSubmit}
-                />
+                  />
               )
             }}
             />
-            <Route
-              exact
-              path="/signup"
-              render={ (renderProps) => {
-                return (
-                  <Signup
-                    usernameInput={this.state.usernameInput}
-                    passwordInput={this.state.passwordInput}
-                    zipcodeInput={this.state.zipcodeInput}
-                    bioInput={this.state.bioInput}
-                    adminInput={this.state.adminInput}
-                    handleUsernameInput={this.handleUsernameInput}
-                    handlePasswordInput={this.handlePasswordInput}
-                    handleZipcodeInput={this.handleZipcodeInput}
-                    handleBioInput={this.handleBioInput}
-                    handleSignupSubmit={this.handleSignupSubmit}
-                    handleAdminChange={this.handleAdminChange}
-                    errors={this.state.errors}
-                    />
-                )
-              }}
+          <Route  exact path="/edit-profile"
+                  render={ (renderProps) => {
+                    return (
+                      <React.Fragment>
+                        { this.state.loggedInUser && <EditProfile loggedInUser={this.state.loggedInUser}/>}
+                      </React.Fragment>
+                    )
+                  }}
+            />
+          <Route  exact path="/reservations"
+                  render={ (renderProps) => {
+                    return (
+                      <React.Fragment>
+                        <Reservations loggedInUser={this.state.loggedInUser}
+                                      successResponse={this.state.successResponse}
+                                      handlReservationSelect={this.handlReservationSelect}
+                                      handleCancelReservation={this.handleCancelReservation}
+                                      />
+                        <MakeReservation  loggedInUser={this.state.loggedInUser}
+                                          successResponse={this.state.successResponse}
+                                          handleTourSelect={this.handleTourSelect}
+                                          handleSubmitReservation={this.handleSubmitReservation}
+                                          />
+                      </React.Fragment>
+                    )
+                  }}
+            />
+          <Route  exact path="/admin"
+                  render={ (renderProps) => {
+                    return (
+                      <AdminPanel />
+                    )
+                  }}
+            />
+          <Route  exact path="/new-tour"
+                    render={ (renderProps) => {
+                      return (
+                        <CreateTour />
+                      )
+                    }}
               />
-            <Route
-              exact
-              path="/edit-profile"
-              render={ (renderProps) => {
-                return (
-                  <React.Fragment>
-                    { this.state.loggedInUser && <EditProfile loggedInUser={this.state.loggedInUser}/>}
-                  </React.Fragment>
-                )
-              }}
-              />
-            <Route
-              exact
-              path="/reservations"
-              render={ (renderProps) => {
-                return (
-                  <React.Fragment>
-                    { this.state.loggedInUser && <Reservations loggedInUser={this.state.loggedInUser}/>}
-                  </React.Fragment>
-                )
-              }}
-              />
-            <Route
-              exact
-              path="/admin"
-              render={ (renderProps) => {
-                return (
-                  <AdminPanel />
-                )
-              }}
-              />
-            <Route
-              exact
-              path="/new-tour"
-              render={ (renderProps) => {
-                return (
-                  <CreateTour />
-                )
-              }}
-              />
-          </div>
+        </div>
       </div>
     );
   }
