@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Button, Header, Icon, Menu, Table } from 'semantic-ui-react';
+import { Button, Header, Icon, Menu, Message, Table } from 'semantic-ui-react';
 import moment from 'moment';
 
 const Reservations = (props) => {
@@ -19,6 +19,7 @@ const Reservations = (props) => {
 
   return(
     <React.Fragment>
+      {props.successResponse && !props.successResponse.tour && <Message success header={props.successResponse.message}/>}
       <Header as='h3' attached='top' inverted color='teal'>Your Reservations</Header>
       <Table celled attached>
       <Table.Header>

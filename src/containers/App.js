@@ -16,7 +16,6 @@ import CreateTour from '../components/CreateTour';
 import MakeReservation from '../components/MakeReservation';
 import { Header } from 'semantic-ui-react';
 
-
 class App extends Component {
   constructor(props) {
     super(props)
@@ -28,6 +27,7 @@ class App extends Component {
       bioInput: '',
       adminInput: false,
       errors: null,
+      successResponse: null,
       selectedTourId: null,
       selectedReservationId: null,
       loggedInUser: {"id": 65,
@@ -114,7 +114,10 @@ class App extends Component {
       if (r.errors) {
         this.setState({errors: r.errors})
       } else {
-        this.setState({selectedTourId: null})
+        this.setState({
+          selectedTourId: null,
+          successResponse: r
+        })
       }
     })
   }
@@ -123,14 +126,23 @@ class App extends Component {
     const reservationObj = {
       id: this.state.selectedReservationId
     }
-    this.ApiAdapter.deleteReservation(reservationObj)
+    this.ApiAdapter.deleteReservation(reservationObj).then(r=>{
+      if (r.errors) {
+        this.setState({errors: r.errors})
+      } else {
+        this.setState({
+          selectedReservationId: null,
+          successResponse: r
+        })
+      }
+    })
   }
 
   render() {
     return (
       <div className="App">
         <Header size='huge'>WOLM</Header>
-        <Header size='medium'>Welcome to the Website of Lower Manhattan</Header>
+        <Header size='medium'>Website of Lower Manhattan</Header>
         <div className="body">
           <NavBar loggedInUser={this.state.loggedInUser}
                   handleLogout={this.handleLogout}
@@ -182,10 +194,12 @@ class App extends Component {
                     return (
                       <React.Fragment>
                         <Reservations loggedInUser={this.state.loggedInUser}
+                                      successResponse={this.state.successResponse}
                                       handlReservationSelect={this.handlReservationSelect}
                                       handleCancelReservation={this.handleCancelReservation}
                                       />
                         <MakeReservation  loggedInUser={this.state.loggedInUser}
+                                          successResponse={this.state.successResponse}
                                           handleTourSelect={this.handleTourSelect}
                                           handleSubmitReservation={this.handleSubmitReservation}
                                           />

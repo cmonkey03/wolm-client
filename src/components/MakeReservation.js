@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Button, Header, Icon, Menu, Table } from 'semantic-ui-react';
+import { Button, Header, Icon, Menu, Message, Table } from 'semantic-ui-react';
 import moment from 'moment';
 
 const MakeReservation = (props) => {
-
+  console.log(props)
   const tourRow = (tours) => {
     return (tours.map((tour) => {
       return (<Table.Row key={tour.id}>
@@ -20,6 +20,11 @@ const MakeReservation = (props) => {
   return(
     <React.Fragment>
       <Header as='h2'>Make a Reservation</Header>
+      {props.successResponse && props.successResponse.tour && <Message
+        success
+        header={props.successResponse.message}
+        content={"See you " + moment(props.successResponse.tour.start_time).format("LLLL") + "!"}
+        />}
       <Header as='h3' attached='top' inverted color='teal'>Tours</Header>
       <Table celled attached>
       <Table.Header>
