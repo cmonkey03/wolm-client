@@ -65,4 +65,10 @@ export default class Adapter {
     .then(this.parseHeaders)
   )
 
+  deleteReservation = (reservationObj) => (fetch(`${BASE_URL}/${Reservations}/${reservationObj.id}`, {
+      method: 'DELETE'
+    })
+    // .then(this.parseHeaders)
+  )
+
 }

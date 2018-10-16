@@ -8,8 +8,8 @@ const Reservations = (props) => {
 
   const reservationRow = (reservations) => {
     return (reservations.map((reservation) => {
-      return (<Table.Row key={reservation.tour.id}>
-            <Table.Cell textAlign='center'><Button size='small' onClick={props.handleTourSelect} name={reservation.tour.id}>{reservation.tour.id}</Button></Table.Cell>
+      return (<Table.Row key={reservation.id}>
+            <Table.Cell textAlign='center'><Button size='small' onClick={props.handlReservationSelect} name={reservation.id}>Select</Button></Table.Cell>
             <Table.Cell>{moment(reservation.tour.start_time).format("LLLL")}</Table.Cell>
             <Table.Cell>{moment(reservation.tour.end_time).format("LLL")}</Table.Cell>
             <Table.Cell>{reservation.tour.price}</Table.Cell>
@@ -19,8 +19,7 @@ const Reservations = (props) => {
 
   return(
     <React.Fragment>
-      <Header as='h2'>Your Reservations</Header>
-      <Header as='h3' attached='top' inverted color='teal'>Tours</Header>
+      <Header as='h3' attached='top' inverted color='teal'>Your Reservations</Header>
       <Table celled attached>
       <Table.Header>
         <Table.Row>
