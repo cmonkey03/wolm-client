@@ -4,7 +4,6 @@ import { Button, Header, Icon, Menu, Table } from 'semantic-ui-react';
 import moment from 'moment';
 
 const MakeReservation = (props) => {
-
   const tourRow = (tours) => {
     return (tours.map((tour) => {
       return (<Table.Row key={tour.id}>
@@ -37,6 +36,7 @@ const MakeReservation = (props) => {
       <Table.Footer>
         <Table.Row>
           <Table.HeaderCell colSpan='5'>
+            <Button onClick={props.handleSubmitReservation}>Make Reservation</Button>
             <Menu floated='right' pagination>
               <Menu.Item as='a' icon>
                 <Icon name='chevron left'/>

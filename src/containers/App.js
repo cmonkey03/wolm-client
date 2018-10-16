@@ -98,6 +98,9 @@ class App extends Component {
   }
 
   handleTourSelect = (e) => this.setState({selectedTourId: parseInt(e.target.name)})
+  handleSubmitReservation = (e) => {
+    console.log(e.target, this.state.selectedTourId)
+  }
 
   render() {
     return (
@@ -162,8 +165,13 @@ class App extends Component {
               render={ (renderProps) => {
                 return (
                   <React.Fragment>
-                    <Reservations loggedInUser={this.state.loggedInUser} handleTourSelect={this.handleTourSelect}/>
-                    <MakeReservation loggedInUser={this.state.loggedInUser} handleTourSelect={this.handleTourSelect}/>
+                    <Reservations loggedInUser={this.state.loggedInUser}
+                                  handleTourSelect={this.handleTourSelect}
+                                  />
+                    <MakeReservation  loggedInUser={this.state.loggedInUser}
+                                      handleTourSelect={this.handleTourSelect}
+                                      handleSubmitReservation={this.handleSubmitReservation}
+                                      />
                   </React.Fragment>
                 )
               }}
