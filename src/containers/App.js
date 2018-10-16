@@ -28,7 +28,14 @@ class App extends Component {
       bioInput: '',
       adminInput: false,
       errors: null,
-      loggedInUser: null,
+      loggedInUser: {
+      "id": 65,
+      "username": "russellbrown",
+      "password": "russellbrown",
+      "zip_postcode": 10014,
+      "bio": "I am a posthuman wizard in training.",
+      "administrator": true
+    },
       selectedTourId: null
     }
   }
@@ -99,7 +106,22 @@ class App extends Component {
 
   handleTourSelect = (e) => this.setState({selectedTourId: parseInt(e.target.name)})
   handleSubmitReservation = (e) => {
-    console.log(e.target, this.state.selectedTourId)
+    const reservationObj = {
+      user_id: this.state.loggedInUser.id,
+      tour_id: this.state.selectedTourId
+    }
+
+    this.ApiAdapter.postReservation(reservationObj).then(r=>{
+      if (r.errors) {
+        this.setState({errors: r.errors})
+      } else {
+        this.setState({selectedTourId: null})
+      }
+    })
+  }
+
+  handleCancelReservation = (e) => {
+    console.log(e)
   }
 
   render() {
@@ -167,6 +189,7 @@ class App extends Component {
                   <React.Fragment>
                     <Reservations loggedInUser={this.state.loggedInUser}
                                   handleTourSelect={this.handleTourSelect}
+                                  handleCancelReservation={this.handleCancelReservation}
                                   />
                     <MakeReservation  loggedInUser={this.state.loggedInUser}
                                       handleTourSelect={this.handleTourSelect}

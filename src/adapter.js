@@ -54,4 +54,15 @@ export default class Adapter {
     .then(this.parseHeaders)
   )
 
+  postReservation = (reservationObj) => (fetch(`${BASE_URL}/${Reservations}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(reservationObj)
+    })
+    .then(this.parseHeaders)
+  )
+
 }

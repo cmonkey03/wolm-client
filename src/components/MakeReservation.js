@@ -4,6 +4,7 @@ import { Button, Header, Icon, Menu, Table } from 'semantic-ui-react';
 import moment from 'moment';
 
 const MakeReservation = (props) => {
+
   const tourRow = (tours) => {
     return (tours.map((tour) => {
       return (<Table.Row key={tour.id}>
