@@ -13,6 +13,7 @@ import EditProfile from '../components/EditProfile';
 import Reservations from '../components/Reservations';
 import AdminPanel from '../components/AdminPanel';
 import CreateTour from '../components/CreateTour';
+import MakeReservation from '../components/MakeReservation';
 import { Header } from 'semantic-ui-react';
 
 
@@ -27,7 +28,8 @@ class App extends Component {
       bioInput: '',
       adminInput: false,
       errors: null,
-      loggedInUser: null
+      loggedInUser: null,
+      selectedTourId: null
     }
   }
 
@@ -77,7 +79,7 @@ class App extends Component {
       bio: this.state.bioInput,
       administrator: this.state.adminInput
     }
-    console.log(userObj)
+
     this.ApiAdapter.postUser(userObj).then(r=>{
       if (r.errors) {
         this.setState({errors: r.errors})
@@ -94,6 +96,8 @@ class App extends Component {
       }
     })
   }
+
+  handleTourSelect = (e) => this.setState({selectedTourId: parseInt(e.target.name)})
 
   render() {
     return (
@@ -158,7 +162,8 @@ class App extends Component {
               render={ (renderProps) => {
                 return (
                   <React.Fragment>
-                    { this.state.loggedInUser && <Reservations loggedInUser={this.state.loggedInUser}/>}
+                    <Reservations loggedInUser={this.state.loggedInUser} handleTourSelect={this.handleTourSelect}/>
+                    <MakeReservation loggedInUser={this.state.loggedInUser} handleTourSelect={this.handleTourSelect}/>
                   </React.Fragment>
                 )
               }}
