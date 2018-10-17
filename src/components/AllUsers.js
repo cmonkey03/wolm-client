@@ -47,6 +47,13 @@ class AllUsers extends React.Component {
   handleSelectFooterMenuItem = (e) => {
     this.setState({selectedFooterMenuItem: e.target.id-1})
   }
+  handleSelectFooterMenuChevron = (e) => {
+    if (e.target.id === 'user chevron left' && this.state.selectedFooterMenuItem > 0) {
+      this.setState({selectedFooterMenuItem: this.state.selectedFooterMenuItem - 1})
+    } else if (e.target.id === 'user chevron right' && this.state.selectedFooterMenuItem < 7) {
+      this.setState({selectedFooterMenuItem: this.state.selectedFooterMenuItem + 1})
+    }
+  }
 
   render() {
     let userArray = this.generateArrayOfArrays(this.props.users, 10)
@@ -71,11 +78,11 @@ class AllUsers extends React.Component {
             <Table.HeaderCell colSpan='5'>
               <Menu floated='right' pagination>
                 <Menu.Item as='a' icon>
-                  <Icon name='chevron left'/>
+                  <Icon name='chevron left' onClick={this.handleSelectFooterMenuChevron} id='user chevron left'/>
                 </Menu.Item>
                 { this.generateFooterMenuItems(this.numOfFooterMenuItems(this.props.users, 10)) }
                 <Menu.Item as='a' icon>
-                  <Icon name='chevron right'/>
+                  <Icon name='chevron right' onClick={this.handleSelectFooterMenuChevron} id='user chevron right'/>
                 </Menu.Item>
               </Menu>
             </Table.HeaderCell>
