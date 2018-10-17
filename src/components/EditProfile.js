@@ -10,7 +10,7 @@ export default class EditProfile extends React.Component {
     this.state = {
       username: props.loggedInUser.username,
       password: props.loggedInUser.password,
-      zip_postcode: props.loggedInUser.zip_postcode,
+      zipcode: props.loggedInUser.zipcode,
       bio: props.loggedInUser.bio,
       errors: null
     }
@@ -18,7 +18,7 @@ export default class EditProfile extends React.Component {
 
   handleUsernameInput = e => this.setState({username:e.target.value})
   handlePasswordInput = e => this.setState({password:e.target.value})
-  handleZipcodeInput = e => this.setState({zip_postcode:e.target.value})
+  handleZipcodeInput = e => this.setState({zipcode:e.target.value})
   handleBioInput = e => this.setState({bio:e.target.value})
 
   handleEditSubmit = (e) => {
@@ -26,7 +26,7 @@ export default class EditProfile extends React.Component {
       id: this.props.loggedInUser.id,
       username: this.state.username,
       password: this.state.password,
-      zip_postcode: this.state.zip_postcode,
+      zipcode: this.state.zipcode,
       bio: this.state.bio
     }
 
@@ -37,7 +37,7 @@ export default class EditProfile extends React.Component {
         this.setState({
           username: '',
           password: '',
-          zip_postcode: '',
+          zipcode: '',
           bio: '',
           errors: null,
         })
@@ -72,7 +72,7 @@ export default class EditProfile extends React.Component {
           placeholder='Zipcode'
           type='text'
           maxLength='5'
-          value={this.state.zip_postcode}
+          value={this.state.zipcode}
           onChange={this.handleZipcodeInput}
         />
         <Form.Field

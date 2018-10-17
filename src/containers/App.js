@@ -33,7 +33,7 @@ class App extends Component {
       loggedInUser: {"id": 65,
     "username": "russellbrown",
     "password": "russellbrown",
-    "zip_postcode": 10014,
+    "zipcode": 10014,
     "bio": "I am a posthuman wizard in training. Coding.",
     "administrator": true}
     }
@@ -82,7 +82,7 @@ class App extends Component {
     const userObj = {
       username: this.state.usernameInput,
       password: this.state.passwordInput,
-      zip_postcode: this.state.zipcodeInput,
+      zipcode: this.state.zipcodeInput,
       bio: this.state.bioInput,
       administrator: this.state.adminInput
     }

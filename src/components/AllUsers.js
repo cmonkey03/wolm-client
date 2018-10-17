@@ -7,9 +7,65 @@ class AllUsers extends React.Component {
     super(props)
     this.state = {
       selectedFooterMenuNumber: 0,
-      itemsPerArr: 10
+      itemsToDisplay: 10,
+      tableColumns: ['ID', 'Username', 'Zipcode', 'Bio', 'Reservations'],
     }
   }
+
+  generateHeader = () => {
+    return this.state.tableColumns.map((header) => {
+      return <Table.HeaderCell key={header}>{header}</Table.HeaderCell>
+    })
+  }
+
+  generateTableArrays = (array, itemsToDisplay) => {
+    let arrayOfArrays = []
+    for (let i = 0; i < array.length; i+=itemsToDisplay) {
+      arrayOfArrays.push(array.slice(i,i+itemsToDisplay));
+    }
+    return arrayOfArrays;
+  }
+  generateRow = (user) => {
+    return this.state.tableColumns.map((data) => {
+      const dataLowerCase = data.toLowerCase()
+      if (dataLowerCase === 'reservations') {
+        return <Table.Cell key={user[data]}>{user[dataLowerCase].length}</Table.Cell>
+      } else {
+        return <Table.Cell key={user[data]}>{user[data]}</Table.Cell>
+      }
+    })
+  }
+  generateTableRows = (users) => {
+    return users.map((user) => {
+      return (
+        <Table.Row key={user[this.state.tableColumns[0]]}>
+          { this.generateRow(user) }
+        </Table.Row>
+        )
+    })
+  }
+  generateSelectedUserRows = (users) => {
+    const userArray = this.generateTableArrays(users, this.state.itemsToDisplay)
+    return this.generateTableRows(userArray[this.state.selectedFooterMenuNumber])
+  }
+
+  footerMenuLength = (items) => Math.ceil(items.length / this.state.itemsToDisplay)
+  generateFooterMenuItems = (footerMenuLength) => {
+    let footerMenuItems = []
+    for (let i = 1; i <= footerMenuLength; i++) {
+      footerMenuItems.push(<Menu.Item as='a'
+      onClick={this.handleSelectFooterMenuNumber}
+      id={i}
+      key={i}>
+      {i}
+    </Menu.Item>)
+  }
+  return footerMenuItems;
+}
+  generateFooter = (items) => {
+  const menuLength = this.footerMenuLength(items)
+  return this.generateFooterMenuItems(menuLength)
+}
 
   handleSelectFooterMenuNumber = (e) => {
     this.setState({selectedFooterMenuNumber: e.target.id-1})
@@ -22,47 +78,6 @@ class AllUsers extends React.Component {
     }
   }
 
-  footerMenuLength = (items) => Math.ceil(items.length / this.state.itemsPerArr)
-  generateFooterMenuItems = (footerMenuLength) => {
-    let footerMenuItems = []
-    for (let i = 1; i <= footerMenuLength; i++) {
-      footerMenuItems.push(<Menu.Item as='a'
-                                      onClick={this.handleSelectFooterMenuNumber}
-                                      id={i}
-                                      key={i}>
-                                      {i}
-                                    </Menu.Item>)
-    }
-    return footerMenuItems;
-  }
-  generateFooter = (items) => {
-    const menuLength = this.footerMenuLength(items)
-    return this.generateFooterMenuItems(menuLength)
-  }
-
-  generateArrayOfArrays = (array, itemsPerArr) => {
-    let arrayOfArrays = []
-    for (let i = 0; i < array.length; i+=itemsPerArr) {
-      arrayOfArrays.push(array.slice(i,i+itemsPerArr));
-    }
-    return arrayOfArrays;
-  }
-  generateUserRows = (users) => {
-    return (users.map((user) => (
-        <Table.Row key={user.id}>
-          <Table.Cell>{user.id}</Table.Cell>
-          <Table.Cell>{user.username}</Table.Cell>
-          <Table.Cell>{user.zip_postcode}</Table.Cell>
-          <Table.Cell>{user.bio}</Table.Cell>
-          {user.reservations && <Table.Cell>{user.reservations.length}</Table.Cell>}
-        </Table.Row>)))
-  }
-  generateSelectedUserRows = (users) => {
-    const userArray = this.generateArrayOfArrays(users, this.state.itemsPerArr)
-    return this.generateUserRows(userArray[this.state.selectedFooterMenuNumber])
-  }
-
-
   render() {
     return (
       <React.Fragment>
@@ -70,11 +85,7 @@ class AllUsers extends React.Component {
         <Table celled attached>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>ID</Table.HeaderCell>
-            <Table.HeaderCell>Username</Table.HeaderCell>
-            <Table.HeaderCell>Zipcode</Table.HeaderCell>
-            <Table.HeaderCell>Bio</Table.HeaderCell>
-            <Table.HeaderCell>Reservations</Table.HeaderCell>
+            { this.generateHeader() }
           </Table.Row>
         </Table.Header>
         <Table.Body>
