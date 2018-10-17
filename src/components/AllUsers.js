@@ -6,18 +6,38 @@ class AllUsers extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedFooterMenuItem: 0,
+      selectedFooterMenuNumber: 0,
       itemsPerArr: 10
     }
   }
 
-  numOfFooterMenuItems = (items, itemsPerArr) => Math.ceil(items.length / itemsPerArr)
-  generateFooterMenuItems = (numOfFooterMenuItems) => {
+  handleSelectFooterMenuNumber = (e) => {
+    this.setState({selectedFooterMenuNumber: e.target.id-1})
+  }
+  handleSelectFooterMenuChevron = (e) => {
+    if (e.target.id === 'user chevron left' && this.state.selectedFooterMenuNumber > 0) {
+      this.setState({selectedFooterMenuNumber: this.state.selectedFooterMenuNumber - 1})
+    } else if (e.target.id === 'user chevron right' && this.state.selectedFooterMenuNumber < 7) {
+      this.setState({selectedFooterMenuNumber: this.state.selectedFooterMenuNumber + 1})
+    }
+  }
+
+  footerMenuLength = (items) => Math.ceil(items.length / this.state.itemsPerArr)
+  generateFooterMenuItems = (footerMenuLength) => {
     let footerMenuItems = []
-    for (let i = 1; i <= numOfFooterMenuItems; i++) {
-      footerMenuItems.push(<Menu.Item as='a' onClick={this.handleSelectFooterMenuItem} id={i} key={i}>{i}</Menu.Item>)
+    for (let i = 1; i <= footerMenuLength; i++) {
+      footerMenuItems.push(<Menu.Item as='a'
+                                      onClick={this.handleSelectFooterMenuNumber}
+                                      id={i}
+                                      key={i}>
+                                      {i}
+                                    </Menu.Item>)
     }
     return footerMenuItems;
+  }
+  generateFooter = (items) => {
+    const menuLength = this.footerMenuLength(items)
+    return this.generateFooterMenuItems(menuLength)
   }
 
   generateArrayOfArrays = (array, itemsPerArr) => {
@@ -37,21 +57,11 @@ class AllUsers extends React.Component {
           {user.reservations && <Table.Cell>{user.reservations.length}</Table.Cell>}
         </Table.Row>)))
   }
-  generateSelectedUserRows = (users, itemsPerArr) => {
-    const userArray = this.generateArrayOfArrays(users, itemsPerArr)
-    return this.generateUserRows(userArray[this.state.selectedFooterMenuItem])
+  generateSelectedUserRows = (users) => {
+    const userArray = this.generateArrayOfArrays(users, this.state.itemsPerArr)
+    return this.generateUserRows(userArray[this.state.selectedFooterMenuNumber])
   }
 
-  handleSelectFooterMenuItem = (e) => {
-    this.setState({selectedFooterMenuItem: e.target.id-1})
-  }
-  handleSelectFooterMenuChevron = (e) => {
-    if (e.target.id === 'user chevron left' && this.state.selectedFooterMenuItem > 0) {
-      this.setState({selectedFooterMenuItem: this.state.selectedFooterMenuItem - 1})
-    } else if (e.target.id === 'user chevron right' && this.state.selectedFooterMenuItem < 7) {
-      this.setState({selectedFooterMenuItem: this.state.selectedFooterMenuItem + 1})
-    }
-  }
 
   render() {
     return (
@@ -68,18 +78,24 @@ class AllUsers extends React.Component {
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          { this.props.users.length > 1 && this.generateSelectedUserRows(this.props.users, this.state.itemsPerArr)}
+          { this.props.users.length > 1 && this.generateSelectedUserRows(this.props.users)}
         </Table.Body>
         <Table.Footer>
           <Table.Row>
             <Table.HeaderCell colSpan='5'>
               <Menu floated='right' pagination>
                 <Menu.Item as='a' icon>
-                  <Icon name='chevron left' onClick={this.handleSelectFooterMenuChevron} id='user chevron left'/>
+                  <Icon name='chevron left'
+                        onClick={this.handleSelectFooterMenuChevron}
+                        id='user chevron left'
+                        />
                 </Menu.Item>
-                { this.generateFooterMenuItems(this.numOfFooterMenuItems(this.props.users, this.state.itemsPerArr)) }
+                { this.generateFooter(this.props.users) }
                 <Menu.Item as='a' icon>
-                  <Icon name='chevron right' onClick={this.handleSelectFooterMenuChevron} id='user chevron right'/>
+                  <Icon name='chevron right'
+                        onClick={this.handleSelectFooterMenuChevron}
+                        id='user chevron right'
+                        />
                 </Menu.Item>
               </Menu>
             </Table.HeaderCell>
