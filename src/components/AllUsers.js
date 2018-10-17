@@ -3,15 +3,11 @@ import { connect } from 'react-redux';
 import { Header, Icon, Menu, Table } from 'semantic-ui-react';
 
 class AllUsers extends React.Component {
-// To Build Table Pagination:
-// DONE 1. Create footer menu items that are linked to users to be displayed
-// DONE 2. Create arrays of users to be displayed
-// DONE 3. Build event handlers for links to be connected to arrays of users
-// DONE 4. Build event handlers to toggle forward or backward through footer menu items
   constructor(props) {
     super(props)
     this.state = {
-      selectedFooterMenuItem: 0
+      selectedFooterMenuItem: 0,
+      itemsPerArr: 10
     }
   }
 
@@ -24,10 +20,10 @@ class AllUsers extends React.Component {
     return footerMenuItems;
   }
 
-  generateArrayOfArrays = (array, size) => {
+  generateArrayOfArrays = (array, itemsPerArr) => {
     let arrayOfArrays = []
-    for (let i = 0; i < array.length; i+=size) {
-      arrayOfArrays.push(array.slice(i,i+size));
+    for (let i = 0; i < array.length; i+=itemsPerArr) {
+      arrayOfArrays.push(array.slice(i,i+itemsPerArr));
     }
     return arrayOfArrays;
   }
@@ -41,8 +37,8 @@ class AllUsers extends React.Component {
           {user.reservations && <Table.Cell>{user.reservations.length}</Table.Cell>}
         </Table.Row>)))
   }
-  generateSelectedUserRows = (users) => {
-    const userArray = this.generateArrayOfArrays(users, 10)
+  generateSelectedUserRows = (users, itemsPerArr) => {
+    const userArray = this.generateArrayOfArrays(users, itemsPerArr)
     return this.generateUserRows(userArray[this.state.selectedFooterMenuItem])
   }
 
@@ -72,7 +68,7 @@ class AllUsers extends React.Component {
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          { this.props.users.length > 1 && this.generateSelectedUserRows(this.props.users)}
+          { this.props.users.length > 1 && this.generateSelectedUserRows(this.props.users, this.state.itemsPerArr)}
         </Table.Body>
         <Table.Footer>
           <Table.Row>
@@ -81,7 +77,7 @@ class AllUsers extends React.Component {
                 <Menu.Item as='a' icon>
                   <Icon name='chevron left' onClick={this.handleSelectFooterMenuChevron} id='user chevron left'/>
                 </Menu.Item>
-                { this.generateFooterMenuItems(this.numOfFooterMenuItems(this.props.users, 10)) }
+                { this.generateFooterMenuItems(this.numOfFooterMenuItems(this.props.users, this.state.itemsPerArr)) }
                 <Menu.Item as='a' icon>
                   <Icon name='chevron right' onClick={this.handleSelectFooterMenuChevron} id='user chevron right'/>
                 </Menu.Item>
