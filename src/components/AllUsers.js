@@ -11,7 +11,7 @@ class AllUsers extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedUserArray: 0
+      selectedFooterMenuItem: 0
     }
   }
 
@@ -40,16 +40,16 @@ class AllUsers extends React.Component {
           <Table.Cell>{user.username}</Table.Cell>
           <Table.Cell>{user.zip_postcode}</Table.Cell>
           <Table.Cell>{user.bio}</Table.Cell>
-          <Table.Cell>{user.reservations.length}</Table.Cell>
+          {user.reservations && <Table.Cell>{user.reservations.length}</Table.Cell>}
         </Table.Row>)))
   }
 
   handleSelectFooterMenuItem = (e) => {
-    this.setState({selectedUserArray: e.target.id-1})
+    this.setState({selectedFooterMenuItem: e.target.id-1})
   }
 
   render() {
-    let userArray = this.generateArrayOfArrays(this.props.users, 10)[this.state.selectedUserArray]
+    let userArray = this.generateArrayOfArrays(this.props.users, 10)
     return (
       <React.Fragment>
         <Header as='h3' attached='top' inverted color='red'>Users</Header>
@@ -64,7 +64,7 @@ class AllUsers extends React.Component {
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          { this.props.users && this.userRows(this.props.users) }
+          { this.props.users.length > 1 && this.userRows(userArray[this.state.selectedFooterMenuItem]) }
         </Table.Body>
         <Table.Footer>
           <Table.Row>
