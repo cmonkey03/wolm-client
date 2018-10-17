@@ -48,7 +48,6 @@ class AllUsers extends React.Component {
     this.setState({selectedUserArray: e.target.id-1})
   }
 
-
   render() {
     let userArray = this.generateArrayOfArrays(this.props.users, 10)[this.state.selectedUserArray]
     return (
