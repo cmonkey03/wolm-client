@@ -6,8 +6,8 @@ class AllUsers extends React.Component {
 // To Build Table Pagination:
 // DONE 1. Create footer menu items that are linked to users to be displayed
 // DONE 2. Create arrays of users to be displayed
-// 3. Build event handlers for links to be connected to arrays of users
-// 4. Build event handlers to toggle forward or backward through footer menu items
+// DONE 3. Build event handlers for links to be connected to arrays of users
+// DONE 4. Build event handlers to toggle forward or backward through footer menu items
   constructor(props) {
     super(props)
     this.state = {
@@ -16,7 +16,6 @@ class AllUsers extends React.Component {
   }
 
   numOfFooterMenuItems = (items, itemsPerArr) => Math.ceil(items.length / itemsPerArr)
-
   generateFooterMenuItems = (numOfFooterMenuItems) => {
     let footerMenuItems = []
     for (let i = 1; i <= numOfFooterMenuItems; i++) {
@@ -32,8 +31,7 @@ class AllUsers extends React.Component {
     }
     return arrayOfArrays;
   }
-
-  userRows = (users) => {
+  generateUserRows = (users) => {
     return (users.map((user) => (
         <Table.Row key={user.id}>
           <Table.Cell>{user.id}</Table.Cell>
@@ -42,6 +40,10 @@ class AllUsers extends React.Component {
           <Table.Cell>{user.bio}</Table.Cell>
           {user.reservations && <Table.Cell>{user.reservations.length}</Table.Cell>}
         </Table.Row>)))
+  }
+  generateSelectedUserRows = (users) => {
+    const userArray = this.generateArrayOfArrays(users, 10)
+    return this.generateUserRows(userArray[this.state.selectedFooterMenuItem])
   }
 
   handleSelectFooterMenuItem = (e) => {
@@ -56,7 +58,6 @@ class AllUsers extends React.Component {
   }
 
   render() {
-    let userArray = this.generateArrayOfArrays(this.props.users, 10)
     return (
       <React.Fragment>
         <Header as='h3' attached='top' inverted color='red'>Users</Header>
@@ -71,7 +72,7 @@ class AllUsers extends React.Component {
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          { this.props.users.length > 1 && this.userRows(userArray[this.state.selectedFooterMenuItem]) }
+          { this.props.users.length > 1 && this.generateSelectedUserRows(this.props.users)}
         </Table.Body>
         <Table.Footer>
           <Table.Row>
