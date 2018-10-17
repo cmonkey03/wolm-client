@@ -7,49 +7,49 @@ class AllUsers extends React.Component {
     super(props)
     this.state = {
       selectedFooterMenuNumber: 0,
-      itemsToDisplay: 10,
+      itemCount: 10,
       tableColumns: ['ID', 'Username', 'Zipcode', 'Bio', 'Reservations'],
     }
   }
 
-  generateHeader = () => {
+  generateColumnsHeader = () => {
     return this.state.tableColumns.map((header) => {
       return <Table.HeaderCell key={header}>{header}</Table.HeaderCell>
     })
   }
 
-  generateTableArrays = (array, itemsToDisplay) => {
+  generateTableArrays = (items) => {
     let arrayOfArrays = []
-    for (let i = 0; i < array.length; i+=itemsToDisplay) {
-      arrayOfArrays.push(array.slice(i,i+itemsToDisplay));
+    for (let i = 0; i < items.length; i+=this.state.itemCount) {
+      arrayOfArrays.push(items.slice(i,i+this.state.itemCount));
     }
     return arrayOfArrays;
   }
-  generateRow = (user) => {
+  generateRow = (item) => {
     return this.state.tableColumns.map((data) => {
       const dataLowerCase = data.toLowerCase()
-      if (dataLowerCase === 'reservations') {
-        return <Table.Cell key={user[data]}>{user[dataLowerCase].length}</Table.Cell>
+      if (Array.isArray(item[dataLowerCase])) {
+        return <Table.Cell key={data + item[dataLowerCase]}>{item[dataLowerCase].length}</Table.Cell>
       } else {
-        return <Table.Cell key={user[data]}>{user[data]}</Table.Cell>
+        return <Table.Cell key={data + item[dataLowerCase]}>{item[dataLowerCase]}</Table.Cell>
       }
     })
   }
-  generateTableRows = (users) => {
-    return users.map((user) => {
+  generateTableRows = (items) => {
+    return items.map((item) => {
       return (
-        <Table.Row key={user[this.state.tableColumns[0]]}>
-          { this.generateRow(user) }
+        <Table.Row key={Object.values(item)}>
+          { this.generateRow(item) }
         </Table.Row>
         )
     })
   }
-  generateSelectedUserRows = (users) => {
-    const userArray = this.generateTableArrays(users, this.state.itemsToDisplay)
+  generateSelectedRows = (items) => {
+    const userArray = this.generateTableArrays(items)
     return this.generateTableRows(userArray[this.state.selectedFooterMenuNumber])
   }
 
-  footerMenuLength = (items) => Math.ceil(items.length / this.state.itemsToDisplay)
+  footerMenuLength = (items) => Math.ceil(items.length / this.state.itemCount)
   generateFooterMenuItems = (footerMenuLength) => {
     let footerMenuItems = []
     for (let i = 1; i <= footerMenuLength; i++) {
@@ -58,14 +58,14 @@ class AllUsers extends React.Component {
       id={i}
       key={i}>
       {i}
-    </Menu.Item>)
+      </Menu.Item>)
+    }
+    return footerMenuItems;
   }
-  return footerMenuItems;
-}
   generateFooter = (items) => {
-  const menuLength = this.footerMenuLength(items)
-  return this.generateFooterMenuItems(menuLength)
-}
+    const menuLength = this.footerMenuLength(items)
+    return this.generateFooterMenuItems(menuLength)
+  }
 
   handleSelectFooterMenuNumber = (e) => {
     this.setState({selectedFooterMenuNumber: e.target.id-1})
@@ -78,42 +78,50 @@ class AllUsers extends React.Component {
     }
   }
 
-  render() {
+  renderTable = () => {
     return (
       <React.Fragment>
         <Header as='h3' attached='top' inverted color='red'>Users</Header>
         <Table celled attached>
-        <Table.Header>
-          <Table.Row>
-            { this.generateHeader() }
-          </Table.Row>
-        </Table.Header>
-        <Table.Body>
-          { this.props.users.length > 1 && this.generateSelectedUserRows(this.props.users)}
-        </Table.Body>
-        <Table.Footer>
-          <Table.Row>
-            <Table.HeaderCell colSpan='5'>
-              <Menu floated='right' pagination>
-                <Menu.Item as='a' icon>
-                  <Icon name='chevron left'
-                        onClick={this.handleSelectFooterMenuChevron}
-                        id='user chevron left'
-                        />
-                </Menu.Item>
-                { this.generateFooter(this.props.users) }
-                <Menu.Item as='a' icon>
-                  <Icon name='chevron right'
-                        onClick={this.handleSelectFooterMenuChevron}
-                        id='user chevron right'
-                        />
-                </Menu.Item>
-              </Menu>
-            </Table.HeaderCell>
-          </Table.Row>
-        </Table.Footer>
-      </Table>
-    </React.Fragment>)
+          <Table.Header>
+            <Table.Row>
+              { this.generateColumnsHeader() }
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
+            { this.props.users.length > 1 && this.generateSelectedRows(this.props.users)}
+          </Table.Body>
+          <Table.Footer>
+            <Table.Row>
+              <Table.HeaderCell colSpan='5'>
+                <Menu floated='right' pagination>
+                  <Menu.Item as='a' icon>
+                    <Icon name='chevron left'
+                      onClick={this.handleSelectFooterMenuChevron}
+                      id='user chevron left'
+                      />
+                  </Menu.Item>
+                  { this.generateFooter(this.props.users) }
+                  <Menu.Item as='a' icon>
+                    <Icon name='chevron right'
+                      onClick={this.handleSelectFooterMenuChevron}
+                      id='user chevron right'
+                      />
+                  </Menu.Item>
+                </Menu>
+              </Table.HeaderCell>
+            </Table.Row>
+          </Table.Footer>
+        </Table>
+      </React.Fragment>
+    )
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+        { this.renderTable() }
+      </React.Fragment>)
   }
 }
 
