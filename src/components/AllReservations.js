@@ -6,7 +6,7 @@ class AllReservations extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      tableColumns: ['ID'],
+      tableColumns: ['ID', 'User', 'Tour'],
       itemCount: 10
     }
   }

@@ -25,11 +25,18 @@ export default class PaginationTable extends React.Component {
       const dataLowerCase = data.toLowerCase()
       if (Array.isArray(item[dataLowerCase])) {
         return <Table.Cell key={data + item[dataLowerCase]}>{item[dataLowerCase].length}</Table.Cell>
-      } else {
+      } else if (Number.isInteger(item[dataLowerCase])) {
         return <Table.Cell key={data + item[dataLowerCase]}>{item[dataLowerCase]}</Table.Cell>
+      } else if (typeof item[dataLowerCase] === 'string') {
+        return <Table.Cell key={data + item[dataLowerCase]}>{item[dataLowerCase]}</Table.Cell>
+      } else if (Number.isInteger(item[dataLowerCase]['id'])) {
+        return <Table.Cell key={data + item[dataLowerCase]}>{item[dataLowerCase]['id']}</Table.Cell>
+      } else {
+        return null
       }
     })
   }
+
   generateTableRows = (items, tableColumns) => {
     return items.map((item) => {
       return (
