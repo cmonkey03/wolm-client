@@ -13,7 +13,10 @@ class AllUsers extends React.Component {
 
   render() {
     return (
-      <PaginationTable items={this.props.users} {...this.state} tableName="Users"/>
+      <PaginationTable  items={this.props.users}
+                        {...this.state}
+                        tableName="Users"
+                        />
     )
   }
 }

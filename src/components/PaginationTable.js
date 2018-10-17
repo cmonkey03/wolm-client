@@ -1,5 +1,6 @@
 import React from 'react';
 import { Header, Icon, Menu, Table } from 'semantic-ui-react';
+import moment from 'moment';
 
 export default class PaginationTable extends React.Component {
   constructor(props) {
@@ -19,18 +20,20 @@ export default class PaginationTable extends React.Component {
     }
     return arrayOfArrays;
   }
-  //generateRow needs swtich statements to handle keys and value types
+  //generateRow needs control flow statements to handle keys and value types
   generateRow = (item, tableColumns) => {
     return tableColumns.map((data) => {
-      const dataLowerCase = data.toLowerCase()
-      if (Array.isArray(item[dataLowerCase])) {
-        return <Table.Cell key={data + item[dataLowerCase]}>{item[dataLowerCase].length}</Table.Cell>
-      } else if (Number.isInteger(item[dataLowerCase])) {
-        return <Table.Cell key={data + item[dataLowerCase]}>{item[dataLowerCase]}</Table.Cell>
-      } else if (typeof item[dataLowerCase] === 'string') {
-        return <Table.Cell key={data + item[dataLowerCase]}>{item[dataLowerCase]}</Table.Cell>
-      } else if (Number.isInteger(item[dataLowerCase]['id'])) {
-        return <Table.Cell key={data + item[dataLowerCase]}>{item[dataLowerCase]['id']}</Table.Cell>
+      const key = data.toLowerCase().split(' ').join('_')
+      if (Array.isArray(item[key])) {
+        return <Table.Cell key={data + item[key]}>{item[key].length}</Table.Cell>
+      } else if (key.includes("time")) {
+        return <Table.Cell key={data + item[key]}>{moment(item[key]).format("LLLL")}</Table.Cell>
+      } else if (Number.isInteger(item[key])) {
+        return <Table.Cell key={data + item[key]}>{item[key]}</Table.Cell>
+      } else if (typeof item[key] === 'string') {
+        return <Table.Cell key={data + item[key]}>{item[key]}</Table.Cell>
+      } else if (Number.isInteger(item[key]['id'])) {
+        return <Table.Cell key={data + item[key]}>{item[key]['id']}</Table.Cell>
       } else {
         return null
       }
