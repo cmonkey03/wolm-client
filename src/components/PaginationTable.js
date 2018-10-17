@@ -4,7 +4,7 @@ import { Header, Icon, Menu, Table } from 'semantic-ui-react';
 export default class PaginationTable extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { selectedFooterMenuNumber: 0 }
+    this.state = { displayIndex: 0 }
   }
   generateColumnsHeader = (tableColumns) => {
     return tableColumns.map((header) => {
@@ -19,6 +19,7 @@ export default class PaginationTable extends React.Component {
     }
     return arrayOfArrays;
   }
+  //generateRow needs swtich statements to handle keys and value types
   generateRow = (item, tableColumns) => {
     return tableColumns.map((data) => {
       const dataLowerCase = data.toLowerCase()
@@ -38,9 +39,9 @@ export default class PaginationTable extends React.Component {
         )
     })
   }
-  generateSelectedRows = (items, tableColumns, itemCount, selectedFooterMenuNumber) => {
+  generateSelectedRows = (items, tableColumns, itemCount, displayIndex) => {
     const userArray = this.generateTableArrays(items, itemCount)
-    return this.generateTableRows(userArray[selectedFooterMenuNumber], tableColumns)
+    return this.generateTableRows(userArray[displayIndex], tableColumns)
   }
 
   footerMenuLength = (items, itemCount) => Math.ceil(items.length / itemCount)
@@ -48,7 +49,7 @@ export default class PaginationTable extends React.Component {
     let footerMenuItems = []
     for (let i = 1; i <= footerMenuLength; i++) {
       footerMenuItems.push(<Menu.Item as='a'
-        onClick={this.handleSelectFooterMenuNumber}
+        onClick={this.handleClickFooterMenu}
         id={i}
         key={i}>
         {i}
@@ -61,21 +62,20 @@ export default class PaginationTable extends React.Component {
     return this.generateFooterMenuItems(menuLength)
   }
 
-  handleSelectFooterMenuNumber = (e) => {
-    this.setState({selectedFooterMenuNumber: e.target.id-1})
-  }
-  handleSelectFooterMenuChevron = (e) => {
-    if (e.target.id === 'user chevron left' && this.state.selectedFooterMenuNumber > 0) {
-      this.setState({selectedFooterMenuNumber: this.state.selectedFooterMenuNumber - 1})
-    } else if (e.target.id === 'user chevron right' && this.state.selectedFooterMenuNumber < 7) {
-      this.setState({selectedFooterMenuNumber: this.state.selectedFooterMenuNumber + 1})
+  handleClickFooterMenu = (e) => {
+    if (e.target.id === 'user chevron left' && this.state.displayIndex > 0) {
+      this.setState({displayIndex: this.state.displayIndex - 1})
+    } else if (e.target.id === 'user chevron right' && this.state.displayIndex < (this.footerMenuLength(this.props.items, this.props.itemCount) - 1)) {
+      this.setState({displayIndex: this.state.displayIndex + 1})
+    } else if (Number.isInteger(parseInt(e.target.id))) {
+      this.setState({displayIndex: e.target.id-1})
     }
   }
 
-  renderTable = (items, tableColumns, itemCount, selectedFooterMenuNumber) => {
+  renderTable = (items, tableColumns, itemCount, displayIndex) => {
     return (
       <React.Fragment>
-        <Header as='h3' attached='top' inverted color='red'>Users</Header>
+        <Header as='h3' attached='top' inverted color='grey'>{this.props.tableName}</Header>
         <Table celled attached>
           <Table.Header>
             <Table.Row>
@@ -83,10 +83,10 @@ export default class PaginationTable extends React.Component {
             </Table.Row>
           </Table.Header>
           <Table.Body>
-            { items.length > 1 && this.generateSelectedRows(items,
+            { items.length > 0 && this.generateSelectedRows(items,
                                                             tableColumns,
                                                             itemCount,
-                                                            selectedFooterMenuNumber)}
+                                                            displayIndex)}
           </Table.Body>
           <Table.Footer>
             <Table.Row>
@@ -94,14 +94,14 @@ export default class PaginationTable extends React.Component {
                 <Menu floated='right' pagination>
                   <Menu.Item as='a' icon>
                     <Icon name='chevron left'
-                      onClick={this.handleSelectFooterMenuChevron}
+                      onClick={this.handleClickFooterMenu}
                       id='user chevron left'
                       />
                   </Menu.Item>
                   { this.generateFooter(items, itemCount) }
                   <Menu.Item as='a' icon>
                     <Icon name='chevron right'
-                      onClick={this.handleSelectFooterMenuChevron}
+                      onClick={this.handleClickFooterMenu}
                       id='user chevron right'
                       />
                   </Menu.Item>
@@ -117,10 +117,10 @@ export default class PaginationTable extends React.Component {
   render() {
     return (
       <React.Fragment>
-        { this.renderTable( this.props.users,
+        { this.renderTable( this.props.items,
                             this.props.tableColumns,
                             this.props.itemCount,
-                            this.state.selectedFooterMenuNumber)}
+                            this.state.displayIndex)}
       </React.Fragment>
     )
   }
