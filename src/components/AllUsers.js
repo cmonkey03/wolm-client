@@ -48,11 +48,9 @@ class AllUsers extends React.Component {
     this.setState({selectedUserArray: e.target.id-1})
   }
 
-  // { this.props.users && this.userRows(userArray) }
 
   render() {
     let userArray = this.generateArrayOfArrays(this.props.users, 10)[this.state.selectedUserArray]
-    console.log(userArray)
     return (
       <React.Fragment>
         <Header as='h3' attached='top' inverted color='red'>Users</Header>
@@ -67,6 +65,7 @@ class AllUsers extends React.Component {
           </Table.Row>
         </Table.Header>
         <Table.Body>
+          { this.props.users && this.userRows(this.props.users) }
         </Table.Body>
         <Table.Footer>
           <Table.Row>
