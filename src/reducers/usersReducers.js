@@ -1,7 +1,7 @@
-import {LOAD_API_DATA} from '../actions';
-import {SET_CURRENT_USER} from '../actions';
-import {AUTHENTICATING_USER} from '../actions';
-import {FAILED_LOGIN} from '../actions';
+import {LOAD_API_DATA} from '../types';
+import {SET_CURRENT_USER} from '../types';
+import {AUTHENTICATING_USER} from '../types';
+import {FAILED_LOGIN} from '../types';
 
 const initialState = {
   users: [],

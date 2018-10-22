@@ -1,31 +1,63 @@
 import React from 'react';
-import { Button, Form, Input } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { withRouter, Redirect } from 'react-router';
+import { Button, Form, Input, Segment } from 'semantic-ui-react';
+import { loginUser }from '../actions/user';
 
-const Login = (props) => {
-  return (
-    <Form onSubmit={props.handleLoginSubmit}>
-      <Form.Field
-          control={Input}
-          label='Username'
-          placeholder="Username"
-          type="text"
-          maxLength='16'
-          value={props.usernameInput}
-          onChange={props.handleUsernameInput}
-      />
-      <Form.Field>
-        <label>Password
-        <input  placeholder="Password"
-                type="password"
-                value={props.passwordInput}
-                onChange={props.handlePasswordInput}
-                maxLength='32'
-                />
-            </label>
-      </Form.Field>
-      <Button type='submit'>Login</Button>
-    </Form>
-  )
+class Login extends React.Component {
+  state = { username: '', password: '' }
+
+  handleChange = (e, { name, value }) => this.setState({ [name]: value })
+
+  handleLoginSubmit = () => {
+    this.props.loginUser(this.state.username, this.state.password)
+    this.setState({ username: '', password: '' })
+  }
+
+  render() {
+    return this.props.loggedIn ? (
+      <Redirect to='/edit-profile' />
+    ) : (
+      <Segment>
+        <Form
+          onSubmit={this.handleLoginSubmit}
+          size='small'
+          key='small'
+          loading={this.props.authenticatingUser}
+          error={this.props.failedLogin}
+        >
+          <Form.Field
+              control={Input}
+              label='Username'
+              placeholder='Username'
+              name='username'
+              type='text'
+              maxLength='16'
+              value={this.state.username}
+              onChange={this.handleChange}
+          />
+          <Form.Field
+              control={Input}
+              label='Password'
+              placeholder='Password'
+              name='password'
+              type='password'
+              value={this.state.password}
+              onChange={this.handleChange}
+              maxLength='32'
+          />
+          <Button type='submit'>Login</Button>
+        </Form>
+      </Segment>
+    )
+  }
 }
 
-export default Login;
+const mapStateToProps = ({ users: { authenticatingUser, failedLogin, error, loggedIn } }) => ({
+  authenticatingUser,
+  failedLogin,
+  error,
+  loggedIn
+})
+
+export default withRouter(connect(mapStateToProps, { loginUser })(Login));

@@ -3,7 +3,7 @@ import '../App.css';
 import store from '../store';
 import ApiAdapter from '../adapter';
 import { connect } from 'react-redux';
-import { LOAD_API_DATA } from '../actions';
+import { LOAD_API_DATA } from '../types';
 import { withRouter } from 'react-router';
 import { Route } from 'react-router-dom';
 import NavBar from '../components/NavBar';
@@ -22,11 +22,11 @@ class App extends Component {
     super(props)
     this.ApiAdapter = new ApiAdapter()
     this.state = {
-      usernameInput: '',
-      passwordInput: '',
-      zipcodeInput: '',
-      bioInput: '',
-      adminInput: false,
+      // usernameInput: '',
+      // passwordInput: '',
+      // zipcodeInput: '',
+      // bioInput: '',
+      // adminInput: false,
       errors: null,
       successResponse: null,
       selectedTourId: null,
@@ -53,7 +53,7 @@ class App extends Component {
   handlePasswordInput = e => this.setState({passwordInput:e.target.value})
   handleZipcodeInput = e => this.setState({zipcodeInput:e.target.value})
   handleBioInput = e => this.setState({bioInput:e.target.value})
-  handlReservationSelect = (e) => this.setState({selectedReservationId: parseInt(e.target.name)})
+  handleReservationSelect = (e) => this.setState({selectedReservationId: parseInt(e.target.name)})
   handleAdminChange = (e) => this.setState({adminInput: !this.state.adminInput})
   handleTourSelect = (e) => this.setState({selectedTourId: parseInt(e.target.name)})
 
@@ -74,31 +74,31 @@ class App extends Component {
 
   handleLogout = (e) => this.setState({loggedInUser: null})
 
-  handleSignupSubmit = (e) => {
-    const userObj = {
-      username: this.state.usernameInput,
-      password: this.state.passwordInput,
-      zipcode: this.state.zipcodeInput,
-      bio: this.state.bioInput,
-      administrator: this.state.adminInput
-    }
-
-    this.ApiAdapter.postUser(userObj).then(r=>{
-      if (r.errors) {
-        this.setState({errors: r.errors})
-      } else {
-        this.setState({
-          usernameInput: '',
-          passwordInput: '',
-          zipcodeInput: '',
-          bioInput: '',
-          adminInput: false,
-          errors: null,
-          loggedInUser: null
-        })
-      }
-    })
-  }
+  // handleSignupSubmit = (e) => {
+  //   const userObj = {
+  //     username: this.state.usernameInput,
+  //     password: this.state.passwordInput,
+  //     zipcode: this.state.zipcodeInput,
+  //     bio: this.state.bioInput,
+  //     administrator: this.state.adminInput
+  //   }
+  //
+  //   this.ApiAdapter.postUser(userObj).then(r=>{
+  //     if (r.errors) {
+  //       this.setState({errors: r.errors})
+  //     } else {
+  //       this.setState({
+  //         usernameInput: '',
+  //         passwordInput: '',
+  //         zipcodeInput: '',
+  //         bioInput: '',
+  //         adminInput: false,
+  //         errors: null,
+  //         loggedInUser: null
+  //       })
+  //     }
+  //   })
+  // }
 
   handleSubmitReservation = (e) => {
     const reservationObj = {
@@ -194,7 +194,7 @@ class App extends Component {
                       <React.Fragment>
                         <Reservations loggedInUser={this.state.loggedInUser}
                                       successResponse={this.state.successResponse}
-                                      handlReservationSelect={this.handlReservationSelect}
+                                      handleReservationSelect={this.handleReservationSelect}
                                       handleCancelReservation={this.handleCancelReservation}
                                       />
                         <MakeReservation  loggedInUser={this.state.loggedInUser}
