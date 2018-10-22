@@ -7,6 +7,8 @@ import App from './containers/App';
 import { BrowserRouter as Router } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 
+console.log(`%c INITIAL REDUX STORE`, 'color: purple', store.getState())
+
 ReactDOM.render(
   <Provider store={store}>
     <Router>

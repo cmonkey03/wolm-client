@@ -3,6 +3,8 @@ const BASE_URL = 'http://localhost:3000/api/v1'
 const Users = 'users'
 const Tours = 'tours'
 const Reservations = 'reservations'
+const Login = 'login'
+const Profile = 'profile'
 
 export default class Adapter {
   parseHeaders = response => response.json()
@@ -21,7 +23,33 @@ export default class Adapter {
     this.getReservations()
   ]))
 
-  postUser = (userObj) => (fetch(`${BASE_URL}/${Users}`, {
+  loginUser = (username, password) => (
+    fetch(`${BASE_URL}/${Login}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        user: {
+          username: username,
+          password: password
+        }
+      })
+    })
+  )
+
+  fetchCurrentUser = () => (
+    fetch(`${BASE_URL}/${Profile}`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`
+      }
+    })
+    .then(this.parseHeaders)
+  )
+
+  createUser = (userObj) => (fetch(`${BASE_URL}/${Users}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -29,18 +57,17 @@ export default class Adapter {
       },
       body: JSON.stringify(userObj)
     })
-    .then(this.parseHeaders)
   )
 
   updateUser = (userObj) => (fetch(`${BASE_URL}/${Users}/${userObj.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`
       },
       body: JSON.stringify(userObj)
     })
-    .then(this.parseHeaders)
   )
 
   postTour = (tourObj) => (fetch(`${BASE_URL}/${Tours}`, {
