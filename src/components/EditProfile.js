@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Button, Checkbox, Form, Input, Segment, TextArea } from 'semantic-ui-react';
 import withAuth from '../hocs/withAuth';
 import ApiAdapter from '../adapter';
+import { updateUser }from '../actions/user';
 
 class EditProfile extends React.Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class EditProfile extends React.Component {
 
   handleEditSubmit = (e) => {
     const userObj = {
+      id: this.props.id,
       username: this.state.username,
       password: this.state.password,
       email: this.state.email,
@@ -31,25 +33,14 @@ class EditProfile extends React.Component {
       admin: this.props.admin
     }
 
-    // this.ApiAdapter.updateUser(userObj).then(r=>{
-    //   if (r.errors) {
-    //     this.setState({errors: r.errors})
-    //   } else {
-    //     this.setState({
-    //       username: '',
-    //       password: '',
-    //       zipcode: '',
-    //       bio: '',
-    //
-    //     })
-    //   }
-    // })
+    this.props.updateUser(userObj)
   }
 
   render() {
     return (
       <Segment>
         <Form
+          onSubmit={this.handleEditSubmit}
           size='small'
           key='small'
           loading={this.props.updatingUser}
@@ -98,7 +89,7 @@ class EditProfile extends React.Component {
             control={TextArea}
             label='Bio'
             placeholder='Bio'
-            nam='bio'
+            name='bio'
             type='text'
             maxLength='200'
             value={this.state.bio}
@@ -126,8 +117,9 @@ class EditProfile extends React.Component {
     }
 }
 
-const mapStateToProps = ({ users: { user: { username, password, email, zipcode, bio, admin }},
+const mapStateToProps = ({ users: { user: { id, username, password, email, zipcode, bio, admin }},
 updatingUser, failedUpdate, error, loggedIn}) => ({
+  id,
   username,
   password,
   email,
@@ -140,4 +132,4 @@ updatingUser, failedUpdate, error, loggedIn}) => ({
   loggedIn
 })
 
-export default withAuth(connect(mapStateToProps)(EditProfile))
+export default withAuth(connect(mapStateToProps, { updateUser })(EditProfile))

@@ -1,11 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Button, Checkbox, Form, Input, Segment, TextArea } from 'semantic-ui-react';
-import ApiAdapter from '../adapter';
+import { postUser }from '../actions/user';
 
 class Signup extends React.Component {
   constructor(props) {
     super(props)
-    this.ApiAdapter = new ApiAdapter()
     this.state = {
       username: '',
       password: '',
@@ -30,19 +30,14 @@ class Signup extends React.Component {
       admin: this.state.admin
     }
 
-    this.ApiAdapter.postUser(userObj).then(r=>{
-      if (r.errors) {
-        this.setState({errors: r.errors})
-      } else {
-        this.setState({
-            username: '',
-            password: '',
-            email: '',
-            zipcode: '',
-            bio: '',
-            admin: false
-        })
-      }
+    this.props.postUser(userObj)
+    this.setState({
+        username: '',
+        password: '',
+        email: '',
+        zipcode: '',
+        bio: '',
+        admin: false
     })
   }
 
@@ -123,4 +118,4 @@ class Signup extends React.Component {
   }
 }
 
-export default Signup;
+export default connect(null, { postUser })(Signup);

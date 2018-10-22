@@ -45,7 +45,8 @@ export default class Adapter {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('jwt')}`
       }
-    }).then(this.parseHeaders)
+    })
+    .then(this.parseHeaders)
   )
 
   postUser = (userObj) => (fetch(`${BASE_URL}/${Users}`, {
@@ -56,18 +57,17 @@ export default class Adapter {
       },
       body: JSON.stringify(userObj)
     })
-    .then(this.parseHeaders)
   )
 
   updateUser = (userObj) => (fetch(`${BASE_URL}/${Users}/${userObj.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`
       },
       body: JSON.stringify(userObj)
     })
-    .then(this.parseHeaders)
   )
 
   postTour = (tourObj) => (fetch(`${BASE_URL}/${Tours}`, {
