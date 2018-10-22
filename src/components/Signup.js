@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Button, Checkbox, Form, Input, Segment, TextArea } from 'semantic-ui-react';
-import { postUser }from '../actions/user';
+import { createUser }from '../actions/user';
 
 class Signup extends React.Component {
   constructor(props) {
@@ -30,7 +30,7 @@ class Signup extends React.Component {
       admin: this.state.admin
     }
 
-    this.props.postUser(userObj)
+    this.props.createUser(userObj)
     this.setState({
         username: '',
         password: '',
@@ -118,4 +118,4 @@ class Signup extends React.Component {
   }
 }
 
-export default connect(null, { postUser })(Signup);
+export default connect(null, { createUser })(Signup);

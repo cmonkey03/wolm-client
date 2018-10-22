@@ -49,7 +49,7 @@ export default class Adapter {
     .then(this.parseHeaders)
   )
 
-  postUser = (userObj) => (fetch(`${BASE_URL}/${Users}`, {
+  createUser = (userObj) => (fetch(`${BASE_URL}/${Users}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
