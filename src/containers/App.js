@@ -22,11 +22,6 @@ class App extends Component {
     super(props)
     this.ApiAdapter = new ApiAdapter()
     this.state = {
-      // usernameInput: '',
-      // passwordInput: '',
-      // zipcodeInput: '',
-      // bioInput: '',
-      // adminInput: false,
       errors: null,
       successResponse: null,
       selectedTourId: null,
