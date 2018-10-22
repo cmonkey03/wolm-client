@@ -1,25 +1,33 @@
 import React from 'react';
-// import { Button, Checkbox, Form, Input, Message, TextArea } from 'semantic-ui-react';
+import { Button, Checkbox, Form, Input, Segment, TextArea } from 'semantic-ui-react';
+import ApiAdapter from '../adapter';
 
 class Signup extends React.Component {
-  state = {
-    username: '',
-    password: '',
-    email: '',
-    zipcode: '',
-    bio: '',
-    admin: false
+  constructor(props) {
+    super(props)
+    this.ApiAdapter = new ApiAdapter()
+    this.state = {
+      username: '',
+      password: '',
+      email: '',
+      zipcode: '',
+      bio: '',
+      admin: false
+    }
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
+  handleAdminChange = (e) => this.setState({admin: !this.state.admin})
+
   handleSignupSubmit = (e) => {
     const userObj = {
-      username: this.state.usernameInput,
-      password: this.state.passwordInput,
-      zipcode: this.state.zipcodeInput,
-      bio: this.state.bioInput,
-      administrator: this.state.adminInput
+      username: this.state.username,
+      password: this.state.password,
+      email: this.state.email,
+      zipcode: this.state.zipcode,
+      bio: this.state.bio,
+      admin: this.state.admin
     }
 
     this.ApiAdapter.postUser(userObj).then(r=>{
@@ -40,75 +48,77 @@ class Signup extends React.Component {
 
   render () {
     return (
-      {/*<Form onSubmit={this.handleSignupSubmit} error>
-        <Form.Field
-          control={Input}
-          label='Username'
-          placeholder="Username"
-          name="username"
-          type='text'
-          maxLength='16'
-          value={this.username}
-          onChange={this.handleChange}
-        />
-        <Form.Field
-          control={Input}
-          label='Password'
-          placeholder='Password'
-          name='password'
-          type='password'
-          maxLength='32'
-          value={this.password}
-          onChange={this.handleChange}
-        />
-        <Form.Field
-          control={Input}
-          label='Email'
-          placeholder='email@host.com'
-          name='email'
-          type='email'
-          maxLength='32'
-          value={this.email}
-          onChange={this.handleChange}
-        />
-        <Form.Field
-          control={Input}
-          label='Zipcode'
-          placeholder='Zipcode'
-          name='zipcode'
-          type='text'
-          maxLength='5'
-          value={this.zipcode}
-          onChange={this.handleChange}
-        />
-        <Form.Field
-          control={TextArea}
-          label='Bio'
-          placeholder='Bio'
-          name='bio'
-          type='text'
-          maxLength='200'
-          value={this.bio}
-          onChange={this.handleChange}
-        />
-        <Form.Field>
-          { props.adminInput ?
-            <Checkbox toggle checked label='Administrator' onChange={props.handleAdminChange}/>
-            :
-            <Checkbox toggle label='Administrator' onChange={props.handleAdminChange}/>
-          }
-        </Form.Field>
-        <Form.Field>
-          <Checkbox label='I agree to the Terms and Conditions' />
-        </Form.Field>
-        { props.errors && <Message
-            error
-            header='Action Forbidden'
-            content={props.errors.join("; ")}
-            />
-        }
-        <Button type='submit'>Signup</Button>
-      </Form>*/}
+      <Segment>
+        <Form onSubmit={this.handleSignupSubmit} error>
+          <Form.Field
+            control={Input}
+            label='Username'
+            placeholder="Username"
+            name="username"
+            type='text'
+            maxLength='16'
+            value={this.username}
+            onChange={this.handleChange}
+          />
+          <Form.Field
+            control={Input}
+            label='Password'
+            placeholder='Password'
+            name='password'
+            type='password'
+            maxLength='32'
+            value={this.password}
+            onChange={this.handleChange}
+          />
+          <Form.Field
+            control={Input}
+            label='Email'
+            placeholder='email@host.com'
+            name='email'
+            type='email'
+            maxLength='32'
+            value={this.email}
+            onChange={this.handleChange}
+          />
+          <Form.Field
+            control={Input}
+            label='Zipcode'
+            placeholder='Zipcode'
+            name='zipcode'
+            type='text'
+            maxLength='5'
+            value={this.zipcode}
+            onChange={this.handleChange}
+          />
+          <Form.Field
+            control={TextArea}
+            label='Bio'
+            placeholder='Bio'
+            name='bio'
+            type='text'
+            maxLength='200'
+            value={this.bio}
+            onChange={this.handleChange}
+          />
+          <Form.Field>
+            { this.state.admin ?
+              <Checkbox toggle checked label='Administrator' onChange={this.handleAdminChange}/>
+              :
+              <Checkbox toggle label='Administrator' onChange={this.handleAdminChange}/>
+            }
+          </Form.Field>
+          <Form.Field>
+            <Checkbox label='I agree to the Terms and Conditions' />
+          </Form.Field>
+          {/*{ props.errors && <Message
+              error
+              header='Action Forbidden'
+              content={props.errors.join("; ")}
+              />
+          }*/}
+          <Button type='submit'>Signup</Button>
+        </Form>
+      </Segment>
     )
   }
 }

@@ -49,56 +49,10 @@ class App extends Component {
     })
   }
 
-  handleUsernameInput = e => this.setState({usernameInput:e.target.value})
-  handlePasswordInput = e => this.setState({passwordInput:e.target.value})
-  handleZipcodeInput = e => this.setState({zipcodeInput:e.target.value})
-  handleBioInput = e => this.setState({bioInput:e.target.value})
   handleReservationSelect = (e) => this.setState({selectedReservationId: parseInt(e.target.name)})
-  handleAdminChange = (e) => this.setState({adminInput: !this.state.adminInput})
   handleTourSelect = (e) => this.setState({selectedTourId: parseInt(e.target.name)})
 
-  handleLoginSubmit = (e) => {
-    e.preventDefault()
-    const foundUser = this.props.users.find((user) => {
-      return this.state.usernameInput === user.username && this.state.passwordInput === user.password
-    })
-    if (foundUser) {
-      this.setState({
-        loggedInUser: foundUser,
-        usernameInput: '',
-        passwordInput: ''
-      })
-      this.props.history.push('/reservations')
-    }
-  }
-
   handleLogout = (e) => this.setState({loggedInUser: null})
-
-  // handleSignupSubmit = (e) => {
-  //   const userObj = {
-  //     username: this.state.usernameInput,
-  //     password: this.state.passwordInput,
-  //     zipcode: this.state.zipcodeInput,
-  //     bio: this.state.bioInput,
-  //     administrator: this.state.adminInput
-  //   }
-  //
-  //   this.ApiAdapter.postUser(userObj).then(r=>{
-  //     if (r.errors) {
-  //       this.setState({errors: r.errors})
-  //     } else {
-  //       this.setState({
-  //         usernameInput: '',
-  //         passwordInput: '',
-  //         zipcodeInput: '',
-  //         bioInput: '',
-  //         adminInput: false,
-  //         errors: null,
-  //         loggedInUser: null
-  //       })
-  //     }
-  //   })
-  // }
 
   handleSubmitReservation = (e) => {
     const reservationObj = {
@@ -143,49 +97,21 @@ class App extends Component {
           <NavBar loggedInUser={this.state.loggedInUser}
                   handleLogout={this.handleLogout}
                   />
-          {/*<Switch>
-            <Route component={NotFound} />
-          </Switch>*/}
           <Route exact path="/login"
             render={ (renderProps) => {
               return (
-                <Login
-                  usernameInput={this.state.usernameInput}
-                  passwordInput={this.state.passwordInput}
-                  handleUsernameInput={this.handleUsernameInput}
-                  handlePasswordInput={this.handlePasswordInput}
-                  handleLoginSubmit={this.handleLoginSubmit}
-                  />
+                <Login />
               )
             }}
             />
           <Route exact path="/signup"
                   render={ (renderProps) => {
-                    return (
-                      <Signup
-                        usernameInput={this.state.usernameInput}
-                        passwordInput={this.state.passwordInput}
-                        zipcodeInput={this.state.zipcodeInput}
-                        bioInput={this.state.bioInput}
-                        adminInput={this.state.adminInput}
-                        handleUsernameInput={this.handleUsernameInput}
-                        handlePasswordInput={this.handlePasswordInput}
-                        handleZipcodeInput={this.handleZipcodeInput}
-                        handleBioInput={this.handleBioInput}
-                        handleSignupSubmit={this.handleSignupSubmit}
-                        handleAdminChange={this.handleAdminChange}
-                        errors={this.state.errors}
-                        />
-              )
+                    return <Signup />
             }}
             />
           <Route exact path="/edit-profile"
                   render={ (renderProps) => {
-                    return (
-                      <React.Fragment>
-                        { this.state.loggedInUser && <EditProfile loggedInUser={this.state.loggedInUser}/>}
-                      </React.Fragment>
-                    )
+                    return <EditProfile />
                   }}
             />
           <Route exact path="/reservations"

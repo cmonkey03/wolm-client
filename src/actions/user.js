@@ -3,7 +3,7 @@ import { SET_CURRENT_USER } from '../types';
 import { FAILED_LOGIN } from '../types';
 import ApiAdapter from '../adapter';
 
-const Adapter = new ApiAdapter();
+const Adapter = new ApiAdapter()
 
 export const loginUser = (username, password) => {
   return (dispatch) => {
@@ -39,4 +39,4 @@ export const setCurrentUser = (userData) => ({
   payload: userData
 })
 
-export const authenticatingUser = () => ({ type: 'AUTHENTICATING_USER' })
+export const authenticatingUser = () => ({ type: AUTHENTICATING_USER })

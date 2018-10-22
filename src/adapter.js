@@ -39,15 +39,14 @@ export default class Adapter {
     })
   )
 
-  fetchCurrentUser = () => {
+  fetchCurrentUser = () => (
     fetch(`${BASE_URL}/${Profile}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('jwt')}`
       }
-    })
-    .then(this.parseHeaders)
-  }
+    }).then(this.parseHeaders)
+  )
 
   postUser = (userObj) => (fetch(`${BASE_URL}/${Users}`, {
       method: 'POST',
