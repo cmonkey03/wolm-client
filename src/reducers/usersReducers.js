@@ -32,4 +32,4 @@ const usersReducers = (state=initialState, action) => {
   }
 }
 
-export default usersReducers
+export default usersReducers;
