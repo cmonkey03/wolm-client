@@ -1,99 +1,135 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { Button, Checkbox, Form, Input, Segment, TextArea } from 'semantic-ui-react';
+import withAuth from '../hocs/withAuth';
 import ApiAdapter from '../adapter';
-import { Button, Checkbox, Form, Input, Message, TextArea } from 'semantic-ui-react';
+import { updateUser }from '../actions/user';
 
-export default class EditProfile extends React.Component {
-
+class EditProfile extends React.Component {
   constructor(props) {
     super(props)
-    this.ApiAdapter = new ApiAdapter()
     this.state = {
-      username: props.loggedInUser.username,
-      password: props.loggedInUser.password,
-      zipcode: props.loggedInUser.zipcode,
-      bio: props.loggedInUser.bio,
-      errors: null
+      username: this.props.username,
+      password: '',
+      email: this.props.email,
+      zipcode: this.props.zipcode,
+      bio: this.props.bio,
+      admin: this.props.admin
     }
+    this.ApiAdapter = new ApiAdapter()
   }
 
-  handleUsernameInput = e => this.setState({username:e.target.value})
-  handlePasswordInput = e => this.setState({password:e.target.value})
-  handleZipcodeInput = e => this.setState({zipcode:e.target.value})
-  handleBioInput = e => this.setState({bio:e.target.value})
+  handleChange = (e, { name, value }) => this.setState({ [name]: value })
+  handleAdminChange = (e) => this.setState({admin: !this.state.admin})
 
   handleEditSubmit = (e) => {
     const userObj = {
-      id: this.props.loggedInUser.id,
+      id: this.props.id,
       username: this.state.username,
       password: this.state.password,
+      email: this.state.email,
       zipcode: this.state.zipcode,
-      bio: this.state.bio
+      bio: this.state.bio,
+      admin: this.props.admin
     }
 
-    this.ApiAdapter.updateUser(userObj).then(r=>{
-      if (r.errors) {
-        this.setState({errors: r.errors})
-      } else {
-        this.setState({
-          username: '',
-          password: '',
-          zipcode: '',
-          bio: '',
-          errors: null,
-        })
-      }
-    })
+    this.props.updateUser(userObj)
   }
 
   render() {
     return (
-      <Form onSubmit={this.handleEditSubmit} error>
-        <Form.Field
-          control={Input}
-          label='Username'
-          placeholder="Username"
-          type='text'
-          maxLength='16'
-          value={this.state.username}
-          onChange={this.handleUsernameInput}
-        />
-        <Form.Field
-          control={Input}
-          label='Password'
-          placeholder='Password'
-          type='password'
-          maxLength='32'
-          value={this.state.password}
-          onChange={this.handlePasswordInput}
-        />
-        <Form.Field
-          control={Input}
-          label='Zipcode'
-          placeholder='Zipcode'
-          type='text'
-          maxLength='5'
-          value={this.state.zipcode}
-          onChange={this.handleZipcodeInput}
-        />
-        <Form.Field
-          control={TextArea}
-          label='Bio'
-          placeholder='Bio'
-          type='text'
-          maxLength='200'
-          value={this.state.bio}
-          onChange={this.handleBioInput}
-        />
-        <Form.Field>
-          <Checkbox label='I agree to the Terms and Conditions' />
-        </Form.Field>
-        { this.state.errors && <Message
-            error
-            header='Action Forbidden'
-            content={this.state.errors.join("; ")}
-            />
-        }
-        <Button type='submit'>Submit Edits</Button>
-      </Form>)
+      <Segment>
+        <Form
+          onSubmit={this.handleEditSubmit}
+          size='small'
+          key='small'
+          loading={this.props.updatingUser}
+          error={this.props.failedLogin}
+        >
+          <Form.Field
+            control={Input}
+            label='Username'
+            placeholder='Username'
+            name='username'
+            type='text'
+            maxLength='16'
+            value={this.state.username}
+            onChange={this.handleChange}
+          />
+          <Form.Field
+            control={Input}
+            label='Password'
+            placeholder='Password'
+            name='password'
+            type='password'
+            maxLength='32'
+            value={this.state.password}
+            onChange={this.handleChange}
+          />
+          <Form.Field
+            control={Input}
+            label='Email'
+            placeholder='Email'
+            name='email'
+            type='email'
+            value={this.state.email}
+            onChange={this.handleChange}
+          />
+          <Form.Field
+            control={Input}
+            label='Zipcode'
+            placeholder='Zipcode'
+            name='zipcode'
+            type='text'
+            maxLength='5'
+            value={this.state.zipcode}
+            onChange={this.handleChange}
+          />
+          <Form.Field
+            control={TextArea}
+            label='Bio'
+            placeholder='Bio'
+            name='bio'
+            type='text'
+            maxLength='200'
+            value={this.state.bio}
+            onChange={this.handleChange}
+          />
+          <Form.Field>
+            { this.state.admin ?
+              <Checkbox toggle checked label='Administrator' onChange={this.handleAdminChange}/>
+              :
+              <Checkbox toggle label='Administrator' onChange={this.handleAdminChange}/>
+            }
+          </Form.Field>
+          <Form.Field>
+            <Checkbox label='I agree to the Terms and Conditions' />
+          </Form.Field>
+          {/*{ this.state.errors && <Message
+              error
+              header='Action Forbidden'
+              content={this.state.errors.join("; ")}
+              />
+          }*/}
+          <Button type='submit'>Submit Edits</Button>
+        </Form>
+      </Segment>)
     }
 }
+
+const mapStateToProps = ({ users: { user: { id, username, password, email, zipcode, bio, admin }},
+updatingUser, failedUpdate, error, loggedIn}) => ({
+  id,
+  username,
+  password,
+  email,
+  zipcode,
+  bio,
+  admin,
+  updatingUser,
+  failedUpdate,
+  error,
+  loggedIn
+})
+
+export default withAuth(connect(mapStateToProps, { updateUser })(EditProfile))

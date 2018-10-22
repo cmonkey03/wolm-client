@@ -1,4 +1,4 @@
-import {LOAD_API_DATA} from '../actions';
+import {LOAD_API_DATA} from '../types';
 
 const initialState = []
 
