@@ -4,8 +4,8 @@ import store from '../store';
 import ApiAdapter from '../adapter';
 import { connect } from 'react-redux';
 import { LOAD_API_DATA } from '../actions';
-import { Route } from 'react-router-dom';
 import { withRouter } from 'react-router';
+import { Route } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
@@ -14,6 +14,7 @@ import Reservations from '../components/Reservations';
 import AdminPanel from '../components/AdminPanel';
 import CreateTour from '../components/CreateTour';
 import MakeReservation from '../components/MakeReservation';
+// import NotFound from '../components/notFound'
 import { Header } from 'semantic-ui-react';
 
 class App extends Component {
@@ -142,7 +143,23 @@ class App extends Component {
           <NavBar loggedInUser={this.state.loggedInUser}
                   handleLogout={this.handleLogout}
                   />
-          <Route  exact path="/signup"
+          {/*<Switch>
+            <Route component={NotFound} />
+          </Switch>*/}
+          <Route exact path="/login"
+            render={ (renderProps) => {
+              return (
+                <Login
+                  usernameInput={this.state.usernameInput}
+                  passwordInput={this.state.passwordInput}
+                  handleUsernameInput={this.handleUsernameInput}
+                  handlePasswordInput={this.handlePasswordInput}
+                  handleLoginSubmit={this.handleLoginSubmit}
+                  />
+              )
+            }}
+            />
+          <Route exact path="/signup"
                   render={ (renderProps) => {
                     return (
                       <Signup
@@ -162,20 +179,7 @@ class App extends Component {
               )
             }}
             />
-          <Route  exact path="/login"
-            render={ (renderProps) => {
-              return (
-                <Login
-                  usernameInput={this.state.usernameInput}
-                  passwordInput={this.state.passwordInput}
-                  handleUsernameInput={this.handleUsernameInput}
-                  handlePasswordInput={this.handlePasswordInput}
-                  handleLoginSubmit={this.handleLoginSubmit}
-                  />
-              )
-            }}
-            />
-          <Route  exact path="/edit-profile"
+          <Route exact path="/edit-profile"
                   render={ (renderProps) => {
                     return (
                       <React.Fragment>
@@ -184,7 +188,7 @@ class App extends Component {
                     )
                   }}
             />
-          <Route  exact path="/reservations"
+          <Route exact path="/reservations"
                   render={ (renderProps) => {
                     return (
                       <React.Fragment>
@@ -202,14 +206,14 @@ class App extends Component {
                     )
                   }}
             />
-          <Route  exact path="/admin"
+          <Route exact path="/admin"
                   render={ (renderProps) => {
                     return (
                       <AdminPanel />
                     )
                   }}
             />
-          <Route  exact path="/new-tour"
+          <Route exact path="/new-tour"
                     render={ (renderProps) => {
                       return (
                         <CreateTour />

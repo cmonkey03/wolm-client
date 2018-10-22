@@ -7,20 +7,14 @@ export default class PaginationTable extends React.Component {
     super(props)
     this.state = { displayIndex: 0 }
   }
+
   generateColumnsHeader = (tableColumns) => {
     return tableColumns.map((header) => {
       return <Table.HeaderCell key={header}>{header}</Table.HeaderCell>
     })
   }
 
-  generateTableArrays = (items, itemCount) => {
-    let arrayOfArrays = []
-    for (let i = 0; i < items.length; i+=itemCount) {
-      arrayOfArrays.push(items.slice(i,i+itemCount));
-    }
-    return arrayOfArrays;
-  }
-  //generateRow needs control flow statements to handle keys and value types
+  //generateRow needs control flow statements to handle value types
   generateRow = (item, tableColumns) => {
     return tableColumns.map((data) => {
       const key = data.toLowerCase().split(' ').join('_')
@@ -39,19 +33,19 @@ export default class PaginationTable extends React.Component {
       }
     })
   }
-
   generateTableRows = (items, tableColumns) => {
-    return items.map((item) => {
-      return (
+    return items.map((item) => (
         <Table.Row key={Object.values(item)}>
           { this.generateRow(item, tableColumns) }
         </Table.Row>
-        )
-    })
+      )
+    )
   }
   generateSelectedRows = (items, tableColumns, itemCount, displayIndex) => {
-    const userArray = this.generateTableArrays(items, itemCount)
-    return this.generateTableRows(userArray[displayIndex], tableColumns)
+    const index = displayIndex * itemCount
+    const userArray = items.slice(index,index+itemCount )
+
+    return this.generateTableRows(userArray, tableColumns)
   }
 
   footerMenuLength = (items, itemCount) => Math.ceil(items.length / itemCount)
