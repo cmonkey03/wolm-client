@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Redirect } from 'react-router';
-import { Button, Form, Input, Segment } from 'semantic-ui-react';
+import { Form, Message, Segment } from 'semantic-ui-react';
 import { loginUser }from '../actions/user';
 
 class Login extends React.Component {
@@ -26,8 +26,8 @@ class Login extends React.Component {
           loading={this.props.authenticatingUser}
           error={this.props.failedLogin}
         >
-          <Form.Field
-              control={Input}
+          <Message error header={this.props.failedLogin ? this.props.error : null} />
+          <Form.Input
               label='Username'
               placeholder='Username'
               name='username'
@@ -36,17 +36,19 @@ class Login extends React.Component {
               value={this.state.username}
               onChange={this.handleChange}
           />
-          <Form.Field
-              control={Input}
-              label='Password'
-              placeholder='Password'
-              name='password'
-              type='password'
-              value={this.state.password}
-              onChange={this.handleChange}
-              maxLength='32'
+          <Form.Input
+                label='Password'
+                placeholder='Password'
+                name='password'
+                type='password'
+                value={this.state.password}
+                onChange={this.handleChange}
+                maxLength='32'
           />
-          <Button type='submit'>Login</Button>
+          <Form.Button
+            type='submit'
+            disabled={!this.state.username || !this.state.password}
+            >Login</Form.Button>
         </Form>
       </Segment>
     )

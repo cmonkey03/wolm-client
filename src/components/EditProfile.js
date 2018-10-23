@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Button, Checkbox, Form, Input, Segment, TextArea } from 'semantic-ui-react';
+import { Checkbox, Form, Input, Segment, TextArea } from 'semantic-ui-react';
 import withAuth from '../hocs/withAuth';
 import ApiAdapter from '../adapter';
 import { updateUser }from '../actions/user';
@@ -44,7 +44,7 @@ class EditProfile extends React.Component {
           size='small'
           key='small'
           loading={this.props.updatingUser}
-          error={this.props.failedLogin}
+          error={this.props.failedUpdate}
         >
           <Form.Field
             control={Input}
@@ -105,13 +105,14 @@ class EditProfile extends React.Component {
           <Form.Field>
             <Checkbox label='I agree to the Terms and Conditions' />
           </Form.Field>
-          {/*{ this.state.errors && <Message
-              error
-              header='Action Forbidden'
-              content={this.state.errors.join("; ")}
-              />
-          }*/}
-          <Button type='submit'>Submit Edits</Button>
+          <Form.Button
+            type='submit'
+            disabled={!this.state.username
+              || !this.state.email
+              || !this.state.zipcode
+              || !this.state.bio
+            }
+            >Submit Edits</Form.Button>
         </Form>
       </Segment>)
     }

@@ -25,7 +25,10 @@ export const createUser = (userObj) => {
       dispatch(setCurrentUser(JSONResponse.user))
       })
     .catch(r => r.json()
-    .then(e => dispatch({ type: FAILED_SIGNUP, payload: e.message })))
+    .then(e => {
+      console.log(e)
+      debugger;
+      dispatch({ type: FAILED_SIGNUP, payload: e.error })}))
   }
 }
 
