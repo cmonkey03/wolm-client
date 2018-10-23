@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Redirect } from 'react-router';
-
+import withAuth from '../hocs/withAuth';
 import { Button, Form, Header, Icon, Menu, Message, Table } from 'semantic-ui-react';
 import moment from 'moment';
 import { createReservation } from '../actions/reservation';
@@ -30,10 +29,7 @@ class MakeReservation extends React.Component {
   }
 
   render() {
-    console.log(this.props)
-    return !this.props.loggedIn ? (
-        <Redirect to='/edit-profile' />
-      ) : (
+    return (
       <React.Fragment>
         <Header as='h2'>Make a Reservation</Header>
         {this.props.successResponse && this.props.successResponse.tour && <Message
@@ -42,7 +38,7 @@ class MakeReservation extends React.Component {
           />}
         <Header as='h3' attached='top' inverted color='teal'>Tours</Header>
           <Form
-            success={this.props.successMessage}
+            success={!!this.props.successMessage}
             loading={this.props.makingReservation}
           >
           <Table celled attached>
@@ -92,7 +88,6 @@ class MakeReservation extends React.Component {
   }
 }
 
-
 const mapStateToProps = ({tours: { tours }, users: { user, loggedIn },
   reservations: { makingReservation, successMessage, confirmedTour }}) => ({
     tours,
@@ -103,4 +98,4 @@ const mapStateToProps = ({tours: { tours }, users: { user, loggedIn },
     confirmedTour
   })
 
-export default withRouter(connect(mapStateToProps, { createReservation })(MakeReservation));
+export default withAuth(connect(mapStateToProps, { createReservation })(MakeReservation));

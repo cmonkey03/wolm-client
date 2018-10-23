@@ -24,8 +24,6 @@ class App extends Component {
     this.state = {
       errors: null,
       successResponse: null,
-      // selectedTourId: null,
-      // selectedReservationId: null,
       loggedInUser: null
     }
   }
@@ -41,42 +39,6 @@ class App extends Component {
         type: LOAD_API_DATA,
         payload
       })
-    })
-  }
-
-  // handleSubmitReservation = (e) => {
-  //   const reservationObj = {
-  //     user_id: this.state.loggedInUser.id,
-  //     tour_id: this.state.selectedTourId
-  //   }
-  //
-  //   this.ApiAdapter.postReservation(reservationObj).then(r=>{
-  //     if (r.errors) {
-  //       this.setState({errors: r.errors})
-  //     } else {
-  //       this.setState({
-  //         selectedTourId: null,
-  //         successResponse: r
-  //       })
-  //     }
-  //   })
-  // }
-  // handleTourSelect = (e) => this.setState({selectedTourId: parseInt(e.target.name)})
-
-  handleReservationSelect = (e) => this.setState({selectedReservationId: parseInt(e.target.name)})
-  handleCancelReservation = (e) => {
-    const reservationObj = {
-      id: this.state.selectedReservationId
-    }
-    this.ApiAdapter.deleteReservation(reservationObj).then(r=>{
-      if (r.errors) {
-        this.setState({errors: r.errors})
-      } else {
-        this.setState({
-          selectedReservationId: null,
-          successResponse: r
-        })
-      }
     })
   }
 
@@ -100,10 +62,10 @@ class App extends Component {
             }}
             />
           <Route exact path="/edit-profile"
-                  render={ (renderProps) => {
-                    return <EditProfile />
-                  }}
-            />
+                render={ (renderProps) => {
+                  return <EditProfile />
+                }}
+          />
           <Route exact path="/reservations"
                   render={ (renderProps) => {
                     return (
@@ -138,11 +100,11 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = ({users, tours, reservations}) => {
   return {
-    users: state.users.users,
-    tours: state.tours,
-    reservations: state.reservations
+    users,
+    tours,
+    reservations
   }
 }
 

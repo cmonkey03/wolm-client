@@ -1,12 +1,15 @@
 import {LOAD_API_DATA} from '../types';
 import {MAKING_RESERVATION} from '../types';
 import {MAKE_RESERVATION} from '../types';
+import {CANCEL_RESERVATION} from '../types';
+import {CANCELLING_RESERVATION} from '../types';
 
 const initialState = {
   reservations: [],
   makingReservation: false,
   successMessage: null,
-  confirmedTour: null
+  confirmedTour: null,
+  cancellingReservation: false
 }
 
 const reservationsReducers = (state = initialState, action) => {
@@ -21,6 +24,10 @@ const reservationsReducers = (state = initialState, action) => {
         successMessage: action.payload.message,
         confirmedTour: action.payload.tour
       }
+    case CANCEL_RESERVATION:
+      return { ...state, cancellingReservation: false}
+    case CANCELLING_RESERVATION:
+      return { ...state, cancellingReservation: true }
     default:
     return state
   }

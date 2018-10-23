@@ -1,11 +1,12 @@
 import React from 'react';
+import withAuth from '../hocs/withAuth';
 import ApiAdapter from '../adapter';
 import moment from 'moment';
 import { Button, Form, Input, Label, Message } from 'semantic-ui-react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-export default class CreateTour extends React.Component {
+class CreateTour extends React.Component {
   constructor(props) {
     super(props)
     this.ApiAdapter = new ApiAdapter()
@@ -93,3 +94,5 @@ export default class CreateTour extends React.Component {
     )
   }
 }
+
+export default withAuth(CreateTour);

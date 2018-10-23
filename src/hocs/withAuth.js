@@ -13,7 +13,7 @@ const withAuth = (WrappedComponent) => {
     render() {
       if (localStorage.getItem('jwt') && this.props.loggedIn) {
         return <WrappedComponent />
-      } else if (localStorage.getItem('jwt') && this.props.loggedIn) {
+      } else if (localStorage.getItem('jwt') && !this.props.loggedIn) {
         return <Loader active inline='centered' />
       } else {
         return <Redirect to='/login' />
@@ -33,6 +33,5 @@ const withAuth = (WrappedComponent) => {
   )(AuthorizedComponent)
 
 }
-
 
 export default withAuth;

@@ -92,10 +92,14 @@ export default class Adapter {
     })
   )
 
-  deleteReservation = (reservationObj) => (fetch(`${BASE_URL}/${Reservations}/${reservationObj.id}`, {
-      method: 'DELETE'
+  cancelReservation = (reservationObj) => (fetch(`${BASE_URL}/${Reservations}/${reservationObj.id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`
+      }
     })
-    .then(this.parseHeaders)
   )
 
 }
