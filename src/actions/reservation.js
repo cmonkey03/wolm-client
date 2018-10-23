@@ -26,5 +26,8 @@ export const createReservation = (reservationObj) => {
   }
 }
 
-const makingReservation = () => ({ type: MAKING_RESERVATION })
-const makeReservation = () => ({ type: MAKE_RESERVATION })
+const makingReservation = () => ({ type: MAKING_RESERVATION,  })
+const makeReservation = (payload) => ({
+  type: MAKE_RESERVATION,
+  payload
+})

@@ -85,7 +85,8 @@ export default class Adapter {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`
       },
       body: JSON.stringify(reservationObj)
     })

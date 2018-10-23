@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Button, Header, Icon, Menu, Message, Table } from 'semantic-ui-react';
+import { withRouter, Redirect } from 'react-router';
+
+import { Button, Form, Header, Icon, Menu, Message, Table } from 'semantic-ui-react';
 import moment from 'moment';
 import { createReservation } from '../actions/reservation';
 
@@ -28,7 +30,9 @@ class MakeReservation extends React.Component {
   }
 
   render() {
-    return(
+    return !this.props.loggedIn ? (
+        <Redirect to='/edit-profile' />
+      ) : (
       <React.Fragment>
         <Header as='h2'>Make a Reservation</Header>
         {this.props.successResponse && this.props.successResponse.tour && <Message
@@ -37,44 +41,57 @@ class MakeReservation extends React.Component {
           content={"See you " + moment(this.props.successResponse.tour.start_time).format("LLLL") + "!"}
           />}
         <Header as='h3' attached='top' inverted color='teal'>Tours</Header>
-        <Table celled attached>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell>Select Tour</Table.HeaderCell>
-            <Table.HeaderCell>Start Time</Table.HeaderCell>
-            <Table.HeaderCell>End Time</Table.HeaderCell>
-            <Table.HeaderCell>Price</Table.HeaderCell>
-            <Table.HeaderCell>Reservations</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
-        <Table.Body>
-          { this.props.tours && this.tourRow(this.props.tours) }
-        </Table.Body>
-        <Table.Footer>
-          <Table.Row>
-            <Table.HeaderCell colSpan='5'>
-              <Menu floated='right' pagination>
-                <Menu.Item as='a' icon>
-                  <Icon name='chevron left'/>
-                </Menu.Item>
-                <Menu.Item as='a' name='1'/>
-                <Menu.Item as='a' name='2'/>
-                <Menu.Item as='a' name='3'/>
-                <Menu.Item as='a' name='4'/>
-                <Menu.Item as='a' name='5'/>
-                <Menu.Item as='a' icon>
-                  <Icon name='chevron right'/>
-                </Menu.Item>
-              </Menu>
-            </Table.HeaderCell>
-          </Table.Row>
-        </Table.Footer>
-      </Table>
-    </React.Fragment>
-    )
+          <Form
+            success={this.props.successMessage}
+            loading={this.props.makingReservation}
+          >
+          <Table celled attached>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell>Select Tour</Table.HeaderCell>
+                <Table.HeaderCell>Start Time</Table.HeaderCell>
+                <Table.HeaderCell>End Time</Table.HeaderCell>
+                <Table.HeaderCell>Price</Table.HeaderCell>
+                <Table.HeaderCell>Reservations</Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              { this.props.tours && this.tourRow(this.props.tours) }
+            </Table.Body>
+            <Table.Footer>
+              <Table.Row>
+                <Table.HeaderCell colSpan='5'>
+                  <Menu floated='right' pagination>
+                    <Menu.Item as='a' icon>
+                      <Icon name='chevron left'/>
+                    </Menu.Item>
+                    <Menu.Item as='a' name='1'/>
+                    <Menu.Item as='a' name='2'/>
+                    <Menu.Item as='a' name='3'/>
+                    <Menu.Item as='a' name='4'/>
+                    <Menu.Item as='a' name='5'/>
+                    <Menu.Item as='a' icon>
+                      <Icon name='chevron right'/>
+                    </Menu.Item>
+                  </Menu>
+                </Table.HeaderCell>
+              </Table.Row>
+            </Table.Footer>
+          </Table>
+          <Message success header={this.props.successMessage ? this.props.successMessage : null} />
+        </Form>
+    </React.Fragment>)
   }
 }
 
-const mapStateToProps = ({tours: { tours }, users: { user }}) => ({tours, user})
 
-export default connect(mapStateToProps, { createReservation })(MakeReservation);
+const mapStateToProps = ({tours: { tours }, users: { user, loggedIn },
+  reservations: { makingReservation, successMessage }}) => ({
+    tours,
+    user,
+    loggedIn,
+    makingReservation,
+    successMessage
+  })
+
+export default withRouter(connect(mapStateToProps, { createReservation })(MakeReservation));
