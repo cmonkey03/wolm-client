@@ -16,10 +16,11 @@ class NavBar extends Component {
   handleClick = (e, { name }) => this.setState({ active: name })
 
   render() {
+    (console.log(this.props))
     return(
         <div>
           <Menu inverted>
-            {!this.props.user.loggedIn &&
+            {!this.props.loggedIn &&
               <Menu.Item
                 as={NavLink}
                 to="/login"
@@ -28,7 +29,7 @@ class NavBar extends Component {
                 color={colors[0]}
                 />
             }
-            {!this.props.user.loggedIn &&
+            {!this.props.loggedIn &&
               <Menu.Item
                 as={NavLink}
                 to="/signup"
@@ -36,7 +37,7 @@ class NavBar extends Component {
                 name="Signup"
                 color={colors[1]}
               />}
-            {this.props.user.loggedIn &&
+            {this.props.loggedIn &&
               <Menu.Item
                 as={NavLink}
                 to="/reservations"
@@ -44,7 +45,7 @@ class NavBar extends Component {
                 name="Reservations"
                 color={colors[3]}
               />}
-            {this.props.user.loggedIn && this.props.user.user.admin &&
+            {this.props.loggedIn && this.props.user.admin &&
               <Menu.Item
                 as={NavLink}
                 to="/admin"
@@ -52,7 +53,7 @@ class NavBar extends Component {
                 name="Administrator"
                 color={colors[4]}
               />}
-            {this.props.user.loggedIn && this.props.user.user.admin &&
+            {this.props.loggedIn && this.props.user.admin &&
               <Menu.Item
                 as={NavLink}
                 to="/new-tour"
@@ -60,7 +61,7 @@ class NavBar extends Component {
                 name="Create Tour"
                 color={colors[5]}
               />}
-            {this.props.user.loggedIn &&
+            {this.props.loggedIn &&
               <Menu.Item
                 as={NavLink}
                 to="/edit-profile"
@@ -68,12 +69,12 @@ class NavBar extends Component {
                 name="Edit Profile"
                 color={colors[2]}
               />}
-              { this.props.user.loggedIn &&
+              { this.props.loggedIn &&
                 <Menu.Item
                   as={NavLink}
                   to="/login"
                   onClick={this.props.handleLogout}
-                  name={`Logout ${this.props.user.user.username}`}
+                  name={`Logout ${this.props.user.username}`}
                   />
               }
           </Menu>
@@ -82,6 +83,9 @@ class NavBar extends Component {
   }
 }
 
-const mapStateToProps = ({ users: user }) => ({ user })
+const mapStateToProps = ({ users: { user , loggedIn }}) => ({
+  user,
+  loggedIn
+})
 
 export default connect(mapStateToProps)(NavBar)

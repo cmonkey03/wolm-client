@@ -89,9 +89,7 @@ class App extends Component {
         <Header size='huge'>WOLM</Header>
         <Header size='medium'>Website of Lower Manhattan</Header>
         <div className="body">
-          <NavBar loggedInUser={this.state.loggedInUser}
-                  handleLogout={this.handleLogout}
-                  />
+          <NavBar handleLogout={this.handleLogout} />
           <Route exact path="/login"
             render={ (renderProps) => {
               return (
