@@ -47,8 +47,6 @@ class App extends Component {
   handleReservationSelect = (e) => this.setState({selectedReservationId: parseInt(e.target.name)})
   handleTourSelect = (e) => this.setState({selectedTourId: parseInt(e.target.name)})
 
-  handleLogout = (e) => this.setState({loggedInUser: null})
-
   handleSubmitReservation = (e) => {
     const reservationObj = {
       user_id: this.state.loggedInUser.id,
@@ -89,7 +87,7 @@ class App extends Component {
         <Header size='huge'>WOLM</Header>
         <Header size='medium'>Website of Lower Manhattan</Header>
         <div className="body">
-          <NavBar handleLogout={this.handleLogout} />
+          <NavBar />
           <Route exact path="/login"
             render={ (renderProps) => {
               return (
