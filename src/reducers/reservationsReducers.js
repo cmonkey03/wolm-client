@@ -5,7 +5,8 @@ import {MAKE_RESERVATION} from '../types';
 const initialState = {
   reservations: [],
   makingReservation: false,
-  successMessage: null
+  successMessage: null,
+  confirmedTour: null
 }
 
 const reservationsReducers = (state = initialState, action) => {
@@ -15,7 +16,11 @@ const reservationsReducers = (state = initialState, action) => {
     case MAKING_RESERVATION:
       return { ...state, makingReservation: true, confirmedReservation: false }
     case MAKE_RESERVATION:
-      return { ...state, makingReservation: false, successMessage: action.payload.message }
+      return { ...state,
+        makingReservation: false,
+        successMessage: action.payload.message,
+        confirmedTour: action.payload.tour
+      }
     default:
     return state
   }

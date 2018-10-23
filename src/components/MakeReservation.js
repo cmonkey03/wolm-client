@@ -30,6 +30,7 @@ class MakeReservation extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     return !this.props.loggedIn ? (
         <Redirect to='/edit-profile' />
       ) : (
@@ -38,7 +39,6 @@ class MakeReservation extends React.Component {
         {this.props.successResponse && this.props.successResponse.tour && <Message
           success
           header={this.props.successResponse.message}
-          content={"See you " + moment(this.props.successResponse.tour.start_time).format("LLLL") + "!"}
           />}
         <Header as='h3' attached='top' inverted color='teal'>Tours</Header>
           <Form
@@ -78,7 +78,15 @@ class MakeReservation extends React.Component {
               </Table.Row>
             </Table.Footer>
           </Table>
-          <Message success header={this.props.successMessage ? this.props.successMessage : null} />
+          <Message
+            success
+            header={this.props.successMessage ? this.props.successMessage : null}
+            content={!!this.props.confirmedTour ?
+              "See you " + moment(this.props.confirmedTour.start_time).format("LLLL") + "!"
+              :
+              null
+            }
+          />
         </Form>
     </React.Fragment>)
   }
@@ -86,12 +94,13 @@ class MakeReservation extends React.Component {
 
 
 const mapStateToProps = ({tours: { tours }, users: { user, loggedIn },
-  reservations: { makingReservation, successMessage }}) => ({
+  reservations: { makingReservation, successMessage, confirmedTour }}) => ({
     tours,
     user,
     loggedIn,
     makingReservation,
-    successMessage
+    successMessage,
+    confirmedTour
   })
 
 export default withRouter(connect(mapStateToProps, { createReservation })(MakeReservation));
