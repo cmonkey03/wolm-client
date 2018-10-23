@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Button, Checkbox, Form, Input, Segment, TextArea } from 'semantic-ui-react';
-import { createUser }from '../actions/user';
+import { Checkbox, Form, Message, Segment } from 'semantic-ui-react';
+import { createUser } from '../actions/user';
 
 class Signup extends React.Component {
   constructor(props) {
@@ -44,9 +44,15 @@ class Signup extends React.Component {
   render () {
     return (
       <Segment>
-        <Form onSubmit={this.handleSignupSubmit} error>
-          <Form.Field
-            control={Input}
+        <Form
+          onSubmit={this.handleSignupSubmit}
+          size='small'
+          key='small'
+          loading={this.props.creatingUser}
+          error={this.props.failedSignup}
+        >
+          <Message error header={this.props.failedSignup ? this.props.error : null} />
+          <Form.Input
             label='Username'
             placeholder="Username"
             name="username"
@@ -55,8 +61,7 @@ class Signup extends React.Component {
             value={this.username}
             onChange={this.handleChange}
           />
-          <Form.Field
-            control={Input}
+          <Form.Input
             label='Password'
             placeholder='Password'
             name='password'
@@ -65,8 +70,7 @@ class Signup extends React.Component {
             value={this.password}
             onChange={this.handleChange}
           />
-          <Form.Field
-            control={Input}
+          <Form.Input
             label='Email'
             placeholder='email@host.com'
             name='email'
@@ -75,8 +79,7 @@ class Signup extends React.Component {
             value={this.email}
             onChange={this.handleChange}
           />
-          <Form.Field
-            control={Input}
+          <Form.Input
             label='Zipcode'
             placeholder='Zipcode'
             name='zipcode'
@@ -85,8 +88,7 @@ class Signup extends React.Component {
             value={this.zipcode}
             onChange={this.handleChange}
           />
-          <Form.Field
-            control={TextArea}
+          <Form.TextArea
             label='Bio'
             placeholder='Bio'
             name='bio'
@@ -102,20 +104,27 @@ class Signup extends React.Component {
               <Checkbox toggle label='Administrator' onChange={this.handleAdminChange}/>
             }
           </Form.Field>
-          <Form.Field>
-            <Checkbox label='I agree to the Terms and Conditions' />
-          </Form.Field>
-          {/*{ props.errors && <Message
-              error
-              header='Action Forbidden'
-              content={props.errors.join("; ")}
-              />
-          }*/}
-          <Button type='submit'>Signup</Button>
+          <Form.Checkbox label='I agree to the Terms and Conditions' />
+          <Form.Button
+            type='submit'
+            disabled={!this.state.username
+              || !this.state.password
+              || !this.state.email
+              || !this.state.zipcode
+              || !this.state.bio
+            }
+            >Signup</Form.Button>
         </Form>
       </Segment>
     )
   }
 }
 
-export default connect(null, { createUser })(Signup);
+const mapStateToProps = ({ users: { creatingUser, failedSignup, error, loggedIn } }) => ({
+  creatingUser,
+  failedSignup,
+  error,
+  loggedIn
+})
+
+export default connect(mapStateToProps, { createUser })(Signup);
