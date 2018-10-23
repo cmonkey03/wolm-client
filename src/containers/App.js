@@ -21,11 +21,6 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.ApiAdapter = new ApiAdapter()
-    this.state = {
-      errors: null,
-      successResponse: null,
-      loggedInUser: null
-    }
   }
 
   componentDidMount() {
@@ -35,6 +30,7 @@ class App extends Component {
         tours: initialAppState[1],
         reservations: initialAppState[2]
       }
+
       store.dispatch({
         type: LOAD_API_DATA,
         payload
@@ -70,11 +66,7 @@ class App extends Component {
                   render={ (renderProps) => {
                     return (
                       <React.Fragment>
-                        <Reservations loggedInUser={this.state.loggedInUser}
-                                      successResponse={this.state.successResponse}
-                                      handleReservationSelect={this.handleReservationSelect}
-                                      handleCancelReservation={this.handleCancelReservation}
-                                      />
+                        <Reservations />
                         <MakeReservation />
                       </React.Fragment>
                     )

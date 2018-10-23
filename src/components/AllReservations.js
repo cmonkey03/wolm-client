@@ -19,10 +19,6 @@ class AllReservations extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    reservations: state.reservations
-  }
-}
+const mapStateToProps = ({reservations}) => ({reservations})
 
 export default connect(mapStateToProps)(AllReservations);
