@@ -16,7 +16,7 @@ class Login extends React.Component {
 
   render() {
     return this.props.loggedIn ? (
-      <Redirect to='/edit-profile' />
+      <Redirect to='/reservations' />
     ) : (
       <Segment>
         <Form

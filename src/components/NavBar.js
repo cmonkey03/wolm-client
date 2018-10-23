@@ -16,9 +16,17 @@ class NavBar extends Component {
 
   render() {
     const {active} = this.state
-    console.log(this.state)
     return(
         <Menu inverted>
+          {!this.props.loggedIn &&
+            <Menu.Item
+              as={NavLink}
+              to="/login"
+              name="Login"
+              active={active==="Login"}
+              color={colors[0]}
+              onClick={this.handleClick}
+            />}
           {!this.props.loggedIn &&
             <Menu.Item
               as={NavLink}
@@ -28,16 +36,6 @@ class NavBar extends Component {
               color={colors[4]}
               onClick={this.handleClick}
             />}
-          {!this.props.loggedIn &&
-            <Menu.Item
-              as={NavLink}
-              to="/login"
-              name="Login"
-              active={active==="Login"}
-              color={colors[0]}
-              onClick={this.handleClick}
-              />
-          }
           {this.props.loggedIn &&
             <Menu.Item
               as={NavLink}
