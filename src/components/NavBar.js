@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
 
 const colors = ['red', 'orange', 'yellow', 'olive', 'green', 'teal', 'brown']
 
-export default class NavBar extends Component {
+class NavBar extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      active: "Login"
+      active: ""
     }
   }
 
@@ -18,7 +19,7 @@ export default class NavBar extends Component {
     return(
         <div>
           <Menu inverted>
-            {!this.props.loggedInUser &&
+            {!this.props.user.loggedIn &&
               <Menu.Item
                 as={NavLink}
                 to="/login"
@@ -27,7 +28,7 @@ export default class NavBar extends Component {
                 color={colors[0]}
                 />
             }
-            {!this.props.loggedInUser &&
+            {!this.props.user.loggedIn &&
               <Menu.Item
                 as={NavLink}
                 to="/signup"
@@ -35,7 +36,7 @@ export default class NavBar extends Component {
                 name="Signup"
                 color={colors[1]}
               />}
-            {this.props.loggedInUser &&
+            {this.props.user.loggedIn &&
               <Menu.Item
                 as={NavLink}
                 to="/reservations"
@@ -43,7 +44,7 @@ export default class NavBar extends Component {
                 name="Reservations"
                 color={colors[3]}
               />}
-            {this.props.loggedInUser && this.props.loggedInUser.administrator &&
+            {this.props.user.loggedIn && this.props.user.user.admin &&
               <Menu.Item
                 as={NavLink}
                 to="/admin"
@@ -51,7 +52,7 @@ export default class NavBar extends Component {
                 name="Administrator"
                 color={colors[4]}
               />}
-            {this.props.loggedInUser && this.props.loggedInUser.administrator &&
+            {this.props.user.loggedIn && this.props.user.user.admin &&
               <Menu.Item
                 as={NavLink}
                 to="/new-tour"
@@ -59,7 +60,7 @@ export default class NavBar extends Component {
                 name="Create Tour"
                 color={colors[5]}
               />}
-            {this.props.loggedInUser &&
+            {this.props.user.loggedIn &&
               <Menu.Item
                 as={NavLink}
                 to="/edit-profile"
@@ -67,12 +68,12 @@ export default class NavBar extends Component {
                 name="Edit Profile"
                 color={colors[2]}
               />}
-              { this.props.loggedInUser &&
+              { this.props.user.loggedIn &&
                 <Menu.Item
                   as={NavLink}
                   to="/login"
                   onClick={this.props.handleLogout}
-                  name={`Logout ${this.props.loggedInUser.username}`}
+                  name={`Logout ${this.props.user.user.username}`}
                   />
               }
           </Menu>
@@ -80,3 +81,7 @@ export default class NavBar extends Component {
       )
   }
 }
+
+const mapStateToProps = ({ users: user }) => ({ user })
+
+export default connect(mapStateToProps)(NavBar)
