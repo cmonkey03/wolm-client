@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
+import { logoutUser } from '../actions/user';
 
 const colors = ['red', 'orange', 'yellow', 'olive', 'green', 'teal', 'brown']
 
@@ -16,7 +17,6 @@ class NavBar extends Component {
   handleClick = (e, { name }) => this.setState({ active: name })
 
   render() {
-    (console.log(this.props))
     return(
         <div>
           <Menu inverted>
@@ -73,7 +73,7 @@ class NavBar extends Component {
                 <Menu.Item
                   as={NavLink}
                   to="/login"
-                  onClick={this.props.handleLogout}
+                  onClick={this.props.logoutUser}
                   name={`Logout ${this.props.user.username}`}
                   />
               }
@@ -88,4 +88,4 @@ const mapStateToProps = ({ users: { user , loggedIn }}) => ({
   loggedIn
 })
 
-export default connect(mapStateToProps)(NavBar)
+export default connect(mapStateToProps, { logoutUser })(NavBar)

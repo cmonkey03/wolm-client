@@ -2,6 +2,7 @@ import { CREATING_USER } from '../types';
 import { AUTHENTICATING_USER } from '../types';
 import { UPDATING_USER } from '../types';
 import { SET_CURRENT_USER } from '../types';
+import { LOGOUT_USER } from '../types';
 import { FAILED_SIGNUP } from '../types';
 import { FAILED_LOGIN } from '../types';
 import { FAILED_UPDATE } from '../types';
@@ -26,8 +27,6 @@ export const createUser = (userObj) => {
       })
     .catch(r => r.json()
     .then(e => {
-      console.log(e)
-      debugger;
       dispatch({ type: FAILED_SIGNUP, payload: e.error })}))
   }
 }
@@ -80,10 +79,18 @@ export const updateUser = (userObj) => {
   }
 }
 
+export const logoutUser = () => {
+  return (dispatch) => {
+    localStorage.removeItem('jwt');
+    dispatch({ type: LOGOUT_USER })
+  }
+}
+
 export const setCurrentUser = (userObj) => ({
   type: SET_CURRENT_USER,
   payload: userObj
 })
+
 
 export const creatingUser = () => ({ type: CREATING_USER })
 export const authenticatingUser = () => ({ type: AUTHENTICATING_USER })

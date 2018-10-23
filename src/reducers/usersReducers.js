@@ -3,6 +3,7 @@ import {CREATING_USER} from '../types';
 import {AUTHENTICATING_USER} from '../types';
 import {UPDATING_USER} from '../types';
 import {SET_CURRENT_USER} from '../types';
+import {LOGOUT_USER} from '../types';
 import {FAILED_SIGNUP} from '../types';
 import {FAILED_LOGIN} from '../types';
 import {FAILED_UPDATE} from '../types';
@@ -38,6 +39,8 @@ const usersReducers = (state=initialState, action) => {
         authenticatingUser: false,
         updatingUser: false,
       }
+    case LOGOUT_USER:
+      return {...state, loggedIn: false}
     case FAILED_SIGNUP:
       return {
         ...state,
