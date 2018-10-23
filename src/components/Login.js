@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Redirect } from 'react-router';
-import { Button, Form, Message, Segment } from 'semantic-ui-react';
+import { Form, Message, Segment } from 'semantic-ui-react';
 import { loginUser }from '../actions/user';
 
 class Login extends React.Component {
@@ -45,7 +45,10 @@ class Login extends React.Component {
                 onChange={this.handleChange}
                 maxLength='32'
           />
-          <Button type='submit'>Login</Button>
+          <Form.Button
+            type='submit'
+            disabled={!this.state.username || !this.state.password}
+            >Login</Form.Button>
         </Form>
       </Segment>
     )
