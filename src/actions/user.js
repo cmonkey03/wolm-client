@@ -92,6 +92,6 @@ export const setCurrentUser = (userObj) => ({
 })
 
 
-export const creatingUser = () => ({ type: CREATING_USER })
-export const authenticatingUser = () => ({ type: AUTHENTICATING_USER })
-export const updatingUser = () => ({ type: UPDATING_USER })
+const creatingUser = () => ({ type: CREATING_USER })
+const authenticatingUser = () => ({ type: AUTHENTICATING_USER })
+const updatingUser = () => ({ type: UPDATING_USER })

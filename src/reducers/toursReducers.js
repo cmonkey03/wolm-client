@@ -1,14 +1,18 @@
 import {LOAD_API_DATA} from '../types';
 
-const initialState = []
+const initialState = {
+  tours: [],
+  makingReservation: false,
+  confirmedReservation: false
+}
 
 const toursReducers = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_API_DATA:
-      return action.payload.tours
+      return {...state, tours: action.payload.tours}
     default:
     return state
   }
 }
 
-export default toursReducers
+export default toursReducers;

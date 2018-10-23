@@ -2,12 +2,23 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Button, Header, Icon, Menu, Message, Table } from 'semantic-ui-react';
 import moment from 'moment';
+import { createReservation } from '../actions/reservation';
 
-const MakeReservation = (props) => {
-  const tourRow = (tours) => {
+class MakeReservation extends React.Component {
+
+  handleSubmitReservation = (e) => {
+    const reservationObj = {
+      user_id: this.props.user.id,
+      tour_id: parseInt(e.target.name)
+    }
+
+    this.props.createReservation(reservationObj)
+  }
+
+  tourRow = (tours) => {
     return (tours.map((tour) => {
       return (<Table.Row key={tour.id}>
-            <Table.Cell textAlign='center'><Button size='small' onClick={props.handleTourSelect} name={tour.id}>{tour.id}</Button></Table.Cell>
+            <Table.Cell textAlign='center'><Button size='small' onClick={this.handleSubmitReservation} name={tour.id}>Book This Tour</Button></Table.Cell>
             <Table.Cell>{moment(tour.start_time).format("LLLL")}</Table.Cell>
             <Table.Cell>{moment(tour.end_time).format("LLL")}</Table.Cell>
             <Table.Cell>{tour.price}</Table.Cell>
@@ -16,57 +27,54 @@ const MakeReservation = (props) => {
     }))
   }
 
-  return(
-    <React.Fragment>
-      <Header as='h2'>Make a Reservation</Header>
-      {props.successResponse && props.successResponse.tour && <Message
-        success
-        header={props.successResponse.message}
-        content={"See you " + moment(props.successResponse.tour.start_time).format("LLLL") + "!"}
-        />}
-      <Header as='h3' attached='top' inverted color='teal'>Tours</Header>
-      <Table celled attached>
-      <Table.Header>
-        <Table.Row>
-          <Table.HeaderCell>Select Tour</Table.HeaderCell>
-          <Table.HeaderCell>Start Time</Table.HeaderCell>
-          <Table.HeaderCell>End Time</Table.HeaderCell>
-          <Table.HeaderCell>Price</Table.HeaderCell>
-          <Table.HeaderCell>Reservations</Table.HeaderCell>
-        </Table.Row>
-      </Table.Header>
-      <Table.Body>
-        { props.tours && tourRow(props.tours) }
-      </Table.Body>
-      <Table.Footer>
-        <Table.Row>
-          <Table.HeaderCell colSpan='5'>
-            <Button onClick={props.handleSubmitReservation}>Make Reservation</Button>
-            <Menu floated='right' pagination>
-              <Menu.Item as='a' icon>
-                <Icon name='chevron left'/>
-              </Menu.Item>
-              <Menu.Item as='a' name='1'/>
-              <Menu.Item as='a' name='2'/>
-              <Menu.Item as='a' name='3'/>
-              <Menu.Item as='a' name='4'/>
-              <Menu.Item as='a' name='5'/>
-              <Menu.Item as='a' icon>
-                <Icon name='chevron right'/>
-              </Menu.Item>
-            </Menu>
-          </Table.HeaderCell>
-        </Table.Row>
-      </Table.Footer>
-    </Table>
-  </React.Fragment>
-  )
-}
-
-const mapStateToProps = (state) => {
-  return {
-    tours: state.tours
+  render() {
+    return(
+      <React.Fragment>
+        <Header as='h2'>Make a Reservation</Header>
+        {this.props.successResponse && this.props.successResponse.tour && <Message
+          success
+          header={this.props.successResponse.message}
+          content={"See you " + moment(this.props.successResponse.tour.start_time).format("LLLL") + "!"}
+          />}
+        <Header as='h3' attached='top' inverted color='teal'>Tours</Header>
+        <Table celled attached>
+        <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell>Select Tour</Table.HeaderCell>
+            <Table.HeaderCell>Start Time</Table.HeaderCell>
+            <Table.HeaderCell>End Time</Table.HeaderCell>
+            <Table.HeaderCell>Price</Table.HeaderCell>
+            <Table.HeaderCell>Reservations</Table.HeaderCell>
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>
+          { this.props.tours && this.tourRow(this.props.tours) }
+        </Table.Body>
+        <Table.Footer>
+          <Table.Row>
+            <Table.HeaderCell colSpan='5'>
+              <Menu floated='right' pagination>
+                <Menu.Item as='a' icon>
+                  <Icon name='chevron left'/>
+                </Menu.Item>
+                <Menu.Item as='a' name='1'/>
+                <Menu.Item as='a' name='2'/>
+                <Menu.Item as='a' name='3'/>
+                <Menu.Item as='a' name='4'/>
+                <Menu.Item as='a' name='5'/>
+                <Menu.Item as='a' icon>
+                  <Icon name='chevron right'/>
+                </Menu.Item>
+              </Menu>
+            </Table.HeaderCell>
+          </Table.Row>
+        </Table.Footer>
+      </Table>
+    </React.Fragment>
+    )
   }
 }
 
-export default connect(mapStateToProps)(MakeReservation);
+const mapStateToProps = ({tours: { tours }, users: { user }}) => ({tours, user})
+
+export default connect(mapStateToProps, { createReservation })(MakeReservation);

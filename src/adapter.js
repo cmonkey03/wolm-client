@@ -81,7 +81,7 @@ export default class Adapter {
     .then(this.parseHeaders)
   )
 
-  postReservation = (reservationObj) => (fetch(`${BASE_URL}/${Reservations}`, {
+  createReservation = (reservationObj) => (fetch(`${BASE_URL}/${Reservations}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -89,7 +89,6 @@ export default class Adapter {
       },
       body: JSON.stringify(reservationObj)
     })
-    .then(this.parseHeaders)
   )
 
   deleteReservation = (reservationObj) => (fetch(`${BASE_URL}/${Reservations}/${reservationObj.id}`, {

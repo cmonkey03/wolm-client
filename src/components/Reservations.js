@@ -4,22 +4,22 @@ import { Button, Header, Icon, Menu, Message, Table } from 'semantic-ui-react';
 import moment from 'moment';
 
 const Reservations = (props) => {
-  const userReservations = props.reservations.filter((reservation) => reservation.user.id === props.loggedInUser.id )
-
-  const reservationRow = (reservations) => {
-    return (reservations.map((reservation) => {
-      return (<Table.Row key={reservation.id}>
-            <Table.Cell textAlign='center'><Button size='small' onClick={props.handlReservationSelect} name={reservation.id}>Select</Button></Table.Cell>
-            <Table.Cell>{moment(reservation.tour.start_time).format("LLLL")}</Table.Cell>
-            <Table.Cell>{moment(reservation.tour.end_time).format("LLL")}</Table.Cell>
-            <Table.Cell>{reservation.tour.price}</Table.Cell>
-          </Table.Row>)
-    }))
-  }
+  // const userReservations = props.user.reservations.filter((reservation) => reservation.user.id === props.loggedInUser.id )
+  //
+  // const reservationRow = (reservations) => {
+  //   return (reservations.map((reservation) => {
+  //     return (<Table.Row key={reservation.id}>
+  //           <Table.Cell textAlign='center'><Button size='small' onClick={props.handlReservationSelect} name={reservation.id}>Select</Button></Table.Cell>
+  //           <Table.Cell>{moment(reservation.tour.start_time).format("LLLL")}</Table.Cell>
+  //           <Table.Cell>{moment(reservation.tour.end_time).format("LLL")}</Table.Cell>
+  //           <Table.Cell>{reservation.tour.price}</Table.Cell>
+  //         </Table.Row>)
+  //   }))
+  // }
 
   return(
     <React.Fragment>
-      {props.successResponse && !props.successResponse.tour && <Message success header={props.successResponse.message}/>}
+      {/*{props.successResponse && !props.successResponse.tour && <Message success header={props.successResponse.message}/>}
       <Header as='h3' attached='top' inverted color='teal'>Your Reservations</Header>
       <Table celled attached>
       <Table.Header>
@@ -53,15 +53,14 @@ const Reservations = (props) => {
           </Table.HeaderCell>
         </Table.Row>
       </Table.Footer>
-    </Table>
+    </Table>*/}
   </React.Fragment>
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    reservations: state.reservations
-  }
-}
+const mapStateToProps = ({ users: { user , loggedIn }}) => ({
+  user,
+  loggedIn
+})
 
 export default connect(mapStateToProps)(Reservations);

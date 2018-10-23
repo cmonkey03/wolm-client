@@ -24,8 +24,8 @@ class App extends Component {
     this.state = {
       errors: null,
       successResponse: null,
-      selectedTourId: null,
-      selectedReservationId: null,
+      // selectedTourId: null,
+      // selectedReservationId: null,
       loggedInUser: null
     }
   }
@@ -44,27 +44,26 @@ class App extends Component {
     })
   }
 
+  // handleSubmitReservation = (e) => {
+  //   const reservationObj = {
+  //     user_id: this.state.loggedInUser.id,
+  //     tour_id: this.state.selectedTourId
+  //   }
+  //
+  //   this.ApiAdapter.postReservation(reservationObj).then(r=>{
+  //     if (r.errors) {
+  //       this.setState({errors: r.errors})
+  //     } else {
+  //       this.setState({
+  //         selectedTourId: null,
+  //         successResponse: r
+  //       })
+  //     }
+  //   })
+  // }
+  // handleTourSelect = (e) => this.setState({selectedTourId: parseInt(e.target.name)})
+
   handleReservationSelect = (e) => this.setState({selectedReservationId: parseInt(e.target.name)})
-  handleTourSelect = (e) => this.setState({selectedTourId: parseInt(e.target.name)})
-
-  handleSubmitReservation = (e) => {
-    const reservationObj = {
-      user_id: this.state.loggedInUser.id,
-      tour_id: this.state.selectedTourId
-    }
-
-    this.ApiAdapter.postReservation(reservationObj).then(r=>{
-      if (r.errors) {
-        this.setState({errors: r.errors})
-      } else {
-        this.setState({
-          selectedTourId: null,
-          successResponse: r
-        })
-      }
-    })
-  }
-
   handleCancelReservation = (e) => {
     const reservationObj = {
       id: this.state.selectedReservationId
@@ -114,11 +113,7 @@ class App extends Component {
                                       handleReservationSelect={this.handleReservationSelect}
                                       handleCancelReservation={this.handleCancelReservation}
                                       />
-                        <MakeReservation  loggedInUser={this.state.loggedInUser}
-                                          successResponse={this.state.successResponse}
-                                          handleTourSelect={this.handleTourSelect}
-                                          handleSubmitReservation={this.handleSubmitReservation}
-                                          />
+                        <MakeReservation />
                       </React.Fragment>
                     )
                   }}
