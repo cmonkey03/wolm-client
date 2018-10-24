@@ -5,7 +5,7 @@ import ApiAdapter from '../adapter';
 import { connect } from 'react-redux';
 import { LOAD_API_DATA } from '../types';
 import { withRouter } from 'react-router';
-import { Redirect, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
@@ -45,7 +45,7 @@ class App extends Component {
         <Header size='medium'>Website of Lower Manhattan</Header>
         <div className="body">
           <NavBar />
-          <Redirect exact path="/" to="/login"/>
+          {/*<Redirect exact path="/" to="/login"/>*/}
           <Route exact path="/login" render={ (renderProps) => (<Login />)} />
           <Route exact path="/signup" render={ (renderProps) => (<Signup />)} />
           <Route exact path="/edit-profile" render={ (renderProps) => (<EditProfile />) } />
