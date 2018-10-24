@@ -46,7 +46,6 @@ export default class Adapter {
         Authorization: `Bearer ${localStorage.getItem('jwt')}`
       }
     })
-    .then(this.parseHeaders)
   )
 
   createUser = (userObj) => (fetch(`${BASE_URL}/${Users}`, {

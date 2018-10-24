@@ -58,9 +58,11 @@ class Signup extends React.Component {
           size='small'
           key='small'
           loading={this.props.creatingUser}
+          success={this.props.createSuccess}
           error={this.props.failedSignup}
         >
         { this.props.failedSignup ? this.handleErrors(this.props.error) : null }
+        <Message success header="You have successfully signed up. Welcome!"/>
           <Form.Input
             label='Username'
             placeholder="Username"
@@ -129,8 +131,9 @@ class Signup extends React.Component {
   }
 }
 
-const mapStateToProps = ({ users: { creatingUser, failedSignup, error, loggedIn } }) => ({
+const mapStateToProps = ({ users: { creatingUser, createSuccess, failedSignup, error, loggedIn } }) => ({
   creatingUser,
+  createSuccess,
   failedSignup,
   error,
   loggedIn
