@@ -56,6 +56,7 @@ export const fetchCurrentUser = () => {
   return (dispatch) => {
     dispatch(authenticatingUser())
     Adapter.fetchCurrentUser()
+    .then(r=> r.json())
     .then(JSONResponse => dispatch(setCurrentUser(JSONResponse.user)))
   }
 }
