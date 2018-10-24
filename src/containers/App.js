@@ -58,8 +58,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header size='huge'>WOLM</Header>
-        <Header size='medium'>Website of Lower Manhattan</Header>
         <div className="body">
           <NavBar />
           {/*<Redirect exact path="/" to="/login"/>*/}

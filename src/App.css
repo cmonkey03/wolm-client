@@ -1,13 +1,13 @@
 .App {
   text-align: center;
-  padding-top: 20px;
 }
 
 .body {
-  padding-top: 10px;
+  height: 100%;
   padding-right: 100px;
   padding-bottom: 100px;
   padding-left: 100px;
+  /* background-color: #4d9e99; */
 }
 
 /* The timeSelect field in CreateTour comes with default
@@ -15,3 +15,12 @@ padding that pushes times out of field view. */
 .react-datepicker__time-list {
   padding: 0;
 }
+/*
+font-family: 'EB Garamond', serif;
+font-family: 'Cinzel', serif;
+font-family: 'Lobster', cursive;
+font-family: 'Old Standard TT', serif;
+font-family: 'Fredericka the Great', cursive;
+font-family: 'Cinzel Decorative', cursive;
+font-family: 'Jacques Francois', serif;
+font-family: 'IM Fell Double Pica SC', serif; */
