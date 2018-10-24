@@ -5,7 +5,7 @@ import ApiAdapter from '../adapter';
 import { connect } from 'react-redux';
 import { LOAD_API_DATA } from '../types';
 import { withRouter } from 'react-router';
-import { Route } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
@@ -45,23 +45,12 @@ class App extends Component {
         <Header size='medium'>Website of Lower Manhattan</Header>
         <div className="body">
           <NavBar />
-          <Route exact path="/login"
-            render={ (renderProps) => {
-              return (
-                <Login />
-              )
-            }}
-            />
-          <Route exact path="/signup"
-                  render={ (renderProps) => {
-                    return <Signup />
-            }}
-            />
-          <Route exact path="/edit-profile"
-                render={ (renderProps) => {
-                  return <EditProfile />
-                }}
-          />
+          <Redirect exact path="/" to="/login"/>
+          <Route exact path="/login" render={ (renderProps) => (<Login />)} />
+          <Route exact path="/signup" render={ (renderProps) => (<Signup />)} />
+          <Route exact path="/edit-profile" render={ (renderProps) => (<EditProfile />) } />
+          <Route exact path="/admin" render={ (renderProps) => (<AdminPanel />) } />
+          <Route exact path="/new-tour" render={ (renderProps) => (<CreateTour />) } />
           <Route exact path="/reservations"
                   render={ (renderProps) => {
                     return (
@@ -72,20 +61,6 @@ class App extends Component {
                     )
                   }}
             />
-          <Route exact path="/admin"
-                  render={ (renderProps) => {
-                    return (
-                      <AdminPanel />
-                    )
-                  }}
-            />
-          <Route exact path="/new-tour"
-                    render={ (renderProps) => {
-                      return (
-                        <CreateTour />
-                      )
-                    }}
-              />
         </div>
       </div>
     );
