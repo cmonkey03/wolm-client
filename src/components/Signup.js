@@ -42,6 +42,12 @@ class Signup extends React.Component {
     })
   }
 
+  handleErrors = (errors) => {
+    return errors.map((errorMessage, idx) => {
+      return <Message error key={idx} header={errorMessage} />
+    })
+  }
+
   render () {
     return this.props.loggedIn ? (
       <Redirect to='/reservations' />
@@ -52,9 +58,11 @@ class Signup extends React.Component {
           size='small'
           key='small'
           loading={this.props.creatingUser}
+          success={this.props.createSuccess}
           error={this.props.failedSignup}
         >
-          <Message error header={this.props.failedSignup ? this.props.error : null} />
+        { this.props.failedSignup ? this.handleErrors(this.props.error) : null }
+        <Message success header="You have successfully signed up. Welcome!"/>
           <Form.Input
             label='Username'
             placeholder="Username"
@@ -123,8 +131,9 @@ class Signup extends React.Component {
   }
 }
 
-const mapStateToProps = ({ users: { creatingUser, failedSignup, error, loggedIn } }) => ({
+const mapStateToProps = ({ users: { creatingUser, createSuccess, failedSignup, error, loggedIn } }) => ({
   creatingUser,
+  createSuccess,
   failedSignup,
   error,
   loggedIn

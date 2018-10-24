@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Checkbox, Form, Input, Segment, TextArea } from 'semantic-ui-react';
+import { Checkbox, Form, Input, Message, Segment, TextArea } from 'semantic-ui-react';
 import withAuth from '../hocs/withAuth';
 import ApiAdapter from '../adapter';
 import { updateUser }from '../actions/user';
@@ -36,6 +36,12 @@ class EditProfile extends React.Component {
     this.props.updateUser(userObj)
   }
 
+  handleErrors = (errors) => {
+    return errors.map((errorMessage, idx) => {
+      return <Message error key={idx} header={errorMessage} />
+    })
+  }
+
   render() {
     return (
       <Segment>
@@ -46,6 +52,7 @@ class EditProfile extends React.Component {
           loading={this.props.updatingUser}
           error={this.props.failedUpdate}
         >
+        { this.props.failedUpdate ? this.handleErrors(this.props.error) : null }
           <Form.Field
             control={Input}
             label='Username'
@@ -118,8 +125,8 @@ class EditProfile extends React.Component {
     }
 }
 
-const mapStateToProps = ({ users: { user: { id, username, password, email, zipcode, bio, admin }},
-updatingUser, failedUpdate, error, loggedIn}) => ({
+const mapStateToProps = ({ users: { user: { id, username, password, email, zipcode, bio, admin },
+updatingUser, failedUpdate, error}}) => ({
   id,
   username,
   password,
@@ -130,7 +137,6 @@ updatingUser, failedUpdate, error, loggedIn}) => ({
   updatingUser,
   failedUpdate,
   error,
-  loggedIn
 })
 
 export default withAuth(connect(mapStateToProps, { updateUser })(EditProfile))

@@ -46,7 +46,6 @@ export default class Adapter {
         Authorization: `Bearer ${localStorage.getItem('jwt')}`
       }
     })
-    .then(this.parseHeaders)
   )
 
   createUser = (userObj) => (fetch(`${BASE_URL}/${Users}`, {
@@ -70,15 +69,15 @@ export default class Adapter {
     })
   )
 
-  postTour = (tourObj) => (fetch(`${BASE_URL}/${Tours}`, {
+  createTour = (tourObj) => (fetch(`${BASE_URL}/${Tours}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`
       },
       body: JSON.stringify(tourObj)
     })
-    .then(this.parseHeaders)
   )
 
   createReservation = (reservationObj) => (fetch(`${BASE_URL}/${Reservations}`, {

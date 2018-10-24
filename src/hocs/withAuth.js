@@ -27,10 +27,7 @@ const withAuth = (WrappedComponent) => {
     }
   }
 
-  return connect(
-    mapStateToProps,
-    { fetchCurrentUser }
-  )(AuthorizedComponent)
+  return connect(mapStateToProps,{ fetchCurrentUser })(AuthorizedComponent)
 
 }
 

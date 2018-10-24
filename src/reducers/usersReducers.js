@@ -1,5 +1,6 @@
 import {LOAD_API_DATA} from '../types';
 import {CREATING_USER} from '../types';
+import {CREATED_USER} from '../types';
 import {AUTHENTICATING_USER} from '../types';
 import {UPDATING_USER} from '../types';
 import {SET_CURRENT_USER} from '../types';
@@ -12,6 +13,7 @@ const initialState = {
   users: [],
   user: null,
   creatingUser: false,
+  createSuccess: false,
   authenticatingUser: false,
   updatingUser: false,
   loggedIn: false,
@@ -27,6 +29,8 @@ const usersReducers = (state=initialState, action) => {
       return { ...state, users: action.payload.users }
     case CREATING_USER:
       return { ...state, creatingUser: true}
+    case CREATED_USER:
+      return {...state, creatingUser: false, createSuccess: true}
     case AUTHENTICATING_USER:
       return { ...state, authenticatingUser: true }
     case UPDATING_USER:
@@ -44,23 +48,25 @@ const usersReducers = (state=initialState, action) => {
     case FAILED_SIGNUP:
       return {
         ...state,
+        creatingUser: false,
         failedSignup: true,
-        error: action.payload,
-        authenticatingUser: false
+        authenticatingUser: false,
+        error: action.payload
       }
     case FAILED_LOGIN:
       return {
         ...state,
         failedLogin: true,
-        error: action.payload,
-        authenticatingUser: false
+        authenticatingUser: false,
+        error: action.payload
       }
     case FAILED_UPDATE:
       return {
         ...state,
         failedUpdate: true,
-        error: action.payload,
-        authenticatingUser: false
+        updatingUser: false,
+        authenticatingUser: false,
+        error: action.payload
       }
     default:
       return state

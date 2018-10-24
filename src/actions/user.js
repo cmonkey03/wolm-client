@@ -1,4 +1,5 @@
 import { CREATING_USER } from '../types';
+import { CREATED_USER } from '../types';
 import { AUTHENTICATING_USER } from '../types';
 import { UPDATING_USER } from '../types';
 import { SET_CURRENT_USER } from '../types';
@@ -23,11 +24,10 @@ export const createUser = (userObj) => {
         }
       })
     .then(JSONResponse => {
-      dispatch(setCurrentUser(JSONResponse.user))
+      dispatch(createdUser())
       })
     .catch(r => r.json()
-    .then(e => {
-      dispatch({ type: FAILED_SIGNUP, payload: e.error })}))
+    .then(e => dispatch({ type: FAILED_SIGNUP, payload: e.errors })))
   }
 }
 
@@ -75,7 +75,8 @@ export const updateUser = (userObj) => {
     .then(JSONResponse => {
       dispatch(setCurrentUser(JSONResponse.user))
       })
-    .catch(e => dispatch({ type: FAILED_UPDATE, payload: e.message }))
+    .catch(r => r.json()
+    .then(e => dispatch({ type: FAILED_UPDATE, payload: e.error })))
   }
 }
 
@@ -91,7 +92,7 @@ export const setCurrentUser = (userObj) => ({
   payload: userObj
 })
 
-
 const creatingUser = () => ({ type: CREATING_USER })
+const createdUser = () => ({ type: CREATED_USER })
 const authenticatingUser = () => ({ type: AUTHENTICATING_USER })
 const updatingUser = () => ({ type: UPDATING_USER })
