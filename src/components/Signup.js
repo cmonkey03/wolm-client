@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter, Redirect } from 'react-router';
 import { Checkbox, Form, Message, Segment } from 'semantic-ui-react';
 import { createUser } from '../actions/user';
 
@@ -42,7 +43,9 @@ class Signup extends React.Component {
   }
 
   render () {
-    return (
+    return this.props.loggedIn ? (
+      <Redirect to='/reservations' />
+    ) : (
       <Segment>
         <Form
           onSubmit={this.handleSignupSubmit}
@@ -127,4 +130,4 @@ const mapStateToProps = ({ users: { creatingUser, failedSignup, error, loggedIn 
   loggedIn
 })
 
-export default connect(mapStateToProps, { createUser })(Signup);
+export default withRouter(connect(mapStateToProps, { createUser })(Signup));

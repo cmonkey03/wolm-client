@@ -81,21 +81,25 @@ export default class Adapter {
     .then(this.parseHeaders)
   )
 
-  postReservation = (reservationObj) => (fetch(`${BASE_URL}/${Reservations}`, {
+  createReservation = (reservationObj) => (fetch(`${BASE_URL}/${Reservations}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`
       },
       body: JSON.stringify(reservationObj)
     })
-    .then(this.parseHeaders)
   )
 
-  deleteReservation = (reservationObj) => (fetch(`${BASE_URL}/${Reservations}/${reservationObj.id}`, {
-      method: 'DELETE'
+  cancelReservation = (reservationObj) => (fetch(`${BASE_URL}/${Reservations}/${reservationObj.id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`
+      }
     })
-    .then(this.parseHeaders)
   )
 
 }

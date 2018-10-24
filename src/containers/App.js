@@ -5,7 +5,7 @@ import ApiAdapter from '../adapter';
 import { connect } from 'react-redux';
 import { LOAD_API_DATA } from '../types';
 import { withRouter } from 'react-router';
-import { Route } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
@@ -21,13 +21,6 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.ApiAdapter = new ApiAdapter()
-    this.state = {
-      errors: null,
-      successResponse: null,
-      selectedTourId: null,
-      selectedReservationId: null,
-      loggedInUser: null
-    }
   }
 
   componentDidMount() {
@@ -37,49 +30,11 @@ class App extends Component {
         tours: initialAppState[1],
         reservations: initialAppState[2]
       }
+
       store.dispatch({
         type: LOAD_API_DATA,
         payload
       })
-    })
-  }
-
-  handleReservationSelect = (e) => this.setState({selectedReservationId: parseInt(e.target.name)})
-  handleTourSelect = (e) => this.setState({selectedTourId: parseInt(e.target.name)})
-
-  handleLogout = (e) => this.setState({loggedInUser: null})
-
-  handleSubmitReservation = (e) => {
-    const reservationObj = {
-      user_id: this.state.loggedInUser.id,
-      tour_id: this.state.selectedTourId
-    }
-
-    this.ApiAdapter.postReservation(reservationObj).then(r=>{
-      if (r.errors) {
-        this.setState({errors: r.errors})
-      } else {
-        this.setState({
-          selectedTourId: null,
-          successResponse: r
-        })
-      }
-    })
-  }
-
-  handleCancelReservation = (e) => {
-    const reservationObj = {
-      id: this.state.selectedReservationId
-    }
-    this.ApiAdapter.deleteReservation(reservationObj).then(r=>{
-      if (r.errors) {
-        this.setState({errors: r.errors})
-      } else {
-        this.setState({
-          selectedReservationId: null,
-          successResponse: r
-        })
-      }
     })
   }
 
@@ -89,69 +44,34 @@ class App extends Component {
         <Header size='huge'>WOLM</Header>
         <Header size='medium'>Website of Lower Manhattan</Header>
         <div className="body">
-          <NavBar loggedInUser={this.state.loggedInUser}
-                  handleLogout={this.handleLogout}
-                  />
-          <Route exact path="/login"
-            render={ (renderProps) => {
-              return (
-                <Login />
-              )
-            }}
-            />
-          <Route exact path="/signup"
-                  render={ (renderProps) => {
-                    return <Signup />
-            }}
-            />
-          <Route exact path="/edit-profile"
-                  render={ (renderProps) => {
-                    return <EditProfile />
-                  }}
-            />
+          <NavBar />
+          <Redirect exact path="/" to="/login"/>
+          <Route exact path="/login" render={ (renderProps) => (<Login />)} />
+          <Route exact path="/signup" render={ (renderProps) => (<Signup />)} />
+          <Route exact path="/edit-profile" render={ (renderProps) => (<EditProfile />) } />
+          <Route exact path="/admin" render={ (renderProps) => (<AdminPanel />) } />
+          <Route exact path="/new-tour" render={ (renderProps) => (<CreateTour />) } />
           <Route exact path="/reservations"
                   render={ (renderProps) => {
                     return (
                       <React.Fragment>
-                        <Reservations loggedInUser={this.state.loggedInUser}
-                                      successResponse={this.state.successResponse}
-                                      handleReservationSelect={this.handleReservationSelect}
-                                      handleCancelReservation={this.handleCancelReservation}
-                                      />
-                        <MakeReservation  loggedInUser={this.state.loggedInUser}
-                                          successResponse={this.state.successResponse}
-                                          handleTourSelect={this.handleTourSelect}
-                                          handleSubmitReservation={this.handleSubmitReservation}
-                                          />
+                        <Reservations />
+                        <MakeReservation />
                       </React.Fragment>
                     )
                   }}
             />
-          <Route exact path="/admin"
-                  render={ (renderProps) => {
-                    return (
-                      <AdminPanel />
-                    )
-                  }}
-            />
-          <Route exact path="/new-tour"
-                    render={ (renderProps) => {
-                      return (
-                        <CreateTour />
-                      )
-                    }}
-              />
         </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = ({users, tours, reservations}) => {
   return {
-    users: state.users.users,
-    tours: state.tours,
-    reservations: state.reservations
+    users,
+    tours,
+    reservations
   }
 }
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import withAuth from '../hocs/withAuth';
 import AllUsers from './AllUsers.js';
 import AllTours from './AllTours.js';
 import AllReservations from './AllReservations.js';
@@ -19,4 +20,4 @@ const AdminPanel = (props) => {
   )
 }
 
-export default AdminPanel;
+export default withAuth(AdminPanel);

@@ -21,10 +21,6 @@ class AllTours extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    tours: state.tours
-  }
-}
+const mapStateToProps = ({tours: {tours}}) => ({tours})
 
 export default connect(mapStateToProps)(AllTours);
