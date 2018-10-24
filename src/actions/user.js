@@ -75,7 +75,9 @@ export const updateUser = (userObj) => {
     .then(JSONResponse => {
       dispatch(setCurrentUser(JSONResponse.user))
       })
-    .catch(e => dispatch({ type: FAILED_UPDATE, payload: e.message }))
+    .catch(r => r.json()
+    .then(e => {
+      dispatch({ type: FAILED_UPDATE, payload: e.error })}))
   }
 }
 

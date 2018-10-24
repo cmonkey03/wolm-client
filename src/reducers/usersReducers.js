@@ -60,6 +60,7 @@ const usersReducers = (state=initialState, action) => {
         ...state,
         failedUpdate: true,
         error: action.payload,
+        updatingUser: false,
         authenticatingUser: false
       }
     default:

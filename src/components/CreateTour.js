@@ -41,11 +41,12 @@ class CreateTour extends React.Component {
   }
 
   handleErrors = (errors) => {
-    return errors.map((errorMessage) => (<Message error header={errorMessage} />))
+    return errors.map((errorMessage, idx) => {
+      return <Message error key={idx} header={errorMessage} />
+    })
   }
 
   render() {
-    console.log(this.props)
     return (
       <Segment>
         <h1>Create a Tour</h1>
