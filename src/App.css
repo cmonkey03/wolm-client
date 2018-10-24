@@ -1,13 +1,13 @@
 .App {
   text-align: center;
+  background-color: #dce5e3;
 }
 
 .body {
   height: 100%;
-  padding-right: 100px;
+  padding-right: 300px;
   padding-bottom: 100px;
-  padding-left: 100px;
-  /* background-color: #4d9e99; */
+  padding-left: 300px;
 }
 
 .navbar {
