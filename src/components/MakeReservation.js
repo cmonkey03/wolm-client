@@ -41,6 +41,15 @@ class MakeReservation extends React.Component {
             success={!!this.props.successMessage}
             loading={this.props.makingReservation}
           >
+          <Message
+            success
+            header={this.props.successMessage ? this.props.successMessage : null}
+            content={!!this.props.confirmedTour ?
+              "See you " + moment(this.props.confirmedTour.start_time).format("LLLL") + "!"
+              :
+              null
+            }
+            />
           <Table celled attached>
             <Table.Header>
               <Table.Row>
@@ -74,15 +83,6 @@ class MakeReservation extends React.Component {
               </Table.Row>
             </Table.Footer>
           </Table>
-          <Message
-            success
-            header={this.props.successMessage ? this.props.successMessage : null}
-            content={!!this.props.confirmedTour ?
-              "See you " + moment(this.props.confirmedTour.start_time).format("LLLL") + "!"
-              :
-              null
-            }
-          />
         </Form>
     </React.Fragment>)
   }

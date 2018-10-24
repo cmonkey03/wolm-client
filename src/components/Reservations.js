@@ -21,7 +21,7 @@ const Reservations = (props) => {
     const reservationObj = { id: e.target.name }
     props.cancelReservation(reservationObj)
   }
-
+  console.log(props)
   return (
     <React.Fragment>
       {props.successResponse && !props.successResponse.tour && <Message success header={props.successResponse.message}/>}
