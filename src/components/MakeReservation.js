@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import withAuth from '../hocs/withAuth';
-import { Button, Form, Header, Icon, Menu, Message, Table } from 'semantic-ui-react';
+import { Button, Form, Header, Message, Table } from 'semantic-ui-react';
 import moment from 'moment';
 import { createReservation } from '../actions/reservation';
 
@@ -43,7 +43,7 @@ class MakeReservation extends React.Component {
           >
           <Message
             success
-            header={this.props.successMessage ? this.props.successMessage : null}
+            header={this.props.successMessage}
             content={!!this.props.confirmedTour ?
               "See you " + moment(this.props.confirmedTour.start_time).format("LLLL") + "!"
               :
@@ -66,7 +66,7 @@ class MakeReservation extends React.Component {
             <Table.Footer>
               <Table.Row>
                 <Table.HeaderCell colSpan='5'>
-                  <Menu floated='right' pagination>
+                  {/*<Menu floated='right' pagination>
                     <Menu.Item as='a' icon>
                       <Icon name='chevron left'/>
                     </Menu.Item>
@@ -78,7 +78,7 @@ class MakeReservation extends React.Component {
                     <Menu.Item as='a' icon>
                       <Icon name='chevron right'/>
                     </Menu.Item>
-                  </Menu>
+                  </Menu>*/}
                 </Table.HeaderCell>
               </Table.Row>
             </Table.Footer>

@@ -1,7 +1,7 @@
 import React from 'react';
 import withAuth from '../hocs/withAuth';
 import { connect } from 'react-redux';
-import { Button, Header, Form, Icon, Menu, Message, Table } from 'semantic-ui-react';
+import { Button, Header, Form, Message, Table } from 'semantic-ui-react';
 import moment from 'moment';
 import { cancelReservation } from '../actions/reservation';
 
@@ -44,7 +44,7 @@ const Reservations = (props) => {
           <Table.Footer>
             <Table.Row>
               <Table.HeaderCell colSpan='4'>
-                <Menu floated='right' pagination>
+                {/*<Menu floated='right' pagination>
                   <Menu.Item as='a' icon>
                     <Icon name='chevron left'/>
                   </Menu.Item>
@@ -56,7 +56,7 @@ const Reservations = (props) => {
                   <Menu.Item as='a' icon>
                     <Icon name='chevron right'/>
                   </Menu.Item>
-                </Menu>
+                </Menu>*/}
               </Table.HeaderCell>
             </Table.Row>
           </Table.Footer>
