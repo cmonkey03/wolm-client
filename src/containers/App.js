@@ -38,6 +38,23 @@ class App extends Component {
     })
   }
 
+  componentDidUpdate(prevProps) {
+      if (prevProps !== this.props) {
+        this.ApiAdapter.getApiData().then(initialAppState=>{
+          const payload = {
+            users: initialAppState[0],
+            tours: initialAppState[1],
+            reservations: initialAppState[2]
+          }
+
+          store.dispatch({
+            type: LOAD_API_DATA,
+            payload
+          })
+        })
+      }
+  }
+
   render() {
     return (
       <div className="App">
