@@ -34,7 +34,7 @@ class Reservations extends React.Component {
     return (
       <React.Fragment>
         {this.props.successResponse && !this.props.successResponse.tour && <Message success header={this.props.successResponse.message}/>}
-        <Header as='h3' attached='top' inverted color='teal'>Your Reservations</Header>
+        <Header as='h3' attached='top' inverted>Your Reservations</Header>
         <Form
           loading={this.props.cancellingReservation}
         >

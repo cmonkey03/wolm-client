@@ -27,7 +27,7 @@ class NavBar extends Component {
   render() {
     const {active} = this.state
     return(
-        <Menu widths={this.handleMenuSize()}>
+        <Menu widths={this.handleMenuSize()} inverted>
           {!this.props.loggedIn &&
             <Menu.Item
               as={NavLink}

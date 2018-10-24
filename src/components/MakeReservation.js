@@ -36,7 +36,7 @@ class MakeReservation extends React.Component {
           success
           header={this.props.successResponse.message}
           />}
-        <Header as='h3' attached='top' inverted color='teal'>Tours</Header>
+        <Header as='h3' attached='top' inverted>Tours</Header>
           <Form
             success={!!this.props.successMessage}
             loading={this.props.makingReservation}

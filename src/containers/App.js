@@ -58,8 +58,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="body">
-          <NavBar />
+          <NavBar className="navbar" />
+          <div className="body">
           {/*<Redirect exact path="/" to="/login"/>*/}
           <Route exact path="/login" render={ (renderProps) => (<Login />)} />
           <Route exact path="/signup" render={ (renderProps) => (<Signup />)} />
