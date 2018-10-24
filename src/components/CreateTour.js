@@ -4,7 +4,7 @@ import withAuth from '../hocs/withAuth';
 import ApiAdapter from '../adapter';
 import moment from 'moment';
 import {createTour} from '../actions/tour';
-import { Button, Form, Input, Label } from 'semantic-ui-react';
+import { Button, Form, Input, Label, Message, Segment } from 'semantic-ui-react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -35,16 +35,28 @@ class CreateTour extends React.Component {
       startTime: moment(),
       endTime: moment(),
       price: 0,
-      errors: null
+      error: null
     })
 
   }
 
+  handleErrors = (errors) => {
+    return errors.map((errorMessage) => (<Message error header={errorMessage} />))
+  }
+
   render() {
+    console.log(this.props)
     return (
-      <React.Fragment>
+      <Segment>
         <h1>Create a Tour</h1>
-        <Form onSubmit={this.handleTourSubmit}>
+        <Form
+          onSubmit={this.handleTourSubmit}
+          size='small'
+          key='small'
+          loading={this.props.creatingTour}
+          error={this.props.failedCreateTour}
+        >
+        { this.props.failedCreateTour ? this.handleErrors(this.props.error) : null }
           <Form.Field>
             <Label>Start Time</Label>
             <DatePicker selected={this.state.startTime}
@@ -81,15 +93,15 @@ class CreateTour extends React.Component {
           </Form.Field>
           <Button type='submit'>Create Tour</Button>
         </Form>
-        {/*{ this.state.errors && <Message
-          error
-          header='Action Forbidden'
-          content={this.state.errors.join("; ")}
-          />
-      }*/}
-      </React.Fragment>
+    </Segment>
     )
   }
 }
 
-export default withAuth(connect(null, {createTour})(CreateTour));
+const mapStateToProps = ({tours: { creatingTour, error, failedCreateTour }}) => ({
+    creatingTour,
+    failedCreateTour,
+    error
+  })
+
+export default withAuth(connect(mapStateToProps, {createTour})(CreateTour));

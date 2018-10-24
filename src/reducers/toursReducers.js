@@ -6,7 +6,8 @@ import {FAILED_CREATE_TOUR} from '../types';
 const initialState = {
   tours: [],
   creatingTour: false,
-  errors: null
+  failedCreateTour: false,
+  error: null
 }
 
 const toursReducers = (state = initialState, action) => {
@@ -14,11 +15,19 @@ const toursReducers = (state = initialState, action) => {
     case LOAD_API_DATA:
       return {...state, tours: action.payload.tours}
     case CREATING_TOUR:
-      return {...state, creatingTour: true}
+      return {
+        ...state,
+        creatingTour: true,
+        failedCreateTour: false
+      }
     case CREATE_TOUR:
       return {...state, creatingTour: false, }
     case FAILED_CREATE_TOUR:
-      return {...state, creatingTour: false, errors: action.payload }
+      return {
+        ...state,
+        creatingTour: false,
+        failedCreateTour: true,
+        error: action.payload }
     default:
       return state
   }

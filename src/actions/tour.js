@@ -20,10 +20,10 @@ export const createTour = (tourObj) => {
     .then(JSONResponse => {
       dispatch(createdTour(JSONResponse))
       })
-    .catch(e => dispatch({ type: FAILED_CREATE_TOUR, payload: e.message }))
+    .catch(r => r.json()
+    .then(e => dispatch({ type: FAILED_CREATE_TOUR, payload: e.errors })))
   }
 }
-
 
 const creatingTour = () => ({ type: CREATING_TOUR })
 const createdTour = (payload) => ({
