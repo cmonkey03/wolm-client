@@ -8,15 +8,6 @@ import { fetchCurrentUser } from '../actions/user';
 
 class Reservations extends React.Component {
 
-  componentDidUpdate(prevProps) {
-    console.log(prevProps.user.reservations)
-    console.log(this.props.user.reservations)
-    if (prevProps.user.reservations !== this.props.user.reservations) {
-      // this.props.fetchCurrentUser()
-      console.log("error")
-    }
-  }
-
   reservationRow = (reservations) => {
     return (reservations.map((reservation) => {
       return (<Table.Row key={reservation.id}>

@@ -2,6 +2,9 @@ import {MAKING_RESERVATION} from '../types';
 import {MAKE_RESERVATION} from '../types';
 import {CANCEL_RESERVATION} from '../types';
 import {CANCELLING_RESERVATION} from '../types';
+import {RENDER_RESERVED_TOUR} from '../types';
+import {RENDER_DELETE_RESERVATION} from '../types';
+import {UNMOUNT_MAKE_RESERVATION} from '../types';
 import ApiAdapter from '../adapter';
 
 const Adapter = new ApiAdapter()
@@ -20,11 +23,12 @@ export const createReservation = (reservationObj) => {
       })
     .then(JSONResponse => {
       dispatch(makeReservation(JSONResponse))
-      })
-    .catch(r => r.json()
-    .then(e => {
-      // dispatch()
-    }))
+      dispatch(renderReservation(JSONResponse))
+    })
+    // .catch(r => r.json()
+    // .then(e => {
+    //   // dispatch()
+    // }))
   }
 }
 
@@ -42,11 +46,18 @@ export const cancelReservation = (reservationObj) => {
       })
     .then(JSONResponse => {
       dispatch(deleteReservation(JSONResponse))
-      })
-    .catch(r => r.json()
-    .then(e => {
-      // dispatch()
-    }))
+      dispatch(renderDeleteReservation(reservationObj))
+    })
+    // .catch(r => r.json()
+    // .then(e => {
+    //   // dispatch()
+    // }))
+  }
+}
+
+export const unmountMakeReservation = () => {
+  return (dispatch) => {
+    dispatch({ type: UNMOUNT_MAKE_RESERVATION })
   }
 }
 
@@ -58,5 +69,13 @@ const makeReservation = (payload) => ({
 const cancellingReservation = () => ({ type: CANCELLING_RESERVATION})
 const deleteReservation = (payload) => ({
   type: CANCEL_RESERVATION,
+  payload
+})
+const renderReservation = (payload) => ({
+  type: RENDER_RESERVED_TOUR,
+  payload
+})
+const renderDeleteReservation = (payload) => ({
+  type: RENDER_DELETE_RESERVATION,
   payload
 })
