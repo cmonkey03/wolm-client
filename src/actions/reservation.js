@@ -3,6 +3,7 @@ import {MAKE_RESERVATION} from '../types';
 import {CANCEL_RESERVATION} from '../types';
 import {CANCELLING_RESERVATION} from '../types';
 import { RENDER_RESERVED_TOUR } from '../types';
+import {UNMOUNT_MAKE_RESERVATION} from '../types';
 import ApiAdapter from '../adapter';
 
 const Adapter = new ApiAdapter()
@@ -52,16 +53,26 @@ export const cancelReservation = (reservationObj) => {
   }
 }
 
+export const unmountMakeReservation = () => {
+  return (dispatch) => {
+    dispatch({ type: UNMOUNT_MAKE_RESERVATION })
+  }
+}
+
 const makingReservation = () => ({ type: MAKING_RESERVATION })
+
 const makeReservation = (payload) => ({
   type: MAKE_RESERVATION,
   payload
 })
+
 const cancellingReservation = () => ({ type: CANCELLING_RESERVATION})
+
 const deleteReservation = (payload) => ({
   type: CANCEL_RESERVATION,
   payload
 })
+
 const renderReservation = (payload) => ({
   type: RENDER_RESERVED_TOUR,
   payload

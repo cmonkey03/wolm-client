@@ -4,8 +4,13 @@ import withAuth from '../hocs/withAuth';
 import { Button, Form, Header, Message, Table } from 'semantic-ui-react';
 import moment from 'moment';
 import { createReservation } from '../actions/reservation';
+import { unmountMakeReservation } from '../actions/reservation';
 
 class MakeReservation extends React.Component {
+
+  componentWillUnmount() {
+    this.props.unmountMakeReservation()
+  }
 
   findTour(tour_id, tours) {
     const tour = tours.find((tour) => tour.id === tour_id)
@@ -103,4 +108,4 @@ const mapStateToProps = ({tours: { tours }, users: { user, loggedIn },
     confirmedTour
   })
 
-export default withAuth(connect(mapStateToProps, { createReservation })(MakeReservation));
+export default withAuth(connect(mapStateToProps, { createReservation, unmountMakeReservation })(MakeReservation));

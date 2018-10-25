@@ -3,6 +3,7 @@ import {MAKING_RESERVATION} from '../types';
 import {MAKE_RESERVATION} from '../types';
 import {CANCEL_RESERVATION} from '../types';
 import {CANCELLING_RESERVATION} from '../types';
+import {UNMOUNT_MAKE_RESERVATION} from '../types';
 
 const initialState = {
   reservations: [],
@@ -28,6 +29,14 @@ const reservationsReducers = (state = initialState, action) => {
       return { ...state, cancellingReservation: false}
     case CANCELLING_RESERVATION:
       return { ...state, cancellingReservation: true }
+    case UNMOUNT_MAKE_RESERVATION:
+      return {
+        ...state,
+        makingReservation: false,
+        successMessage: null,
+        confirmedTour: null,
+        cancellingReservation: false
+      }
     default:
     return state
   }
