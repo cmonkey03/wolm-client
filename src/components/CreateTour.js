@@ -4,6 +4,7 @@ import withAuth from '../hocs/withAuth';
 import ApiAdapter from '../adapter';
 import moment from 'moment';
 import {createTour} from '../actions/tour';
+import {unmountTour} from '../actions/tour';
 import { Button, Form, Input, Label, Message, Segment } from 'semantic-ui-react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -17,6 +18,10 @@ class CreateTour extends React.Component {
       endTime: moment(),
       price: 0
     }
+  }
+
+  componentWillUnmount() {
+    this.props.unmountTour()
   }
 
   handleStartTimeChange = (date) => this.setState({startTime: date, endTime: date})
@@ -56,7 +61,9 @@ class CreateTour extends React.Component {
           key='small'
           loading={this.props.creatingTour}
           error={this.props.failedCreateTour}
+          success={this.props.tourSuccess}
         >
+        <Message success header="You have successfully created a tour."/>
         { this.props.failedCreateTour ? this.handleErrors(this.props.error) : null }
           <Form.Field>
             <Label>Start Time</Label>
@@ -86,6 +93,7 @@ class CreateTour extends React.Component {
               <Label basic>$</Label>
               <input  type='number'
                       min='0'
+                      max='200'
                       value={this.state.price}
                       onChange={this.handlePriceChange}
                       />
@@ -99,10 +107,11 @@ class CreateTour extends React.Component {
   }
 }
 
-const mapStateToProps = ({tours: { creatingTour, error, failedCreateTour }}) => ({
+const mapStateToProps = ({tours: { creatingTour, tourSuccess, error, failedCreateTour }}) => ({
     creatingTour,
+    tourSuccess,
     failedCreateTour,
     error
   })
 
-export default withAuth(connect(mapStateToProps, {createTour})(CreateTour));
+export default withAuth(connect(mapStateToProps, {createTour, unmountTour})(CreateTour));
