@@ -3,9 +3,14 @@ import { connect } from 'react-redux';
 import { withRouter, Redirect } from 'react-router';
 import { Form, Message, Segment } from 'semantic-ui-react';
 import { loginUser }from '../actions/user';
+import { unmountUser }from '../actions/user';
 
 class Login extends React.Component {
   state = { username: '', password: '' }
+
+  componentWillUnmount() {
+    this.props.unmountUser()
+  }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
@@ -62,4 +67,4 @@ const mapStateToProps = ({ users: { authenticatingUser, failedLogin, error, logg
   loggedIn
 })
 
-export default withRouter(connect(mapStateToProps, { loginUser })(Login));
+export default withRouter(connect(mapStateToProps, { loginUser, unmountUser })(Login));

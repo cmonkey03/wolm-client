@@ -12,7 +12,15 @@ console.log(`%c INITIAL REDUX STORE`, 'color: purple', store.getState())
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      <App />
+      <React.Fragment>
+        <div className='hero-image'>
+          <p className='hero-text'>Website</p>
+          <p className='hero-text'>Of</p>
+          <p className='hero-text'>Lower</p>
+          <p className='hero-text'>Manhattan</p>
+        </div>
+        <App />
+    </React.Fragment>
     </Router>
   </Provider>,
   document.getElementById('root')

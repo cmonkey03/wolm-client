@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
 import { logoutUser } from '../actions/user';
 
-const colors = ['red', 'orange', 'yellow', 'olive', 'green', 'teal', 'brown']
+const colors = ['teal', 'olive', 'brown', 'yellow']
 
 class NavBar extends Component {
   constructor(props) {
@@ -14,10 +14,20 @@ class NavBar extends Component {
 
   handleClick = (e, { name }) => this.setState({ active: name })
 
+  handleMenuSize = () => {
+    if (this.props.loggedIn && this.props.user.admin) {
+      return 5
+    } else if (this.props.loggedIn) {
+      return 3
+    } else {
+      return 2
+    }
+  }
+
   render() {
     const {active} = this.state
     return(
-        <Menu inverted>
+        <Menu widths={this.handleMenuSize()} inverted>
           {!this.props.loggedIn &&
             <Menu.Item
               as={NavLink}
@@ -33,7 +43,7 @@ class NavBar extends Component {
               to="/signup"
               name="Signup"
               active={active==="Signup"}
-              color={colors[4]}
+              color={colors[1]}
               onClick={this.handleClick}
             />}
           {this.props.loggedIn &&
@@ -51,7 +61,7 @@ class NavBar extends Component {
               to="/admin"
               name="Administrator"
               active={active==="Administrator"}
-              color={colors[4]}
+              color={colors[1]}
               onClick={this.handleClick}
             />}
           {this.props.loggedIn && this.props.user.admin &&
@@ -60,7 +70,7 @@ class NavBar extends Component {
               to="/new-tour"
               name="Create Tour"
               active={active==="Create Tour"}
-              color={colors[5]}
+              color={colors[2]}
               onClick={this.handleClick}
             />}
           {this.props.loggedIn &&
@@ -69,7 +79,7 @@ class NavBar extends Component {
               to="/edit-profile"
               name="Edit Profile"
               active={active==="Edit Profile"}
-              color={colors[2]}
+              color={colors[3]}
               onClick={this.handleClick}
             />}
           { this.props.loggedIn &&
