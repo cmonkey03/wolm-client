@@ -1,11 +1,12 @@
 import React from 'react';
-import { Segment, Image } from 'semantic-ui-react';
+import { Segment, Header, Image } from 'semantic-ui-react';
 
 const src1 = '/fraunces-tavern.jpg'
 const src2 = '/collect-pond.png'
 
 const TourInfo = () => (
   <Segment>
+    <Header as='h1'>Tour to the Past</Header>
     <Image src={src1} size='medium' floated='left' />
     <p>
       Te eum doming eirmod, nominati pertinacia argumentum ad his. Ex eam alia facete scriptorem,
