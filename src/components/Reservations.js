@@ -9,8 +9,11 @@ import { fetchCurrentUser } from '../actions/user';
 class Reservations extends React.Component {
 
   componentDidUpdate(prevProps) {
-    if (this.props !== prevProps) {
-      this.props.fetchCurrentUser()
+    console.log(prevProps.user.reservations)
+    console.log(this.props.user.reservations)
+    if (prevProps.user.reservations !== this.props.user.reservations) {
+      // this.props.fetchCurrentUser()
+      console.log("error")
     }
   }
 
