@@ -4,6 +4,7 @@ import { Checkbox, Form, Input, Message, Segment, TextArea } from 'semantic-ui-r
 import withAuth from '../hocs/withAuth';
 import ApiAdapter from '../adapter';
 import { updateUser }from '../actions/user';
+import { unmountUser } from '../actions/user';
 
 class EditProfile extends React.Component {
   constructor(props) {
@@ -17,6 +18,10 @@ class EditProfile extends React.Component {
       admin: this.props.admin
     }
     this.ApiAdapter = new ApiAdapter()
+  }
+
+  componentWillUnmount() {
+    this.props.unmountUser()
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
@@ -51,7 +56,9 @@ class EditProfile extends React.Component {
           key='small'
           loading={this.props.updatingUser}
           error={this.props.failedUpdate}
+          success={this.props.updateSuccess}
         >
+        <Message success header="You have successfully updated your account."/>
         { this.props.failedUpdate ? this.handleErrors(this.props.error) : null }
           <Form.Field
             control={Input}
@@ -109,9 +116,6 @@ class EditProfile extends React.Component {
               <Checkbox toggle label='Administrator' onChange={this.handleAdminChange}/>
             }
           </Form.Field>
-          <Form.Field>
-            <Checkbox label='I agree to the Terms and Conditions' />
-          </Form.Field>
           <Form.Button
             type='submit'
             disabled={!this.state.username
@@ -126,7 +130,7 @@ class EditProfile extends React.Component {
 }
 
 const mapStateToProps = ({ users: { user: { id, username, password, email, zipcode, bio, admin },
-updatingUser, failedUpdate, error}}) => ({
+updatingUser, updateSuccess, failedUpdate, error}}) => ({
   id,
   username,
   password,
@@ -135,8 +139,9 @@ updatingUser, failedUpdate, error}}) => ({
   bio,
   admin,
   updatingUser,
+  updateSuccess,
   failedUpdate,
   error,
 })
 
-export default withAuth(connect(mapStateToProps, { updateUser })(EditProfile))
+export default withAuth(connect(mapStateToProps, { updateUser, unmountUser })(EditProfile))
