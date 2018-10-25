@@ -11,6 +11,7 @@ import {FAILED_SIGNUP} from '../types';
 import {FAILED_LOGIN} from '../types';
 import {FAILED_UPDATE} from '../types'
 import {RENDER_RESERVED_TOUR} from '../types';
+import {RENDER_DELETE_RESERVATION} from '../types';
 
 const initialState = {
   users: [],
@@ -94,6 +95,15 @@ const usersReducers = (state=initialState, action) => {
       return {
         ...state,
         user: {...state.user, reservations: state.user.reservations.concat(newRes)}
+      }
+    case RENDER_DELETE_RESERVATION:
+      const reservations = state.user.reservations.filter((res) => {
+        return parseInt(action.payload.id) !== parseInt(res.id)
+      })
+      console.log(reservations)
+      return {
+        ...state,
+        user: {...state.user, reservations}
       }
     default:
       return state
