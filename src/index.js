@@ -19,7 +19,9 @@ ReactDOM.render(
           <p className='hero-text'>Lower</p>
           <p className='hero-text'>Manhattan</p>
         </div>
-        <App />
+        <div className='font-change'>
+          <App  />
+        </div>
     </React.Fragment>
     </Router>
   </Provider>,
