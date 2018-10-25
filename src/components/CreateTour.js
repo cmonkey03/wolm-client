@@ -5,7 +5,7 @@ import ApiAdapter from '../adapter';
 import moment from 'moment';
 import {createTour} from '../actions/tour';
 import {unmountTour} from '../actions/tour';
-import { Button, Form, Input, Label, Message, Segment } from 'semantic-ui-react';
+import { Button, Form, Grid, Input, Label, Message, Segment } from 'semantic-ui-react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -53,56 +53,60 @@ class CreateTour extends React.Component {
 
   render() {
     return (
-      <Segment>
-        <h1>Create a Tour</h1>
-        <Form
-          onSubmit={this.handleTourSubmit}
-          size='small'
-          key='small'
-          loading={this.props.creatingTour}
-          error={this.props.failedCreateTour}
-          success={this.props.tourSuccess}
-        >
-        <Message success header="You have successfully created a tour."/>
-        { this.props.failedCreateTour ? this.handleErrors(this.props.error) : null }
-          <Form.Field>
-            <Label>Start Time</Label>
-            <DatePicker selected={this.state.startTime}
-                        showTimeSelect
-                        minDate={moment()}
-                        dateFormat="LLL"
-                        timeFormat="HH:mm"
-                        timeIntervals={15}
-                        onChange={this.handleStartTimeChange}
-                        />
-          </Form.Field>
-          <Form.Field>
-            <Label>End Time</Label>
-            <DatePicker selected={this.state.endTime}
-                        showTimeSelect
-                        minDate={this.state.endTime}
-                        dateFormat="LLL"
-                        timeFormat="HH:mm"
-                        timeIntervals={15}
-                        onChange={this.handleEndTimeChange}
-                        />
-          </Form.Field>
-          <Form.Field>
-            <Label>Price</Label>
-            <Input labelPosition='right' type='text' placeholder='Amount'>
-              <Label basic>$</Label>
-              <input  type='number'
-                      min='0'
-                      max='200'
-                      value={this.state.price}
-                      onChange={this.handlePriceChange}
-                      />
-              <Label>.00</Label>
-            </Input>
-          </Form.Field>
-          <Button type='submit'>Create Tour</Button>
-        </Form>
-    </Segment>
+      <Grid centered columns={2}>
+        <Grid.Column>
+          <Segment>
+            <h1>Create a Tour</h1>
+            <Form
+              onSubmit={this.handleTourSubmit}
+              size='small'
+              key='small'
+              loading={this.props.creatingTour}
+              error={this.props.failedCreateTour}
+              success={this.props.tourSuccess}
+            >
+            <Message success header="You have successfully created a tour."/>
+            { this.props.failedCreateTour ? this.handleErrors(this.props.error) : null }
+              <Form.Field>
+                <Label>Start Time</Label>
+                <DatePicker selected={this.state.startTime}
+                            showTimeSelect
+                            minDate={moment()}
+                            dateFormat="LLL"
+                            timeFormat="HH:mm"
+                            timeIntervals={15}
+                            onChange={this.handleStartTimeChange}
+                            />
+              </Form.Field>
+              <Form.Field>
+                <Label>End Time</Label>
+                <DatePicker selected={this.state.endTime}
+                            showTimeSelect
+                            minDate={this.state.endTime}
+                            dateFormat="LLL"
+                            timeFormat="HH:mm"
+                            timeIntervals={15}
+                            onChange={this.handleEndTimeChange}
+                            />
+              </Form.Field>
+              <Form.Field>
+                <Label>Price</Label>
+                <Input labelPosition='right' type='text' placeholder='Amount'>
+                  <Label basic>$</Label>
+                  <input  type='number'
+                          min='0'
+                          max='200'
+                          value={this.state.price}
+                          onChange={this.handlePriceChange}
+                          />
+                  <Label>.00</Label>
+                </Input>
+              </Form.Field>
+              <Button type='submit'>Create Tour</Button>
+            </Form>
+        </Segment>
+      </Grid.Column>
+    </Grid>
     )
   }
 }

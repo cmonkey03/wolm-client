@@ -6,7 +6,7 @@ const src2 = '/collect-pond.png'
 
 const TourInfo = () => (
   <Segment>
-    <Header as='h1'>Tour to the Past</Header>
+    <Header as='h1'>The year is 1780...</Header>
     <Image src={src1} size='medium' floated='left' />
     <p>
       Te eum doming eirmod, nominati pertinacia argumentum ad his. Ex eam alia facete scriptorem,
