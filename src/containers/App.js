@@ -5,7 +5,7 @@ import ApiAdapter from '../adapter';
 import { connect } from 'react-redux';
 import { LOAD_API_DATA } from '../types';
 import { withRouter } from 'react-router';
-import { Route, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import Login from '../components/Login';
 import Signup from '../components/Signup';

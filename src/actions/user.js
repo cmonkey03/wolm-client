@@ -1,6 +1,7 @@
 import { CREATING_USER } from '../types';
 import { CREATED_USER } from '../types';
 import { AUTHENTICATING_USER } from '../types';
+import { UNMOUNT_USER_FORM } from '../types';
 import { UPDATING_USER } from '../types';
 import { UPDATED_USER } from '../types';
 import { SET_CURRENT_USER } from '../types';
@@ -50,6 +51,12 @@ export const loginUser = (username, password) => {
       })
     .catch(r => r.json()
     .then(e => dispatch({ type: FAILED_LOGIN, payload: e.message })))
+  }
+}
+
+export const unmountUser = () => {
+  return (dispatch) => {
+    dispatch({ type: UNMOUNT_USER_FORM })
   }
 }
 

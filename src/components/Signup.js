@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter, Redirect } from 'react-router';
 import { Checkbox, Form, Message, Segment } from 'semantic-ui-react';
 import { createUser } from '../actions/user';
+import { unmountUser } from '../actions/user';
 
 class Signup extends React.Component {
   constructor(props) {
@@ -15,6 +16,10 @@ class Signup extends React.Component {
       bio: '',
       admin: false
     }
+  }
+
+  componentWillUnmount() {
+    this.props.unmountUser()
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
@@ -141,4 +146,4 @@ const mapStateToProps = ({ users: { creatingUser, createSuccess, failedSignup, e
   loggedIn
 })
 
-export default withRouter(connect(mapStateToProps, { createUser })(Signup));
+export default withRouter(connect(mapStateToProps, { createUser, unmountUser })(Signup));
