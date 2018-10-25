@@ -16,11 +16,11 @@ class NavBar extends Component {
 
   handleMenuSize = () => {
     if (this.props.loggedIn && this.props.user.admin) {
-      return 5
+      return 6
     } else if (this.props.loggedIn) {
       return 3
     } else {
-      return 2
+      return 3
     }
   }
 
@@ -28,6 +28,14 @@ class NavBar extends Component {
     const {active} = this.state
     return(
         <Menu widths={this.handleMenuSize()} inverted>
+            <Menu.Item
+              as={NavLink}
+              to="/tours"
+              name="Tours"
+              active={active==="Tours"}
+              color={colors[2]}
+              onClick={this.handleClick}
+            />
           {!this.props.loggedIn &&
             <Menu.Item
               as={NavLink}

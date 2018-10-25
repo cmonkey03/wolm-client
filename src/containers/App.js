@@ -14,6 +14,7 @@ import Reservations from '../components/Reservations';
 import AdminPanel from '../components/AdminPanel';
 import CreateTour from '../components/CreateTour';
 import MakeReservation from '../components/MakeReservation';
+import TourInfo from '../components/TourInfo';
 // import NotFound from '../components/notFound'
 
 class App extends Component {
@@ -44,6 +45,7 @@ class App extends Component {
           <div className="body">
           {/*<Redirect exact path="/" to="/login"/>*/}
           <Route exact path="/login" render={ (renderProps) => (<Login />)} />
+          <Route exact path="/tours" render={ (renderProps) => (<TourInfo />)} />
           <Route exact path="/signup" render={ (renderProps) => (<Signup />)} />
           <Route exact path="/edit-profile" render={ (renderProps) => (<EditProfile />) } />
           <Route exact path="/admin" render={ (renderProps) => (<AdminPanel />) } />
