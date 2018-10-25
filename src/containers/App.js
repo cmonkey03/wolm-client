@@ -5,7 +5,7 @@ import ApiAdapter from '../adapter';
 import { connect } from 'react-redux';
 import { LOAD_API_DATA } from '../types';
 import { withRouter } from 'react-router';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
@@ -15,7 +15,6 @@ import AdminPanel from '../components/AdminPanel';
 import CreateTour from '../components/CreateTour';
 import MakeReservation from '../components/MakeReservation';
 // import NotFound from '../components/notFound'
-import { Header } from 'semantic-ui-react';
 
 class App extends Component {
   constructor(props) {
@@ -36,23 +35,6 @@ class App extends Component {
         payload
       })
     })
-  }
-
-  componentDidUpdate(prevProps) {
-      if (prevProps !== this.props) {
-        this.ApiAdapter.getApiData().then(initialAppState=>{
-          const payload = {
-            users: initialAppState[0],
-            tours: initialAppState[1],
-            reservations: initialAppState[2]
-          }
-
-          store.dispatch({
-            type: LOAD_API_DATA,
-            payload
-          })
-        })
-      }
   }
 
   render() {
