@@ -1,8 +1,8 @@
 import React from 'react';
 import { Segment, Image } from 'semantic-ui-react';
 
-const src1 = '../assets/fraunces-tavern.jpg'
-const src2 = '../assets/collect-pond.png'
+const src1 = '/fraunces-tavern.jpg'
+const src2 = '/collect-pond.png'
 
 const TourInfo = () => (
   <Segment>
