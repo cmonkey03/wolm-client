@@ -37,14 +37,6 @@ class Signup extends React.Component {
     }
 
     this.props.createUser(userObj)
-    this.setState({
-        username: '',
-        password: '',
-        email: '',
-        zipcode: '',
-        bio: '',
-        admin: false
-    })
   }
 
   handleErrors = (errors) => {
