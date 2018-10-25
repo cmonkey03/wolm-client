@@ -7,6 +7,11 @@ import { createReservation } from '../actions/reservation';
 
 class MakeReservation extends React.Component {
 
+  findTour(tour_id, tours) {
+    const tour = tours.find((tour) => tour.id === tour_id)
+    return tour
+  }
+
   handleSubmitReservation = (e) => {
     const reservationObj = {
       user_id: this.props.user.id,

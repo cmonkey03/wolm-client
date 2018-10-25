@@ -2,6 +2,7 @@ import {MAKING_RESERVATION} from '../types';
 import {MAKE_RESERVATION} from '../types';
 import {CANCEL_RESERVATION} from '../types';
 import {CANCELLING_RESERVATION} from '../types';
+import { RENDER_RESERVED_TOUR } from '../types';
 import ApiAdapter from '../adapter';
 
 const Adapter = new ApiAdapter()
@@ -20,11 +21,12 @@ export const createReservation = (reservationObj) => {
       })
     .then(JSONResponse => {
       dispatch(makeReservation(JSONResponse))
-      })
-    .catch(r => r.json()
-    .then(e => {
-      // dispatch()
-    }))
+      dispatch(renderReservation(JSONResponse))
+    })
+    // .catch(r => r.json()
+    // .then(e => {
+    //   // dispatch()
+    // }))
   }
 }
 
@@ -58,5 +60,9 @@ const makeReservation = (payload) => ({
 const cancellingReservation = () => ({ type: CANCELLING_RESERVATION})
 const deleteReservation = (payload) => ({
   type: CANCEL_RESERVATION,
+  payload
+})
+const renderReservation = (payload) => ({
+  type: RENDER_RESERVED_TOUR,
   payload
 })

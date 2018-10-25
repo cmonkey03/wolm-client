@@ -9,7 +9,8 @@ import {SET_CURRENT_USER} from '../types';
 import {LOGOUT_USER} from '../types';
 import {FAILED_SIGNUP} from '../types';
 import {FAILED_LOGIN} from '../types';
-import {FAILED_UPDATE} from '../types';
+import {FAILED_UPDATE} from '../types'
+import {RENDER_RESERVED_TOUR} from '../types';
 
 const initialState = {
   users: [],
@@ -84,6 +85,15 @@ const usersReducers = (state=initialState, action) => {
         updatingUser: false,
         authenticatingUser: false,
         error: action.payload
+      }
+    case RENDER_RESERVED_TOUR:
+      const newRes = {
+        id: action.payload.reservation.id,
+        tour: action.payload.tour
+      }
+      return {
+        ...state,
+        user: {...state.user, reservations: state.user.reservations.concat(newRes)}
       }
     default:
       return state
