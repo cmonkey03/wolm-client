@@ -57,8 +57,8 @@ class CreateTour extends React.Component {
         <h1>Create a Tour</h1>
         <Form
           onSubmit={this.handleTourSubmit}
-          size='small'
-          key='small'
+          size='medium'
+          key='medium'
           loading={this.props.creatingTour}
           error={this.props.failedCreateTour}
           success={this.props.tourSuccess}
