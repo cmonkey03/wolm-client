@@ -45,12 +45,12 @@ class App extends Component {
         <div className="body">
           <Switch>
             <Redirect exact path="/" to="/tours"/>
-            <Route exact path="/tours" render={ (renderProps) => (<TourInfo />)} />
-            <Route exact path="/login" render={ (renderProps) => (<Login />)} />
-            <Route exact path="/signup" render={ (renderProps) => (<Signup />)} />
-            <Route exact path="/edit-profile" render={ (renderProps) => (<EditProfile />) } />
-            <Route exact path="/admin" render={ (renderProps) => (<AdminPanel />) } />
-            <Route exact path="/new-tour" render={ (renderProps) => (<CreateTour />) } />
+            <Route exact path="/tours" component={TourInfo} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/edit-profile" component={EditProfile} />
+            <Route exact path="/admin" component={AdminPanel} />
+            <Route exact path="/new-tour" component={CreateTour} />
             <Route exact path="/reservations"
                     render={ (renderProps) => {
                       return (
