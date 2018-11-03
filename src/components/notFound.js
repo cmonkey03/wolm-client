@@ -10,4 +10,4 @@ const NotFound = () => (
   </Fragment>
 )
 
-export default NotFound
+export default NotFound;
