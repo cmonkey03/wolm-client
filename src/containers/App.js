@@ -4,7 +4,7 @@ import store from '../store';
 import ApiAdapter from '../adapter';
 import { connect } from 'react-redux';
 import { LOAD_API_DATA } from '../types';
-import { withRouter } from 'react-router';
+import { Redirect, withRouter } from 'react-router';
 import { Route } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import Login from '../components/Login';
@@ -43,9 +43,9 @@ class App extends Component {
       <div className="App">
           <NavBar className="navbar" />
           <div className="body">
-          {/*<Redirect exact path="/" to="/login"/>*/}
-          <Route exact path="/login" render={ (renderProps) => (<Login />)} />
+          <Redirect exact path="/" to="/tours"/>
           <Route exact path="/tours" render={ (renderProps) => (<TourInfo />)} />
+          <Route exact path="/login" render={ (renderProps) => (<Login />)} />
           <Route exact path="/signup" render={ (renderProps) => (<Signup />)} />
           <Route exact path="/edit-profile" render={ (renderProps) => (<EditProfile />) } />
           <Route exact path="/admin" render={ (renderProps) => (<AdminPanel />) } />
