@@ -22,7 +22,7 @@ ReactDOM.render(
         <div className='font-change'>
           <App  />
         </div>
-    </React.Fragment>
+      </React.Fragment>
     </Router>
   </Provider>,
   document.getElementById('root')
