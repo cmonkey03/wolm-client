@@ -1,13 +1,16 @@
 import React, { Fragment } from 'react'
 import { Header, Image } from 'semantic-ui-react'
 
+const src1 = '/not-found.jpg'
+
+
 const NotFound = () => (
   <Fragment>
-    <Header size="huge" inverted color="purple">
-      Page Not Found lol
+    <Header size="huge" inverted color="brown">
+      Nothing to see here!
     </Header>
-    <Image src="https://thumbs.dreamstime.com/z/senior-man-shrugging-his-shoulders-8775727.jpg" />
+    <Image src={src1} />
   </Fragment>
 )
 
-export default NotFound
+export default NotFound;

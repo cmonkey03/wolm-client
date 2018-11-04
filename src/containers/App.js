@@ -4,8 +4,8 @@ import store from '../store';
 import ApiAdapter from '../adapter';
 import { connect } from 'react-redux';
 import { LOAD_API_DATA } from '../types';
-import { withRouter } from 'react-router';
-import { Route } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router';
+import { Route, Switch } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
@@ -15,7 +15,7 @@ import AdminPanel from '../components/AdminPanel';
 import CreateTour from '../components/CreateTour';
 import MakeReservation from '../components/MakeReservation';
 import TourInfo from '../components/TourInfo';
-// import NotFound from '../components/notFound'
+import NotFound from '../components/NotFound';
 
 class App extends Component {
   constructor(props) {
@@ -41,25 +41,28 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-          <NavBar className="navbar" />
-          <div className="body">
-          {/*<Redirect exact path="/" to="/login"/>*/}
-          <Route exact path="/login" render={ (renderProps) => (<Login />)} />
-          <Route exact path="/tours" render={ (renderProps) => (<TourInfo />)} />
-          <Route exact path="/signup" render={ (renderProps) => (<Signup />)} />
-          <Route exact path="/edit-profile" render={ (renderProps) => (<EditProfile />) } />
-          <Route exact path="/admin" render={ (renderProps) => (<AdminPanel />) } />
-          <Route exact path="/new-tour" render={ (renderProps) => (<CreateTour />) } />
-          <Route exact path="/reservations"
-                  render={ (renderProps) => {
-                    return (
-                      <React.Fragment>
-                        <Reservations />
-                        <MakeReservation />
-                      </React.Fragment>
-                    )
-                  }}
-            />
+        <NavBar className="navbar" />
+        <div className="body">
+          <Switch>
+            <Redirect exact path="/" to="/tours"/>
+            <Route exact path="/tours" component={TourInfo} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/edit-profile" component={EditProfile} />
+            <Route exact path="/admin" component={AdminPanel} />
+            <Route exact path="/new-tour" component={CreateTour} />
+            <Route exact path="/reservations"
+                    render={ (renderProps) => {
+                      return (
+                        <React.Fragment>
+                          <Reservations />
+                          <MakeReservation />
+                        </React.Fragment>
+                      )
+                    }}
+              />
+            <Route path="*" component={NotFound} />
+          </Switch>
         </div>
       </div>
     );
