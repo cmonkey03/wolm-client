@@ -1,6 +1,6 @@
 import React from 'react';
 import { Segment, Header, Image } from 'semantic-ui-react';
-import { Transition } from 'react-spring';
+// import { Transition } from 'react-spring';
 
 const src1 = '/fraunces-tavern.jpg'
 const src2 = '/collect-pond.png'
