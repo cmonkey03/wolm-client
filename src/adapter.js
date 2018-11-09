@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3000/api/v1'
+const BASE_URL = 'https://wolm-server.herokuapp.com/api/v1'
 
 const Users = 'users'
 const Tours = 'tours'
