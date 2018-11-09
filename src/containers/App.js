@@ -15,7 +15,6 @@ import AdminPanel from '../components/AdminPanel';
 import CreateTour from '../components/CreateTour';
 import MakeReservation from '../components/MakeReservation';
 import TourInfo from '../components/TourInfo';
-import NotFound from '../components/NotFound';
 
 class App extends Component {
   constructor(props) {
@@ -61,7 +60,6 @@ class App extends Component {
                       )
                     }}
               />
-            <Route path="*" component={NotFound} />
           </Switch>
         </div>
       </div>
