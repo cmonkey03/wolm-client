@@ -1,6 +1,6 @@
 
 # Website of Lower Manhattan
-This is the application for WOLM, a booking website where users can view tours, signup and make a reservation and request to be an administrator to view data and create tours.
+This is the single-page application for WOLM, a booking website where users can view tours, signup and make a reservation and request to be an administrator to view data and create tours.
 
 ## Tech used
 - React
@@ -13,7 +13,8 @@ This is the application for WOLM, a booking website where users can view tours, 
 - React-Spring
 
 ## Features
-- Adapter pattern accesses  WOLM API through RESTful conventions
+- Single-page app enabled by React-Router with site redirects and 404 page
+- Adapter pattern accesses WOLM API through RESTful conventions
 - Site authentication enables three-tier access: public, user and admin
 - Four validated forms and six tables enable CRUD actions for three models: tours, users and admin
 - Error and success messages are displayed after post, delete and update actions
@@ -21,10 +22,11 @@ This is the application for WOLM, a booking website where users can view tours, 
 - `componentDidUnmount` clears message displays
 
 ## Setup
-1. If you'd like to fetch from the heroku API, go to `/src/adapter.js` and ensure line 2 is commented and line 4 is uncommented
-2. If you'd like to fetch from a the localhost, clone down the [WOLM server](https://github.com/cmonkey03/wolm-server) and followed the setup instructions there.
+1. If you'd like to fetch from the heroku-hosted WOLM API, go to `/src/adapter.js` and ensure line 2 is commented and line 4 is uncommented
+2. If you'd like to fetch from a localhost WOLM API, clone down the [WOLM server](https://github.com/cmonkey03/wolm-server) and followed the setup instructions there.
 3. Clone down this repo and run `npm install http-server`.
-4. Run `http-server -p 8000` from the command line and open [http://localhost:8000/](http://localhost:8000/) in your browser.
+4. To fetch from a local WOLM API, go to `/src/adapter.js` and ensure line 4 is commented and line 2 is uncommented
+5. Run `http-server -p 8000` from the command line and open [http://localhost:8000/](http://localhost:8000/) in your browser.
 
 ## Contribute
 Thanks for your interest in contributing to WOLM!
@@ -50,3 +52,8 @@ For example:
 Pull Requests are always welcome. Ensure the PR description clearly describes the problem and solution. It should include:
 - The operating system on which you tested.
 - The relevant issue number, if applicable.
+
+## Ideas
+- To add parallax scrolling tour feature that enables users to track their location and information about key sites
+- To enable users to request to be hosts for the tour
+- Change error message handling to light up individual field where error occurred
