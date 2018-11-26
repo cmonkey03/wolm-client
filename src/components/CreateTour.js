@@ -56,7 +56,6 @@ class CreateTour extends React.Component {
       <Grid centered columns={2}>
         <Grid.Column>
           <Segment>
-            <h1>Create a Tour</h1>
             <Form
               onSubmit={this.handleTourSubmit}
               size='small'
@@ -65,8 +64,8 @@ class CreateTour extends React.Component {
               error={this.props.failedCreateTour}
               success={this.props.tourSuccess}
             >
-            <Message success header="You have successfully created a tour."/>
-            { this.props.failedCreateTour ? this.handleErrors(this.props.error) : null }
+              <Message success header="You have successfully created a tour."/>
+              { this.props.failedCreateTour ? this.handleErrors(this.props.error) : null }
               <Form.Input label="Start Time">
                 <DatePicker selected={this.state.startTime}
                             showTimeSelect
