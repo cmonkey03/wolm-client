@@ -16,7 +16,7 @@ const initialState = {
 const reservationsReducers = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_API_DATA:
-      return action.payload.reservations
+      return {...state, reservations: action.payload.reservations}
     case MAKING_RESERVATION:
       return { ...state, makingReservation: true, confirmedReservation: false }
     case MAKE_RESERVATION:
@@ -38,7 +38,7 @@ const reservationsReducers = (state = initialState, action) => {
         cancellingReservation: false
       }
     default:
-    return state
+      return state
   }
 }
 
