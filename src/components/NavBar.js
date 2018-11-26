@@ -31,63 +31,63 @@ class NavBar extends Component {
         <Menu widths={this.handleMenuSize()} inverted stackable>
             <Menu.Item
               as={NavLink}
+              exact
               to="/tours"
               name="tours"
-              active={activeItem==="tours"}
               color={colors[2]}
               onClick={this.handleClick}
             />
           {!this.props.loggedIn &&
             <Menu.Item
               as={NavLink}
+              exact
               to="/login"
               name="login"
-              active={activeItem==="login"}
               color={colors[0]}
               onClick={this.handleClick}
             />}
           {!this.props.loggedIn &&
             <Menu.Item
               as={NavLink}
+              exact
               to="/signup"
               name="signup"
-              active={activeItem==="signup"}
               color={colors[1]}
               onClick={this.handleClick}
             />}
           {this.props.loggedIn &&
             <Menu.Item
               as={NavLink}
+              exact
               to="/reservations"
               name="reservations"
-              active={activeItem==="reservations"}
               color={colors[0]}
               onClick={this.handleClick}
             />}
           {this.props.loggedIn && this.props.user.admin &&
             <Menu.Item
               as={NavLink}
+              exact
               to="/admin"
               name="administrator"
-              active={activeItem==="administrator"}
               color={colors[1]}
               onClick={this.handleClick}
             />}
           {this.props.loggedIn && this.props.user.admin &&
             <Menu.Item
               as={NavLink}
+              exact
               to="/new-tour"
               name="create Tour"
-              active={activeItem==="create Tour"}
               color={colors[2]}
               onClick={this.handleClick}
             />}
           {this.props.loggedIn &&
             <Menu.Item
               as={NavLink}
+              exact
               to="/edit-profile"
               name="edit Profile"
-              active={activeItem==="edit Profile"}
               color={colors[3]}
               onClick={this.handleClick}
             />}
