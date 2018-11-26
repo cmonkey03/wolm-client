@@ -12,7 +12,6 @@ class AllReservations extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <PaginationTable  items={this.props.reservations}
                         {...this.state}
@@ -22,6 +21,6 @@ class AllReservations extends React.Component {
   }
 }
 
-const mapStateToProps = ({reservations}) => ({reservations})
+const mapStateToProps = ({reservations: {reservations}}) => ({reservations})
 
 export default connect(mapStateToProps)(AllReservations);

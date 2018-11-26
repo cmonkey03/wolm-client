@@ -119,7 +119,6 @@ export default class PaginationTable extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <React.Fragment>
         { this.renderTable( this.props.items,
