@@ -6,6 +6,9 @@ import { logoutUser } from '../actions/user';
 
 const colors = ['teal', 'olive', 'brown', 'yellow']
 
+// Continue to explore utilizing the NavLink activeClassName prop
+//in order to indicate an active color
+
 class NavBar extends Component {
   constructor(props) {
     super(props)
@@ -34,6 +37,7 @@ class NavBar extends Component {
               exact
               to="/tours"
               name="tours"
+              active={activeItem==="tours"}
               color={colors[2]}
               onClick={this.handleClick}
             />
@@ -43,6 +47,7 @@ class NavBar extends Component {
               exact
               to="/login"
               name="login"
+              active={activeItem==="login"}
               color={colors[0]}
               onClick={this.handleClick}
             />}
@@ -52,6 +57,7 @@ class NavBar extends Component {
               exact
               to="/signup"
               name="signup"
+              active={activeItem==="signup"}
               color={colors[1]}
               onClick={this.handleClick}
             />}
@@ -61,6 +67,7 @@ class NavBar extends Component {
               exact
               to="/reservations"
               name="reservations"
+              active={activeItem==="reservations"}
               color={colors[0]}
               onClick={this.handleClick}
             />}
@@ -70,6 +77,7 @@ class NavBar extends Component {
               exact
               to="/admin"
               name="administrator"
+              active={activeItem==="administrator"}
               color={colors[1]}
               onClick={this.handleClick}
             />}
@@ -79,15 +87,16 @@ class NavBar extends Component {
               exact
               to="/new-tour"
               name="create Tour"
+              active={activeItem==="create Tour"}
               color={colors[2]}
               onClick={this.handleClick}
             />}
           {this.props.loggedIn &&
             <Menu.Item
               as={NavLink}
-              exact
               to="/edit-profile"
               name="edit Profile"
+              active={activeItem==="edit Profile"}
               color={colors[3]}
               onClick={this.handleClick}
             />}
