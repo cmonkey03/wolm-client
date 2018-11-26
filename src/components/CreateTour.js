@@ -67,8 +67,7 @@ class CreateTour extends React.Component {
             >
             <Message success header="You have successfully created a tour."/>
             { this.props.failedCreateTour ? this.handleErrors(this.props.error) : null }
-              <Form.Field>
-                <Label>Start Time</Label>
+              <Form.Input label="Start Time">
                 <DatePicker selected={this.state.startTime}
                             showTimeSelect
                             minDate={moment()}
@@ -77,9 +76,8 @@ class CreateTour extends React.Component {
                             timeIntervals={15}
                             onChange={this.handleStartTimeChange}
                             />
-              </Form.Field>
-              <Form.Field>
-                <Label>End Time</Label>
+                        </Form.Input>
+              <Form.Input label="End Time">
                 <DatePicker selected={this.state.endTime}
                             showTimeSelect
                             minDate={this.state.endTime}
@@ -88,9 +86,8 @@ class CreateTour extends React.Component {
                             timeIntervals={15}
                             onChange={this.handleEndTimeChange}
                             />
-              </Form.Field>
-              <Form.Field>
-                <Label>Price</Label>
+                        </Form.Input>
+              <Form.Input label='Price'>
                 <Input labelPosition='right' type='text' placeholder='Amount'>
                   <Label basic>$</Label>
                   <input  type='number'
@@ -101,7 +98,7 @@ class CreateTour extends React.Component {
                           />
                   <Label>.00</Label>
                 </Input>
-              </Form.Field>
+              </Form.Input>
               <Button type='submit'>Create Tour</Button>
             </Form>
         </Segment>
