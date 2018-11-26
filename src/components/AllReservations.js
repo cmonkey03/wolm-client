@@ -12,10 +12,13 @@ class AllReservations extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <PaginationTable  items={this.props.reservations}
                         {...this.state}
-                        tableName="Reservations"/>)
+                        tableName="Reservations"
+                        />
+                    )
   }
 }
 
