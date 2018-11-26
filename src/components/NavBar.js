@@ -9,10 +9,10 @@ const colors = ['teal', 'olive', 'brown', 'yellow']
 class NavBar extends Component {
   constructor(props) {
     super(props)
-    this.state = { active: "Login" }
+    this.state = {}
   }
 
-  handleClick = (e, { name }) => this.setState({ active: name })
+  handleClick = (e, { name }) => this.setState({ activeItem: name })
 
   handleMenuSize = () => {
     if (this.props.loggedIn && this.props.user.admin) {
@@ -25,14 +25,15 @@ class NavBar extends Component {
   }
 
   render() {
-    const {active} = this.state
+    const {activeItem} = this.state
+    console.log(this.state)
     return(
-        <Menu widths={this.handleMenuSize()} inverted>
+        <Menu widths={this.handleMenuSize()} inverted stackable>
             <Menu.Item
               as={NavLink}
               to="/tours"
-              name="Tours"
-              active={active==="Tours"}
+              name="tours"
+              active={activeItem==="tours"}
               color={colors[2]}
               onClick={this.handleClick}
             />
@@ -40,8 +41,8 @@ class NavBar extends Component {
             <Menu.Item
               as={NavLink}
               to="/login"
-              name="Login"
-              active={active==="Login"}
+              name="login"
+              active={activeItem==="login"}
               color={colors[0]}
               onClick={this.handleClick}
             />}
@@ -49,8 +50,8 @@ class NavBar extends Component {
             <Menu.Item
               as={NavLink}
               to="/signup"
-              name="Signup"
-              active={active==="Signup"}
+              name="signup"
+              active={activeItem==="signup"}
               color={colors[1]}
               onClick={this.handleClick}
             />}
@@ -58,8 +59,8 @@ class NavBar extends Component {
             <Menu.Item
               as={NavLink}
               to="/reservations"
-              name="Reservations"
-              active={active==="Reservations"}
+              name="reservations"
+              active={activeItem==="reservations"}
               color={colors[0]}
               onClick={this.handleClick}
             />}
@@ -67,8 +68,8 @@ class NavBar extends Component {
             <Menu.Item
               as={NavLink}
               to="/admin"
-              name="Administrator"
-              active={active==="Administrator"}
+              name="administrator"
+              active={activeItem==="administrator"}
               color={colors[1]}
               onClick={this.handleClick}
             />}
@@ -76,8 +77,8 @@ class NavBar extends Component {
             <Menu.Item
               as={NavLink}
               to="/new-tour"
-              name="Create Tour"
-              active={active==="Create Tour"}
+              name="create Tour"
+              active={activeItem==="create Tour"}
               color={colors[2]}
               onClick={this.handleClick}
             />}
@@ -85,8 +86,8 @@ class NavBar extends Component {
             <Menu.Item
               as={NavLink}
               to="/edit-profile"
-              name="Edit Profile"
-              active={active==="Edit Profile"}
+              name="edit Profile"
+              active={activeItem==="edit Profile"}
               color={colors[3]}
               onClick={this.handleClick}
             />}
