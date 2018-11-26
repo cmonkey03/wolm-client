@@ -29,7 +29,6 @@ class NavBar extends Component {
 
   render() {
     const {activeItem} = this.state
-    console.log(this.state)
     return(
         <Menu widths={this.handleMenuSize()} inverted stackable>
             <Menu.Item
