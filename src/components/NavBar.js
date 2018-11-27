@@ -36,7 +36,6 @@ class NavBar extends Component {
               header
               as={Link}
               to="/tours"
-              exact
               name="tours"
               active={activeItem==="tours"}
               color={colors[2]}
@@ -47,7 +46,6 @@ class NavBar extends Component {
               header
               as={Link}
               to="/login"
-              exact
               name="login"
               active={activeItem==="login"}
               color={colors[0]}
@@ -58,7 +56,6 @@ class NavBar extends Component {
               header
               as={Link}
               to="/signup"
-              exact
               name="signup"
               active={activeItem==="signup"}
               color={colors[1]}
@@ -69,7 +66,6 @@ class NavBar extends Component {
               header
               as={Link}
               to="/reservations"
-              exact
               name="reservations"
               active={activeItem==="reservations"}
               color={colors[0]}
@@ -80,7 +76,6 @@ class NavBar extends Component {
               header
               as={Link}
               to="/admin"
-              exact
               name="administrator"
               active={activeItem==="administrator"}
               color={colors[1]}
@@ -91,7 +86,6 @@ class NavBar extends Component {
               header
               as={Link}
               to="/new-tour"
-              exact
               name="create tour"
               active={activeItem==="create tour"}
               color={colors[2]}
@@ -102,7 +96,6 @@ class NavBar extends Component {
               header
               as={Link}
               to="/edit-profile"
-              exact
               name="edit profile"
               active={activeItem==="edit profile"}
               color={colors[3]}
