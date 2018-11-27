@@ -53,7 +53,7 @@ class CreateTour extends React.Component {
 
   render() {
     return (
-      <Grid centered>
+      <Grid centered columns={2}>
         <Grid.Column>
           <Segment>
             <Form
