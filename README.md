@@ -11,6 +11,7 @@ This is the single-page application for WOLM, a booking website where users can 
 - OAuth
 - Semantic UI React
 - React-Spring
+- React-Datepicker
 
 ## Features
 - Single-page app enabled by React-Router with site redirects and 404 page
