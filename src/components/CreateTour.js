@@ -66,27 +66,27 @@ class CreateTour extends React.Component {
             >
               <Message success header="You have successfully created a tour."/>
               { this.props.failedCreateTour ? this.handleErrors(this.props.error) : null }
-              <Form.Input label="Start Time" fluid>
-                <DatePicker selected={this.state.startTime}
-                            showTimeSelect
-                            minDate={moment()}
-                            dateFormat="LLL"
-                            timeFormat="HH:mm"
-                            timeIntervals={15}
-                            onChange={this.handleStartTimeChange}
-                            />
-              </Form.Input>
-              <Form.Input label="End Time" fluid>
-                <DatePicker selected={this.state.endTime}
-                            showTimeSelect
-                            minDate={this.state.endTime}
-                            dateFormat="LLL"
-                            timeFormat="HH:mm"
-                            timeIntervals={15}
-                            onChange={this.handleEndTimeChange}
-                            />
-              </Form.Input>
-              <Form.Input label='Price' fluid>
+              {/*Form.Input causes sizing errors with React-DatePicker*/}
+              <Label>Start Time</Label>
+              <DatePicker selected={this.state.startTime}
+                          showTimeSelect
+                          minDate={moment()}
+                          dateFormat="LLL"
+                          timeFormat="HH:mm"
+                          timeIntervals={15}
+                          onChange={this.handleStartTimeChange}
+                          />
+              <Label>End Time</Label>
+              <DatePicker selected={this.state.endTime}
+                          showTimeSelect
+                          minDate={this.state.endTime}
+                          dateFormat="LLL"
+                          timeFormat="HH:mm"
+                          timeIntervals={15}
+                          onChange={this.handleEndTimeChange}
+                          />
+              <Label>Price</Label>
+              <Form.Input fluid>
                 <Input labelPosition='right'>
                   <Label basic>$</Label>
                   <input  type='number'
