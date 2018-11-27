@@ -75,7 +75,7 @@ class CreateTour extends React.Component {
                             timeIntervals={15}
                             onChange={this.handleStartTimeChange}
                             />
-                        </Form.Input>
+              </Form.Input>
               <Form.Input label="End Time">
                 <DatePicker selected={this.state.endTime}
                             showTimeSelect
@@ -85,9 +85,9 @@ class CreateTour extends React.Component {
                             timeIntervals={15}
                             onChange={this.handleEndTimeChange}
                             />
-                        </Form.Input>
+              </Form.Input>
               <Form.Input label='Price'>
-                <Input labelPosition='right' labetype='text' placeholder='Amount'>
+                <Input labelPosition='right'>
                   <Label basic>$</Label>
                   <input  type='number'
                           min='0'
