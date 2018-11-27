@@ -33,7 +33,6 @@ class NavBar extends Component {
     return(
         <Menu widths={this.handleMenuSize()} inverted stackable>
             <Menu.Item
-              header
               as={Link}
               to="/tours"
               name="tours"
@@ -43,7 +42,6 @@ class NavBar extends Component {
             />
           {!this.props.loggedIn &&
             <Menu.Item
-              header
               as={Link}
               to="/login"
               name="login"
@@ -53,7 +51,6 @@ class NavBar extends Component {
             />}
           {!this.props.loggedIn &&
             <Menu.Item
-              header
               as={Link}
               to="/signup"
               name="signup"
@@ -63,7 +60,6 @@ class NavBar extends Component {
             />}
           {this.props.loggedIn &&
             <Menu.Item
-              header
               as={Link}
               to="/reservations"
               name="reservations"
@@ -73,7 +69,6 @@ class NavBar extends Component {
             />}
           {this.props.loggedIn && this.props.user.admin &&
             <Menu.Item
-              header
               as={Link}
               to="/admin"
               name="administrator"
@@ -83,7 +78,6 @@ class NavBar extends Component {
             />}
           {this.props.loggedIn && this.props.user.admin &&
             <Menu.Item
-              header
               as={Link}
               to="/new-tour"
               name="create tour"
@@ -93,7 +87,6 @@ class NavBar extends Component {
             />}
           {this.props.loggedIn &&
             <Menu.Item
-              header
               as={Link}
               to="/edit-profile"
               name="edit profile"
