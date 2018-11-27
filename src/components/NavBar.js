@@ -30,7 +30,7 @@ class NavBar extends Component {
   render() {
     const {activeItem} = this.state
     return(
-        <Menu widths={this.handleMenuSize()} inverted stackable>
+        <Menu widths={this.handleMenuSize()} inverted stackable attached>
             <Menu.Item
               as={Link}
               to="/tours"
