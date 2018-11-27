@@ -53,7 +53,7 @@ class CreateTour extends React.Component {
 
   render() {
     return (
-      <Grid centered columns={2}>
+      <Grid centered>
         <Grid.Column>
           <Segment>
             <Form
@@ -87,7 +87,7 @@ class CreateTour extends React.Component {
                             />
                         </Form.Input>
               <Form.Input label='Price'>
-                <Input labelPosition='right' type='text' placeholder='Amount'>
+                <Input labelPosition='right' labetype='text' placeholder='Amount'>
                   <Label basic>$</Label>
                   <input  type='number'
                           min='0'
