@@ -5,9 +5,7 @@
 
 .body {
   height: 100%;
-  /* padding-right: 300px; */
   padding-bottom: 500px;
-  /* padding-left: 300px; */
 }
 
 .navbar {
@@ -26,13 +24,3 @@ padding that pushes times out of field view. */
 .react-datepicker__time-list {
   padding: 0;
 }
-
-/*
-font-family: 'EB Garamond', serif;
-font-family: 'Cinzel', serif;
-font-family: 'Lobster', cursive;
-font-family: 'Old Standard TT', serif;
-font-family: 'Fredericka the Great', cursive;
-font-family: 'Cinzel Decorative', cursive;
-font-family: 'Jacques Francois', serif;
-font-family: 'IM Fell Double Pica SC', serif; */
