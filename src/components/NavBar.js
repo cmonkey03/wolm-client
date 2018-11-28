@@ -21,7 +21,7 @@ class NavBar extends Component {
     if (this.props.loggedIn && this.props.user.admin) {
       return 6
     } else if (this.props.loggedIn) {
-      return 3
+      return 4
     } else {
       return 3
     }
