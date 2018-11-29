@@ -24,3 +24,9 @@ padding that pushes times out of field view. */
 .react-datepicker__time-list {
   padding: 0;
 }
+
+/* As an alternative use "attached" prop on NavBar, but causes components
+to attach to NavBar*/
+.ui.menu {
+    border-radius: 0px !important;
+}
