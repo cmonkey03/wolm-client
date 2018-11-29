@@ -10,7 +10,6 @@ This is the single-page application for WOLM, a booking website where users can 
 - MomentJS
 - OAuth
 - Semantic UI React
-- React-Spring
 - React-Datepicker
 
 ## Features
