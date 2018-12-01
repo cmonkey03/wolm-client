@@ -24,3 +24,7 @@ padding that pushes times out of field view. */
 .react-datepicker__time-list {
   padding: 0;
 }
+
+.ui.menu {
+    border-radius: 0px !important;
+}
