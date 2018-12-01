@@ -25,6 +25,8 @@ padding that pushes times out of field view. */
   padding: 0;
 }
 
+/* As an alternative use "attached" prop on NavBar, but causes components
+to attach to NavBar. See https://github.com/Semantic-Org/Semantic-UI/issues/254*/
 .ui.menu {
     border-radius: 0px !important;
 }
