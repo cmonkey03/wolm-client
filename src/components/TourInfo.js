@@ -5,17 +5,6 @@ const src1 = '/fraunces-tavern.jpg'
 const src2 = '/collect-pond.png'
 
 const TourInfo = () => (
-  <React.Fragment>
-  {/*<Transition
-    items={show}
-    from={{ opacity: 0 }}
-    enter={{ opacity: 1 }}
-    leave={{ opacity: 0 }}>
-    {show =>
-      show && (props => <div style={props}>✌️</div>)
-    }
-  </Transition>
-*/}
   <Segment>
     <Header as='h1'>The year is 1780...</Header>
     <Image src={src1} size='medium' floated='left' />
@@ -49,7 +38,6 @@ const TourInfo = () => (
       ex natum rebum iisque.
     </p>
   </Segment>
-  </React.Fragment>
 )
 
 export default TourInfo
