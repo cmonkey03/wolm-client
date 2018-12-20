@@ -23,7 +23,7 @@ class Login extends React.Component {
     return this.props.loggedIn ? (
       <Redirect to='/reservations' />
     ) : (
-      <Grid centered columns={2}>
+      <Grid centered columns={3}>
         <Grid.Column>
           <Segment>
             <Form
