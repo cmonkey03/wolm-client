@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Checkbox, Form, Grid, Input, Message, Segment, TextArea } from 'semantic-ui-react';
+import { Checkbox, Form, Grid, Header, Input, Message, Segment, TextArea } from 'semantic-ui-react';
 import withAuth from '../hocs/withAuth';
 import ApiAdapter from '../adapter';
 import { updateUser }from '../actions/user';
@@ -51,6 +51,7 @@ class EditProfile extends React.Component {
     return (
       <Grid centered columns={2}>
         <Grid.Column>
+        <Header as='h2'textAlign='center'>Edit Your Profile</Header>
         <Segment>
           <Form
             onSubmit={this.handleEditSubmit}

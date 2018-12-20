@@ -5,7 +5,7 @@ import ApiAdapter from '../adapter';
 import moment from 'moment';
 import {createTour} from '../actions/tour';
 import {unmountTour} from '../actions/tour';
-import { Button, Form, Grid, Input, Label, Message, Segment } from 'semantic-ui-react';
+import { Button, Form, Grid, Header, Input, Label, Message, Segment } from 'semantic-ui-react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -55,6 +55,7 @@ class CreateTour extends React.Component {
     return (
       <Grid centered columns={2}>
         <Grid.Column>
+          <Header as='h2'textAlign='center'>Create a Tour</Header>
           <Segment>
             <Form
               onSubmit={this.handleTourSubmit}
