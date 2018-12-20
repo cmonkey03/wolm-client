@@ -39,7 +39,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div>
         <NavBar className="navbar" />
         <div className="body">
           <Switch>
