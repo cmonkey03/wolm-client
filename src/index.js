@@ -6,6 +6,7 @@ import store from './store';
 import App from './containers/App';
 import { BrowserRouter as Router } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
+import './semantic/dist/semantic.min.css';
 
 console.log(`%c INITIAL REDUX STORE`, 'color: purple', store.getState())
 

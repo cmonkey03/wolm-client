@@ -1,0 +1,7 @@
+/*******************************
+     User Global Variables
+*******************************/
+
+@fontName          : 'Jacques Francois';
+
+@pageBackground    :  #dce5e3;
