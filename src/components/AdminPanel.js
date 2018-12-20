@@ -8,7 +8,7 @@ import { Header, Icon } from 'semantic-ui-react';
 const AdminPanel = (props) => {
   return(
     <React.Fragment>
-      <Header as='h2' icon>
+      <Header as='h2' icon textAlign='center'>
       <Icon name='settings'/>
       Administrator Panel
       <Header.Subheader>Manage tours, users and reservations.</Header.Subheader>

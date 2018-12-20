@@ -41,12 +41,12 @@ class MakeReservation extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Header as='h2'>Make a Reservation</Header>
+        <Header as='h2'textAlign='center'>Make a Reservation</Header>
         {this.props.successResponse && this.props.successResponse.tour && <Message
           success
           header={this.props.successResponse.message}
           />}
-        <Header as='h3' attached='top' inverted>Tours</Header>
+        <Header as='h3' attached='top' inverted textAlign='center'>Tours</Header>
           <Form
             success={!!this.props.successMessage}
             loading={this.props.makingReservation}
