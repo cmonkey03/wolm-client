@@ -68,13 +68,13 @@ class App extends Component {
                         src="/1892-nyc-currier-ives-1920-1080.jpg"
                         fluid
                       />
-                      <figcaption>
+                    <figure className="wolm-intro">
                         <p className='hero-text'>Website</p>
                         <p className='hero-text'>Of</p>
                         <p className='hero-text'>Lower</p>
                         <p className='hero-text'>Manhattan</p>
-                      </figcaption>
-                      <NavBar className="navbar" />
+                      </figure>
+                      <NavBar className="navbar" attached/>
                   </Fragment>
                 )
               }
