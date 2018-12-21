@@ -47,40 +47,38 @@ class App extends Component {
           <p className='hero-text'>Manhattan</p>
         </div>
         <NavBar className="navbar" />
-        <div className="body">
-          <Switch>
-            <Redirect exact path="/" to="/home"/>
-            <Route exact path="/home"
-              render={(renderProps) => {
-                return (
-                    <img
-                      className="ui fluid image"
-                      alt="1892 NY Harbor"
-                      src="/1892-nyc-currier-ives-1920-1080.jpg"
-                    />
-                  )
-                }
-              }
-            />
-            <Route exact path="/tours" component={TourInfo} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" component={Signup} />
-            <Route exact path="/edit-profile" component={EditProfile} />
-            <Route exact path="/admin" component={AdminPanel} />
-            <Route exact path="/new-tour" component={CreateTour} />
-            <Route exact path="/reservations"
-              render={ (renderProps) => {
-                return (
-                  <React.Fragment>
-                    <Reservations />
-                    <MakeReservation />
-                  </React.Fragment>
+        <Switch>
+          <Redirect exact path="/" to="/home"/>
+          <Route exact path="/home"
+            render={(renderProps) => {
+              return (
+                  <img
+                    className="ui fluid image"
+                    alt="1892 NY Harbor"
+                    src="/1892-nyc-currier-ives-1920-1080.jpg"
+                  />
                 )
               }
             }
-            />
-          </Switch>
-        </div>
+          />
+          <Route exact path="/tours" component={TourInfo} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/edit-profile" component={EditProfile} />
+          <Route exact path="/admin" component={AdminPanel} />
+          <Route exact path="/new-tour" component={CreateTour} />
+          <Route exact path="/reservations"
+            render={ (renderProps) => {
+              return (
+                <React.Fragment>
+                  <Reservations />
+                  <MakeReservation />
+                </React.Fragment>
+              )
+            }
+          }
+          />
+        </Switch>
       </div>
     );
   }
