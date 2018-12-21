@@ -40,6 +40,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <div className='hero-image'>
+          <p className='hero-text'>Website</p>
+          <p className='hero-text'>Of</p>
+          <p className='hero-text'>Lower</p>
+          <p className='hero-text'>Manhattan</p>
+        </div>
         <NavBar className="navbar" />
         <div className="body">
           <Switch>
