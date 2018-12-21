@@ -25,7 +25,7 @@ class Login extends React.Component {
     ) : (
       <Grid centered columns={3}>
         <Grid.Column>
-          <Segment>
+          <Segment raised>
             <Form
               onSubmit={this.handleLoginSubmit}
               size='small'

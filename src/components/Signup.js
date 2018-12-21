@@ -51,7 +51,7 @@ class Signup extends React.Component {
     ) : (
       <Grid centered columns={2}>
         <Grid.Column>
-          <Segment>
+          <Segment raised>
             <Form
               onSubmit={this.handleSignupSubmit}
               size='small'
