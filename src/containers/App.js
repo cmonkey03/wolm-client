@@ -15,6 +15,8 @@ import AdminPanel from '../components/AdminPanel';
 import CreateTour from '../components/CreateTour';
 import MakeReservation from '../components/MakeReservation';
 import TourInfo from '../components/TourInfo';
+import { Image } from 'semantic-ui-react';
+
 
 class App extends Component {
   constructor(props) {
@@ -62,10 +64,10 @@ class App extends Component {
             render={(renderProps) => {
               return (
                   <Fragment>
-                    <img
-                      className="ui fluid image"
+                    <Image
                       alt="1892 NY Harbor"
                       src="/1892-nyc-currier-ives-1920-1080.jpg"
+                      fluid
                     />
                     <NavBar className="navbar" />
                   </Fragment>
