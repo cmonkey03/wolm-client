@@ -37,7 +37,7 @@ class App extends Component {
     })
   }
 
-  render() {
+  renderHeader() {
     return (
       <Fragment>
         <div className='hero-image'>
@@ -47,16 +47,28 @@ class App extends Component {
           <p className='hero-text'>Manhattan</p>
         </div>
         <NavBar className="navbar" />
+      </Fragment>
+    )
+  }
+
+  render() {
+    console.log()
+    return (
+      <Fragment>
+        {this.props.location.pathname !== '/home'? this.renderHeader() : null}
         <Switch>
           <Redirect exact path="/" to="/home"/>
           <Route exact path="/home"
             render={(renderProps) => {
               return (
-                  <img
-                    className="ui fluid image"
-                    alt="1892 NY Harbor"
-                    src="/1892-nyc-currier-ives-1920-1080.jpg"
-                  />
+                  <Fragment>
+                    <img
+                      className="ui fluid image"
+                      alt="1892 NY Harbor"
+                      src="/1892-nyc-currier-ives-1920-1080.jpg"
+                    />
+                    <NavBar className="navbar" />
+                  </Fragment>
                 )
               }
             }
