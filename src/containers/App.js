@@ -17,7 +17,6 @@ import MakeReservation from '../components/MakeReservation';
 import TourInfo from '../components/TourInfo';
 import { Image } from 'semantic-ui-react';
 
-
 class App extends Component {
   constructor(props) {
     super(props)
@@ -53,8 +52,8 @@ class App extends Component {
     )
   }
 
+
   render() {
-    console.log()
     return (
       <Fragment>
         {this.props.location.pathname !== '/home'? this.renderHeader() : null}
@@ -64,12 +63,18 @@ class App extends Component {
             render={(renderProps) => {
               return (
                   <Fragment>
-                    <Image
-                      alt="1892 NY Harbor"
-                      src="/1892-nyc-currier-ives-1920-1080.jpg"
-                      fluid
-                    />
-                    <NavBar className="navbar" />
+                      <Image
+                        alt="1892 NY Harbor"
+                        src="/1892-nyc-currier-ives-1920-1080.jpg"
+                        fluid
+                      />
+                      <figcaption>
+                        <p className='hero-text'>Website</p>
+                        <p className='hero-text'>Of</p>
+                        <p className='hero-text'>Lower</p>
+                        <p className='hero-text'>Manhattan</p>
+                      </figcaption>
+                      <NavBar className="navbar" />
                   </Fragment>
                 )
               }
