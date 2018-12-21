@@ -50,6 +50,18 @@ class App extends Component {
         <div className="body">
           <Switch>
             <Redirect exact path="/" to="/tours"/>
+            <Route exact path="/home"
+              render={(renderProps) => {
+                return (
+                    <img
+                      className="ui fluid image"
+                      alt="1892 NY Harbor"
+                      src="/1892-nyc-currier-ives-1920-1080.jpg"
+                    />
+                  )
+                }
+              }
+            />
             <Route exact path="/tours" component={TourInfo} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
@@ -57,15 +69,16 @@ class App extends Component {
             <Route exact path="/admin" component={AdminPanel} />
             <Route exact path="/new-tour" component={CreateTour} />
             <Route exact path="/reservations"
-                    render={ (renderProps) => {
-                      return (
-                        <React.Fragment>
-                          <Reservations />
-                          <MakeReservation />
-                        </React.Fragment>
-                      )
-                    }}
-              />
+              render={ (renderProps) => {
+                return (
+                  <React.Fragment>
+                    <Reservations />
+                    <MakeReservation />
+                  </React.Fragment>
+                )
+              }
+            }
+            />
           </Switch>
         </div>
       </div>
