@@ -7,7 +7,7 @@ const src2 = '/collect-pond.png'
 const TourInfo = () => (
   <Grid centered columns={2}>
     <Grid.Column>
-      <Segment>
+      <Segment raised>
         <Header as='h1'>The year is 1780...</Header>
         <Image src={src1} size='medium' floated='left' />
         <p>

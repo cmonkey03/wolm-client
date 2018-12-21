@@ -56,7 +56,7 @@ class CreateTour extends React.Component {
       <Grid centered columns={2}>
         <Grid.Column>
           <Header as='h2'textAlign='center'>Create a Tour</Header>
-          <Segment>
+          <Segment raised>
             <Form
               onSubmit={this.handleTourSubmit}
               size='small'

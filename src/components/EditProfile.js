@@ -52,7 +52,7 @@ class EditProfile extends React.Component {
       <Grid centered columns={2}>
         <Grid.Column>
         <Header as='h2'textAlign='center'>Edit Your Profile</Header>
-        <Segment>
+        <Segment raised>
           <Form
             onSubmit={this.handleEditSubmit}
             size='small'
