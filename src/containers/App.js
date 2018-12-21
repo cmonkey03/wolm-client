@@ -49,7 +49,7 @@ class App extends Component {
         <NavBar className="navbar" />
         <div className="body">
           <Switch>
-            <Redirect exact path="/" to="/tours"/>
+            <Redirect exact path="/" to="/home"/>
             <Route exact path="/home"
               render={(renderProps) => {
                 return (
