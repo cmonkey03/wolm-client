@@ -63,18 +63,18 @@ class App extends Component {
             render={(renderProps) => {
               return (
                   <Fragment>
-                      <Image
-                        alt="1892 NY Harbor"
-                        src="/1892-nyc-currier-ives-1920-1080.jpg"
-                        fluid
-                      />
+                    <Image
+                      alt="1892 NY Harbor"
+                      src="/1892-nyc-currier-ives-1920-1080.jpg"
+                      fluid
+                    />
                     <figure className="wolm-intro">
-                        <p className='hero-text'>Website</p>
-                        <p className='hero-text'>Of</p>
-                        <p className='hero-text'>Lower</p>
-                        <p className='hero-text'>Manhattan</p>
-                      </figure>
-                      <NavBar className="navbar" attached/>
+                      <p className='hero-text'>Website</p>
+                      <p className='hero-text'>Of</p>
+                      <p className='hero-text'>Lower</p>
+                      <p className='hero-text'>Manhattan</p>
+                    </figure>
+                    <NavBar className="navbar" attached/>
                   </Fragment>
                 )
               }

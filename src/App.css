@@ -16,10 +16,10 @@
   color: #eae0ce;
 }
 
-.ui.fluid.image {
+/* .ui.fluid.image {
   z-index: -1;
   position: absolute;
-}
+} */
 
 .wolm-intro {
   z-index: 1;

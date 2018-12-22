@@ -1,3 +1,8 @@
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.fluid.image {
+  z-index: -1;
+  position: absolute;
+}
