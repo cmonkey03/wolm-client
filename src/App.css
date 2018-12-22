@@ -31,11 +31,6 @@
   z-index: 2;
   position: relative;
 } */
-/* As an alternative use "attached" prop on NavBar, but causes components
-to attach to NavBar. See https://github.com/Semantic-Org/Semantic-UI/issues/254*/
-.ui.menu {
-  border-radius: 0px !important;
-}
 
 /* These classes expand the wrapping DatePicker divs */
 .react-datepicker__input-container {
