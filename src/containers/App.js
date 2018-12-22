@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { LOAD_API_DATA } from '../types';
 import { Redirect, withRouter } from 'react-router';
 import { Route, Switch } from 'react-router-dom';
+import HomepageLayout from './HomepageLayout';
 import NavBar from '../components/NavBar';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
@@ -15,7 +16,6 @@ import AdminPanel from '../components/AdminPanel';
 import CreateTour from '../components/CreateTour';
 import MakeReservation from '../components/MakeReservation';
 import TourInfo from '../components/TourInfo';
-import { Grid, Image } from 'semantic-ui-react';
 
 class App extends Component {
   constructor(props) {
@@ -53,41 +53,20 @@ class App extends Component {
   }
 
 
+  // <figure className="wolm-intro">
+  //   <p className='hero-text'>Website</p>
+  //   <p className='hero-text'>Of</p>
+  //   <p className='hero-text'>Lower</p>
+  //   <p className='hero-text'>Manhattan</p>
+  //   </figure>
+
   render() {
     return (
       <Fragment>
         {this.props.location.pathname !== '/home'? this.renderHeader() : null}
         <Switch>
           <Redirect exact path="/" to="/home"/>
-          <Route exact path="/home"
-            render={(renderProps) => {
-              return (
-                  <Grid>
-                    <Grid.Row columns='1'>
-                      <Grid.Column>
-                      <Image
-                        alt="1892 NY Harbor"
-                        src="/1892-nyc-currier-ives-1920-1080.jpg"
-                        fluid
-                      />
-                      {/*<figure className="wolm-intro">
-                        <p className='hero-text'>Website</p>
-                        <p className='hero-text'>Of</p>
-                        <p className='hero-text'>Lower</p>
-                        <p className='hero-text'>Manhattan</p>
-                      </figure>*/}
-                      </Grid.Column>
-                    </Grid.Row>
-                    <Grid.Row>
-                      <Grid.Column>
-                      <NavBar className="navbar" attached/>
-                      </Grid.Column>
-                    </Grid.Row>
-                  </Grid>
-                )
-              }
-            }
-          />
+          <Route exact path="/home" component={HomepageLayout} />
           <Route exact path="/tours" component={TourInfo} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
