@@ -16,15 +16,22 @@
   color: #eae0ce;
 }
 
-/* .wolm-intro {
-  z-index: 1;
-  position: relative;
-} */
+.wolm-intro, .home-image {
+  position: sticky;
+}
 
-/* .ui.fluid.image {
-  z-index: -1;
-  position: absolute;
-} */
+.wolm-intro {
+  z-index: 1;
+  font-family: 'IM Fell Double Pica SC', serif;
+  font-size: 45px;
+  margin: 0 400px;
+  padding: 0;
+  color: #eae0ce;
+}
+
+.home-image {
+
+}
 
 /* These classes expand the wrapping DatePicker divs */
 .react-datepicker__input-container {
