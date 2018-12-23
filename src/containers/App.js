@@ -52,14 +52,6 @@ class App extends Component {
     )
   }
 
-
-  // <figure className="wolm-intro">
-  //   <p className='hero-text'>Website</p>
-  //   <p className='hero-text'>Of</p>
-  //   <p className='hero-text'>Lower</p>
-  //   <p className='hero-text'>Manhattan</p>
-  //   </figure>
-
   render() {
     return (
       <Fragment>

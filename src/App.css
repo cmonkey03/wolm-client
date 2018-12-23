@@ -25,12 +25,6 @@
   z-index: -1;
   position: absolute;
 } */
-/* NavBar */
-/* .navbar {
-  width: 100%;
-  z-index: 2;
-  position: relative;
-} */
 
 /* These classes expand the wrapping DatePicker divs */
 .react-datepicker__input-container {
