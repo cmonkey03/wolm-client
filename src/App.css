@@ -16,21 +16,22 @@
   color: #eae0ce;
 }
 
-.wolm-intro, .home-image {
-  position: sticky;
+.home-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)),
+  url('./assets/hero-image.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 275px;
+  padding-top: 12px;
 }
 
-.wolm-intro {
-  z-index: 1;
+.home-text {
   font-family: 'IM Fell Double Pica SC', serif;
   font-size: 45px;
   margin: 0 400px;
   padding: 0;
   color: #eae0ce;
-}
-
-.home-image {
-
 }
 
 /* These classes expand the wrapping DatePicker divs */

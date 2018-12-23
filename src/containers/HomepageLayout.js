@@ -5,16 +5,11 @@ class HomepageLayout extends Component {
   render() {
     return (
       <Fragment>
-        <img
-          className="home-image"
-          alt="1892 NY Harbor"
-          src="/1892-nyc-currier-ives-1920-1080.jpg"
-        />
-        <div>
-          <p className='wolm-intro'>Website</p>
-          <p className='wolm-intro'>Of</p>
-          <p className='wolm-intro'>Lower</p>
-          <p className='wolm-intro'>Manhattan</p>
+        <div className='hero-image'>
+          <p className='hero-text'>Website</p>
+          <p className='hero-text'>Of</p>
+          <p className='hero-text'>Lower</p>
+          <p className='hero-text'>Manhattan</p>
         </div>
         <NavBar />
       </Fragment>
