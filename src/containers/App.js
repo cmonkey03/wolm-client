@@ -47,7 +47,7 @@ class App extends Component {
           <p className='hero-text'>Lower</p>
           <p className='hero-text'>Manhattan</p>
         </div>
-        <NavBar className="navbar" />
+        <NavBar />
       </Fragment>
     )
   }
