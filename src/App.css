@@ -1,6 +1,6 @@
 .hero-image {
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)),
-  url('./assets/hero-image.jpg');
+  url('./assets/1892-nyc-currier-ives-1920-1080.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -18,7 +18,7 @@
 
 .home-image {
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)),
-  url('./assets/hero-image.jpg');
+  url('./assets/1892-nyc-currier-ives-1920-1080.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -33,6 +33,7 @@
   padding: 0;
   color: #eae0ce;
 }
+
 
 /* These classes expand the wrapping DatePicker divs */
 .react-datepicker__input-container {

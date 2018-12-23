@@ -5,11 +5,11 @@ class HomepageLayout extends Component {
   render() {
     return (
       <Fragment>
-        <div className='hero-image'>
-          <p className='hero-text'>Website</p>
-          <p className='hero-text'>Of</p>
-          <p className='hero-text'>Lower</p>
-          <p className='hero-text'>Manhattan</p>
+        <div className='home-image'>
+          <p className='home-text'>Website</p>
+          <p className='home-text'>Of</p>
+          <p className='home-text'>Lower</p>
+          <p className='home-text'>Manhattan</p>
         </div>
         <NavBar />
       </Fragment>
