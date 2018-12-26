@@ -42,13 +42,13 @@ class App extends Component {
   renderHeader() {
     return (
       <Fragment>
-      <Container className='hero-image' fluid>
-        <p className='hero-text'>Website</p>
-        <p className='hero-text'>Of</p>
-        <p className='hero-text'>Lower</p>
-        <p className='hero-text'>Manhattan</p>
-      </Container>
-      <NavBar />
+        <Container className='hero-image' fluid>
+          <p className='hero-text'>Website</p>
+          <p className='hero-text'>Of</p>
+          <p className='hero-text'>Lower</p>
+          <p className='hero-text'>Manhattan</p>
+        </Container>
+        <NavBar />
       </Fragment>
     )
   }

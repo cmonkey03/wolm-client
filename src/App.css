@@ -22,13 +22,14 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 300px 0px 200px 100px;
+  /* padding: 30% 40% 15% 20%; */
+  display: flex;
 }
 
 .home-text {
   font-family: 'IM Fell Double Pica SC', serif;
   font-size: 45px;
-  margin: 0 200px;
+  margin: 0px;
   color: #eae0ce;
 }
 
