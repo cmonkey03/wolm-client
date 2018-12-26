@@ -68,10 +68,10 @@ class App extends Component {
           <Route exact path="/reservations"
             render={ (renderProps) => {
               return (
-                <React.Fragment>
+                <Fragment>
                   <Reservations />
                   <MakeReservation />
-                </React.Fragment>
+                </Fragment>
               )
             }
           }
