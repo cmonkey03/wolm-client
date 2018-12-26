@@ -16,6 +16,7 @@ import AdminPanel from '../components/AdminPanel';
 import CreateTour from '../components/CreateTour';
 import MakeReservation from '../components/MakeReservation';
 import TourInfo from '../components/TourInfo';
+import { Container } from 'semantic-ui-react'
 
 class App extends Component {
   constructor(props) {
@@ -41,13 +42,13 @@ class App extends Component {
   renderHeader() {
     return (
       <Fragment>
-        <div className='hero-image'>
-          <p className='hero-text'>Website</p>
-          <p className='hero-text'>Of</p>
-          <p className='hero-text'>Lower</p>
-          <p className='hero-text'>Manhattan</p>
-        </div>
-        <NavBar />
+      <Container className='hero-image' fluid>
+        <p className='hero-text'>Website</p>
+        <p className='hero-text'>Of</p>
+        <p className='hero-text'>Lower</p>
+        <p className='hero-text'>Manhattan</p>
+      </Container>
+      <NavBar />
       </Fragment>
     )
   }
