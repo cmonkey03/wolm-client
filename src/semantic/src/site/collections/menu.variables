@@ -3,3 +3,4 @@
 *******************************/
 
 @borderRadius     : 0px;
+@verticalMargin   : 0px;

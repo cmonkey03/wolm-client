@@ -42,10 +42,10 @@ class App extends Component {
     return (
       <Fragment>
         <div className='hero-image'>
-          <p className='hero-text'>Website</p>
-          <p className='hero-text'>Of</p>
-          <p className='hero-text'>Lower</p>
-          <p className='hero-text'>Manhattan</p>
+          <p className='hero-text'>WOLM</p>
+          <p className='hero-text'>O</p>
+          <p className='hero-text'>L</p>
+          <p className='hero-text'>M</p>
         </div>
         <NavBar />
       </Fragment>

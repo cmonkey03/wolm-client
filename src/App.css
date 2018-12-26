@@ -16,14 +16,13 @@
   color: #eae0ce;
 }
 
-.home-image {
+.home-background {
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)),
   url('./assets/1892-nyc-currier-ives-1920-1080.jpg');
+  height: 750px;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
-  height: 275px;
-  padding-top: 12px;
 }
 
 .home-text {
@@ -33,7 +32,6 @@
   padding: 0;
   color: #eae0ce;
 }
-
 
 /* These classes expand the wrapping DatePicker divs */
 .react-datepicker__input-container {
