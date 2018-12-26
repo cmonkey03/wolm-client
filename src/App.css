@@ -16,20 +16,19 @@
   color: #eae0ce;
 }
 
-.home-background {
+.home {
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)),
   url('./assets/1892-nyc-currier-ives-1920-1080.jpg');
-  height: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  padding: 300px 0px 200px 100px;
 }
 
 .home-text {
   font-family: 'IM Fell Double Pica SC', serif;
   font-size: 45px;
-  margin: 0 400px;
-  padding: 0;
+  margin: 0 200px;
   color: #eae0ce;
 }
 
