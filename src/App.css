@@ -8,16 +8,6 @@
   padding-top: 12px;
 }
 
-.ui.inverted.vertical.center.aligned.segment {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)),
-  url('./assets/1892-nyc-currier-ives-1920-1080.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  height: 275px;
-  padding-top: 12px;
-}
-
 .hero-text {
   font-family: 'IM Fell Double Pica SC', serif;
   font-size: 45px;
@@ -26,21 +16,14 @@
   color: #eae0ce;
 }
 
-.home {
+.ui.inverted.vertical.center.aligned.segment {
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)),
   url('./assets/1892-nyc-currier-ives-1920-1080.jpg');
-  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  /* padding: 30% 40% 15% 20%; */
-  display: flex;
-}
-
-.home-text {
-  font-family: 'IM Fell Double Pica SC', serif;
-  font-size: 45px;
-  margin: 0px;
-  color: #eae0ce;
+  /* background-position: center; */
+  /* height: 275px;
+  padding-top: 12px; */
 }
 
 /* These classes expand the wrapping DatePicker divs */
