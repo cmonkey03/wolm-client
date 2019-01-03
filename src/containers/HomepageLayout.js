@@ -60,7 +60,7 @@ HomepageHeading.propTypes = {
  * Neither Semantic UI nor Semantic UI React offer a responsive navbar, however, it can be implemented easily.
  * It can be more complicated, but you can create really flexible markup.
  */
-class DesktopContainer extends Component {
+class DesktopNavigation extends Component {
   state = {}
 
   hideFixedMenu = () => this.setState({ fixed: false })
@@ -117,11 +117,11 @@ class DesktopContainer extends Component {
   }
 }
 
-DesktopContainer.propTypes = {
+DesktopNavigation.propTypes = {
   children: PropTypes.node,
 }
 
-class MobileContainer extends Component {
+class MobileNavigation extends Component {
   state = {}
 
   handleSidebarHide = () => this.setState({ sidebarOpened: false })
@@ -184,23 +184,23 @@ class MobileContainer extends Component {
   }
 }
 
-MobileContainer.propTypes = {
+MobileNavigation.propTypes = {
   children: PropTypes.node,
 }
 
-const ResponsiveContainer = ({ children }) => (
+const ResponsiveNavigationContainer = ({ children }) => (
   <div>
-    <DesktopContainer>{children}</DesktopContainer>
-    <MobileContainer>{children}</MobileContainer>
+    <DesktopNavigation>{children}</DesktopNavigation>
+    <MobileNavigation>{children}</MobileNavigation>
   </div>
 )
 
-ResponsiveContainer.propTypes = {
+ResponsiveNavigationContainer.propTypes = {
   children: PropTypes.node,
 }
 
 const HomepageLayout = () => (
-  <ResponsiveContainer>
+  <ResponsiveNavigationContainer>
     <Segment style={{ padding: '8em 0em' }} vertical>
       <Grid container stackable verticalAlign='middle'>
         <Grid.Row>
@@ -325,7 +325,7 @@ const HomepageLayout = () => (
         </Grid>
       </Container>
     </Segment>
-  </ResponsiveContainer>
+  </ResponsiveNavigationContainer>
 )
 
 export default HomepageLayout
