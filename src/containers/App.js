@@ -16,7 +16,8 @@ import AdminPanel from '../components/AdminPanel';
 import CreateTour from '../components/CreateTour';
 import MakeReservation from '../components/MakeReservation';
 import TourInfo from '../components/TourInfo';
-import { Container } from 'semantic-ui-react'
+import { Container } from 'semantic-ui-react';
+import ResponsiveHeader from './ResponsiveHeader';
 
 class App extends Component {
   constructor(props) {
@@ -55,7 +56,7 @@ class App extends Component {
 
   render() {
     return (
-      <Fragment>
+      <ResponsiveHeader>
         {this.props.location.pathname !== '/home'? this.renderHeader() : null}
         <Switch>
           <Redirect exact path="/" to="/home"/>
@@ -78,7 +79,7 @@ class App extends Component {
           }
           />
         </Switch>
-      </Fragment>
+      </ResponsiveHeader>
     );
   }
 }
