@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import '../App.css';
 import store from '../store';
 import ApiAdapter from '../adapter';
@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { LOAD_API_DATA } from '../types';
 import { Redirect, withRouter } from 'react-router';
 import { Route, Switch } from 'react-router-dom';
+import HomepageLayout from './HomepageLayout';
 import NavBar from '../components/NavBar';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
@@ -15,6 +16,7 @@ import AdminPanel from '../components/AdminPanel';
 import CreateTour from '../components/CreateTour';
 import MakeReservation from '../components/MakeReservation';
 import TourInfo from '../components/TourInfo';
+import { Container } from 'semantic-ui-react'
 
 class App extends Component {
   constructor(props) {
@@ -37,32 +39,46 @@ class App extends Component {
     })
   }
 
+  renderHeader() {
+    return (
+      <Fragment>
+        <Container className='hero-image' fluid>
+          <p className='hero-text'>Website</p>
+          <p className='hero-text'>Of</p>
+          <p className='hero-text'>Lower</p>
+          <p className='hero-text'>Manhattan</p>
+        </Container>
+        <NavBar />
+      </Fragment>
+    )
+  }
+
   render() {
     return (
-      <div className="App">
-        <NavBar className="navbar" />
-        <div className="body">
-          <Switch>
-            <Redirect exact path="/" to="/tours"/>
-            <Route exact path="/tours" component={TourInfo} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" component={Signup} />
-            <Route exact path="/edit-profile" component={EditProfile} />
-            <Route exact path="/admin" component={AdminPanel} />
-            <Route exact path="/new-tour" component={CreateTour} />
-            <Route exact path="/reservations"
-                    render={ (renderProps) => {
-                      return (
-                        <React.Fragment>
-                          <Reservations />
-                          <MakeReservation />
-                        </React.Fragment>
-                      )
-                    }}
-              />
-          </Switch>
-        </div>
-      </div>
+      <Fragment>
+        {this.props.location.pathname !== '/home'? this.renderHeader() : null}
+        <Switch>
+          <Redirect exact path="/" to="/home"/>
+          <Route exact path="/home" component={HomepageLayout} />
+          <Route exact path="/tours" component={TourInfo} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/edit-profile" component={EditProfile} />
+          <Route exact path="/admin" component={AdminPanel} />
+          <Route exact path="/new-tour" component={CreateTour} />
+          <Route exact path="/reservations"
+            render={ (renderProps) => {
+              return (
+                <Fragment>
+                  <Reservations />
+                  <MakeReservation />
+                </Fragment>
+              )
+            }
+          }
+          />
+        </Switch>
+      </Fragment>
     );
   }
 }

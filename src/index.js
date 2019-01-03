@@ -8,20 +8,12 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 import './semantic/dist/semantic.min.css';
 
-console.log(`%c INITIAL REDUX STORE`, 'color: purple', store.getState())
+// console.log(`%c INITIAL REDUX STORE`, 'color: purple', store.getState())
 
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      <React.Fragment>
-        <div className='hero-image'>
-          <p className='hero-text'>Website</p>
-          <p className='hero-text'>Of</p>
-          <p className='hero-text'>Lower</p>
-          <p className='hero-text'>Manhattan</p>
-        </div>
-        <App />
-      </React.Fragment>
+      <App />
     </Router>
   </Provider>,
   document.getElementById('root')

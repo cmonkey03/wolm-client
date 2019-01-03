@@ -1,12 +1,29 @@
-/* .body {
-  height: 100%;
-  padding-right: 250px;
-  padding-bottom: 500px;
-  padding-left: 250px;
-} */
+.hero-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)),
+  url('./assets/1892-nyc-currier-ives-1920-1080.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 275px;
+  padding-top: 12px;
+}
 
-.navbar {
-  width: 100%;
+.hero-text {
+  font-family: 'IM Fell Double Pica SC', serif;
+  font-size: 45px;
+  margin: 0 400px;
+  padding: 0;
+  color: #eae0ce;
+}
+
+.ui.inverted.vertical.center.aligned.segment {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)),
+  url('./assets/1892-nyc-currier-ives-1920-1080.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-position: center; */
+  /* height: 275px;
+  padding-top: 12px; */
 }
 
 /* These classes expand the wrapping DatePicker divs */
@@ -20,10 +37,4 @@
 padding that pushes times out of field view. */
 .react-datepicker__time-list {
   padding: 0;
-}
-
-/* As an alternative use "attached" prop on NavBar, but causes components
-to attach to NavBar. See https://github.com/Semantic-Org/Semantic-UI/issues/254*/
-.ui.menu {
-    border-radius: 0px !important;
 }
