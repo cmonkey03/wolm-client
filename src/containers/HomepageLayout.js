@@ -1,19 +1,13 @@
-import PropTypes from 'prop-types'
-import React, { Component } from 'react'
+import React, { Fragment } from 'react'
 import {
   Button,
   Container,
   Divider,
   Grid,
   Header,
-  Icon,
   Image,
   List,
-  Menu,
-  Responsive,
   Segment,
-  Sidebar,
-  Visibility,
 } from 'semantic-ui-react'
 // import NavBar from '../components/NavBar';
 
@@ -23,7 +17,7 @@ import {
 */
 
 const HomepageLayout = () => (
-  <React.Fragment>
+  <Fragment>
     <Segment style={{ padding: '8em 0em' }} vertical>
       <Grid container stackable verticalAlign='middle'>
         <Grid.Row>
@@ -148,7 +142,7 @@ const HomepageLayout = () => (
         </Grid>
       </Container>
     </Segment>
-    </React.Fragment>
+    </Fragment>
 )
 
 export default HomepageLayout
