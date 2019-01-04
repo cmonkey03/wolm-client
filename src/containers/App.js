@@ -40,24 +40,25 @@ class App extends Component {
     })
   }
 
-  renderHeader() {
-    return (
-      <Fragment>
-        <Container className='hero-image' fluid>
-          <p className='hero-text'>Website</p>
-          <p className='hero-text'>Of</p>
-          <p className='hero-text'>Lower</p>
-          <p className='hero-text'>Manhattan</p>
-        </Container>
-        <NavBar />
-      </Fragment>
-    )
-  }
+  // renderHeader() {
+  //   return (
+  //     <Fragment>
+  //       <Container className='hero-image' fluid>
+  //         <p className='hero-text'>Website</p>
+  //         <p className='hero-text'>Of</p>
+  //         <p className='hero-text'>Lower</p>
+  //         <p className='hero-text'>Manhattan</p>
+  //       </Container>
+  //       <NavBar />
+  //     </Fragment>
+  //   )
+  // }
 
   render() {
     return (
       <ResponsiveHeader>
-        {this.props.location.pathname !== '/home'? this.renderHeader() : null}
+        {/*{this.props.location.pathname !== '/home'? this.renderHeader() : null}*/}
+        <NavBar />
         <Switch>
           <Redirect exact path="/" to="/home"/>
           <Route exact path="/home" component={HomepageLayout} />
