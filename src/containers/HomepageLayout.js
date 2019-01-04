@@ -16,6 +16,9 @@ import {
 * such things.
 */
 
+const src1 = '/fraunces-tavern.jpg'
+const src2 = '/collect-pond.png'
+
 const HomepageLayout = () => (
   <Fragment>
     <Segment style={{ padding: '8em 0em' }} vertical>
@@ -38,7 +41,7 @@ const HomepageLayout = () => (
             </p>
           </Grid.Column>
           <Grid.Column floated='right' width={6}>
-            <Image bordered rounded size='large' src='/images/wireframe/white-image.png' />
+            <Image bordered rounded size='large' src={src1} />
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
@@ -63,7 +66,7 @@ const HomepageLayout = () => (
               "I shouldn't have gone with their competitor."
             </Header>
             <p style={{ fontSize: '1.33em' }}>
-              <Image avatar src='/images/avatar/large/nan.jpg' />
+              <Image avatar src={src1} />
               <b>Nan</b> Chief Fun Officer Acme Toys
             </p>
           </Grid.Column>
@@ -91,7 +94,7 @@ const HomepageLayout = () => (
           horizontal
           style={{ margin: '3em 0em', textTransform: 'uppercase' }}
         >
-          <a href='#'>Case Studies</a>
+          <a href={src2}>Case Studies</a>
         </Divider>
 
         <Header as='h3' style={{ fontSize: '2em' }}>
