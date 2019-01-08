@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import HomepageHeading from './HomepageHeading';
+import { withRouter } from 'react-router';
 import {
   Button,
   Container,
@@ -21,6 +22,7 @@ class MobileNavigation extends Component {
   render() {
     const { children } = this.props
     const { sidebarOpened } = this.state
+    const { location } = this.props
 
     return (
       <Responsive as={Sidebar.Pushable} maxWidth={Responsive.onlyMobile.maxWidth}>
@@ -64,7 +66,7 @@ class MobileNavigation extends Component {
                 </Menu.Item>
               </Menu>
             </Container>
-            <HomepageHeading mobile />
+            { location.pathname === '/home' ? <HomepageHeading mobile /> : null}
           </Segment>
 
           {children}
@@ -78,4 +80,4 @@ MobileNavigation.propTypes = {
   children: PropTypes.node,
 }
 
-export default MobileNavigation;
+export default withRouter(MobileNavigation);

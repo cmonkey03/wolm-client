@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import HomepageHeading from './HomepageHeading';
+import { withRouter } from 'react-router';
 import {
   Button,
   Container,
@@ -24,7 +25,8 @@ class DesktopNavigation extends Component {
   render() {
     const { children } = this.props
     const { fixed } = this.state
-
+    const { location } = this.props
+    console.log(location)
     return (
       <Responsive minWidth={Responsive.onlyTablet.minWidth}>
         <Visibility
@@ -62,7 +64,7 @@ class DesktopNavigation extends Component {
                 </Menu.Item>
               </Container>
             </Menu>
-            <HomepageHeading />
+            { location.pathname === '/home' ? <HomepageHeading /> : null}
           </Segment>
         </Visibility>
 
@@ -76,4 +78,4 @@ DesktopNavigation.propTypes = {
   children: PropTypes.node,
 }
 
-export default DesktopNavigation;
+export default withRouter(DesktopNavigation);
