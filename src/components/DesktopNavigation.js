@@ -26,7 +26,7 @@ class DesktopNavigation extends Component {
     const { children } = this.props
     const { fixed } = this.state
     const { location } = this.props
-    console.log(location)
+
     return (
       <Responsive minWidth={Responsive.onlyTablet.minWidth}>
         <Visibility
@@ -37,7 +37,12 @@ class DesktopNavigation extends Component {
           <Segment
             inverted
             textAlign='center'
-            style={{ minHeight: 700, padding: '1em 0em' }}
+            style={
+              location.pathname === '/home' ?
+              { minHeight: 700, padding: '1em 0em' }
+              :
+              { minHeight: 200, padding: '1em 0em' }
+            }
             vertical
           >
             <Menu
