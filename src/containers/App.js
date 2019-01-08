@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { LOAD_API_DATA } from '../types';
 import { Redirect, withRouter } from 'react-router';
 import { Route, Switch } from 'react-router-dom';
-import HomepageLayout from './HomepageLayout';
+import HomepageLayout from '../components/HomepageLayout';
 import NavBar from '../components/NavBar';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
@@ -17,7 +17,7 @@ import CreateTour from '../components/CreateTour';
 import MakeReservation from '../components/MakeReservation';
 import TourInfo from '../components/TourInfo';
 import { Container } from 'semantic-ui-react';
-import ResponsiveHeader from './ResponsiveHeader';
+import ResponsiveHeader from '../components/ResponsiveHeader';
 
 class App extends Component {
   constructor(props) {

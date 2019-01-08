@@ -148,4 +148,4 @@ const HomepageLayout = () => (
     </Fragment>
 )
 
-export default HomepageLayout
+export default HomepageLayout;

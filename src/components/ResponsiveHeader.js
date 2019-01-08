@@ -66,7 +66,7 @@ class DesktopNavigation extends Component {
   render() {
     const { children } = this.props
     const { fixed } = this.state
-    console.log(this.props.location)
+
     return (
       <Responsive minWidth={Responsive.onlyTablet.minWidth}>
         <Visibility
