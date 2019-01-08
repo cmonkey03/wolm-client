@@ -8,7 +8,7 @@ import Login from '../components/Login';
 import Signup from '../components/Signup';
 import EditProfile from '../components/EditProfile';
 import Reservations from '../components/Reservations';
-import AdminPanel from '../components/AdminPanel';
+import AdminPanel from './AdminPanel';
 import CreateTour from '../components/CreateTour';
 import MakeReservation from '../components/MakeReservation';
 import TourInfo from '../components/TourInfo';
