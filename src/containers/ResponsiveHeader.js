@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
+import { withRouter } from 'react-router';
 import {
   Button,
   Container,
@@ -65,7 +66,7 @@ class DesktopNavigation extends Component {
   render() {
     const { children } = this.props
     const { fixed } = this.state
-
+    console.log(this.props.location)
     return (
       <Responsive minWidth={Responsive.onlyTablet.minWidth}>
         <Visibility
