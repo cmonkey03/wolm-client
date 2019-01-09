@@ -11,7 +11,6 @@ import AdminPanel from './AdminPanel';
 import CreateTour from '../components/CreateTour';
 import MakeReservation from '../components/MakeReservation';
 import TourInfo from '../components/TourInfo';
-// import { Container } from 'semantic-ui-react';
 import ResponsiveHeader from '../components/ResponsiveHeader';
 
 class App extends Component {

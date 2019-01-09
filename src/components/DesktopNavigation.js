@@ -9,7 +9,6 @@ import { logoutUser } from '../actions/user';
 import {
   Button,
   Container,
-  Header,
   Menu,
   Responsive,
   Segment,
