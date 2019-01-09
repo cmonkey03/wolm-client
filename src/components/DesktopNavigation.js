@@ -8,6 +8,7 @@ import { logoutUser } from '../actions/user';
 import {
   Button,
   Container,
+  Header,
   Menu,
   Responsive,
   Segment,
@@ -139,7 +140,6 @@ class DesktopNavigation extends Component {
                       as={Link}
                       to="/login"
                       color={colors[3]}
-                      onClick={this.handleClick}
                       inverted={!fixed}
                       primary={fixed}
                       style={{ marginLeft: '0.5em' }}
@@ -151,7 +151,11 @@ class DesktopNavigation extends Component {
                 }
               </Container>
             </Menu>
-            { location.pathname === '/home' ? <HomepageHeading /> : null}
+            { location.pathname === '/home' ?
+              <HomepageHeading />
+              :
+              null
+            }
           </Segment>
         </Visibility>
 
@@ -161,8 +165,23 @@ class DesktopNavigation extends Component {
   }
 }
 
+/*<Container text>
+  <Header
+    as='h1'
+    content='WOLM'
+    inverted
+    style={{
+      fontSize: mobile ? '2em' : '4em',
+      fontWeight: 'normal',
+      marginBottom: 0,
+      marginTop: mobile ? '1.5em' : '3em',
+    }}
+  />
+</Container>*/
+
+
 DesktopNavigation.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 }
 
 const mapStateToProps = ({ users: { user , loggedIn }}) => ({
