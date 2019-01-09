@@ -2,9 +2,17 @@ import {CREATING_TOUR} from '../types';
 import {CREATE_TOUR} from '../types';
 import {FAILED_CREATE_TOUR} from '../types';
 import {UNMOUNT_TOUR} from '../types';
+import {LOAD_TOURS} from '../types';
 import ApiAdapter from '../adapter';
 
 const Adapter = new ApiAdapter()
+
+export const loadTours = () => {
+  return (dispatch) => {
+    Adapter.getTours()
+    .then(r => dispatch(loadingTours(r)))
+  }
+}
 
 export const createTour = (tourObj) => {
   return (dispatch) => {
@@ -32,8 +40,14 @@ export const unmountTour = () => {
   }
 }
 
-const creatingTour = () => ({ type: CREATING_TOUR })
+const creatingTour = () => ({
+  type: CREATING_TOUR
+})
 const createdTour = (payload) => ({
   type: CREATE_TOUR,
+  payload
+})
+const loadingTours = (payload) => ({
+  type: LOAD_TOURS,
   payload
 })

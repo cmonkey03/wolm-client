@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Menu } from 'semantic-ui-react';
 import { logoutUser } from '../actions/user';
+import { Menu } from 'semantic-ui-react';
 
 const colors = ['teal', 'olive', 'brown', 'yellow']
 

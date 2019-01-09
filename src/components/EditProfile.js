@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Checkbox, Form, Grid, Header, Input, Message, Segment, TextArea } from 'semantic-ui-react';
 import withAuth from '../hocs/withAuth';
 import ApiAdapter from '../adapter';
 import { updateUser }from '../actions/user';
 import { unmountUser } from '../actions/user';
+import {
+  Checkbox,
+  Form,
+  Header,
+  Input,
+  Message,
+  Segment,
+  TextArea
+} from 'semantic-ui-react';
 
 class EditProfile extends React.Component {
   constructor(props) {
@@ -49,8 +57,7 @@ class EditProfile extends React.Component {
 
   render() {
     return (
-      <Grid centered columns={2}>
-        <Grid.Column>
+      <Fragment>
         <Header as='h2'textAlign='center'>Edit Your Profile</Header>
         <Segment raised>
           <Form
@@ -129,8 +136,7 @@ class EditProfile extends React.Component {
               >Submit Edits</Form.Button>
           </Form>
         </Segment>
-      </Grid.Column>
-    </Grid>)
+      </Fragment>)
     }
 }
 

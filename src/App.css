@@ -1,27 +1,9 @@
-.hero-image {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)),
-  url('./assets/1892-nyc-currier-ives-1920-1080.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  height: 275px;
-  padding-top: 12px;
-}
-
-.hero-text {
-  font-family: 'IM Fell Double Pica SC', serif;
-  font-size: 45px;
-  margin: 0 400px;
-  padding: 0;
-  color: #eae0ce;
-}
-
 .ui.inverted.vertical.center.aligned.segment {
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)),
   url('./assets/1892-nyc-currier-ives-1920-1080.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  /* background-position: center; */
+  background-position: center;
   /* height: 275px;
   padding-top: 12px; */
 }

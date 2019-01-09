@@ -3,6 +3,7 @@ import {CREATING_TOUR} from '../types';
 import {CREATE_TOUR} from '../types';
 import {FAILED_CREATE_TOUR} from '../types';
 import {UNMOUNT_TOUR} from '../types';
+import {LOAD_TOURS} from '../types';
 
 const initialState = {
   tours: [],
@@ -41,6 +42,12 @@ const toursReducers = (state = initialState, action) => {
         failedCreateTour: false,
         tourSuccess: false,
         error: null
+      }
+
+    case LOAD_TOURS:
+      return {
+        ...state,
+        tours: action.payload
       }
     default:
       return state

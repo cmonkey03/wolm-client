@@ -17,6 +17,7 @@ const HomepageHeading = ({ mobile }) => (
         fontWeight: 'normal',
         marginBottom: 0,
         marginTop: mobile ? '1.5em' : '3em',
+        color: '#eae0ce',
       }}
     />
     <Header
@@ -27,6 +28,7 @@ const HomepageHeading = ({ mobile }) => (
         fontSize: mobile ? '1.5em' : '1.7em',
         fontWeight: 'normal',
         marginTop: mobile ? '0.5em' : '1.5em',
+        color: '#eae0ce',
       }}
     />
     <Button primary size='huge'>
