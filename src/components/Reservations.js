@@ -1,10 +1,16 @@
 import React from 'react';
 import withAuth from '../hocs/withAuth';
 import { connect } from 'react-redux';
-import { Button, Header, Form, Message, Table } from 'semantic-ui-react';
 import moment from 'moment';
 import { cancelReservation } from '../actions/reservation';
 import { fetchCurrentUser } from '../actions/user';
+import {
+  Button,
+  Header,
+  Form,
+  Message,
+  Table
+} from 'semantic-ui-react';
 
 class Reservations extends React.Component {
 

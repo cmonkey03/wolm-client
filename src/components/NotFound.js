@@ -1,5 +1,8 @@
 import React, { Fragment } from 'react';
-import { Header, Image } from 'semantic-ui-react';
+import {
+  Header,
+  Image
+} from 'semantic-ui-react';
 
 const src1 = '/not-found.jpg'
 

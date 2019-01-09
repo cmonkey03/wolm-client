@@ -1,6 +1,11 @@
 import React from 'react';
-import { Header, Icon, Menu, Table } from 'semantic-ui-react';
 import moment from 'moment';
+import {
+  Header,
+  Icon,
+  Menu,
+  Table
+} from 'semantic-ui-react';
 
 export default class PaginationTable extends React.Component {
   constructor(props) {
