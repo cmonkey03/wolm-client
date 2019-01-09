@@ -12,6 +12,7 @@ import CreateTour from '../components/CreateTour';
 import MakeReservation from '../components/MakeReservation';
 import TourInfo from '../components/TourInfo';
 import ResponsiveHeader from '../components/ResponsiveHeader';
+import Footer from '../components/Footer';
 
 class App extends Component {
   render() {
@@ -38,6 +39,7 @@ class App extends Component {
           }
           />
         </Switch>
+        <Footer/>
       </ResponsiveHeader>
     );
   }
