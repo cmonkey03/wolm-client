@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import withAuth from '../hocs/withAuth';
 import ApiAdapter from '../adapter';
@@ -10,7 +10,9 @@ import 'react-datepicker/dist/react-datepicker.css';
 import {
   Button,
   Form,
+  Grid,
   Header,
+  Image,
   Input,
   Label,
   Message,
@@ -61,55 +63,77 @@ class CreateTour extends React.Component {
 
   render() {
     return (
-      <Fragment>
-        <Header as='h2'textAlign='center'>Create a Tour</Header>
-        <Segment raised>
-          <Form
-            onSubmit={this.handleTourSubmit}
-            size='small'
-            key='small'
-            loading={this.props.creatingTour}
-            error={this.props.failedCreateTour}
-            success={this.props.tourSuccess}
-          >
-            <Message success header="You have successfully created a tour."/>
-            { this.props.failedCreateTour ? this.handleErrors(this.props.error) : null }
-            {/*Form.Input causes sizing errors with React-DatePicker*/}
-            <Label>Start Time</Label>
-            <DatePicker selected={this.state.startTime}
-                        showTimeSelect
-                        minDate={moment()}
-                        dateFormat="LLL"
-                        timeFormat="HH:mm"
-                        timeIntervals={15}
-                        onChange={this.handleStartTimeChange}
-                        />
-            <Label>End Time</Label>
-            <DatePicker selected={this.state.endTime}
-                        showTimeSelect
-                        minDate={this.state.endTime}
-                        dateFormat="LLL"
-                        timeFormat="HH:mm"
-                        timeIntervals={15}
-                        onChange={this.handleEndTimeChange}
-                        />
-            <Label>Price</Label>
-            <Form.Input fluid>
-              <Input labelPosition='right'>
-                <Label basic>$</Label>
-                <input  type='number'
-                        min='0'
-                        max='200'
-                        value={this.state.price}
-                        onChange={this.handlePriceChange}
-                        />
-                <Label>.00</Label>
-              </Input>
-            </Form.Input>
-            <Button type='submit'>Create Tour</Button>
-          </Form>
-      </Segment>
-    </Fragment>
+      <div className='signup-form'>
+        {/*
+          Heads up! The styles below are necessary for the correct render.
+          You can do same with CSS, the main idea is that all the elements up to the `Grid`
+          below must have a height of 100%.
+        */}
+        <style>{`
+          body > div,
+          body > div > div,
+          body > div > div > div.signup-form {
+            height: 100%;
+          }
+        `}</style>
+        <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
+          <Grid.Column style={{ maxWidth: 450 }}>
+            <Header as='h2' color='teal' textAlign='center'>
+              <Image src='/favicon-32x32.png' /> Create a Tour
+            </Header>
+            <Segment raised>
+              <Form
+                onSubmit={this.handleTourSubmit}
+                size='large'
+                key='large'
+                loading={this.props.creatingTour}
+                error={this.props.failedCreateTour}
+                success={this.props.tourSuccess}
+              >
+                <Message success header="You have successfully created a tour."/>
+                { this.props.failedCreateTour ? this.handleErrors(this.props.error) : null }
+                {/*Form.Input causes sizing errors with React-DatePicker*/}
+                <Label>Start Time</Label>
+                <DatePicker
+                  fluid
+                  selected={this.state.startTime}
+                  showTimeSelect
+                  minDate={moment()}
+                  dateFormat="LLL"
+                  timeFormat="HH:mm"
+                  timeIntervals={15}
+                  onChange={this.handleStartTimeChange}
+                />
+                <Label>End Time</Label>
+                <DatePicker
+                  fluid
+                  selected={this.state.endTime}
+                  showTimeSelect
+                  minDate={this.state.endTime}
+                  dateFormat="LLL"
+                  timeFormat="HH:mm"
+                  timeIntervals={15}
+                  onChange={this.handleEndTimeChange}
+                />
+                <Label>Price</Label>
+                <Form.Input fluid>
+                  <Input labelPosition='right'>
+                    <Label basic>$</Label>
+                    <input  type='number'
+                            min='0'
+                            max='200'
+                            value={this.state.price}
+                            onChange={this.handlePriceChange}
+                            />
+                    <Label>.00</Label>
+                  </Input>
+                </Form.Input>
+                <Button type='submit'>Create Tour</Button>
+              </Form>
+            </Segment>
+          </Grid.Column>
+        </Grid>
+      </div>
     )
   }
 }
