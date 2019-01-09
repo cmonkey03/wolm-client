@@ -53,11 +53,11 @@ class Login extends React.Component {
             <Form
               size='large'
               onSubmit={this.handleLoginSubmit}
-              key='small'
+              key='large'
               loading={this.props.authenticatingUser}
               error={this.props.failedLogin}
               >
-              <Segment stacked>
+              <Segment raised>
                 <Message error header={this.props.failedLogin ? this.props.error : null} />
                 <Form.Input
                   fluid
