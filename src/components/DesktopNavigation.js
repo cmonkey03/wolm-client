@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import HomepageHeading from './HomepageHeading';
+import AppHeading from './AppHeading';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
@@ -138,7 +139,7 @@ class DesktopNavigation extends Component {
                   >
                     <Button
                       as={Link}
-                      to="/login"
+                      to="/home"
                       color={colors[3]}
                       inverted={!fixed}
                       primary={fixed}
@@ -154,7 +155,7 @@ class DesktopNavigation extends Component {
             { location.pathname === '/home' ?
               <HomepageHeading />
               :
-              null
+              <AppHeading />
             }
           </Segment>
         </Visibility>
