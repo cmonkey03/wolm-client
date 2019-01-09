@@ -3,7 +3,6 @@ import '../App.css';
 import { Redirect, withRouter } from 'react-router';
 import { Route, Switch } from 'react-router-dom';
 import HomepageLayout from '../components/HomepageLayout';
-import NavBar from '../components/NavBar';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
 import EditProfile from '../components/EditProfile';
@@ -35,7 +34,6 @@ class App extends Component {
     return (
       <ResponsiveHeader>
         {/*{this.props.location.pathname !== '/home'? this.renderHeader() : null}*/}
-        <NavBar />
         <Switch>
           <Redirect exact path="/" to="/home"/>
           <Route exact path="/home" component={HomepageLayout} />

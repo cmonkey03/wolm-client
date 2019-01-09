@@ -29,16 +29,6 @@ class DesktopNavigation extends Component {
 
   handleClick = (e, { name }) => this.setState({ activeItem: name })
 
-  handleMenuSize = () => {
-    if (this.props.loggedIn && this.props.user.admin) {
-      return 6
-    } else if (this.props.loggedIn) {
-      return 4
-    } else {
-      return 3
-    }
-  }
-
   render() {
     const { children } = this.props
     const { fixed } = this.state
@@ -81,22 +71,30 @@ class DesktopNavigation extends Component {
                 />
               {!this.props.loggedIn &&
                 <Menu.Item
+                  position='right'
+                >
+                <Button
                   as={Link}
                   to="/login"
-                  name="login"
                   active={activeItem==="login"}
                   color={colors[0]}
                   onClick={this.handleClick}
-                />}
-              {!this.props.loggedIn &&
-                <Menu.Item
+                  inverted={!fixed}
+                >
+                  Log in
+                </Button>
+                <Button
                   as={Link}
                   to="/signup"
-                  name="signup"
                   active={activeItem==="signup"}
                   color={colors[1]}
                   onClick={this.handleClick}
-                />}
+                  inverted={!fixed}
+                  primary={fixed}
+                  style={{ marginLeft: '0.5em' }}>
+                  Sign Up
+                </Button>
+              </Menu.Item>}
               {this.props.loggedIn &&
                 <Menu.Item
                   as={Link}
@@ -133,28 +131,24 @@ class DesktopNavigation extends Component {
                   color={colors[3]}
                   onClick={this.handleClick}
                 />}
-              {this.props.loggedIn &&
-                <Menu.Item
-                  as={Link}
-                  to="/login"
-                  color={colors[3]}
-                  onClick={this.props.logoutUser}
-                  name={`Logout ${this.props.user.username}`}
-                  />}
-                {/*<Menu.Item as='a' active>
-                  Home
-                </Menu.Item>
-                <Menu.Item as='a'>Work</Menu.Item>
-                <Menu.Item as='a'>Company</Menu.Item>
-                <Menu.Item as='a'>Careers</Menu.Item>*/}
-                <Menu.Item position='right'>
-                  <Button as='a' inverted={!fixed}>
-                    Log in
-                  </Button>
-                  <Button as='a' inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em' }}>
-                    Sign Up
-                  </Button>
-                </Menu.Item>
+                {this.props.loggedIn &&
+                  <Menu.Item
+                    position='right'
+                  >
+                    <Button
+                      as={Link}
+                      to="/login"
+                      color={colors[3]}
+                      onClick={this.handleClick}
+                      inverted={!fixed}
+                      primary={fixed}
+                      style={{ marginLeft: '0.5em' }}
+                      onClick={this.props.logoutUser}
+                    >
+                      Logout {this.props.user.username}
+                    </Button>
+                  </Menu.Item>
+                }
               </Container>
             </Menu>
             { location.pathname === '/home' ? <HomepageHeading /> : null}
