@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import withAuth from '../hocs/withAuth';
 import ApiAdapter from '../adapter';
@@ -12,8 +12,7 @@ import {
   Image,
   Input,
   Message,
-  Segment,
-  TextArea
+  Segment
 } from 'semantic-ui-react';
 
 class EditProfile extends React.Component {
