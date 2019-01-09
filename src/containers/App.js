@@ -18,27 +18,31 @@ class App extends Component {
   render() {
     return (
       <ResponsiveHeader>
-        <Switch>
-          <Redirect exact path="/" to="/home"/>
-          <Route exact path="/home" component={HomepageLayout} />
-          <Route exact path="/tours" component={TourInfo} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/signup" component={Signup} />
-          <Route exact path="/edit-profile" component={EditProfile} />
-          <Route exact path="/admin" component={AdminPanel} />
-          <Route exact path="/new-tour" component={CreateTour} />
-          <Route exact path="/reservations"
-            render={ (renderProps) => {
-              return (
-                <Fragment>
-                  <Reservations />
-                  <MakeReservation />
-                </Fragment>
-              )
+        <div
+          className='app'
+          style={{ padding:'5em' }}>
+          <Switch>
+            <Redirect exact path="/" to="/home"/>
+            <Route exact path="/home" component={HomepageLayout} />
+            <Route exact path="/tours" component={TourInfo} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/edit-profile" component={EditProfile} />
+            <Route exact path="/admin" component={AdminPanel} />
+            <Route exact path="/new-tour" component={CreateTour} />
+            <Route exact path="/reservations"
+              render={ (renderProps) => {
+                return (
+                  <Fragment>
+                    <Reservations />
+                    <MakeReservation />
+                  </Fragment>
+                )
+              }
             }
-          }
-          />
-        </Switch>
+            />
+          </Switch>
+        </div>
         <Footer/>
       </ResponsiveHeader>
     );
