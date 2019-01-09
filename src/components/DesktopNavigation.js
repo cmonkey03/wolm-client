@@ -54,6 +54,11 @@ class DesktopNavigation extends Component {
             }
             vertical
           >
+          { location.pathname !== '/home' ?
+            <AppHeading />
+            :
+            null
+          }
             <Menu
               fixed={fixed ? 'top' : null}
               inverted={!fixed}
@@ -154,7 +159,7 @@ class DesktopNavigation extends Component {
             { location.pathname === '/home' ?
               <HomepageHeading />
               :
-              <AppHeading />
+              null
             }
           </Segment>
         </Visibility>
