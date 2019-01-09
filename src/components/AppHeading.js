@@ -17,7 +17,7 @@ const AppHeading = ({ mobile }) => (
         fontSize: mobile ? '2em' : '4em',
         fontWeight: 'normal',
         marginBottom: 0,
-        marginTop: mobile ? '1.5em' : '3em',
+        marginTop: mobile ? '.1em' : '.5em',
         color: '#eae0ce',
       }}
     />

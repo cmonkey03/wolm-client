@@ -50,7 +50,7 @@ class DesktopNavigation extends Component {
               location.pathname === '/home' ?
               { minHeight: 700, padding: '1em 0em' }
               :
-              { minHeight: 200, padding: '1em 0em' }
+              { minHeight: 200, maxHeight: 200, padding: '1em 0em' }
             }
             vertical
           >
@@ -164,20 +164,6 @@ class DesktopNavigation extends Component {
     )
   }
 }
-
-/*<Container text>
-  <Header
-    as='h1'
-    content='WOLM'
-    inverted
-    style={{
-      fontSize: mobile ? '2em' : '4em',
-      fontWeight: 'normal',
-      marginBottom: 0,
-      marginTop: mobile ? '1.5em' : '3em',
-    }}
-  />
-</Container>*/
 
 
 DesktopNavigation.propTypes = {

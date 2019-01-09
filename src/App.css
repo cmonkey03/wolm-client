@@ -3,7 +3,7 @@
   url('./assets/1892-nyc-currier-ives-1920-1080.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  /* background-position: center; */
+  background-position: center;
   /* height: 275px;
   padding-top: 12px; */
 }
