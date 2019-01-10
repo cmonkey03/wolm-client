@@ -33,10 +33,10 @@ const Footer = () => {
             </Grid.Column>
             <Grid.Column width={7}>
               <Header as='h4' inverted>
-                Footer Header
+                An Experience Like No Other
               </Header>
               <p>
-                Extra space for a call to action inside the footer that could help re-engage users.
+                We're the only history-focused tour in New York City. Book today and we'll show you a side of Lower Manhattan you've never seen before.
               </p>
             </Grid.Column>
           </Grid.Row>
