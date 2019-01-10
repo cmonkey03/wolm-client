@@ -18,25 +18,25 @@ const Footer = () => {
               <List link inverted>
                 <List.Item as='a'>Sitemap</List.Item>
                 <List.Item as='a'>Contact Us</List.Item>
-                <List.Item as='a'>Religious Ceremonies</List.Item>
-                <List.Item as='a'>Gazebo Plans</List.Item>
+                <List.Item as='a'>Historical Research</List.Item>
+                <List.Item as='a'>Local Partners</List.Item>
               </List>
             </Grid.Column>
             <Grid.Column width={3}>
               <Header inverted as='h4' content='Services' />
               <List link inverted>
-                <List.Item as='a'>Banana Pre-Order</List.Item>
-                <List.Item as='a'>DNA FAQ</List.Item>
-                <List.Item as='a'>How To Access</List.Item>
-                <List.Item as='a'>Favorite X-Men</List.Item>
+                <List.Item as='a'>Tours</List.Item>
+                <List.Item as='a'>FAQ</List.Item>
+                <List.Item as='a'>Private Parties</List.Item>
+                <List.Item as='a'>Corporate Events</List.Item>
               </List>
             </Grid.Column>
             <Grid.Column width={7}>
               <Header as='h4' inverted>
-                Footer Header
+                An Experience Like No Other
               </Header>
               <p>
-                Extra space for a call to action inside the footer that could help re-engage users.
+                We're the only history-focused tour in New York City. Book today and we'll show you a side of Lower Manhattan you've never seen before.
               </p>
             </Grid.Column>
           </Grid.Row>
