@@ -18,8 +18,8 @@ const Footer = () => {
               <List link inverted>
                 <List.Item as='a'>Sitemap</List.Item>
                 <List.Item as='a'>Contact Us</List.Item>
-                <List.Item as='a'>Religious Ceremonies</List.Item>
-                <List.Item as='a'>Gazebo Plans</List.Item>
+                <List.Item as='a'>Historical Research</List.Item>
+                <List.Item as='a'>Local Partners</List.Item>
               </List>
             </Grid.Column>
             <Grid.Column width={3}>
