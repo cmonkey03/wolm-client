@@ -31,19 +31,39 @@ const initialState = {
 const usersReducers = (state=initialState, action) => {
   switch (action.type) {
     case LOAD_API_DATA:
-      return { ...state, users: action.payload.users }
+      return {
+        ...state,
+        users: action.payload.users
+      }
     case CREATING_USER:
-      return { ...state, creatingUser: true}
-    case CREATED_USER:
-      return {...state, creatingUser: false, createSuccess: true}
-    case AUTHENTICATING_USER:
-      return { ...state, authenticatingUser: true }
-    case UPDATING_USER:
-      return { ...state, updatingUser: true }
-    case UPDATED_USER:
-      return {...state, failedUpdate: false, updateSuccess: true}
-    case SET_CURRENT_USER:
       return { ...state,
+        creatingUser: true
+      }
+    case CREATED_USER:
+      return {
+        ...state,
+        creatingUser: false,
+        createSuccess: true
+      }
+    case AUTHENTICATING_USER:
+      return {
+        ...state,
+        authenticatingUser: true
+      }
+    case UPDATING_USER:
+      return {
+        ...state,
+        updatingUser: true
+      }
+    case UPDATED_USER:
+      return {
+        ...state,
+        failedUpdate: false,
+        updateSuccess: true
+      }
+    case SET_CURRENT_USER:
+      return {
+        ...state,
         user: action.payload,
         loggedIn: true,
         creatingUser: false,
@@ -51,7 +71,8 @@ const usersReducers = (state=initialState, action) => {
         updatingUser: false,
       }
     case UNMOUNT_USER_FORM:
-      return {...state,
+      return {
+        ...state,
         creatingUser: false,
         createSuccess: false,
         authenticatingUser: false,
@@ -63,7 +84,10 @@ const usersReducers = (state=initialState, action) => {
         error: null
       }
     case LOGOUT_USER:
-      return {...state, loggedIn: false}
+      return {
+        ...state,
+        loggedIn: false
+      }
     case FAILED_SIGNUP:
       return {
         ...state,
@@ -94,13 +118,16 @@ const usersReducers = (state=initialState, action) => {
       }
       return {
         ...state,
-        user: {...state.user, reservations: state.user.reservations.concat(newRes)}
+        user: {
+          ...state.user,
+          reservations: state.user.reservations.concat(newRes)
+        }
       }
     case RENDER_DELETE_RESERVATION:
       const reservations = state.user.reservations.filter((res) => {
         return parseInt(action.payload.id) !== parseInt(res.id)
       })
-      console.log(reservations)
+      
       return {
         ...state,
         user: {...state.user, reservations}
