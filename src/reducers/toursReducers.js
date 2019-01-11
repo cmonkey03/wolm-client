@@ -34,7 +34,8 @@ const toursReducers = (state = initialState, action) => {
         ...state,
         creatingTour: false,
         failedCreateTour: true,
-        error: action.payload }
+        error: action.payload
+      }
     case UNMOUNT_TOUR:
       return {
         ...state,
