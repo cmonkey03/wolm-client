@@ -100,7 +100,7 @@ const usersReducers = (state=initialState, action) => {
       const reservations = state.user.reservations.filter((res) => {
         return parseInt(action.payload.id) !== parseInt(res.id)
       })
-      console.log(reservations)
+      
       return {
         ...state,
         user: {...state.user, reservations}
