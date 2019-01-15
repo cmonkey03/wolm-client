@@ -35,7 +35,8 @@ const HomepageLayout = () => (
               Website of Lower Manhattan
             </Header>
             <p style={{ fontSize: '1.33em' }}>
-              Check back soon as
+              We offer curated tours of New York that bring together locals and our mobile
+              application to bring you a historical tour of New York City like no other.
             </p>
           </Grid.Column>
           <Grid.Column floated='right' width={6}>
@@ -55,17 +56,17 @@ const HomepageLayout = () => (
         <Grid.Row textAlign='center'>
           <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
             <Header as='h3' style={{ fontSize: '2em' }}>
-              "What a Company"
+              "And I thought New York today was crazy"
             </Header>
-            <p style={{ fontSize: '1.33em' }}>That is what they all say about us</p>
+            <p style={{ fontSize: '1.33em' }}>Eighteenth century New York awaits you.</p>
           </Grid.Column>
           <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
             <Header as='h3' style={{ fontSize: '2em' }}>
-              "I shouldn't have gone with their competitor."
+              "I'm glad we picked this tour. We're all disturbed, and fascinated."
             </Header>
             <p style={{ fontSize: '1.33em' }}>
               <Image avatar src={src1} />
-              <b>Nan</b> Chief Fun Officer Acme Toys
+              <b>Emil</b> Banana salesman and father of twelve
             </p>
           </Grid.Column>
         </Grid.Row>
@@ -75,15 +76,15 @@ const HomepageLayout = () => (
     <Segment style={{ padding: '8em 0em' }} vertical>
       <Container text>
         <Header as='h3' style={{ fontSize: '2em' }}>
-          Beheaded: a guided history of headless New Yorkers
+          Beheaded: a guide to headless New York
         </Header>
         <p style={{ fontSize: '1.33em' }}>
           For centuries New York has been home to many famous headless residents. On this
-          tour meet "Headless Horseman" author Washington Irving, pre-American Revolution
-          revolutionaries and headless King George III!
+          tour meet "Sleepy Hollow" author Washington Irving, pre-American Revolution
+          revolutionaries and the decapitation of the many heads of King George III.
         </p>
         <Button as='a' size='large'>
-          Read More
+          Um, yes.
         </Button>
 
         <Divider
@@ -92,19 +93,19 @@ const HomepageLayout = () => (
           horizontal
           style={{ margin: '3em 0em', textTransform: 'uppercase' }}
         >
-          <a href={src2}>Case Studies</a>
+          <a href={src2}>Maps</a>
         </Divider>
 
         <Header as='h3' style={{ fontSize: '2em' }}>
-          Did We Tell You About Our Bananas?
+          We're Under Attack! The Invasions of New York
         </Header>
         <p style={{ fontSize: '1.33em' }}>
-          Yes I know you probably disregarded the earlier boasts as non-sequitur filler content, but
-          it's really true. It took years of gene splicing and combinatory DNA research, but our
-          bananas can really dance.
+          From Lenape mass burials to successive waves of colonization to attacks
+          on the the Statue of Liberty and World Trade Centers, New York has never
+          been far from danger. Learn how it went down.
         </p>
         <Button as='a' size='large'>
-          I'm Still Quite Interested
+          Interesting...
         </Button>
       </Container>
     </Segment>
