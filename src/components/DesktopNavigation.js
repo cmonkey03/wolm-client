@@ -27,14 +27,13 @@ class DesktopNavigation extends Component {
 
   hideFixedMenu = () => this.setState({ fixed: false })
   showFixedMenu = () => this.setState({ fixed: true })
-
   handleClick = (e, { name }) => this.setState({ activeItem: name })
 
   render() {
     const { children } = this.props
     const { fixed } = this.state
     const { location } = this.props
-    const {activeItem} = this.state
+    const { activeItem } = this.state
 
     return (
       <Responsive minWidth={Responsive.onlyTablet.minWidth}>
@@ -54,11 +53,10 @@ class DesktopNavigation extends Component {
             }
             vertical
           >
-          { location.pathname !== '/home' ?
+          {location.pathname !== '/home' ?
             <AppHeading />
             :
-            null
-          }
+            null}
             <Menu
               fixed={fixed ? 'top' : null}
               inverted={!fixed}
@@ -97,7 +95,8 @@ class DesktopNavigation extends Component {
                   onClick={this.handleClick}
                   inverted={!fixed}
                   primary={fixed}
-                  style={{ marginLeft: '0.5em' }}>
+                  style={{ marginLeft: '0.5em' }}
+                >
                   Sign Up
                 </Button>
               </Menu.Item>}
@@ -156,11 +155,10 @@ class DesktopNavigation extends Component {
                 }
               </Container>
             </Menu>
-            { location.pathname === '/home' ?
+            {location.pathname === '/home' ?
               <HomepageHeading />
               :
-              null
-            }
+              null}
           </Segment>
         </Visibility>
 

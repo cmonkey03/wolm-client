@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 import {
   Button,
   Container,
@@ -31,10 +32,12 @@ const HomepageHeading = ({ mobile }) => (
         color: '#eae0ce',
       }}
     />
-    <Button primary size='huge'>
-      Begin
-      {/*<Icon name='right arrow' />*/}
-    </Button>
+    <NavLink to='/signup'>
+      <Button primary size='huge'>
+        Begin
+        {/*<Icon name='right arrow' />*/}
+      </Button>
+    </NavLink>
   </Container>
 )
 

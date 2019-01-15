@@ -1,5 +1,5 @@
 .ui.inverted.vertical.center.aligned.segment {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)),
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)),
   url('./assets/1892-nyc-currier-ives-1920-1080.jpg');
   background-repeat: no-repeat;
   background-size: cover;
