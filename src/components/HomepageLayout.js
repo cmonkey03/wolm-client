@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import {NavLink} from 'react-router-dom';
 import {
   Button,
   Container,
@@ -45,7 +46,9 @@ const HomepageLayout = () => (
         </Grid.Row>
         <Grid.Row>
           <Grid.Column textAlign='center'>
+            <NavLink to='/tours'>
             <Button size='huge'>Check Out Our Tours</Button>
+            </NavLink>
           </Grid.Column>
         </Grid.Row>
       </Grid>
