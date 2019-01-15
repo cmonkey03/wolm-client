@@ -141,7 +141,7 @@ class MobileNavigation extends Component {
             {location.pathname === '/home' ?
               <HomepageHeading mobile />
               :
-              null}
+              <AppHeading/>}
           </Segment>
 
           {children}
