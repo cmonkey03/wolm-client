@@ -25,18 +25,17 @@ const HomepageLayout = () => (
         <Grid.Row>
           <Grid.Column width={8}>
             <Header as='h3' style={{ fontSize: '2em' }}>
-              We Help Companies and Companions
+              Tour Four Centuries of New York History
             </Header>
             <p style={{ fontSize: '1.33em' }}>
-              We can give your company superpowers to do things that they never thought possible.
-              Let us delight your customers and empower your needs... through pure data analytics.
+              Our guides bring you through Native Lenape history to the free spirit of Dutch
+              settlers to an American rebellion against British Colonial might.
             </p>
             <Header as='h3' style={{ fontSize: '2em' }}>
-              We Make Bananas That Can Dance
+              Website of Lower Manhattan
             </Header>
             <p style={{ fontSize: '1.33em' }}>
-              Yes that's right, you thought it was the stuff of dreams, but even bananas can be
-              bioengineered.
+              Check back soon as
             </p>
           </Grid.Column>
           <Grid.Column floated='right' width={6}>
@@ -45,7 +44,7 @@ const HomepageLayout = () => (
         </Grid.Row>
         <Grid.Row>
           <Grid.Column textAlign='center'>
-            <Button size='huge'>Check Them Out</Button>
+            <Button size='huge'>Check Out Our Tours</Button>
           </Grid.Column>
         </Grid.Row>
       </Grid>
@@ -76,12 +75,12 @@ const HomepageLayout = () => (
     <Segment style={{ padding: '8em 0em' }} vertical>
       <Container text>
         <Header as='h3' style={{ fontSize: '2em' }}>
-          Breaking The Grid, Grabs Your Attention
+          Beheaded: a guided history of headless New Yorkers
         </Header>
         <p style={{ fontSize: '1.33em' }}>
-          Instead of focusing on content creation and hard work, we have learned how to master the
-          art of doing nothing by providing massive amounts of whitespace and generic content that
-          can seem massive, monolithic and worth your attention.
+          For centuries New York has been home to many famous headless residents. On this
+          tour meet "Headless Horseman" author Washington Irving, pre-American Revolution
+          revolutionaries and headless King George III!
         </p>
         <Button as='a' size='large'>
           Read More
