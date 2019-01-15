@@ -27,7 +27,6 @@ class DesktopNavigation extends Component {
 
   hideFixedMenu = () => this.setState({ fixed: false })
   showFixedMenu = () => this.setState({ fixed: true })
-
   handleClick = (e, { name }) => this.setState({ activeItem: name })
 
   render() {
