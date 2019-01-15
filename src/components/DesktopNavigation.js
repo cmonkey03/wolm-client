@@ -96,7 +96,8 @@ class DesktopNavigation extends Component {
                   onClick={this.handleClick}
                   inverted={!fixed}
                   primary={fixed}
-                  style={{ marginLeft: '0.5em' }}>
+                  style={{ marginLeft: '0.5em' }}
+                >
                   Sign Up
                 </Button>
               </Menu.Item>}

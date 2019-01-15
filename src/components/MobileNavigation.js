@@ -98,14 +98,43 @@ class MobileNavigation extends Component {
                 <Menu.Item onClick={this.handleToggle}>
                   <Icon name='sidebar' />
                 </Menu.Item>
-                <Menu.Item position='right'>
-                  <Button as='a' inverted>
-                    Log in
-                  </Button>
-                  <Button as='a' inverted style={{ marginLeft: '0.5em' }}>
-                    Sign Up
-                  </Button>
-                </Menu.Item>
+                {!this.props.loggedIn &&
+                  <Menu.Item position='right'>
+                    <Button
+                      as={Link}
+                      to="/login"
+                      active={activeItem==="login"}
+                      color={colors[0]}
+                      onClick={this.handleClick}
+                      inverted
+                    >
+                      Log in
+                    </Button>
+                    <Button
+                      as={Link}
+                      to="/signup"
+                      active={activeItem==="signup"}
+                      color={colors[1]}
+                      onClick={this.handleClick}
+                      inverted
+                      style={{ marginLeft: '0.5em' }}
+                      >
+                      Sign Up
+                    </Button>
+                  </Menu.Item>}
+                {this.props.loggedIn &&
+                  <Menu.Item position='right'>
+                    <Button
+                      as={Link}
+                      to="/home"
+                      color={colors[3]}
+                      inverted
+                      style={{ marginLeft: '0.5em' }}
+                      onClick={this.props.logoutUser}
+                    >
+                      Logout {this.props.user.username}
+                    </Button>
+                  </Menu.Item>}
               </Menu>
             </Container>
             { location.pathname === '/home' ? <HomepageHeading mobile /> : null}
