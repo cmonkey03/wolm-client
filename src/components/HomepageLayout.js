@@ -26,7 +26,7 @@ const HomepageLayout = () => (
         <Grid.Row>
           <Grid.Column width={8}>
             <Header as='h3' style={{ fontSize: '2em' }}>
-              Tour Four Centuries of New York History
+              Centuries of New York History Awaits You
             </Header>
             <p style={{ fontSize: '1.33em' }}>
               Our guides bring you through Native Lenape history to the free spirit of Dutch
