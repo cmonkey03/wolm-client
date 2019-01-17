@@ -16,6 +16,7 @@ class AllUsers extends React.Component {
       <PaginationTable  items={this.props.users}
                         {...this.state}
                         tableName="Users"
+                        mobile
                         />
     )
   }

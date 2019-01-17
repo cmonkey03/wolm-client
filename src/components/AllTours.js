@@ -16,6 +16,7 @@ class AllTours extends React.Component {
       <PaginationTable  items={this.props.tours}
                         {...this.state}
                         tableName="Tours"
+                        mobile
                         />
     )
   }
