@@ -136,3 +136,7 @@ export default class PaginationTable extends React.Component {
   }
 
 }
+
+PaginationTable.propTypes = {
+  mobile: PropTypes.bool,
+}
