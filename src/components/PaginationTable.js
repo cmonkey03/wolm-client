@@ -1,11 +1,14 @@
 import React from 'react';
 import moment from 'moment';
+import PropTypes from 'prop-types';
 import {
   Header,
   Icon,
   Menu,
   Table
 } from 'semantic-ui-react';
+
+const isMobile = window.innerWidth <= 500;
 
 export default class PaginationTable extends React.Component {
   constructor(props) {
@@ -57,7 +60,8 @@ export default class PaginationTable extends React.Component {
   generateFooterMenuItems = (footerMenuLength) => {
     let footerMenuItems = []
     for (let i = 1; i <= footerMenuLength; i++) {
-      footerMenuItems.push(<Menu.Item as='a'
+      footerMenuItems.push(<Menu.Item
+        as='a'
         onClick={this.handleClickFooterMenu}
         id={i}
         key={i}>
@@ -66,9 +70,14 @@ export default class PaginationTable extends React.Component {
     }
     return footerMenuItems;
   }
-  generateFooter = (items, itemCount) => {
+  generateDesktopFooter = (items, itemCount) => {
     const menuLength = this.footerMenuLength(items, itemCount)
     return this.generateFooterMenuItems(menuLength)
+  }
+
+  generateMobileFooter = (items, itemCount) => {
+    const menuLength = this.footerMenuLength(items, itemCount)
+    return this.generateFooterMenuItems(menuLength).slice(this.state.displayIndex, this.state.displayIndex+3)
   }
 
   handleClickFooterMenu = (e) => {
@@ -107,7 +116,11 @@ export default class PaginationTable extends React.Component {
                       id='user chevron left'
                       />
                   </Menu.Item>
-                  { this.generateFooter(items, itemCount) }
+                  { isMobile ?
+                    this.generateMobileFooter(items, itemCount)
+                    :
+                    this.generateDesktopFooter(items, itemCount)
+                  }
                   <Menu.Item as='a' icon>
                     <Icon name='chevron right'
                       onClick={this.handleClickFooterMenu}
@@ -134,4 +147,8 @@ export default class PaginationTable extends React.Component {
     )
   }
 
+}
+
+PaginationTable.propTypes = {
+  mobile: PropTypes.bool,
 }

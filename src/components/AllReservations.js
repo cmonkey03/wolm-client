@@ -16,6 +16,7 @@ class AllReservations extends React.Component {
       <PaginationTable  items={this.props.reservations}
                         {...this.state}
                         tableName="Reservations"
+                        mobile
                         />
                     )
   }
