@@ -71,15 +71,13 @@ export default class PaginationTable extends React.Component {
     return footerMenuItems;
   }
   generateDesktopFooter = (items, itemCount) => {
-    console.log("desktop")
     const menuLength = this.footerMenuLength(items, itemCount)
     return this.generateFooterMenuItems(menuLength)
   }
 
   generateMobileFooter = (items, itemCount) => {
-    console.log("mobile")
     const menuLength = this.footerMenuLength(items, itemCount)
-    return this.generateFooterMenuItems(menuLength)
+    return this.generateFooterMenuItems(menuLength).slice(this.state.displayIndex, this.state.displayIndex+3)
   }
 
   handleClickFooterMenu = (e) => {
