@@ -137,8 +137,6 @@ export default class PaginationTable extends React.Component {
   }
 
   render() {
-    console.log(window.innerWidth)
-    console.log(isMobile)
     return (
       <React.Fragment>
         { this.renderTable( this.props.items,
