@@ -8,6 +8,8 @@ import {
   Table
 } from 'semantic-ui-react';
 
+const isMobile = window.innerWidth <= 500;
+
 export default class PaginationTable extends React.Component {
   constructor(props) {
     super(props)
@@ -125,6 +127,8 @@ export default class PaginationTable extends React.Component {
   }
 
   render() {
+    console.log(window.innerWidth)
+    console.log(isMobile)
     return (
       <React.Fragment>
         { this.renderTable( this.props.items,
