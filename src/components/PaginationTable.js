@@ -71,11 +71,13 @@ export default class PaginationTable extends React.Component {
     return footerMenuItems;
   }
   generateDesktopFooter = (items, itemCount) => {
+    console.log("desktop")
     const menuLength = this.footerMenuLength(items, itemCount)
     return this.generateFooterMenuItems(menuLength)
   }
 
   generateMobileFooter = (items, itemCount) => {
+    console.log("mobile")
     const menuLength = this.footerMenuLength(items, itemCount)
     return this.generateFooterMenuItems(menuLength)
   }
@@ -116,7 +118,11 @@ export default class PaginationTable extends React.Component {
                       id='user chevron left'
                       />
                   </Menu.Item>
-                  { this.generateDesktopFooter(items, itemCount) }
+                  { isMobile ?
+                    this.generateMobileFooter(items, itemCount)
+                    :
+                    this.generateDesktopFooter(items, itemCount)
+                  }
                   <Menu.Item as='a' icon>
                     <Icon name='chevron right'
                       onClick={this.handleClickFooterMenu}
