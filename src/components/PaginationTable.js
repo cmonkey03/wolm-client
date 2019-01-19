@@ -75,10 +75,14 @@ export default class PaginationTable extends React.Component {
     return this.generateFooterMenuItems(menuLength)
   }
 
-  generateMobileFooter = (items, itemCount) => {
-    const menuLength = this.footerMenuLength(items, itemCount)
-    return this.generateFooterMenuItems(menuLength).slice(this.state.displayIndex, this.state.displayIndex+3)
+  generateMobileFooter = (displayIndex) => {
+    return <Menu.Item>Page {displayIndex+1}</Menu.Item>
   }
+
+  // generateMobileFooter = (items, itemCount) => {
+  //   const menuLength = this.footerMenuLength(items, itemCount)
+  //   return this.generateFooterMenuItems(menuLength).slice(this.state.displayIndex, this.state.displayIndex+3)
+  // }
 
   handleClickFooterMenu = (e) => {
     if (e.target.id === 'user chevron left' && this.state.displayIndex > 0) {
@@ -117,7 +121,7 @@ export default class PaginationTable extends React.Component {
                       />
                   </Menu.Item>
                   { isMobile ?
-                    this.generateMobileFooter(items, itemCount)
+                    this.generateMobileFooter(displayIndex)
                     :
                     this.generateDesktopFooter(items, itemCount)
                   }
