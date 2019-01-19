@@ -2,6 +2,9 @@
      User Global Variables
 *******************************/
 
+
+/**********Fonts**************/
+
 @fontName          : 'Jacques Francois';
 
 /* Other potential Google fonts:
@@ -13,5 +16,7 @@ font-family: 'Fredericka the Great', cursive;
 font-family: 'Cinzel Decorative', cursive;
 font-family: 'Jacques Francois', serif;
 font-family: 'IM Fell Double Pica SC', serif; */
+
+/**********Colors**************/
 
 @pageBackground    :  #dce5e3;
