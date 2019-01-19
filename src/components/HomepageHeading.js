@@ -4,7 +4,8 @@ import {NavLink} from 'react-router-dom';
 import {
   Button,
   Container,
-  Header
+  Header,
+  Icon
 } from 'semantic-ui-react';
 
 const HomepageHeading = ({ mobile }) => (
@@ -35,7 +36,7 @@ const HomepageHeading = ({ mobile }) => (
     <NavLink to='/signup'>
       <Button primary size='huge'>
         Begin
-        {/*<Icon name='right arrow' />*/}
+        <Icon name='right arrow' />
       </Button>
     </NavLink>
   </Container>
