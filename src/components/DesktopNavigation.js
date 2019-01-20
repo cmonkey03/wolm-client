@@ -20,7 +20,7 @@ import {
 * such things.
 */
 
-const colors = ['teal', 'olive', 'brown', 'yellow']
+const colors = ['teal', 'olive', 'brown', 'yellow', 'blue']
 
 class DesktopNavigation extends Component {
   state = {}
@@ -91,7 +91,7 @@ class DesktopNavigation extends Component {
                   as={Link}
                   to="/signup"
                   active={activeItem==="signup"}
-                  color={colors[1]}
+                  color={colors[4]}
                   onClick={this.handleClick}
                   inverted={!fixed}
                   primary={fixed}
@@ -143,7 +143,7 @@ class DesktopNavigation extends Component {
                     <Button
                       as={Link}
                       to="/home"
-                      color={colors[3]}
+                      color={colors[4]}
                       inverted={!fixed}
                       primary={fixed}
                       style={{ marginLeft: '0.5em' }}
