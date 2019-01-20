@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Redirect } from 'react-router';
-import {NavLink} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { loginUser }from '../actions/user';
 import { unmountUser }from '../actions/user';
 import {
@@ -91,7 +91,7 @@ class Login extends React.Component {
               </Segment>
             </Form>
             <Message>
-              New to us? <NavLink to="/signup">Sign Up</NavLink>
+              New to us? <Link to="/signup">Sign Up</Link>
             </Message>
           </Grid.Column>
         </Grid>
