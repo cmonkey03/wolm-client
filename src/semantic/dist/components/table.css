@@ -661,19 +661,19 @@
 
 /* Yellow */
 .ui.yellow.table {
-  border-top: 0.2em solid #FBBD08;
+  border-top: 0.2em solid #d8b906;
 }
 .ui.inverted.yellow.table {
-  background-color: #FBBD08 !important;
+  background-color: #d8b906 !important;
   color: #FFFFFF !important;
 }
 
 /* Olive */
 .ui.olive.table {
-  border-top: 0.2em solid #B5CC18;
+  border-top: 0.2em solid #80910e;
 }
 .ui.inverted.olive.table {
-  background-color: #B5CC18 !important;
+  background-color: #80910e !important;
   color: #FFFFFF !important;
 }
 
@@ -688,19 +688,19 @@
 
 /* Teal */
 .ui.teal.table {
-  border-top: 0.2em solid #00B5AD;
+  border-top: 0.2em solid #018c86;
 }
 .ui.inverted.teal.table {
-  background-color: #00B5AD !important;
+  background-color: #018c86 !important;
   color: #FFFFFF !important;
 }
 
 /* Blue */
 .ui.blue.table {
-  border-top: 0.2em solid #2185D0;
+  border-top: 0.2em solid #92afaa;
 }
 .ui.inverted.blue.table {
-  background-color: #2185D0 !important;
+  background-color: #92afaa !important;
   color: #FFFFFF !important;
 }
 

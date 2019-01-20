@@ -2,7 +2,6 @@
      User Global Variables
 *******************************/
 
-
 /**********Fonts**************/
 
 @fontName          : 'Jacques Francois';
@@ -18,5 +17,11 @@ font-family: 'Jacques Francois', serif;
 font-family: 'IM Fell Double Pica SC', serif; */
 
 /**********Colors**************/
+
+@blue             : #92afaa;
+@teal             : #018c86;
+@olive            : #80910e;
+@brown            : #A5673F;
+@yellow           : #d8b906;
 
 @pageBackground    :  #dce5e3;
