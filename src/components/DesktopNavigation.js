@@ -93,7 +93,7 @@ class DesktopNavigation extends Component {
                   active={activeItem==="signup"}
                   color={colors[4]}
                   onClick={this.handleClick}
-                  inverted={!fixed}
+                  
                   primary={fixed}
                   style={{ marginLeft: '0.5em' }}
                 >
@@ -144,7 +144,6 @@ class DesktopNavigation extends Component {
                       as={Link}
                       to="/home"
                       color={colors[4]}
-                      inverted={!fixed}
                       primary={fixed}
                       style={{ marginLeft: '0.5em' }}
                       onClick={this.props.logoutUser}
