@@ -140,7 +140,6 @@ class DesktopNavigation extends Component {
                       to="/home"
                       color={colors[4]}
                       primary={fixed}
-                      style={{ marginLeft: '0.5em' }}
                       onClick={this.props.logoutUser}
                     >
                       Logout {this.props.user.username}
