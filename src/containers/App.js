@@ -21,7 +21,8 @@ class App extends Component {
         <div
           style={{
             padding:'5em',
-            paddingTop:'3em'
+            paddingTop:'3em',
+            minHeight: '60vh'
           }}>
           <Switch>
             <Redirect exact path="/" to="/home"/>
