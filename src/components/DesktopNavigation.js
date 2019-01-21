@@ -142,7 +142,7 @@ class DesktopNavigation extends Component {
                       primary={fixed}
                       onClick={this.props.logoutUser}
                     >
-                      Logout {this.props.user.username}
+                      Logout
                     </Button>
                   </Menu.Item>
                 }
