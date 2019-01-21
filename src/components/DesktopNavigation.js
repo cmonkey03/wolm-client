@@ -15,11 +15,6 @@ import {
   Visibility,
 } from 'semantic-ui-react'
 
-/* eslint-disable react/no-multi-comp */
-/* Heads up! HomepageHeading uses inline styling, however it's not the best practice. Use CSS or styled components for
-* such things.
-*/
-
 const colors = ['teal', 'olive', 'brown', 'yellow', 'blue']
 
 class DesktopNavigation extends Component {
@@ -93,7 +88,7 @@ class DesktopNavigation extends Component {
                   active={activeItem==="signup"}
                   color={colors[4]}
                   onClick={this.handleClick}
-                  
+
                   primary={fixed}
                   style={{ marginLeft: '0.5em' }}
                 >
