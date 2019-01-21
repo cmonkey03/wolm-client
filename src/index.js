@@ -13,7 +13,7 @@ import './semantic/dist/semantic.min.css';
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      <App />
+      <App/>
     </Router>
   </Provider>,
   document.getElementById('root')

@@ -19,8 +19,10 @@ class App extends Component {
     return (
       <ResponsiveHeader>
         <div
-          className='app'
-          style={{ padding:'5em', paddingTop:'3em' }}>
+          style={{
+            padding:'5em',
+            paddingTop:'3em'
+          }}>
           <Switch>
             <Redirect exact path="/" to="/home"/>
             <Route exact path="/home" component={HomepageLayout} />
