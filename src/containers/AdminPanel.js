@@ -39,6 +39,7 @@ class AdminPanel extends Component {
         Administrator Panel
         <Header.Subheader>Manage tours, users and reservations.</Header.Subheader>
       </Header>
+        <CreateTour/>
         <AllUsers />
         <AllTours />
         <AllReservations />
