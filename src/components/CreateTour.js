@@ -79,7 +79,7 @@ class CreateTour extends React.Component {
         <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 450 }}>
             <Header as='h2' color='teal' textAlign='center'>
-              <Image src='/favicon-32x32.png' /> Create a Tour
+              <Image src='/android-chrome-192x192.png' /> Create a Tour
             </Header>
             <Segment raised>
               <Form
