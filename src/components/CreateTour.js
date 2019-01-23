@@ -4,6 +4,7 @@ import withAuth from '../hocs/withAuth';
 import ApiAdapter from '../adapter';
 import moment from 'moment';
 import {createTour} from '../actions/tour';
+import {loadTours} from '../actions/tour';
 import {unmountTour} from '../actions/tour';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -12,7 +13,6 @@ import {
   Form,
   Grid,
   Header,
-  Image,
   Input,
   Label,
   Message,
@@ -52,7 +52,7 @@ class CreateTour extends React.Component {
       price: 0,
       error: null
     })
-
+    this.props.loadTours()
   }
 
   handleErrors = (errors) => {
@@ -78,10 +78,8 @@ class CreateTour extends React.Component {
         `}</style>
         <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 450 }}>
-            <Header as='h2' color='teal' textAlign='center'>
-              <Image src='/android-chrome-192x192.png' /> Create a Tour
-            </Header>
-            <Segment raised>
+            <Header as='h3' attached='top' inverted color='grey'>Create a Tour</Header>
+            <Segment raised attached>
               <Form
                 onSubmit={this.handleTourSubmit}
                 size='large'
@@ -145,4 +143,4 @@ const mapStateToProps = ({tours: { creatingTour, tourSuccess, error, failedCreat
     error
   })
 
-export default withAuth(connect(mapStateToProps, {createTour, unmountTour})(CreateTour));
+export default withAuth(connect(mapStateToProps, {createTour, loadTours, unmountTour})(CreateTour));

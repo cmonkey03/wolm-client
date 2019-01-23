@@ -67,15 +67,6 @@ class MobileNavigation extends Component {
               color={colors[1]}
               onClick={this.handleClick}
             />}
-          {this.props.loggedIn && this.props.user.admin &&
-            <Menu.Item
-              as={Link}
-              to="/new-tour"
-              name="create tour"
-              active={activeItem==="create tour"}
-              color={colors[2]}
-              onClick={this.handleClick}
-            />}
           {this.props.loggedIn &&
             <Menu.Item
               as={Link}

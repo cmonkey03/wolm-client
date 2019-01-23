@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import AllUsers from '../components/AllUsers.js';
 import AllTours from '../components/AllTours.js';
 import AllReservations from '../components/AllReservations.js';
+import CreateTour from '../components/CreateTour';
 import { Header, Icon } from 'semantic-ui-react';
 import { LOAD_API_DATA } from '../types';
 import ApiAdapter from '../adapter';
@@ -38,6 +39,7 @@ class AdminPanel extends Component {
         Administrator Panel
         <Header.Subheader>Manage tours, users and reservations.</Header.Subheader>
       </Header>
+        <CreateTour/>
         <AllUsers />
         <AllTours />
         <AllReservations />
