@@ -52,7 +52,7 @@ class CreateTour extends React.Component {
       price: 0,
       error: null
     })
-
+    this.props.loadTours()
   }
 
   handleErrors = (errors) => {
@@ -136,11 +136,11 @@ class CreateTour extends React.Component {
   }
 }
 
-const mapStateToProps = ({tours: { creatingTour, loadTours, tourSuccess, error, failedCreateTour }}) => ({
+const mapStateToProps = ({tours: { creatingTour, tourSuccess, error, failedCreateTour }}) => ({
     creatingTour,
     tourSuccess,
     failedCreateTour,
     error
   })
 
-export default withAuth(connect(mapStateToProps, {createTour, unmountTour})(CreateTour));
+export default withAuth(connect(mapStateToProps, {createTour, loadTours, unmountTour})(CreateTour));
