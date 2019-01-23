@@ -113,15 +113,6 @@ class DesktopNavigation extends Component {
                   color={colors[1]}
                   onClick={this.handleClick}
                 />}
-              {this.props.loggedIn && this.props.user.admin &&
-                <Menu.Item
-                  as={Link}
-                  to="/new-tour"
-                  name="create tour"
-                  active={activeItem==="create tour"}
-                  color={colors[2]}
-                  onClick={this.handleClick}
-                />}
               {this.props.loggedIn &&
                 <Menu.Item
                   as={Link}
@@ -142,7 +133,7 @@ class DesktopNavigation extends Component {
                       primary={fixed}
                       onClick={this.props.logoutUser}
                     >
-                      Logout
+                      Logout {this.props.user.username}
                     </Button>
                   </Menu.Item>
                 }
