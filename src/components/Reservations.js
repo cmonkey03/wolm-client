@@ -3,6 +3,7 @@ import withAuth from '../hocs/withAuth';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import { cancelReservation } from '../actions/reservation';
+import { loadTours } from '../actions/tour';
 import { fetchCurrentUser } from '../actions/user';
 import {
   Button,
@@ -28,6 +29,8 @@ class Reservations extends React.Component {
   handleCancelReservation = (e) => {
     const reservationObj = { id: e.target.name }
     this.props.cancelReservation(reservationObj)
+    //loadTours to pessimistically render changes to tour reservations
+    this.props.loadTours()
   }
 
   render() {
@@ -83,4 +86,4 @@ const mapStateToProps = ({ users: { user , loggedIn },
     cancellingReservation
 })
 
-export default withAuth(connect(mapStateToProps, { cancelReservation, fetchCurrentUser })(Reservations));
+export default withAuth(connect(mapStateToProps, { cancelReservation, fetchCurrentUser, loadTours })(Reservations));

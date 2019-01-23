@@ -34,6 +34,8 @@ class MakeReservation extends React.Component {
     }
 
     this.props.createReservation(reservationObj)
+    //loadTours to pessimistically render changes to tour reservations
+    this.props.loadTours()
   }
 
   tourRow = (tours) => {
