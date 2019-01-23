@@ -12,7 +12,6 @@ import {
   Form,
   Grid,
   Header,
-  Image,
   Input,
   Label,
   Message,
