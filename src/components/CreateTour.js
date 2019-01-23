@@ -4,6 +4,7 @@ import withAuth from '../hocs/withAuth';
 import ApiAdapter from '../adapter';
 import moment from 'moment';
 import {createTour} from '../actions/tour';
+import {loadTours} from '../actions/tour';
 import {unmountTour} from '../actions/tour';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -135,7 +136,7 @@ class CreateTour extends React.Component {
   }
 }
 
-const mapStateToProps = ({tours: { creatingTour, tourSuccess, error, failedCreateTour }}) => ({
+const mapStateToProps = ({tours: { creatingTour, loadTours, tourSuccess, error, failedCreateTour }}) => ({
     creatingTour,
     tourSuccess,
     failedCreateTour,
