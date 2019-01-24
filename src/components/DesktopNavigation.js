@@ -15,7 +15,7 @@ import {
   Visibility,
 } from 'semantic-ui-react'
 
-const colors = ['teal', 'olive', 'brown', 'yellow', 'blue']
+const colors = ['red', 'olive', 'brown', 'yellow', 'blue']
 
 class DesktopNavigation extends Component {
   state = {}
@@ -76,7 +76,7 @@ class DesktopNavigation extends Component {
                   as={Link}
                   to="/login"
                   active={activeItem==="login"}
-                  color={colors[0]}
+                  color={colors[1]}
                   onClick={this.handleClick}
                   inverted={!fixed}
                 >
@@ -129,6 +129,7 @@ class DesktopNavigation extends Component {
                     <Button
                       as={Link}
                       to="/home"
+                      inverted
                       color={colors[4]}
                       primary={fixed}
                       onClick={this.props.logoutUser}

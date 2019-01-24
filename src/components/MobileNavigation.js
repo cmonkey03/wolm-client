@@ -16,7 +16,7 @@ import {
   Sidebar
 } from 'semantic-ui-react';
 
-const colors = ['teal', 'olive', 'brown', 'yellow', 'blue']
+const colors = ['red', 'olive', 'brown', 'yellow', 'blue']
 
 class MobileNavigation extends Component {
   state = {}
@@ -108,7 +108,6 @@ class MobileNavigation extends Component {
                       active={activeItem==="signup"}
                       color={colors[4]}
                       onClick={this.handleClick}
-                      inverted
                       style={{ marginLeft: '0.5em' }}
                       >
                       Sign Up
