@@ -108,7 +108,6 @@ class MobileNavigation extends Component {
                       active={activeItem==="signup"}
                       color={colors[4]}
                       onClick={this.handleClick}
-                      inverted
                       style={{ marginLeft: '0.5em' }}
                       >
                       Sign Up
