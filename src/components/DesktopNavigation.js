@@ -15,7 +15,7 @@ import {
   Visibility,
 } from 'semantic-ui-react'
 
-const colors = ['teal', 'olive', 'brown', 'yellow', 'blue']
+const colors = ['red', 'olive', 'brown', 'yellow', 'blue']
 
 class DesktopNavigation extends Component {
   state = {}
