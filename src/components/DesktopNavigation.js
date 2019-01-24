@@ -76,7 +76,7 @@ class DesktopNavigation extends Component {
                   as={Link}
                   to="/login"
                   active={activeItem==="login"}
-                  color={colors[0]}
+                  color={colors[1]}
                   onClick={this.handleClick}
                   inverted={!fixed}
                 >
