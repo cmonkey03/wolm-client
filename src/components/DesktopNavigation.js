@@ -129,6 +129,7 @@ class DesktopNavigation extends Component {
                     <Button
                       as={Link}
                       to="/home"
+                      inverted
                       color={colors[4]}
                       primary={fixed}
                       onClick={this.props.logoutUser}
