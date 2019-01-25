@@ -40,8 +40,8 @@ class AdminPanel extends Component {
         <Header.Subheader>Manage tours, users and reservations.</Header.Subheader>
       </Header>
         <CreateTour/>
-        <AllUsers />
         <AllTours />
+        <AllUsers />
         <AllReservations />
       </React.Fragment>
     )
