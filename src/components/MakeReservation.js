@@ -38,16 +38,22 @@ class MakeReservation extends React.Component {
     this.props.loadTours()
   }
 
+  //Reduces tours to only future tours
   tourRow = (tours) => {
-    return (tours.map((tour) => {
-      return (<Table.Row key={tour.id}>
+    if (tours.length > 0) {
+      return (tours.reduce((accum, tour) => {
+        if (moment(tour.start_time) > moment()) {
+          accum.push(<Table.Row key={tour.id}>
             <Table.Cell textAlign='center'><Button size='small' onClick={this.handleSubmitReservation} name={tour.id}>Book This Tour</Button></Table.Cell>
             <Table.Cell>{moment(tour.start_time).format("LLLL")}</Table.Cell>
             <Table.Cell>{moment(tour.end_time).format("LLL")}</Table.Cell>
             <Table.Cell>{tour.price}</Table.Cell>
             <Table.Cell>{tour.reservations.length}</Table.Cell>
           </Table.Row>)
-    }))
+        }
+        return accum
+      }, []))
+    }
   }
 
   render() {
