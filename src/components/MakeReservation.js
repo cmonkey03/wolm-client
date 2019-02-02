@@ -38,29 +38,37 @@ class MakeReservation extends React.Component {
     this.props.loadTours()
   }
 
-  tourRow = (tours) => {
-    return (tours.map((tour) => {
-      return (<Table.Row key={tour.id}>
-            <Table.Cell textAlign='center'><Button size='small' onClick={this.handleSubmitReservation} name={tour.id}>Book This Tour</Button></Table.Cell>
-            <Table.Cell>{moment(tour.start_time).format("LLLL")}</Table.Cell>
-            <Table.Cell>{moment(tour.end_time).format("LLL")}</Table.Cell>
-            <Table.Cell>{tour.price}</Table.Cell>
-            <Table.Cell>{tour.reservations.length}</Table.Cell>
-          </Table.Row>)
-    }))
-  }
-
   // tourRow = (tours) => {
-  //   return (tours.map((tour) => {
-  //     return (<Table.Row key={tour.id}>
+  //   return (tours.reduce((accum, tour) => {
+  //     return accum.push(
+  //         <Table.Row key={tour.id}>
   //           <Table.Cell textAlign='center'><Button size='small' onClick={this.handleSubmitReservation} name={tour.id}>Book This Tour</Button></Table.Cell>
   //           <Table.Cell>{moment(tour.start_time).format("LLLL")}</Table.Cell>
   //           <Table.Cell>{moment(tour.end_time).format("LLL")}</Table.Cell>
   //           <Table.Cell>{tour.price}</Table.Cell>
   //           <Table.Cell>{tour.reservations.length}</Table.Cell>
   //         </Table.Row>)
-  //   }))
+  //     }, [])
+  //   )
   // }
+
+  tourRow = (tours) => {
+    return (tours.map((tour) => {
+      console.log(moment())
+      console.log(moment(tour.start_time).isSame(moment()))
+      console.log(moment(tour.start_time) > moment())
+
+      if (moment(tour.start_time) > moment()) {
+        return (<Table.Row key={tour.id}>
+          <Table.Cell textAlign='center'><Button size='small' onClick={this.handleSubmitReservation} name={tour.id}>Book This Tour</Button></Table.Cell>
+          <Table.Cell>{moment(tour.start_time).format("LLLL")}</Table.Cell>
+          <Table.Cell>{moment(tour.end_time).format("LLL")}</Table.Cell>
+          <Table.Cell>{tour.price}</Table.Cell>
+          <Table.Cell>{tour.reservations.length}</Table.Cell>
+        </Table.Row>)
+      }
+    }))
+  }
 
   render() {
     return (
