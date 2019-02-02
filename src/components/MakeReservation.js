@@ -22,10 +22,6 @@ class MakeReservation extends React.Component {
     this.props.unmountMakeReservation()
   }
 
-  currentTours(tours) {
-
-  }
-
   findTour(tour_id, tours) {
     const tour = tours.find((tour) => tour.id === tour_id)
     return tour
