@@ -37,8 +37,8 @@ class App extends Component {
               render={ (renderProps) => {
                 return (
                   <Fragment>
-                    <Reservations />
                     <MakeReservation />
+                    <Reservations />
                   </Fragment>
                 )
               }
