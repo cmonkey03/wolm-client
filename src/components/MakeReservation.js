@@ -52,12 +52,7 @@ class MakeReservation extends React.Component {
   //   )
   // }
 
-  tourRow = (tours) => {
-    return (tours.map((tour) => {
-      console.log(moment())
-      console.log(moment(tour.start_time).isSame(moment()))
-      console.log(moment(tour.start_time) > moment())
-
+  tourRow = (tours) => (tours.map((tour) => {
       if (moment(tour.start_time) > moment()) {
         return (<Table.Row key={tour.id}>
           <Table.Cell textAlign='center'><Button size='small' onClick={this.handleSubmitReservation} name={tour.id}>Book This Tour</Button></Table.Cell>
@@ -68,7 +63,18 @@ class MakeReservation extends React.Component {
         </Table.Row>)
       }
     }))
-  }
+
+    // tourRow = (tours) => (tours.map((tour) => {
+  //     if (moment(tour.start_time) > moment()) {
+  //       return (<Table.Row key={tour.id}>
+  //         <Table.Cell textAlign='center'><Button size='small' onClick={this.handleSubmitReservation} name={tour.id}>Book This Tour</Button></Table.Cell>
+  //         <Table.Cell>{moment(tour.start_time).format("LLLL")}</Table.Cell>
+  //         <Table.Cell>{moment(tour.end_time).format("LLL")}</Table.Cell>
+  //         <Table.Cell>{tour.price}</Table.Cell>
+  //         <Table.Cell>{tour.reservations.length}</Table.Cell>
+  //       </Table.Row>)
+  //     }
+  //   }))
 
   render() {
     return (
