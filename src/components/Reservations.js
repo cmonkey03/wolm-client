@@ -16,14 +16,17 @@ import {
 class Reservations extends React.Component {
 
   reservationRow = (reservations) => {
-    return (reservations.map((reservation) => {
-      return (<Table.Row key={reservation.id}>
+    return (reservations.reduce((accum, reservation) => {
+      if (moment(reservation.tour.start_time) > moment()) {
+          accum.push(<Table.Row key={reservation.id}>
             <Table.Cell textAlign='center'><Button size='small' onClick={this.handleCancelReservation} name={reservation.id}>Cancel</Button></Table.Cell>
             <Table.Cell>{moment(reservation.tour.start_time).format("LLLL")}</Table.Cell>
             <Table.Cell>{moment(reservation.tour.end_time).format("LLL")}</Table.Cell>
             <Table.Cell>{reservation.tour.price}</Table.Cell>
           </Table.Row>)
-    }))
+        }
+      return accum;
+    }, []))
   }
 
   handleCancelReservation = (e) => {
