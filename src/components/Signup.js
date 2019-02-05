@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
 import { createUser } from '../actions/user';
 import { unmountUser } from '../actions/user';
 import {
@@ -158,6 +159,9 @@ class Signup extends React.Component {
                   >Signup</Form.Button>
               </Form>
             </Segment>
+            <Message>
+              Already have an account? <Link to="/login">Login</Link>
+            </Message>
           </Grid.Column>
         </Grid>
       </div>
