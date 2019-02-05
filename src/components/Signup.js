@@ -159,6 +159,9 @@ class Signup extends React.Component {
                   >Signup</Form.Button>
               </Form>
             </Segment>
+            <Message>
+              Already have an account? <Link to="/signup">Login</Link>
+            </Message>
           </Grid.Column>
         </Grid>
       </div>
