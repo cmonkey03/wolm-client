@@ -160,7 +160,7 @@ class Signup extends React.Component {
               </Form>
             </Segment>
             <Message>
-              Already have an account? <Link to="/signup">Login</Link>
+              Already have an account? <Link to="/login">Login</Link>
             </Message>
           </Grid.Column>
         </Grid>
