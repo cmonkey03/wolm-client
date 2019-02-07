@@ -26,7 +26,7 @@ class CreateTour extends React.Component {
     this.state = {
       startTime: moment(),
       endTime: moment(),
-      description: "",
+      description: '',
       price: 0
     }
   }
@@ -44,15 +44,17 @@ class CreateTour extends React.Component {
     const tourObj = {
       start_time: this.state.startTime,
       end_time: this.state.endTime,
-      price: this.state.price
+      price: this.state.price,
+      description: this.state.description
     }
-
+    
     this.props.createTour(tourObj)
     this.setState({
       startTime: moment(),
       endTime: moment(),
       price: 0,
-      error: null
+      error: null,
+      description: ''
     })
     this.props.loadTours()
   }
