@@ -26,6 +26,7 @@ class CreateTour extends React.Component {
     this.state = {
       startTime: moment(),
       endTime: moment(),
+      description: "",
       price: 0
     }
   }
@@ -113,7 +114,14 @@ class CreateTour extends React.Component {
                   timeIntervals={15}
                   onChange={this.handleEndTimeChange}
                 />
-                <Label>Price</Label>
+              <Label>Description</Label>
+                <Form.TextArea
+                  name='description'
+                  type='text'
+                  value={this.state.description}
+                  onChange={this.handleChange}
+                />
+              <Label>Price</Label>
                 <Form.Input fluid>
                   <Input labelPosition='right'>
                     <Label basic>$</Label>
