@@ -47,7 +47,7 @@ class CreateTour extends React.Component {
       price: this.state.price,
       description: this.state.description
     }
-    
+
     this.props.createTour(tourObj)
     this.setState({
       startTime: moment(),
@@ -56,6 +56,7 @@ class CreateTour extends React.Component {
       error: null,
       description: ''
     })
+
     setTimeout(() => {
       this.props.loadTours()
     }, 5000)
@@ -123,6 +124,7 @@ class CreateTour extends React.Component {
                 <Form.TextArea
                   name='description'
                   type='text'
+                  maxLength='200'
                   value={this.state.description}
                   onChange={this.handleChange}
                 />
