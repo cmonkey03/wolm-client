@@ -56,7 +56,10 @@ class CreateTour extends React.Component {
       error: null,
       description: ''
     })
-    setTimeout(() => (this.props.loadTours()), 5000)
+
+    setTimeout(() => {
+      this.props.loadTours()
+    }, 5000)
   }
 
   handleErrors = (errors) => {

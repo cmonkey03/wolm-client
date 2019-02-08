@@ -27,6 +27,7 @@ This is the single-page application for WOLM, a booking website where users can 
 3. Clone down this repo and run `npm install http-server`.
 4. To fetch from a local WOLM API, go to `/src/adapter.js` and ensure line 4 is commented and line 2 is uncommented
 5. Run `http-server -p 8000` from the command line and open [http://localhost:8000/](http://localhost:8000/) in your browser.
+6. To edit Semantic UI React custom theming, cd to `/src/semantic` and run `gulp build` and `gulp watch`
 
 ## Contribute
 Thanks for your interest in contributing to WOLM!
