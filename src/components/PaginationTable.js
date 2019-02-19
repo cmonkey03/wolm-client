@@ -26,8 +26,6 @@ export default class PaginationTable extends React.Component {
   generateRow = (item, tableColumns) => {
     return tableColumns.map((data) => {
       const key = data.toLowerCase().split(' ').join('_')
-      console.log(key)
-      console.log(item)
       if (Array.isArray(item[key])) {
         return <Table.Cell key={data + item[key]}>{item[key].length}</Table.Cell>
       } else if (key.includes("time")) {
@@ -36,8 +34,8 @@ export default class PaginationTable extends React.Component {
         return <Table.Cell key={data + item[key]}>{item[key]}</Table.Cell>
       } else if (typeof item[key] === 'string') {
         return <Table.Cell key={data + item[key]}>{item[key]}</Table.Cell>
-      // } else if (Number.isInteger(item[key]['id'])) {
-        // return <Table.Cell key={data + item[key]}>{item[key]['id']}</Table.Cell>
+      } else if (Number.isInteger(item[key]['id'])) {
+        return <Table.Cell key={data + item[key]}>{item[key]['id']}</Table.Cell>
       } else {
         return null
       }
