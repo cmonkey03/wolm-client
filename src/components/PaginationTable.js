@@ -108,7 +108,7 @@ export default class PaginationTable extends React.Component {
           </Table.Body>
           <Table.Footer>
             <Table.Row>
-              <Table.HeaderCell colSpan='5'>
+              <Table.HeaderCell colSpan={tableColumns.length}>
                 <Menu floated='right' pagination>
                   <Menu.Item as='a' icon>
                     <Icon name='chevron left'
