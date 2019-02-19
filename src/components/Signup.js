@@ -134,7 +134,7 @@ class Signup extends React.Component {
               <Form.Input
                   fluid
                   placeholder='Bio'
-                  name='Bio'
+                  name='bio'
                   type='text'
                   maxLength='200'
                   value={this.bio}
