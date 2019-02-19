@@ -46,6 +46,7 @@ class MakeReservation extends React.Component {
           <Table.Cell textAlign='center'><Button size='small' onClick={this.handleSubmitReservation} name={tour.id}>Book This Tour</Button></Table.Cell>
           <Table.Cell>{moment(tour.start_time).format("LLLL")}</Table.Cell>
           <Table.Cell>{moment(tour.end_time).format("LLL")}</Table.Cell>
+          <Table.Cell>{tour.description}</Table.Cell>
           <Table.Cell>{tour.price}</Table.Cell>
           <Table.Cell>{tour.reservations.length}</Table.Cell>
         </Table.Row>)
@@ -82,6 +83,7 @@ class MakeReservation extends React.Component {
                 <Table.HeaderCell>Select Tour</Table.HeaderCell>
                 <Table.HeaderCell>Start Time</Table.HeaderCell>
                 <Table.HeaderCell>End Time</Table.HeaderCell>
+                <Table.HeaderCell>Description</Table.HeaderCell>
                 <Table.HeaderCell>Price</Table.HeaderCell>
                 <Table.HeaderCell>Reservations</Table.HeaderCell>
               </Table.Row>
@@ -91,7 +93,7 @@ class MakeReservation extends React.Component {
             </Table.Body>
             <Table.Footer>
               <Table.Row>
-                <Table.HeaderCell colSpan='5'>
+                <Table.HeaderCell colSpan='6'>
                   {/*<Menu floated='right' pagination>
                     <Menu.Item as='a' icon>
                       <Icon name='chevron left'/>
