@@ -7,7 +7,7 @@ class AllTours extends React.Component {
     super(props)
     this.state = {
       tableColumns: ['ID', 'Start Time', 'End Time', 'Description', 'Price', 'Reservations'],
-      itemCount: 6
+      itemCount: 10
     }
   }
 
