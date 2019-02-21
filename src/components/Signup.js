@@ -112,6 +112,17 @@ class Signup extends React.Component {
                 />
                 <Form.Input
                   fluid
+                  icon='lock'
+                  iconPosition='left'
+                  placeholder='Confirm Password'
+                  name='passwordConfirm'
+                  type='password'
+                  maxLength='32'
+                  value={this.password}
+                  onChange={this.handleChange}
+                />
+                <Form.Input
+                  fluid
                   icon='mail'
                   iconPosition='left'
                   placeholder='email@host.com'
