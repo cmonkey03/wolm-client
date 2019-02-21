@@ -121,28 +121,28 @@ class CreateTour extends React.Component {
                   timeIntervals={15}
                   onChange={this.handleEndTimeChange}
                 />
-              <Label>Description</Label>
+                <Label>Price</Label>
+                <Form.Input fluid>
+                  <Input labelPosition='right'>
+                    <Label basic>$</Label>
+                    <input  type='number'
+                            min='0'
+                            max='200'
+                            name="price"
+                            value={this.state.price}
+                            onChange={this.handlePriceChange}
+                    />
+                    <Label>.00</Label>
+                  </Input>
+                </Form.Input>
+                <Label>Description</Label>
                 <Form.TextArea
                   name='description'
                   type='text'
                   maxLength='200'
                   value={this.state.description}
                   onChange={this.handleChange}
-                />
-              <Label>Price</Label>
-              <Form.Input fluid>
-                <Input labelPosition='right'>
-                  <Label basic>$</Label>
-                  <input  type='number'
-                          min='0'
-                          max='200'
-                          name="price"
-                          value={this.state.price}
-                          onChange={this.handlePriceChange}
-                          />
-                  <Label>.00</Label>
-                </Input>
-                </Form.Input>
+                  />
                 <Button type='submit'>Create Tour</Button>
               </Form>
             </Segment>
