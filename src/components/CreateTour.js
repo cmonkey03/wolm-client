@@ -54,8 +54,8 @@ class CreateTour extends React.Component {
       endTime: moment(),
       image_url: "",
       price: 0,
-      error: null,
-      description: ''
+      description: '',
+      error: null
     })
 
     setTimeout(() => {
