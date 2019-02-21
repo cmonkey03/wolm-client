@@ -52,6 +52,7 @@ class CreateTour extends React.Component {
     this.setState({
       startTime: moment(),
       endTime: moment(),
+      image_url: "",
       price: 0,
       error: null,
       description: ''
