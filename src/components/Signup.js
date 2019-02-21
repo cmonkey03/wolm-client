@@ -120,6 +120,7 @@ class Signup extends React.Component {
                   maxLength='32'
                   value={this.password}
                   onChange={this.handleChange}
+                  error={this.state.password !== this.state.passwordConfirm }
                 />
                 <Form.Input
                   fluid
