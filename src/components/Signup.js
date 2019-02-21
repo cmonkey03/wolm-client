@@ -168,6 +168,7 @@ class Signup extends React.Component {
                     || !this.state.email
                     || !this.state.zipcode
                     || !this.state.bio
+                    || this.state.password !== this.state.passwordConfirm
                   }
                   >Signup</Form.Button>
               </Form>
