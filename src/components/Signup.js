@@ -20,6 +20,7 @@ class Signup extends React.Component {
     this.state = {
       username: '',
       password: '',
+      passwordConfirm: '',
       email: '',
       zipcode: '',
       bio: '',
@@ -108,6 +109,18 @@ class Signup extends React.Component {
                   maxLength='32'
                   value={this.password}
                   onChange={this.handleChange}
+                />
+                <Form.Input
+                  fluid
+                  icon='lock'
+                  iconPosition='left'
+                  placeholder='Confirm Password'
+                  name='passwordConfirm'
+                  type='password'
+                  maxLength='32'
+                  value={this.password}
+                  onChange={this.handleChange}
+                  error={this.state.password !== this.state.passwordConfirm }
                 />
                 <Form.Input
                   fluid
