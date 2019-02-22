@@ -46,6 +46,7 @@ class CreateTour extends React.Component {
       start_time: this.state.startTime,
       end_time: this.state.endTime,
       price: this.state.price,
+      image_url: this.state.image_url,
       description: this.state.description
     }
 
@@ -136,6 +137,14 @@ class CreateTour extends React.Component {
                     <Label>.00</Label>
                   </Input>
                 </Form.Input>
+                <Label>Image URL</Label>
+                <Form.Input
+                  name='image_url'
+                  type='text'
+                  maxLength='200'
+                  value={this.state.image_url}
+                  onChange={this.handleChange}
+                  />
                 <Label>Description</Label>
                 <Form.TextArea
                   name='description'
