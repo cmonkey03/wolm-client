@@ -26,8 +26,9 @@ class CreateTour extends React.Component {
     this.state = {
       startTime: moment(),
       endTime: moment(),
-      description: '',
-      price: 0
+      price: 0,
+      image_url: '',
+      description: ''
     }
   }
 
@@ -45,6 +46,7 @@ class CreateTour extends React.Component {
       start_time: this.state.startTime,
       end_time: this.state.endTime,
       price: this.state.price,
+      image_url: this.state.image_url,
       description: this.state.description
     }
 
@@ -52,9 +54,10 @@ class CreateTour extends React.Component {
     this.setState({
       startTime: moment(),
       endTime: moment(),
+      image_url: "",
       price: 0,
-      error: null,
-      description: ''
+      description: '',
+      error: null
     })
 
     setTimeout(() => {
@@ -120,28 +123,36 @@ class CreateTour extends React.Component {
                   timeIntervals={15}
                   onChange={this.handleEndTimeChange}
                 />
-              <Label>Description</Label>
+                <Label>Price</Label>
+                <Form.Input fluid>
+                  <Input labelPosition='right'>
+                    <Label basic>$</Label>
+                    <input  type='number'
+                            min='0'
+                            max='200'
+                            name="price"
+                            value={this.state.price}
+                            onChange={this.handlePriceChange}
+                    />
+                    <Label>.00</Label>
+                  </Input>
+                </Form.Input>
+                <Label>Image URL</Label>
+                <Form.Input
+                  name='image_url'
+                  type='text'
+                  maxLength='200'
+                  value={this.state.image_url}
+                  onChange={this.handleChange}
+                  />
+                <Label>Description</Label>
                 <Form.TextArea
                   name='description'
                   type='text'
                   maxLength='200'
                   value={this.state.description}
                   onChange={this.handleChange}
-                />
-              <Label>Price</Label>
-              <Form.Input fluid>
-                <Input labelPosition='right'>
-                  <Label basic>$</Label>
-                  <input  type='number'
-                          min='0'
-                          max='200'
-                          name="price"
-                          value={this.state.price}
-                          onChange={this.handlePriceChange}
-                          />
-                  <Label>.00</Label>
-                </Input>
-                </Form.Input>
+                  />
                 <Button type='submit'>Create Tour</Button>
               </Form>
             </Segment>
