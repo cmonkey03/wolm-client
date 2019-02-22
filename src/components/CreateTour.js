@@ -26,8 +26,9 @@ class CreateTour extends React.Component {
     this.state = {
       startTime: moment(),
       endTime: moment(),
-      description: '',
-      price: 0
+      price: 0,
+      image_url: '',
+      description: ''
     }
   }
 
