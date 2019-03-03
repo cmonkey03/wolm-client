@@ -10,6 +10,7 @@ import Reservations from '../components/Reservations';
 import AdminPanel from './AdminPanel';
 import CreateTour from '../components/CreateTour';
 import MakeReservation from '../components/MakeReservation';
+import Reservations2 from '../components/Reservations2';
 import TourInfo from '../components/TourInfo';
 import ResponsiveHeader from '../components/ResponsiveHeader';
 import Footer from '../components/Footer';
