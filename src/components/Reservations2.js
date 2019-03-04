@@ -6,4 +6,11 @@ class Reservations2 extends React.Component  {
   }
 }
 
+const mapStateToProps = ({ users: { user, loggedIn},
+  reservations: { cancellingReservation }}) => ({
+    user,
+    loggedIn,
+    cancellingReservation
+  })
+
 export default Reservations2;
