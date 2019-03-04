@@ -4,11 +4,25 @@ import withAuth from '../hocs/withAuth';
 import { cancelReservation } from '../actions/reservation';
 import { loadTours } from '../actions/tour';
 import { fetchCurrentUser } from '../actions/user';
-import { Grid } from 'semantic-ui-react';
+import { Grid, Image } from 'semantic-ui-react';
 
 class Reservations2 extends React.Component  {
   render() {
-    return <Grid></Grid>
+    return (
+      <Grid>
+        <Grid.Row columns={3}>
+           <Grid.Column>
+             <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
+           </Grid.Column>
+           <Grid.Column>
+             <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
+           </Grid.Column>
+           <Grid.Column>
+             <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
+           </Grid.Column>
+         </Grid.Row>
+      </Grid>
+    )
   }
 }
 
