@@ -4,10 +4,11 @@ import withAuth from '../hocs/withAuth';
 import { cancelReservation } from '../actions/reservation';
 import { loadTours } from '../actions/tour';
 import { fetchCurrentUser } from '../actions/user';
+import { Grid } from 'semantic-ui-react';
 
 class Reservations2 extends React.Component  {
   render() {
-    return <div></div>
+    return <Grid></Grid>
   }
 }
 
