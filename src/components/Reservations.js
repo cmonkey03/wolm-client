@@ -82,7 +82,7 @@ class Reservations extends React.Component {
   }
 }
 
-const mapStateToProps = ({ users: { user , loggedIn },
+const mapStateToProps = ({ users: { user, loggedIn },
   reservations: { cancellingReservation }}) => ({
     user,
     loggedIn,
