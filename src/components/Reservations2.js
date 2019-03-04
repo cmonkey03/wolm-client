@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import withAuth from '../hocs/withAuth';
 
 class Reservations2 extends React.Component  {
   render() {
@@ -14,4 +15,4 @@ const mapStateToProps = ({ users: { user, loggedIn},
     cancellingReservation
   })
 
-export default connect(mapStateToProps)(Reservations2);
+export default withAuth(connect(mapStateToProps)(Reservations2));
