@@ -10,7 +10,7 @@ class Reservations2 extends React.Component  {
   render() {
     return (
       <Grid>
-        <Grid.Row columns={3}>
+        {/*<Grid.Row columns={3}>
            <Grid.Column>
              <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
            </Grid.Column>
@@ -20,7 +20,7 @@ class Reservations2 extends React.Component  {
            <Grid.Column>
              <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
            </Grid.Column>
-         </Grid.Row>
+         </Grid.Row>*/}
       </Grid>
     )
   }
