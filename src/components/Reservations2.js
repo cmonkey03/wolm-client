@@ -10,16 +10,18 @@ class Reservations2 extends React.Component  {
 
   reservationTile = (reservations) => {
     return (reservations.reduce((accum, reservation) => {
-      // <Grid.Column>
-      //   <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
-      // </Grid.Column>
+      accum.push(
+        <Grid.Column>
+          <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
+        </Grid.Column>
+      )
       return accum;
     }, []))
   }
 
   render() {
     let { reservations } = this.props.user
-    console.log(reservations)
+
     return (
       <Grid padded>
         <Grid.Row columns={3}>
