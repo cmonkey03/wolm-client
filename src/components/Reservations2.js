@@ -7,6 +7,13 @@ import { fetchCurrentUser } from '../actions/user';
 import { Grid, Image } from 'semantic-ui-react';
 
 class Reservations2 extends React.Component  {
+
+  reservationTile = (reservations) => {
+    return (reservations.reduce((accum, reservation) => {
+      return accum;
+    }, []))
+  }
+
   render() {
     return (
       <Grid padded>
