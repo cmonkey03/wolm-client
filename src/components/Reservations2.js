@@ -26,15 +26,6 @@ class Reservations2 extends React.Component  {
       <Grid padded>
         <Grid.Row columns={3}>
           { reservations && this.reservationTile(reservations) }
-           {/*<Grid.Column>
-             <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
-           </Grid.Column>
-           <Grid.Column>
-             <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
-           </Grid.Column>
-           <Grid.Column>
-             <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
-           </Grid.Column>*/}
          </Grid.Row>
       </Grid>
     )
