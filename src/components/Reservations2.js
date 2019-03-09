@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import moment from 'moment';
 import withAuth from '../hocs/withAuth';
 import { cancelReservation } from '../actions/reservation';
 import { loadTours } from '../actions/tour';
 import { fetchCurrentUser } from '../actions/user';
 import {
-  Container,
   Grid,
   Image
 } from 'semantic-ui-react';
@@ -15,8 +15,12 @@ class Reservations2 extends React.Component  {
   reservationTile = (reservations) => {
     return (reservations.reduce((accum, reservation) => {
       accum.push(
-        <Grid.Column width={3}>
+        <Grid.Column key={reservation.id}>
           <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
+          {moment(reservation.tour.start_time).format("LLLL")}
+          {moment(reservation.tour.end_time).format("LLL")}
+          {reservation.tour.price}
+          {reservation.tour.description}
         </Grid.Column>
       )
       return accum;
@@ -27,7 +31,7 @@ class Reservations2 extends React.Component  {
     let {reservations} = this.props.user
 
     return (
-      <Grid padded>
+      <Grid padded columns={3}>
         { reservations && this.reservationTile(reservations) }
       </Grid>
     )
