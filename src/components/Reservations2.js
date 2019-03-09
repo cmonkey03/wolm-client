@@ -17,6 +17,8 @@ class Reservations2 extends React.Component  {
       accum.push(
         <Grid.Column key={reservation.id}>
           <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
+          {moment(reservation.tour.start_time).format("LLLL")}
+          {moment(reservation.tour.end_time).format("LLL")}
         </Grid.Column>
       )
       return accum;
