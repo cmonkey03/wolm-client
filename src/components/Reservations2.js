@@ -6,6 +6,7 @@ import { cancelReservation } from '../actions/reservation';
 import { loadTours } from '../actions/tour';
 import { fetchCurrentUser } from '../actions/user';
 import {
+  Button,
   Grid,
   Image
 } from 'semantic-ui-react';
@@ -21,6 +22,7 @@ class Reservations2 extends React.Component  {
           {moment(reservation.tour.end_time).format("LLL")}
           {reservation.tour.price}
           {reservation.tour.description}
+          <Button size='small' onClick={this.handleCancelReservation} name={reservation.id}>Cancel</Button>
         </Grid.Column>
       )
       return accum;
