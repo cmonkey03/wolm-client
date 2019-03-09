@@ -7,6 +7,7 @@ import { loadTours } from '../actions/tour';
 import { fetchCurrentUser } from '../actions/user';
 import {
   Button,
+  Form,
   Grid,
   Image
 } from 'semantic-ui-react';
@@ -40,9 +41,13 @@ class Reservations2 extends React.Component  {
     let {reservations} = this.props.user
 
     return (
-      <Grid padded columns={3}>
-        { reservations && this.reservationTile(reservations) }
-      </Grid>
+      <Form
+        loading={this.props.cancellingReservation}
+      >
+        <Grid padded columns={3}>
+          { reservations && this.reservationTile(reservations) }
+        </Grid>
+      </Form>
     )
   }
 }
