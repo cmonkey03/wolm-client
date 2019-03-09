@@ -4,14 +4,18 @@ import withAuth from '../hocs/withAuth';
 import { cancelReservation } from '../actions/reservation';
 import { loadTours } from '../actions/tour';
 import { fetchCurrentUser } from '../actions/user';
-import { Grid, Image } from 'semantic-ui-react';
+import {
+  Container,
+  Grid,
+  Image
+} from 'semantic-ui-react';
 
 class Reservations2 extends React.Component  {
 
   reservationTile = (reservations) => {
     return (reservations.reduce((accum, reservation) => {
       accum.push(
-        <Grid.Column>
+        <Grid.Column width={3}>
           <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
         </Grid.Column>
       )
@@ -20,13 +24,11 @@ class Reservations2 extends React.Component  {
   }
 
   render() {
-    let { reservations } = this.props.user
+    let {reservations} = this.props.user
 
     return (
       <Grid padded>
-        <Grid.Row columns={3}>
-          { reservations && this.reservationTile(reservations) }
-         </Grid.Row>
+        { reservations && this.reservationTile(reservations) }
       </Grid>
     )
   }
