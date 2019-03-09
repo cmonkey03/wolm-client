@@ -29,6 +29,13 @@ class Reservations2 extends React.Component  {
     }, []))
   }
 
+  handleCancelReservation = (e) => {
+    const reservationObj = { id: e.target.name }
+    this.props.cancelReservation(reservationObj)
+    //loadTours to pessimistically render changes to tour reservations
+    this.props.loadTours()
+  }
+
   render() {
     let {reservations} = this.props.user
 
