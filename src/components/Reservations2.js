@@ -9,7 +9,8 @@ import {
   Button,
   Form,
   Grid,
-  Image
+  Image,
+  Segment
 } from 'semantic-ui-react';
 
 class Reservations2 extends React.Component  {
@@ -45,7 +46,7 @@ class Reservations2 extends React.Component  {
       <Form
         loading={this.props.cancellingReservation}
       >
-        <Grid padded columns={3}>
+        <Grid padded stackable columns={3}>
           { reservations && this.reservationTile(reservations) }
         </Grid>
       </Form>
