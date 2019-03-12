@@ -16,6 +16,7 @@ import {
 class Reservations2 extends React.Component  {
 
   reservationTile = (reservations) => {
+    // Explore Semantic UI Cards: https://react.semantic-ui.com/elements/placeholder/#types-card
     return (reservations.reduce((accum, reservation) => {
       accum.push(
         <Grid.Column key={reservation.id}>
