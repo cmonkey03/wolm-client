@@ -19,6 +19,7 @@ class Reservations2 extends React.Component  {
     return (reservations.reduce((accum, reservation) => {
       accum.push(
         <Grid.Column key={reservation.id}>
+          <Segment>
           <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
           Title
           {moment(reservation.tour.start_time).format("LLLL")}
@@ -26,6 +27,7 @@ class Reservations2 extends React.Component  {
           {reservation.tour.price}
           {reservation.tour.description}
           <Button size='small' onClick={this.handleCancelReservation} name={reservation.id}>Cancel</Button>
+          </Segment>
         </Grid.Column>
       )
       return accum;
