@@ -21,7 +21,7 @@ class Reservations2 extends React.Component  {
     return (reservations.reduce((accum, reservation) => {
       accum.push(
         <Grid.Column key={reservation.id}>
-          <Segment>
+          <Segment attached>
           <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
           <Header as='h3'>Title</Header>
           {moment(reservation.tour.start_time).format("LLLL")}
