@@ -28,8 +28,8 @@ class Reservations2 extends React.Component  {
           {moment(reservation.tour.end_time).format("LLL")}
           {reservation.tour.price}
           {reservation.tour.description}
-          <Button size='small' onClick={this.handleCancelReservation} name={reservation.id}>Cancel</Button>
           </Segment>
+          <Button attached='bottom' size='small' onClick={this.handleCancelReservation} name={reservation.id}>Cancel</Button>
         </Grid.Column>
       )
       return accum;
