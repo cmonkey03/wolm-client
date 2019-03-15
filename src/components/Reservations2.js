@@ -8,6 +8,7 @@ import { fetchCurrentUser } from '../actions/user';
 import {
   Button,
   Form,
+  Header,
   Grid,
   Image,
   Segment
@@ -22,7 +23,7 @@ class Reservations2 extends React.Component  {
         <Grid.Column key={reservation.id}>
           <Segment>
           <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
-          Title
+          <Header as='h3'>Title</Header>
           {moment(reservation.tour.start_time).format("LLLL")}
           {moment(reservation.tour.end_time).format("LLL")}
           {reservation.tour.price}
