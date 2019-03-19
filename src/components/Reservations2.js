@@ -48,6 +48,7 @@ class Reservations2 extends React.Component  {
 
     return (
       <React.Fragment>
+        <Header as='h3' attached='top' inverted textAlign='center'>Your Reservations</Header>
         <Form
           loading={this.props.cancellingReservation}
         >
