@@ -49,9 +49,7 @@ class Reservations2 extends React.Component  {
     return (
       <React.Fragment>
         <Header as='h3' attached='top' inverted textAlign='center'>Your Reservations</Header>
-        <Form
-          loading={this.props.cancellingReservation}
-        >
+        <Form loading={this.props.cancellingReservation}>
           <Grid padded stackable columns={3}>
             { reservations && this.reservationTile(reservations) }
           </Grid>
