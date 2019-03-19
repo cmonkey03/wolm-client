@@ -40,7 +40,6 @@ class App extends Component {
                   <Fragment>
                     <MakeReservation />
                     <Reservations2 />
-                    <Reservations />
                   </Fragment>
                 )
               }
