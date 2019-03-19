@@ -29,7 +29,14 @@ class Reservations2 extends React.Component  {
             {reservation.tour.price}
             {reservation.tour.description}
           </Segment>
-          <Button attached='bottom' size='small' onClick={this.handleCancelReservation} name={reservation.id}>Cancel</Button>
+          <Button
+            attached='bottom'
+            size='small'
+            id={reservation.id}
+            onClick={this.handleCancelReservation}
+          >
+            Cancel
+          </Button>
         </Grid.Column>
       )
       return accum;
@@ -37,7 +44,7 @@ class Reservations2 extends React.Component  {
   }
 
   handleCancelReservation = (e) => {
-    const reservationObj = { id: e.target.name }
+    const reservationObj = { id: e.target.id }
     this.props.cancelReservation(reservationObj)
     //loadTours to pessimistically render changes to tour reservations
     this.props.loadTours()
