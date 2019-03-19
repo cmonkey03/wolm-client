@@ -47,13 +47,15 @@ class Reservations2 extends React.Component  {
     let {reservations} = this.props.user
 
     return (
-      <Form
-        loading={this.props.cancellingReservation}
-      >
-        <Grid padded stackable columns={3}>
-          { reservations && this.reservationTile(reservations) }
-        </Grid>
-      </Form>
+      <React.Fragment>
+        <Form
+          loading={this.props.cancellingReservation}
+        >
+          <Grid padded stackable columns={3}>
+            { reservations && this.reservationTile(reservations) }
+          </Grid>
+        </Form>
+      </React.Fragment>
     )
   }
 }
