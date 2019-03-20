@@ -40,7 +40,30 @@ class MakeReservation extends React.Component {
 
   //Reduces tours to only future tours
   tourRow = (tours) => {
-    return null
+    return (tours.reduce((accum, tour) => {
+      accum.push(
+        <Grid.Column key={tour.id}>
+          {/*<Segment attached align='center'>
+            <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
+            <Header as='h3'>Title</Header>
+            <p>{moment(reservation.tour.start_time).format("LLLL")}</p>
+            <p>{moment(reservation.tour.end_time).format("LLL")}</p>
+            {reservation.tour.price}
+            {reservation.tour.description}
+          </Segment>
+          <Button
+            attached='bottom'
+            size='small'
+            id={reservation.id}
+            onClick={this.handleCancelReservation}
+          >
+            Cancel
+          </Button>*/}
+        </Grid.Column>
+        )
+        return accum;
+      }, []))
+
     // return (tours.reduce((accum, tour) => {
     //   if (moment(tour.start_time) > moment()) {
     //     accum.push(<Table.Row key={tour.id}>
