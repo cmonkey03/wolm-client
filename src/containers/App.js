@@ -39,6 +39,7 @@ class App extends Component {
                 return (
                   <Fragment>
                     <MakeReservation />
+                    <MakeReservation2 />
                     <Reservations2 />
                   </Fragment>
                 )
