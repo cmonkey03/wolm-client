@@ -91,7 +91,7 @@ class MakeReservation extends React.Component {
               </Table.Row>
             </Table.Header>
             <Table.Body>
-              { this.props.tours && this.tourRow(this.props.tours) }
+              { tours && this.tourRow(tours) }
             </Table.Body>
             <Table.Footer>
               <Table.Row>
