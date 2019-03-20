@@ -8,9 +8,9 @@ import { loadTours } from '../actions/tour';
 import {
   Button,
   Form,
+  Grid,
   Header,
-  Message,
-  Table
+  Message
 } from 'semantic-ui-react';
 
 class MakeReservation extends React.Component {
@@ -40,19 +40,20 @@ class MakeReservation extends React.Component {
 
   //Reduces tours to only future tours
   tourRow = (tours) => {
-    return (tours.reduce((accum, tour) => {
-      if (moment(tour.start_time) > moment()) {
-        accum.push(<Table.Row key={tour.id}>
-          <Table.Cell textAlign='center'><Button size='small' onClick={this.handleSubmitReservation} name={tour.id}>Book This Tour</Button></Table.Cell>
-          <Table.Cell>{moment(tour.start_time).format("LLLL")}</Table.Cell>
-          <Table.Cell>{moment(tour.end_time).format("LLL")}</Table.Cell>
-          <Table.Cell>{tour.description}</Table.Cell>
-          <Table.Cell>{tour.price}</Table.Cell>
-          <Table.Cell>{tour.reservations.length}</Table.Cell>
-        </Table.Row>)
-      }
-      return accum
-    }, []))
+    return null
+    // return (tours.reduce((accum, tour) => {
+    //   if (moment(tour.start_time) > moment()) {
+    //     accum.push(<Table.Row key={tour.id}>
+    //       <Table.Cell textAlign='center'><Button size='small' onClick={this.handleSubmitReservation} name={tour.id}>Book This Tour</Button></Table.Cell>
+    //       <Table.Cell>{moment(tour.start_time).format("LLLL")}</Table.Cell>
+    //       <Table.Cell>{moment(tour.end_time).format("LLL")}</Table.Cell>
+    //       <Table.Cell>{tour.description}</Table.Cell>
+    //       <Table.Cell>{tour.price}</Table.Cell>
+    //       <Table.Cell>{tour.reservations.length}</Table.Cell>
+    //     </Table.Row>)
+    //   }
+    //   return accum
+    // }, []))
   }
 
   render() {
@@ -69,7 +70,7 @@ class MakeReservation extends React.Component {
           <Form
             success={!!this.props.successMessage}
             loading={this.props.makingReservation}
-          >
+            >
           <Message
             success
             header={this.props.successMessage}
@@ -79,40 +80,9 @@ class MakeReservation extends React.Component {
               null
             }
             />
-          <Table celled attached>
-            <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell>Select Tour</Table.HeaderCell>
-                <Table.HeaderCell>Start Time</Table.HeaderCell>
-                <Table.HeaderCell>End Time</Table.HeaderCell>
-                <Table.HeaderCell>Description</Table.HeaderCell>
-                <Table.HeaderCell>Price</Table.HeaderCell>
-                <Table.HeaderCell>Reservations</Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>
-              { tours && this.tourRow(tours) }
-            </Table.Body>
-            <Table.Footer>
-              <Table.Row>
-                <Table.HeaderCell colSpan='6'>
-                  {/*<Menu floated='right' pagination>
-                    <Menu.Item as='a' icon>
-                      <Icon name='chevron left'/>
-                    </Menu.Item>
-                    <Menu.Item as='a' name='1'/>
-                    <Menu.Item as='a' name='2'/>
-                    <Menu.Item as='a' name='3'/>
-                    <Menu.Item as='a' name='4'/>
-                    <Menu.Item as='a' name='5'/>
-                    <Menu.Item as='a' icon>
-                      <Icon name='chevron right'/>
-                    </Menu.Item>
-                  </Menu>*/}
-                </Table.HeaderCell>
-              </Table.Row>
-            </Table.Footer>
-          </Table>
+          <Grid>
+            { tours && this.tourRow(tours) }
+          </Grid>
         </Form>
     </React.Fragment>)
   }
