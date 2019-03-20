@@ -51,7 +51,7 @@ class Reservations2 extends React.Component  {
   }
 
   render() {
-    let {reservations} = this.props.user
+    const {reservations} = this.props.user
 
     return (
       <React.Fragment>

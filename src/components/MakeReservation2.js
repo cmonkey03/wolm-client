@@ -56,6 +56,8 @@ class MakeReservation extends React.Component {
   }
 
   render() {
+    const {tours} = this.props
+
     return (
       <React.Fragment>
         <Header as='h2'textAlign='center'>Make a Reservation</Header>
