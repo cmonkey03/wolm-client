@@ -10,7 +10,9 @@ import {
   Form,
   Grid,
   Header,
-  Message
+  Image,
+  Message,
+  Segment
 } from 'semantic-ui-react';
 
 class MakeReservation extends React.Component {
@@ -43,22 +45,22 @@ class MakeReservation extends React.Component {
     return (tours.reduce((accum, tour) => {
       accum.push(
         <Grid.Column key={tour.id}>
-          {/*<Segment attached align='center'>
+          <Segment attached align='center'>
             <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
             <Header as='h3'>Title</Header>
-            <p>{moment(reservation.tour.start_time).format("LLLL")}</p>
-            <p>{moment(reservation.tour.end_time).format("LLL")}</p>
-            {reservation.tour.price}
-            {reservation.tour.description}
+            <p>{moment(tour.start_time).format("LLLL")}</p>
+            <p>{moment(tour.end_time).format("LLL")}</p>
+            {tour.price}
+            {tour.description}
           </Segment>
           <Button
             attached='bottom'
             size='small'
-            id={reservation.id}
+            id={tour.id}
             onClick={this.handleCancelReservation}
           >
             Cancel
-          </Button>*/}
+          </Button>
         </Grid.Column>
         )
         return accum;
@@ -103,7 +105,7 @@ class MakeReservation extends React.Component {
               null
             }
             />
-          <Grid>
+          <Grid padded stackable columns={3}>
             { tours && this.tourRow(tours) }
           </Grid>
         </Form>
