@@ -49,8 +49,8 @@ class MakeReservation extends React.Component {
             <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
             <Header as='h3'>Title</Header>
             <p>{moment(tour.start_time).format("LLLL")}</p>
-            <p>End: {moment(tour.end_time).format("h:hh a")}   Price: ${tour.price}
-            </p>
+            <p>End: {moment(tour.end_time).format("h:hh a")}   Price: ${tour.price}</p>
+            Reservations: {tour.reservations.length}
             <p>{tour.description}</p>
           </Segment>
           <Button
