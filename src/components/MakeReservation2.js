@@ -32,7 +32,7 @@ class MakeReservation extends React.Component {
   handleSubmitReservation = (e) => {
     const reservationObj = {
       user_id: this.props.user.id,
-      tour_id: parseInt(e.target.name)
+      tour_id: parseInt(e.target.id)
     }
 
     this.props.createReservation(reservationObj)
@@ -57,9 +57,9 @@ class MakeReservation extends React.Component {
             attached='bottom'
             size='small'
             id={tour.id}
-            onClick={this.handleCancelReservation}
+            onClick={this.handleSubmitReservation}
           >
-            Cancel
+            Book This Tour
           </Button>
         </Grid.Column>
         )
