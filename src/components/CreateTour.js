@@ -24,6 +24,7 @@ class CreateTour extends React.Component {
     super(props)
     this.ApiAdapter = new ApiAdapter()
     this.state = {
+      title: '',
       startTime: moment(),
       endTime: moment(),
       price: 0,
@@ -101,6 +102,14 @@ class CreateTour extends React.Component {
                 <Message success header="You have successfully created a tour."/>
                 { this.props.failedCreateTour ? this.handleErrors(this.props.error) : null }
                 {/*Form.Input causes sizing errors with React-DatePicker*/}
+                <Label>Title</Label>
+                <Form.Input
+                  name='title'
+                  type='text'
+                  maxLength='30'
+                  value={this.state.title}
+                  onChange={this.handleChange}
+                  />
                 <Label>Start Time</Label>
                 <DatePicker
                   fluid
