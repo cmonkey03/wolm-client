@@ -51,7 +51,7 @@ class CreateTour extends React.Component {
       image_url: this.state.image_url,
       description: this.state.description
     }
-
+    
     this.props.createTour(tourObj)
     this.setState({
       title: '',
