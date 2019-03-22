@@ -24,8 +24,8 @@ class Reservations2 extends React.Component  {
           <Segment attached align='center'>
             <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
             <Header as='h3'>Title</Header>
-            <p>Start: {moment(reservation.tour.start_time).format("LLLL")}</p>
-            <p>End: {moment(reservation.tour.end_time).format("h:hh a")}   Price: ${reservation.tour.price}
+            <p>{moment(reservation.tour.start_time).format("LLLL")}</p>
+            <p>End: {moment(reservation.tour.end_time).format("h:hh a")}  Price: ${reservation.tour.price}
             </p>
             {reservation.tour.description}
           </Segment>
