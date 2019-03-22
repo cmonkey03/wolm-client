@@ -8,7 +8,6 @@ import Signup from '../components/Signup';
 import EditProfile from '../components/EditProfile';
 import AdminPanel from './AdminPanel';
 import CreateTour from '../components/CreateTour';
-import MakeReservation from '../components/MakeReservation';
 import MakeReservation2 from '../components/MakeReservation2';
 import Reservations2 from '../components/Reservations2';
 import TourInfo from '../components/TourInfo';
@@ -38,7 +37,6 @@ class App extends Component {
               render={ (renderProps) => {
                 return (
                   <Fragment>
-                    <MakeReservation />
                     <MakeReservation2 />
                     <Reservations2 />
                   </Fragment>
