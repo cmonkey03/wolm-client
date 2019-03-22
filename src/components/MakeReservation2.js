@@ -43,42 +43,30 @@ class MakeReservation extends React.Component {
   //Reduces tours to only future tours
   tourRow = (tours) => {
     return (tours.reduce((accum, tour) => {
-      accum.push(
-        <Grid.Column key={tour.id}>
-          <Segment attached align='center'>
-            <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
-            <Header as='h3'>Title</Header>
-            <p>{moment(tour.start_time).format("LLLL")}</p>
-            <p>End: {moment(tour.end_time).format("h:hh a")}   Price: ${tour.price}</p>
-            Reservations: {tour.reservations.length}
-            <p>{tour.description}</p>
-          </Segment>
-          <Button
-            attached='bottom'
-            size='small'
-            id={tour.id}
-            onClick={this.handleSubmitReservation}
-          >
-            Book This Tour
-          </Button>
-        </Grid.Column>
+      if (moment(tour.start_time) > moment()) {
+        accum.push(
+          <Grid.Column key={tour.id}>
+            <Segment attached align='center'>
+              <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
+              <Header as='h3'>Title</Header>
+              <p>{moment(tour.start_time).format("LLLL")}</p>
+              <p>End: {moment(tour.end_time).format("h:hh a")}   Price: ${tour.price}</p>
+              Reservations: {tour.reservations.length}
+              <p>{tour.description}</p>
+            </Segment>
+            <Button
+              attached='bottom'
+              size='small'
+              id={tour.id}
+              onClick={this.handleSubmitReservation}
+            >
+              Book This Tour
+            </Button>
+          </Grid.Column>
         )
+      }
         return accum;
       }, []))
-
-    // return (tours.reduce((accum, tour) => {
-    //   if (moment(tour.start_time) > moment()) {
-    //     accum.push(<Table.Row key={tour.id}>
-    //       <Table.Cell textAlign='center'><Button size='small' onClick={this.handleSubmitReservation} name={tour.id}>Book This Tour</Button></Table.Cell>
-    //       <Table.Cell>{moment(tour.start_time).format("LLLL")}</Table.Cell>
-    //       <Table.Cell>{moment(tour.end_time).format("LLL")}</Table.Cell>
-    //       <Table.Cell>{tour.description}</Table.Cell>
-    //       <Table.Cell>{tour.price}</Table.Cell>
-    //       <Table.Cell>{tour.reservations.length}</Table.Cell>
-    //     </Table.Row>)
-    //   }
-    //   return accum
-    // }, []))
   }
 
   render() {
