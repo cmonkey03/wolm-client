@@ -44,6 +44,7 @@ class CreateTour extends React.Component {
 
   handleTourSubmit = (e) => {
     const tourObj = {
+      title: this.state.title,
       start_time: this.state.startTime,
       end_time: this.state.endTime,
       price: this.state.price,
@@ -53,9 +54,10 @@ class CreateTour extends React.Component {
 
     this.props.createTour(tourObj)
     this.setState({
+      title: '',
       startTime: moment(),
       endTime: moment(),
-      image_url: "",
+      image_url: '',
       price: 0,
       description: '',
       error: null
