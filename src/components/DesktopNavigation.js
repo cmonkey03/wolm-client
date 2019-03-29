@@ -88,7 +88,6 @@ class DesktopNavigation extends Component {
                   active={activeItem==="signup"}
                   color={colors[4]}
                   onClick={this.handleClick}
-
                   primary={fixed}
                   style={{ marginLeft: '0.5em' }}
                 >
