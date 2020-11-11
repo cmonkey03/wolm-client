@@ -24,9 +24,9 @@ This is the single-page application for WOLM, a booking website where users can 
 ## Setup
 1. If you'd like to fetch from the heroku-hosted WOLM API, go to `/src/adapter.js` and ensure line 2 is commented and line 4 is uncommented
 2. If you'd like to fetch from a localhost WOLM API, clone down the [WOLM server](https://github.com/cmonkey03/wolm-server) and followed the setup instructions there.
-3. Clone down this repo and run `npm install http-server`.
+3. Clone this repo and run `npm install`.
 4. To fetch from a local WOLM API, go to `/src/adapter.js` and ensure line 4 is commented and line 2 is uncommented
-5. Run `http-server -p 8000` from the command line and open [http://localhost:8000/](http://localhost:8000/) in your browser.
+5. Run `npm start`
 6. To edit Semantic UI React custom theming, cd to `/src/semantic` and run `gulp build` and `gulp watch`
 
 ## Contribute
